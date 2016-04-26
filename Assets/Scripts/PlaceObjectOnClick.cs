@@ -22,6 +22,7 @@ public class PlaceObjectOnClick : MonoBehaviour {
 			Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit);
 			if(hit.collider.gameObject == this.gameObject){
 				GameObject instance = (GameObject) GameObject.Instantiate(prefab, hit.point, Quaternion.identity);
+                FindObjectOfType<PowerHUDManager>().ResetPower();
 			}
 		}
 	}
