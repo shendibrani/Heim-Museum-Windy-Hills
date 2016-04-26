@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class HeimHUD {
+public class HeimHUD: MonoBehaviour {
 
 	private Texture2D[] hudAnimationArray = new Texture2D[40];
 	private Texture2D HUDtop;

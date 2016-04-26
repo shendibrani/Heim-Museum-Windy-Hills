@@ -13,6 +13,9 @@ public class TurbineObject : MonoBehaviour
     float _efficencyDecrease = 0.5f;
 
     [SerializeField]
+    float _turbulanceDistance = 30f;
+
+    [SerializeField]
     bool _debug;
 
     // Use this for initialization
@@ -33,7 +36,7 @@ public class TurbineObject : MonoBehaviour
         if (_debug)
         {
             Gizmos.color = Color.blue;
-            Gizmos.DrawLine(transform.position, transform.position + -windDirection * 20);
+            Gizmos.DrawLine(transform.position, transform.position + -windDirection * _turbulanceDistance);
         }
     }
 
@@ -47,9 +50,20 @@ public class TurbineObject : MonoBehaviour
         float value = _maxPower;
         foreach (RaycastHit hit in hitObjects)
         {
+            //if not this object, reduce the power generated
             if (hit.collider != GetComponent<Collider>())
             {
-                value *= 0.5f;
+                //reduce the power generated according distance to turbine in the way
+                if (hit.collider.GetComponent<TurbineObject>() != null)
+                {
+                    float diff = (Vector3.Distance(transform.position, hit.point)) / _turbulanceDistance;
+                    if (diff > 1) diff = 1;
+                    value *= diff * diff; 
+                }
+                else
+                {
+                    value *= 0.5f;
+                }
             }
         }
 
