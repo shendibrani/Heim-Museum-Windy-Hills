@@ -10,16 +10,17 @@ public class PowerHUDManager : MonoBehaviour {
     float _currentPower;
 
     [SerializeField]
-    Slider _powerFillBar;
+    Image _powerFillBar;
 
     [SerializeField]
     Text _debugPowerText;
    
 	// Use this for initialization
 	void Start () {
-        _powerFillBar.minValue = 0;
-        _powerFillBar.maxValue = 5;
-		if (FindObjectsOfType<PowerHUDManager>().Length > 1){
+        _powerFillBar.fillAmount = 0;
+        //_powerFillBar.minValue = 0;
+        //_powerFillBar.maxValue = 5;
+        if (FindObjectsOfType<PowerHUDManager>().Length > 1){
 			Debug.LogError("Multiple instances of PowerHUDManager detected");
 		}
 	}
@@ -38,11 +39,11 @@ public class PowerHUDManager : MonoBehaviour {
 	void Update () {
         if (_powerFillBar != null)
         {
-            if (_currentPower == 0) _powerFillBar.value = 0;
+            if (_currentPower == 0) _powerFillBar.fillAmount = 0;
             else
             {
-                //_powerFillBar.value = _targetPower / _currentPower;
-                _powerFillBar.value = _currentPower;
+                _powerFillBar.fillAmount = _currentPower / _targetPower;
+                //_powerFillBar.value = _currentPower;
             }
         }
 
