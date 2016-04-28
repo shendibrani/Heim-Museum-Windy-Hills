@@ -45,6 +45,8 @@ public class PowerHUDManager : MonoBehaviour {
         if (_debugPowerText != null)
         {
             _debugPowerText.text = "Power: " + _currentPower + "/"  + _targetPower;
+
+            //score calculated as 0 to 100, determined by ratio between actual placed turbines vs minimum required 
         }
 	}
 }
