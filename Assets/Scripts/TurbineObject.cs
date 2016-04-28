@@ -68,7 +68,6 @@ public class TurbineObject : MonoBehaviour
                 //reduced the power generated if there is an object blocking wind
                 if (hit.collider.GetComponent<WindShadowObject>() != null)
                 {
-                    Debug.Log("Hit Shadow Object");
                     float diff = Vector3.Distance(transform.position, hit.point);
                     if (diff <= hit.collider.GetComponent<WindShadowObject>().ShadowDistance)
                         value *= 1 - hit.collider.GetComponent<WindShadowObject>().ShadowPower;
