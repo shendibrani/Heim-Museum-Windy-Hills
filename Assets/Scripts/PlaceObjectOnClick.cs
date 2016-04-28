@@ -24,10 +24,11 @@ public class PlaceObjectOnClick : MonoBehaviour {
 			Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit);
 			if(hit.collider.gameObject == this.gameObject){
 
+				float x = Mathf.Round(hit.point.x / _snapValue) * _snapValue;
+				float z = Mathf.Round(hit.point.z / _snapValue) * _snapValue;
+
                 //Snap to grid size according to _snapValue
-                Vector3 snapPoint = new Vector3(Mathf.Round(hit.point.x / _snapValue) * _snapValue,
-                             Mathf.Round(hit.point.y / _snapValue) * _snapValue,
-                             Mathf.Round(hit.point.z / _snapValue) * _snapValue);
+				Vector3 snapPoint = new Vector3(x, GetComponent<TerrainCollider>().terrainData.GetHeight((int) x, (int) z), z);
 
                 GameObject instance = (GameObject) GameObject.Instantiate(prefab, snapPoint, Quaternion.identity);
                 FindObjectOfType<PowerHUDManager>().ResetPower();
