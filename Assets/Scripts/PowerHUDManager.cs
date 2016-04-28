@@ -10,15 +10,18 @@ public class PowerHUDManager : MonoBehaviour {
     float _currentPower;
 
     [SerializeField]
-    Image _powerFillBar;
+    Slider _powerFillBar;
 
     [SerializeField]
     Text _debugPowerText;
    
-
 	// Use this for initialization
 	void Start () {
-	
+        _powerFillBar.minValue = 0;
+        _powerFillBar.maxValue = 5;
+		if (FindObjectsOfType<PowerHUDManager>().Length > 1){
+			Debug.LogError("Multiple instances of PowerHUDManager detected");
+		}
 	}
 	
     //When an object is place, redo all calculations concerning power supply
@@ -35,18 +38,21 @@ public class PowerHUDManager : MonoBehaviour {
 	void Update () {
         if (_powerFillBar != null)
         {
-            if (_currentPower == 0) _powerFillBar.fillAmount = 0;
+            if (_currentPower == 0) _powerFillBar.value = 0;
             else
             {
-                _powerFillBar.fillAmount = _targetPower / _currentPower;
+                //_powerFillBar.value = _targetPower / _currentPower;
+                _powerFillBar.value = _currentPower;
             }
         }
 
         if (_debugPowerText != null)
         {
-            _debugPowerText.text = "Power: " + _currentPower + "/"  + _targetPower;
+            _debugPowerText.text =  _currentPower + "/"  + _targetPower;
 
             //score calculated as 0 to 100, determined by ratio between actual placed turbines vs minimum required 
         }
 	}
+
+
 }
