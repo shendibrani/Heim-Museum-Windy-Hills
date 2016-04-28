@@ -13,7 +13,9 @@ public class TurbineObject : MonoBehaviour
     float _efficencyDecrease = 0.5f;
 
     [SerializeField]
-    float _turbulanceDistance = 30f;
+    float _turbineDiameter = 4f;
+    //[SerializeField]
+    //float _turbine = 30f;
 
     [SerializeField]
     bool _debug;
@@ -36,7 +38,7 @@ public class TurbineObject : MonoBehaviour
         if (_debug)
         {
             Gizmos.color = Color.blue;
-            Gizmos.DrawLine(transform.position, transform.position + -windDirection * _turbulanceDistance);
+            Gizmos.DrawLine(transform.position, transform.position + -windDirection * _turbineDiameter * 8);
         }
     }
 
@@ -56,9 +58,19 @@ public class TurbineObject : MonoBehaviour
                 //reduce the power generated according distance to turbine in the way
                 if (hit.collider.GetComponent<TurbineObject>() != null)
                 {
-                    float diff = (Vector3.Distance(transform.position, hit.point)) / _turbulanceDistance;
-                    if (diff > 1) diff = 1;
-                    value *= diff * diff; 
+                    float diff = Vector3.Distance(transform.position, hit.point) / _turbineDiameter;
+                    //determines the efficency based on distance (distance of 8 turbine diameters is 0 difference)
+                    float mod = Mathf.Pow(diff, (2f / 3f)) * 1 / 4;
+                    if (mod > 1) mod = 1;
+                    value *= mod;
+                }
+
+                //reduced the power generated if there is an object blocking wind
+                if (hit.collider.GetComponent<WindShadowObject>() != null)
+                {
+                    float diff = Vector3.Distance(transform.position, hit.point);
+                    if (diff <= hit.collider.GetComponent<WindShadowObject>().ShadowDistance)
+                        value *= 1 - hit.collider.GetComponent<WindShadowObject>().ShadowPower;
                 }
                 else
                 {
