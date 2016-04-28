@@ -19,6 +19,9 @@ public class PowerHUDManager : MonoBehaviour {
 	void Start () {
         _powerFillBar.minValue = 0;
         _powerFillBar.maxValue = 5;
+		if (FindObjectsOfType<PowerHUDManager>().Length > 1){
+			Debug.LogError("Multiple instances of PowerHUDManager detected");
+		}
 	}
 	
     //When an object is place, redo all calculations concerning power supply
