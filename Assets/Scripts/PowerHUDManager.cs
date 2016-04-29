@@ -26,7 +26,7 @@ public class PowerHUDManager : MonoBehaviour {
 	}
 	
     //When an object is place, redo all calculations concerning power supply
-    public void ResetPower()
+	public void ResetPower(GameObject go)
     {
         _currentPower = 0;
         foreach (TurbineObject turbine in FindObjectsOfType<TurbineObject>())
