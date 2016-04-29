@@ -7,9 +7,12 @@ public class PlaceObjectOnClick : MonoBehaviour {
 
     float _snapValue = 5f;
 
+	public delegate void ObjectPlaced (GameObject go);
+	public ObjectPlaced OnObjectPlaced;
+
 	// Use this for initialization
 	void Start () {
-	
+		OnObjectPlaced = FindObjectOfType<PowerHUDManager>().ResetPower;
 	}
 	
 	// Update is called once per frame
@@ -31,7 +34,7 @@ public class PlaceObjectOnClick : MonoBehaviour {
 				Vector3 snapPoint = new Vector3(x, GetComponent<TerrainCollider>().terrainData.GetHeight((int) x, (int) z), z);
 
                 GameObject instance = (GameObject) GameObject.Instantiate(prefab, snapPoint, Quaternion.identity);
-                FindObjectOfType<PowerHUDManager>().ResetPower();
+				OnObjectPlaced(instance);
 			}
 		}
 	}
