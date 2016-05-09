@@ -422,6 +422,7 @@ GameObject:
   - 218: {fileID: 1882190960}
   - 154: {fileID: 1882190959}
   - 114: {fileID: 1882190962}
+  - 114: {fileID: 1882190963}
   m_Layer: 0
   m_Name: Terrain
   m_TagString: Untagged
@@ -448,7 +449,7 @@ Terrain:
   m_Enabled: 1
   serializedVersion: 3
   m_TerrainData: {fileID: 15600000, guid: 46f4b9f81c2a223498d666f8c46ec2f9, type: 2}
-  m_TreeDistance: 5000
+  m_TreeDistance: 2000
   m_TreeBillboardDistance: 50
   m_TreeCrossFadeLength: 5
   m_TreeMaximumFullLODCount: 50
@@ -461,7 +462,7 @@ Terrain:
   m_DrawHeightmap: 1
   m_DrawTreesAndFoliage: 1
   m_ReflectionProbeUsage: 1
-  m_MaterialType: 0
+  m_MaterialType: 3
   m_LegacySpecular:
     serializedVersion: 2
     rgba: 4286545791
@@ -494,6 +495,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 182416, guid: 96cdbbc8ac052874797cc865e7cc7c5b, type: 2}
+  tileSize: 15
+--- !u!114 &1882190963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1882190958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4dbf2f447f59cb458c4d713a2db4692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textureBy: 1
+  terrain: {fileID: 1882190960}
+  slopeBlendMinAngle: 0
+  slopeBlendMaxAngle: 0
+  heightBlendPoints: []
+  slopeBlendPoints:
+  - 10
+  - 15
+  - 27
+  - 32
 --- !u!1 &2010180232
 GameObject:
   m_ObjectHideFlags: 0
