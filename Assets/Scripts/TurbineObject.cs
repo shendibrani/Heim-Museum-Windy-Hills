@@ -14,6 +14,8 @@ public class TurbineObject : MonoBehaviour
 
     [SerializeField]
     float _turbineDiameter = 4f;
+    [SerializeField]
+    float _turbineHeight = 8f;
     //[SerializeField]
     //float _turbine = 30f;
 
@@ -46,10 +48,12 @@ public class TurbineObject : MonoBehaviour
     public float WindDetectionRaycast()
     {
         Ray obstructionRay = new Ray(transform.position, -windDirection);
+
         RaycastHit[] hitObjects;
         hitObjects = Physics.RaycastAll(obstructionRay);
 
         float value = _maxPower;
+
         foreach (RaycastHit hit in hitObjects)
         {
             //if not this object, reduce the power generated
@@ -69,12 +73,34 @@ public class TurbineObject : MonoBehaviour
                 if (hit.collider.GetComponent<WindShadowObject>() != null)
                 {
                     float diff = Vector3.Distance(transform.position, hit.point);
-                    if (diff <= hit.collider.GetComponent<WindShadowObject>().ShadowDistance)
-                        value *= 1 - hit.collider.GetComponent<WindShadowObject>().ShadowPower;
+                    float offset = diff / hit.collider.GetComponent<WindShadowObject>().ShadowPower;
+                    //if (diff <= hit.collider.GetComponent<WindShadowObject>().ShadowDistance)
+                    if (offset > 1) offset = 1;
+                    value *= offset;
                 }
-                else
+                if (hit.collider.GetComponent<Terrain>() != null)
                 {
-                    value *= 0.5f;
+                    //Disabled because unfixed and because it caused a dumb loop and ugh...
+                    /*float terrainShadow = _turbineHeight;
+                    bool detect = false;
+
+                    while (detect)
+                    {
+                        detect = true;
+                        Vector3 upOneObstruction = transform.position + Vector3.up * _turbineHeight * 0.5f;
+                        Ray upOneObstructionRay = new Ray(upOneObstruction, -windDirection);
+                        RaycastHit[] oneUpHit;
+                        oneUpHit = Physics.RaycastAll(upOneObstructionRay);
+                        foreach (RaycastHit h in oneUpHit)
+                        {
+                            if (hit.collider.GetComponent<Terrain>() != null)
+                            {
+                                terrainShadow += _turbineHeight * 0.5f;
+                                detect = false;
+                                break;
+                            }
+                        }
+                    } */
                 }
             }
         }
