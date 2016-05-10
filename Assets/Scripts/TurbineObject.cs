@@ -82,7 +82,7 @@ public class TurbineObject : MonoBehaviour
                     for (int i = 0; i < 100; i++)
                     {
                         upOneObstruction += Vector3.up * _turbineHeight * 0.25f;
-                        Ray upOneObstructionRay = new Ray(upOneObstruction, -windDirection.normalized);
+                        Ray upOneObstructionRay = new Ray(upOneObstruction, -windVelocity.value.normalized);
                         RaycastHit[] oneUpHit;
                         oneUpHit = Physics.RaycastAll(upOneObstructionRay);
                         foreach (RaycastHit h in oneUpHit)
