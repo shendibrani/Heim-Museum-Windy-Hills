@@ -5,7 +5,7 @@ public class Morale : MonoBehaviour
 {
 	[SerializeField] float range;
 
-	public float morale {get; private set;}
+	public Monitored<float> morale {get; private set;}
 
 	void Start()
 	{
@@ -14,14 +14,14 @@ public class Morale : MonoBehaviour
 
 	void OnObjectPlaced(GameObject go)
 	{
-		morale = 1;
+		morale.value = 1;
 		foreach (TurbineObject t in FindObjectsOfType<TurbineObject>()){
 			if (Vector3.Distance(transform.position, t.transform.position) < range){
-				morale -= 0.2f;
+				morale.value -= 0.2f;
 			}
 		}
 
-		morale = (Mathf.Max(morale, 0));
+		morale.value = (Mathf.Max(morale, 0));
 	}
 }
 

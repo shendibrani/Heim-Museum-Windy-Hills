@@ -5,7 +5,7 @@ public class PlaceObjectOnClick : MonoBehaviour {
 
 	[SerializeField] GameObject prefab;
 
-    float _snapValue = 5f;
+    [SerializeField] float tileSize = 5f;
 
 	public delegate void ObjectPlaced (GameObject go);
 	public ObjectPlaced OnObjectPlaced;
@@ -26,16 +26,33 @@ public class PlaceObjectOnClick : MonoBehaviour {
 			RaycastHit hit;
 			Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit);
 			if(hit.collider.gameObject == this.gameObject){
-
-				float x = Mathf.Round(hit.point.x / _snapValue) * _snapValue;
-				float z = Mathf.Round(hit.point.z / _snapValue) * _snapValue;
-
-                //Snap to grid size according to _snapValue
-				Vector3 snapPoint = new Vector3(x, GetComponent<TerrainCollider>().terrainData.GetHeight((int) x, (int) z), z);
-
-                GameObject instance = (GameObject) GameObject.Instantiate(prefab, snapPoint, Quaternion.identity);
-				OnObjectPlaced(instance);
+				PlaceObject (hit.point.x, hit.point.z);
 			}
 		}
+	}
+
+	bool PlaceObject(float hx, float hz)
+	{
+		Vector2[] points = new Vector2[5];
+
+		points[0] = new Vector2(Mathf.Floor (hx / tileSize) * tileSize, Mathf.Floor (hz / tileSize) * tileSize);
+		points[1] = new Vector2(points[0].x, points[0].y+tileSize);
+		points[2] = new Vector2(points[0].x+tileSize, points[0].y+tileSize);
+		points[3] = new Vector2(points[0].x+tileSize, points[0].y);
+		points[4] = new Vector2(points[0].x+tileSize/2, points[0].y+tileSize/2);
+
+		foreach (Vector2 point in points){
+			Vector3 size = GetComponent<TerrainCollider> ().terrainData.size;
+			if (GetComponent<TerrainCollider> ().terrainData.GetSteepness(point.x/size.x, point.y/size.z) > 0){
+				OnObjectPlaced(null);
+				return false;
+			}
+		}
+
+		//Snap to grid size according to _snapValue
+		Vector3 snapPoint = new Vector3 (points[4].x, GetComponent<TerrainCollider> ().terrainData.GetHeight ((int)points[4].x, (int)points[4].y), points[4].y);
+		GameObject instance = (GameObject)GameObject.Instantiate (prefab, snapPoint, Quaternion.identity);
+		OnObjectPlaced (instance);
+		return true;
 	}
 }
