@@ -68,34 +68,40 @@ public class TurbineObject : MonoBehaviour
                 if (hit.collider.GetComponent<WindShadowObject>() != null)
                 {
                     float diff = Vector3.Distance(transform.position, hit.point);
-                    float offset = diff / hit.collider.GetComponent<WindShadowObject>().ShadowPower;
-                    //if (diff <= hit.collider.GetComponent<WindShadowObject>().ShadowDistance)
+                    float offset = diff / hit.collider.GetComponent<WindShadowObject>().ShadowDistance;
                     if (offset > 1) offset = 1;
                     value *= offset;
                 }
+
                 if (hit.collider.GetComponent<Terrain>() != null)
                 {
-                    //Disabled because unfixed and because it caused a dumb loop and ugh...
-                    /*float terrainShadow = _turbineHeight;
-                    bool detect = false;
+                    //checks the height and uses to deterine the shadow
+                    float terrainShadow = _turbineHeight;
+                    Vector3 upOneObstruction = transform.position;
 
-                    while (detect)
+                    for (int i = 0; i < 100; i++)
                     {
-                        detect = true;
-                        Vector3 upOneObstruction = transform.position + Vector3.up * _turbineHeight * 0.5f;
-                        Ray upOneObstructionRay = new Ray(upOneObstruction, -windDirection);
+                        upOneObstruction += Vector3.up * _turbineHeight * 0.25f;
+                        Ray upOneObstructionRay = new Ray(upOneObstruction, -windDirection.normalized);
                         RaycastHit[] oneUpHit;
                         oneUpHit = Physics.RaycastAll(upOneObstructionRay);
                         foreach (RaycastHit h in oneUpHit)
                         {
-                            if (hit.collider.GetComponent<Terrain>() != null)
+                            if (h.collider.GetComponent<Terrain>() != null)
                             {
-                                terrainShadow += _turbineHeight * 0.5f;
-                                detect = false;
+                                terrainShadow += _turbineHeight * 0.25f;
                                 break;
                             }
                         }
-                    } */
+                    }
+
+                    float diff = Vector3.Distance(transform.position, hit.point);
+                    float offset = diff / terrainShadow;
+                    Debug.Log("diff " + diff + " shadow " + terrainShadow + " offset " + offset);
+                    //if (diff <= hit.collider.GetComponent<WindShadowObject>().ShadowDistance)
+                    if (offset > 1) offset = 1;
+                    value *= offset;
+
                 }
             }
         }
