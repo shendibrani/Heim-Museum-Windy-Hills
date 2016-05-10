@@ -10,8 +10,6 @@ public class TurbineObject : MonoBehaviour
     //Maximum Power Avalible from Turbine (in MW)
     float _maxPower = 1;
 
-    float _efficencyDecrease = 0.5f;
-
     [SerializeField]
     float _turbineDiameter = 4f;
     [SerializeField]
