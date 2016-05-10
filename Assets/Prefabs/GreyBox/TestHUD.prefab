@@ -278,7 +278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetPower: 5
-  _powerFillBar: {fileID: 11465712}
+  _powerFillBar: {fileID: 0}
   _debugPowerText: {fileID: 11415032}
 --- !u!114 &11465712
 MonoBehaviour:
