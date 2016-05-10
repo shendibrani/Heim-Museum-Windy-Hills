@@ -9,13 +9,20 @@ public class Monitored<T>
 			return _value;
 		}
 		set{
-			OnValueChanged(_value, value);
+			if(OnValueChanged != null){
+				OnValueChanged(_value, value);
+			}
 			_value = value;
 		}
 	}
 
 	public Monitored()
 	{
+	}
+
+	public Monitored(T pValue)
+	{
+		value = pValue;
 	}
 
 	public delegate void ValueChanged (T oldValue, T newValue);
