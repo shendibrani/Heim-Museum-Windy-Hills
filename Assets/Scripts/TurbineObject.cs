@@ -5,7 +5,7 @@ public class TurbineObject : MonoBehaviour
 {
 
     //Wind Direction in Vector
-    public static Vector3 windDirection = new Vector3(0, 0, 1);
+	public static Monitored<Vector3> windVelocity = new Monitored<Vector3>(new Vector3(0, 0, 1));
 
     //Maximum Power Avalible from Turbine (in MW)
     float _maxPower = 1;
@@ -25,14 +25,9 @@ public class TurbineObject : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        transform.forward = windDirection;
+		transform.forward = windVelocity.value.normalized;
+		windVelocity.OnValueChanged += OnWindVelocityChanged;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
 
     //draw the a line along the line calculated for the raycast below
     void OnDrawGizmos()
@@ -40,14 +35,14 @@ public class TurbineObject : MonoBehaviour
         if (_debug)
         {
             Gizmos.color = Color.blue;
-            Gizmos.DrawLine(transform.position, transform.position + -windDirection * _turbineDiameter * 8);
+			Gizmos.DrawLine(transform.position, transform.position + -windVelocity.value.normalized * _turbineDiameter * 8);
         }
     }
 
     //Raycast to the this object according to wind direction. If an object is in the way, the efficency descreases depending on objects in the way
     public float WindDetectionRaycast()
     {
-        Ray obstructionRay = new Ray(transform.position, -windDirection);
+		Ray obstructionRay = new Ray(transform.position, -windVelocity.value.normalized);
 
         RaycastHit[] hitObjects;
         hitObjects = Physics.RaycastAll(obstructionRay);
@@ -107,4 +102,9 @@ public class TurbineObject : MonoBehaviour
 
         return value;
     }
+
+	void OnWindVelocityChanged(Vector3 oldValue, Vector3 newValue)
+	{
+		transform.forward = newValue.normalized;
+	}
 }
