@@ -17,27 +17,6 @@
  
 function GenerateAlphaMap()
 {
-    Start();
-}
- 
-#endif
- 
- 
-//  Script Management
-//  ----------------------------------------------------------------------------
- 
- 
-enum TextureMethod
-{
-    UsingHeights,
-    UsingSlopeAngles
-}
- 
-public var textureBy : TextureMethod;
- 
- 
-function Start()
-{
     // Load or find the terrain and get Terrain Data
     GetTerrainData();
    
@@ -54,15 +33,20 @@ function Start()
     }
 }
  
+#endif
  
-function Update()
+ 
+//  Script Management
+//  ----------------------------------------------------------------------------
+ 
+ 
+enum TextureMethod
 {
-    if ( Input.GetMouseButtonDown(0) )
-    {
-        Start();
-    }
+    UsingHeights,
+    UsingSlopeAngles
 }
  
+public var textureBy : TextureMethod;
  
 //  Terrain Data
 //  ----------------------------------------------------------------------------
