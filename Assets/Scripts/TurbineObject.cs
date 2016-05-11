@@ -7,6 +7,8 @@ public class TurbineObject : MonoBehaviour
     //Wind Direction in Vector
 	public static Monitored<Vector3> windVelocity = new Monitored<Vector3>(new Vector3(0, 0, 1));
 
+	Vector3 windDirection;
+
     //Maximum Power Avalible from Turbine (in MW)
     float _maxPower = 1;
 
@@ -23,7 +25,8 @@ public class TurbineObject : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-		transform.forward = windVelocity.value.normalized;
+		windDirection = windVelocity.value.normalized;
+		transform.forward = windDirection;
 		windVelocity.OnValueChanged += OnWindVelocityChanged;
     }
 
@@ -37,10 +40,15 @@ public class TurbineObject : MonoBehaviour
         }
     }
 
+	void Update()
+	{
+		transform.forward = Vector3.Lerp(transform.forward, windDirection, 0.5f);
+	}
+
     //Raycast to the this object according to wind direction. If an object is in the way, the efficency descreases depending on objects in the way
-    public float WindDetectionRaycast()
+    public float GetEfficiency()
     {
-		Ray obstructionRay = new Ray(transform.position, -windVelocity.value.normalized);
+		Ray obstructionRay = new Ray(transform.position, -windDirection);
 
         RaycastHit[] hitObjects;
         hitObjects = Physics.RaycastAll(obstructionRay);
@@ -80,7 +88,7 @@ public class TurbineObject : MonoBehaviour
                     for (int i = 0; i < 100; i++)
                     {
                         upOneObstruction += Vector3.up * _turbineHeight * 0.25f;
-                        Ray upOneObstructionRay = new Ray(upOneObstruction, -windVelocity.value.normalized);
+						Ray upOneObstructionRay = new Ray(upOneObstruction, -windDirection);
                         RaycastHit[] oneUpHit;
                         oneUpHit = Physics.RaycastAll(upOneObstructionRay);
                         foreach (RaycastHit h in oneUpHit)
@@ -95,8 +103,6 @@ public class TurbineObject : MonoBehaviour
 
                     float diff = Vector3.Distance(transform.position, hit.point);
                     float offset = diff / terrainShadow;
-                    Debug.Log("diff " + diff + " shadow " + terrainShadow + " offset " + offset);
-                    //if (diff <= hit.collider.GetComponent<WindShadowObject>().ShadowDistance)
                     if (offset > 1) offset = 1;
                     value *= offset;
 
@@ -107,8 +113,13 @@ public class TurbineObject : MonoBehaviour
         return value;
     }
 
+	public float GetPowerOutput()
+	{
+		return GetEfficiency() * _maxPower;
+	}
+
 	void OnWindVelocityChanged(Vector3 oldValue, Vector3 newValue)
 	{
-		transform.forward = newValue.normalized;
+		windDirection = newValue.normalized;
 	}
 }
