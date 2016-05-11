@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.12525357, g: 0.6914733, b: 0.85172415, a: 1}
@@ -46,7 +46,7 @@ LightmapSettings:
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
-    m_IndirectOutputScale: 1
+    m_IndirectOutputScale: 5
     m_AlbedoBoost: 1
     m_TemporalCoherenceThreshold: 1
     m_EnvironmentLightingMode: 0
@@ -177,7 +177,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967231
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!23 &377059678
 MeshRenderer:
@@ -285,7 +285,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967231
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!23 &758057379
 MeshRenderer:
@@ -453,7 +453,7 @@ Light:
   m_Shadows:
     m_Type: 2
     m_Resolution: -1
-    m_Strength: 1
+    m_Strength: 0.355
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -551,7 +551,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1510775260}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.94, y: 0.41018602, z: -3.916}
+  m_LocalPosition: {x: -2.749, y: 0.41018602, z: -0.566}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -572,7 +572,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967231
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!23 &1519916321
 MeshRenderer:
@@ -658,7 +658,7 @@ LightProbeGroup:
   - {x: 1, y: 1, z: 1}
   - {x: 1, y: 1, z: -1}
   - {x: -0.0515823, y: -1, z: -0.029470202}
-  - {x: 1, y: -1, z: -1}
+  - {x: 1.3389171, y: -1, z: -0.51952803}
   - {x: -1, y: 1, z: 1}
   - {x: -1, y: 1, z: -1}
   - {x: -1.080623, y: -0.6939887, z: 0.2026233}
@@ -673,6 +673,9 @@ LightProbeGroup:
   - {x: 2.1031995, y: -1, z: -1.2981235}
   - {x: 2.012548, y: -1, z: -0.0052165817}
   - {x: 1.1418056, y: -1, z: -0.009494707}
+  - {x: 1, y: -1, z: -1}
+  - {x: 1.2205689, y: -1, z: -0.6004745}
+  - {x: 1.0898409, y: -1, z: -0.73372364}
 --- !u!4 &1921863047
 Transform:
   m_ObjectHideFlags: 0
@@ -701,7 +704,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967231
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!23 &1946094093
 MeshRenderer:
