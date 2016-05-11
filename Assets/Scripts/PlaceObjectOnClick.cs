@@ -14,7 +14,7 @@ public class PlaceObjectOnClick : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		OnObjectPlaced = FindObjectOfType<PowerHUDManager>().ResetPower;
+		OnObjectPlaced += FindObjectOfType<PowerHUDManager>().ResetPower;
 	}
 	
 	// Update is called once per frame

@@ -103,8 +103,6 @@ public class TurbineObject : MonoBehaviour
 
                     float diff = Vector3.Distance(transform.position, hit.point);
                     float offset = diff / terrainShadow;
-                    Debug.Log("diff " + diff + " shadow " + terrainShadow + " offset " + offset);
-                    //if (diff <= hit.collider.GetComponent<WindShadowObject>().ShadowDistance)
                     if (offset > 1) offset = 1;
                     value *= offset;
 
