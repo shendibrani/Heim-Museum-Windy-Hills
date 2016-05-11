@@ -8,7 +8,8 @@ public class Monitored<T>
 		get{
 			return _value;
 		}
-		set{
+		set
+		{
 			if(OnValueChanged != null){
 				OnValueChanged(_value, value);
 			}

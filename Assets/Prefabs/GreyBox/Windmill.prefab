@@ -13,7 +13,7 @@ GameObject:
   - 23: {fileID: 2313786}
   - 114: {fileID: 11412444}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: blades
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -132,7 +132,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169878}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 244.29839, y: 0.0000019073486, z: 17.87852}
+  m_LocalPosition: {x: 405.64233, y: 0, z: 150.41985}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 463992}
@@ -285,6 +285,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   angularVelocityPerMetreSecond: 10
+  turbine: {fileID: 11440284}
 --- !u!114 &11440284
 MonoBehaviour:
   m_ObjectHideFlags: 1
