@@ -31,7 +31,7 @@ public class PowerHUDManager : MonoBehaviour {
         _currentPower = 0;
         foreach (TurbineObject turbine in FindObjectsOfType<TurbineObject>())
         {
-            _currentPower += turbine.WindDetectionRaycast();
+            _currentPower += turbine.GetPowerOutput();
         }
     }
 
