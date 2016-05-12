@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlaceObjectOnClick : MonoBehaviour {
+public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive {
 
 	[SerializeField] bool debug;
 
@@ -16,11 +16,6 @@ public class PlaceObjectOnClick : MonoBehaviour {
 	void Start () {
 		OnObjectPlaced += FindObjectOfType<PowerHUDManager>().ResetPower;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
 	void OnMouseOver()
 	{
@@ -30,6 +25,13 @@ public class PlaceObjectOnClick : MonoBehaviour {
 			if(hit.collider.gameObject == this.gameObject){
 				PlaceObject (hit.point.x, hit.point.z);
 			}
+		}
+	}
+
+	public void OnTouch(Touch t, RaycastHit hit)
+	{
+		if(t.phase == TouchPhase.Ended){
+			PlaceObject (hit.point.x, hit.point.z);
 		}
 	}
 
