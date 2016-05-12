@@ -16,8 +16,6 @@ public class TurbineObject : MonoBehaviour
     float _turbineDiameter = 4f;
     [SerializeField]
     float _turbineHeight = 8f;
-    //[SerializeField]
-    //float _turbine = 30f;
 
     [SerializeField]
     bool _debug;
@@ -77,6 +75,7 @@ public class TurbineObject : MonoBehaviour
                     float offset = diff / hit.collider.GetComponent<WindShadowObject>().ShadowDistance;
                     if (offset > 1) offset = 1;
                     value *= offset;
+                    if (_debug) Debug.Log("diff: " + diff + " offset: " + offset + " value " + value);
                 }
 
                 if (hit.collider.GetComponent<Terrain>() != null)
@@ -109,7 +108,7 @@ public class TurbineObject : MonoBehaviour
                 }
             }
         }
-
+        if (_debug) Debug.Log("Efficiency Value: " + value);
         return value;
     }
 
