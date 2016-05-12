@@ -1,11 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public class TurbineObject : MonoBehaviour
+public class TurbineObject : MonoBehaviour, Cached<TurbineObject>
 {
 
     //Wind Direction in Vector
 	public static Monitored<Vector3> windVelocity = new Monitored<Vector3>(new Vector3(0, 0, 1));
+
+	static List<TurbineObject> _all;
+
+	public IEnumerable<TurbineObject> all {
+		get {
+			if (_all == null) {
+				_all = new List<TurbineObject>(FindObjectsOfType<TurbineObject>());
+			}
+			return _all;
+		}
+	}
 
 	Vector3 windDirection;
 
@@ -23,6 +35,10 @@ public class TurbineObject : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+		if(_all != null){
+			_all.Add(this);
+		}
+
 		windDirection = windVelocity.value.normalized;
 		transform.forward = windDirection;
 		windVelocity.OnValueChanged += OnWindVelocityChanged;
@@ -41,6 +57,13 @@ public class TurbineObject : MonoBehaviour
 	void Update()
 	{
 		transform.forward = Vector3.Lerp(transform.forward, windDirection, 0.5f);
+	}
+
+	void OnDestroy()
+	{
+		if(_all != null){
+			_all.Remove(this);
+		}
 	}
 
     //Raycast to the this object according to wind direction. If an object is in the way, the efficency descreases depending on objects in the way
