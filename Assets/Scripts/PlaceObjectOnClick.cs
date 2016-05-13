@@ -19,7 +19,7 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive {
 
 	void OnMouseOver()
 	{
-		if(Input.GetMouseButtonDown(0)){
+		if(Input.GetMouseButtonDown(0) && !FindObjectOfType<TurbineLimitManager>().isCap){
 			RaycastHit hit;
 			Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit);
 			if(hit.collider.gameObject == this.gameObject){

@@ -13,6 +13,7 @@ GameObject:
   - 114: {fileID: 11455608}
   - 114: {fileID: 11498512}
   - 114: {fileID: 11418522}
+  - 114: {fileID: 11457836}
   m_Layer: 5
   m_Name: GreyBoxHUD
   m_TagString: Untagged
@@ -723,6 +724,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &11457836
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98105c78dac83b946a23031e55acd000, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxCount: 5
+  countText: {fileID: 11464526}
+  maxText: {fileID: 11465018}
 --- !u!114 &11464526
 MonoBehaviour:
   m_ObjectHideFlags: 1
