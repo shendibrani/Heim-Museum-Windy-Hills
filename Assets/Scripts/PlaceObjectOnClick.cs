@@ -14,7 +14,7 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive {
 
 	// Use this for initialization
 	void Start () {
-		OnObjectPlaced += FindObjectOfType<PowerHUDManager>().ResetPower;
+		//OnObjectPlaced += FindObjectOfType<PowerHUDManager>().;
 	}
 
 	void OnMouseOver()
@@ -61,8 +61,8 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive {
 		if(debug) Debug.Log("Calculating position");
 		Vector3 snapPoint = new Vector3 (points[4].x, GetComponent<TerrainCollider> ().terrainData.GetHeight ((int)points[4].x, (int)points[4].y), points[4].y);
 		if(debug) Debug.Log("Instantiating");
-		GameObject instance = (GameObject)GameObject.Instantiate (prefab, snapPoint, Quaternion.identity);
-		OnObjectPlaced (instance);
+		GameObject instance = (GameObject)GameObject.Instantiate (prefab, snapPoint, Quaternion.identity); 
+        if (OnObjectPlaced != null) OnObjectPlaced (instance);
 		return true;
 	}
 }
