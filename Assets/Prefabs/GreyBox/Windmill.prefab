@@ -46,9 +46,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 463992}
   - 33: {fileID: 3375258}
-  - 136: {fileID: 13683260}
   - 23: {fileID: 2327896}
-  - 114: {fileID: 11440284}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -64,6 +62,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 464008}
+  - 136: {fileID: 13683946}
+  - 114: {fileID: 11402746}
   m_Layer: 0
   m_Name: Windmill
   m_TagString: Untagged
@@ -132,7 +132,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169878}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 405.64233, y: 0, z: 150.41985}
+  m_LocalPosition: {x: 413.57285, y: 0, z: 45.16355}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 463992}
@@ -273,6 +273,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11402746
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8257956623549114d83fe51149caf4b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _turbineDiameter: 4
+  _turbineHeight: 8
+  _debug: 1
 --- !u!114 &11412444
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -285,34 +299,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   angularVelocityPerMetreSecond: 10
-  turbine: {fileID: 11440284}
---- !u!114 &11440284
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 167478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8257956623549114d83fe51149caf4b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _turbineDiameter: 4
-  _turbineHeight: 8
-  _debug: 1
---- !u!136 &13683260
+  turbine: {fileID: 0}
+--- !u!136 &13683946
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 167478}
+  m_GameObject: {fileID: 169878}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 1
+  m_Height: 7
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 3.5, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
