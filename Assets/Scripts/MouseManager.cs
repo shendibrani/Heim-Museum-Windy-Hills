@@ -12,7 +12,9 @@ public class MouseManager : MonoBehaviour {
 				RaycastHit hit;
 				Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit);
 				if(hit.collider != null && hit.collider.GetComponent<IMouseSensitive>() != null){
-					hit.collider.gameObject.GetComponent<IMouseSensitive>().OnClick (hit);
+					foreach (IMouseSensitive ms in hit.collider.GetComponents<IMouseSensitive>()){
+						ms.OnClick (hit);
+					}
 				}
 			}
 		}

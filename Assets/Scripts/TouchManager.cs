@@ -20,7 +20,9 @@ public class TouchManager : MonoBehaviour
 				RaycastHit hit;
 				Physics.Raycast(Camera.main.ScreenPointToRay(t.position), out hit);
 				if(hit.collider != null && hit.collider.GetComponent<ITouchSensitive>() != null){
-					hit.collider.gameObject.GetComponent<ITouchSensitive>().OnTouch (t, hit);
+					foreach (ITouchSensitive ts in hit.collider.GetComponents<ITouchSensitive>()){
+						ts.OnTouch (t, hit);
+					}
 				}
 			}
 		}
