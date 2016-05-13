@@ -4,6 +4,25 @@ using UnityEngine.UI;
 
 public class PowerHUDManager : MonoBehaviour {
 
+    //static reference to the instance of MoraleHudManger in scene
+    public static PowerHUDManager instance;
+    public static PowerHUDManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                if (FindObjectsOfType<PowerHUDManager>().Length > 1)
+                {
+                    Debug.LogError("Multiple instances of MoraleHUDManager detected");
+                }
+                instance = FindObjectOfType<PowerHUDManager>();
+                Debug.Log("Morale Manager Set");
+            }
+            return instance;
+        }
+    }
+
     [SerializeField]
     float _targetPower = 5f;
 
@@ -25,8 +44,13 @@ public class PowerHUDManager : MonoBehaviour {
 		}
 	}
 	
+    void OnDestroy()
+    {
+        instance = null;
+    }
+
     //When an object is place, redo all calculations concerning power supply
-	public void ResetPower(GameObject go)
+	void ResetPower()
     {
         _currentPower = 0;
         foreach (TurbineObject turbine in FindObjectsOfType<TurbineObject>())
@@ -37,6 +61,7 @@ public class PowerHUDManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+        ResetPower();
         if (_powerFillBar != null)
         {
             if (_currentPower == 0) _powerFillBar.fillAmount = 0;

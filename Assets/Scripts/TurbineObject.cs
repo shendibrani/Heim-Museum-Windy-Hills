@@ -20,12 +20,20 @@ public class TurbineObject : MonoBehaviour
     [SerializeField]
     bool _debug;
 
+    public float currentEfficency
+    {
+        get;
+        private set;
+    }
+
     // Use this for initialization
     void Start()
     {
-		windDirection = windVelocity.value.normalized;
+        windDirection = windVelocity.value.normalized;
 		transform.forward = windDirection;
 		windVelocity.OnValueChanged += OnWindVelocityChanged;
+        FindObjectOfType<PlaceObjectOnClick>().OnObjectPlaced += OnObjectPlaced;
+        currentEfficency = GetEfficiency();
     }
 
     //draw the a line along the line calculated for the raycast below
@@ -43,8 +51,19 @@ public class TurbineObject : MonoBehaviour
 		transform.forward = Vector3.Lerp(transform.forward, windDirection, 0.5f);
 	}
 
+    public void OnObjectPlaced(GameObject go)
+    {
+        if (go != this.gameObject)
+        {
+            if (_debug) Debug.Log("Object Placed Efficency Updated");
+            currentEfficency = GetEfficiency();    
+
+        }
+    }
+    
+
     //Raycast to the this object according to wind direction. If an object is in the way, the efficency descreases depending on objects in the way
-    public float GetEfficiency()
+    float GetEfficiency()
     {
 		Ray obstructionRay = new Ray(transform.position, -windDirection);
 
@@ -114,7 +133,7 @@ public class TurbineObject : MonoBehaviour
 
 	public float GetPowerOutput()
 	{
-		return GetEfficiency() * _maxPower;
+		return currentEfficency * _maxPower;
 	}
 
 	void OnWindVelocityChanged(Vector3 oldValue, Vector3 newValue)

@@ -36,7 +36,6 @@ public class Morale : MonoBehaviour
             //morale.value = 1;
             //foreach (TurbineObject t in FindObjectsOfType<TurbineObject>())
             //{
-            if (debug) Debug.Log("Object Placed");
             if (go.GetComponentInChildren<TurbineObject>() != null)
             {
                 if (Vector3.Distance(transform.position, go.transform.position) < range)

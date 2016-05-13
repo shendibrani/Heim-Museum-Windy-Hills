@@ -4,6 +4,24 @@ using UnityEngine.UI;
 
 public class MoraleHUDManager : MonoBehaviour {
 
+    //static reference to the instance of MoraleHudManger in scene
+    public static MoraleHUDManager instance;
+    public static MoraleHUDManager Instance
+    {
+        get {
+            if (instance == null)
+            {
+                if (FindObjectsOfType<MoraleHUDManager>().Length > 1)
+                {
+                    Debug.LogError("Multiple instances of MoraleHUDManager detected");
+                }
+                instance = FindObjectOfType<MoraleHUDManager>();
+                Debug.Log("Morale Manager Set");
+            }
+            return instance;
+        }
+    }
+
     float totalMorale = 1f;
 
     float currentMorale;
@@ -24,6 +42,11 @@ public class MoraleHUDManager : MonoBehaviour {
         {
             Debug.LogError("Multiple instances of MoraleHUDManager detected");
         }
+    }
+
+    void OnDestroy()
+    {
+        instance = null;
     }
 
     public void MoraleUpdate(float value)
