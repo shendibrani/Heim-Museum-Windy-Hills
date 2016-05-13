@@ -31,10 +31,10 @@ public class TurbineObject : MonoBehaviour, Cached<TurbineObject>
     }
 
     [SerializeField]
-    float overchargeIncrease = 0.01f;
+    float overchargeIncrease = 0.02f;
 
     [SerializeField]
-    float overchargeDecreaseMultiplier = 0.02f;
+    float overchargeDecreaseMultiplier = 0.01f;
 
 
     [SerializeField]
