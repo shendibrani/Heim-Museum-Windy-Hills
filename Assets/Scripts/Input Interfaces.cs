@@ -8,5 +8,9 @@ public interface ITouchSensitive
 
 public interface IMouseSensitive
 {
-	void OnClick(RaycastHit hit);
+	void OnClick(ClickState state, RaycastHit hit);
+}
+
+public enum ClickState {
+	Down, Pressed, Up
 }
