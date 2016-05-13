@@ -9,6 +9,11 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive, IMouseSensitiv
 
     [SerializeField] float tileSize = 5f;
 
+    [SerializeField]
+    float holdTime = 30f;
+
+    float timer;
+
 	public delegate void ObjectPlaced (GameObject go);
 	public ObjectPlaced OnObjectPlaced;
 
@@ -17,20 +22,11 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive, IMouseSensitiv
 		//OnObjectPlaced += FindObjectOfType<PowerHUDManager>().;
 	}
 
-	public void OnClick(RaycastHit hit)
+	public void OnClick(ClickState state, RaycastHit hit)
 	{
-		PlaceObject (hit.point.x, hit.point.z);
-//        if (Input.GetMouseButton(0))
-//        {
-//            RaycastHit [] hits = Physics.SphereCastAll(Camera.main.ScreenPointToRay(Input.mousePosition), 5);
-//            foreach (RaycastHit hit in hits)
-//            {
-//                if (hit.collider.GetComponent<TurbineObject>() != null)
-//                {
-//                    hit.collider.GetComponent<TurbineObject>().IncreaseEfficiency();
-//                }
-//            }
-//        }
+        if (state == ClickState.Pressed) PlaceObject (hit.point.x, hit.point.z);
+        if (state == ClickState.Down) PointHold(hit.point.x, hit.point.z);
+        if (state == ClickState.Up) ReleaseHold();
 	}
 
 	public void OnTouch(Touch t, RaycastHit hit)
@@ -40,7 +36,20 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive, IMouseSensitiv
 		}
 	}
 
-	bool PlaceObject(float hx, float hz)
+    bool PointHold(float hx, float hz)
+    {
+        timer += Time.deltaTime;
+        if (timer > holdTime) return false;
+        return true;
+    }
+
+    bool ReleaseHold()
+    {
+        timer = 0;
+        return true;
+    }
+
+    bool PlaceObject(float hx, float hz)
 	{
 		if(!FindObjectOfType<TurbineLimitManager>().isCap){
 			if(debug) Debug.Log("Building points array");
