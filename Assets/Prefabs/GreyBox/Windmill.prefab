@@ -284,8 +284,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8257956623549114d83fe51149caf4b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overchargeIncrease: 0.02
-  overchargeDecreaseMultiplier: 0.01
+  overchargeIncrease: 0.01
+  overchargeDecreaseMultiplier: 0.015
   _turbineDiameter: 4
   _turbineHeight: 8
   _debug: 1

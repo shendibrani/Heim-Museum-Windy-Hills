@@ -28,12 +28,13 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive {
 		}
         if (Input.GetMouseButton(0))
         {
-            RaycastHit hit;
-            Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit);
-            //foreach (Collider c in hit.collider)
-            if (hit.collider.GetComponent<TurbineObject>() != null)
+            RaycastHit [] hits = Physics.SphereCastAll(Camera.main.ScreenPointToRay(Input.mousePosition), 5);
+            foreach (RaycastHit hit in hits)
             {
-                hit.collider.GetComponent<TurbineObject>().IncreaseEfficiency();
+                if (hit.collider.GetComponent<TurbineObject>() != null)
+                {
+                    hit.collider.GetComponent<TurbineObject>().IncreaseEfficiency();
+                }
             }
         }
 	}
