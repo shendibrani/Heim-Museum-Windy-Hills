@@ -14,10 +14,10 @@ public class PowerHUDManager : MonoBehaviour {
             {
                 if (FindObjectsOfType<PowerHUDManager>().Length > 1)
                 {
-                    Debug.LogError("Multiple instances of MoraleHUDManager detected");
+                    Debug.LogError("Multiple instances of PowerHUDManager detected");
                 }
                 instance = FindObjectOfType<PowerHUDManager>();
-                Debug.Log("Morale Manager Set");
+                Debug.Log("Power Manager Set");
             }
             return instance;
         }
