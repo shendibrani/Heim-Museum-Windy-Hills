@@ -24,6 +24,19 @@ public class TurbineObject : MonoBehaviour, Cached<TurbineObject>
     //Maximum Power Avalible from Turbine (in MW)
     float _maxPower = 1;
 
+    public float efficencyOvercharge
+    {
+        get;
+        private set;
+    }
+
+    [SerializeField]
+    float overchargeIncrease = 0.01f;
+
+    [SerializeField]
+    float overchargeDecreaseMultiplier = 0.02f;
+
+
     [SerializeField]
     float _turbineDiameter = 4f;
     [SerializeField]
@@ -31,6 +44,10 @@ public class TurbineObject : MonoBehaviour, Cached<TurbineObject>
 
     [SerializeField]
     bool _debug;
+
+    public float currentEfficency { get;
+    private set;
+    }
 
     // Use this for initialization
     void Start()
@@ -42,6 +59,7 @@ public class TurbineObject : MonoBehaviour, Cached<TurbineObject>
 		windDirection = windVelocity.value.normalized;
 		transform.forward = windDirection;
 		windVelocity.OnValueChanged += OnWindVelocityChanged;
+        UpdateEfficiency(this.gameObject);
     }
 
     //draw the a line along the line calculated for the raycast below
@@ -57,14 +75,27 @@ public class TurbineObject : MonoBehaviour, Cached<TurbineObject>
 	void Update()
 	{
 		transform.forward = Vector3.Lerp(transform.forward, windDirection, 0.5f);
-	}
+        efficencyOvercharge -= efficencyOvercharge * overchargeDecreaseMultiplier;
+        if (efficencyOvercharge < 0) efficencyOvercharge = 0;
+    }
 
 	void OnDestroy()
 	{
 		if(_all != null){
 			_all.Remove(this);
 		}
+
 	}
+
+    public void IncreaseEfficiency()
+    {
+        efficencyOvercharge += overchargeIncrease;
+    }
+
+    public void UpdateEfficiency(GameObject go)
+    {
+        currentEfficency = GetEfficiency();
+    }
 
     //Raycast to the this object according to wind direction. If an object is in the way, the efficency descreases depending on objects in the way
     public float GetEfficiency()
@@ -137,7 +168,7 @@ public class TurbineObject : MonoBehaviour, Cached<TurbineObject>
 
 	public float GetPowerOutput()
 	{
-		return GetEfficiency() * _maxPower;
+		return (currentEfficency + efficencyOvercharge) * _maxPower;
 	}
 
 	void OnWindVelocityChanged(Vector3 oldValue, Vector3 newValue)

@@ -26,6 +26,16 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive {
 				PlaceObject (hit.point.x, hit.point.z);
 			}
 		}
+        if (Input.GetMouseButton(0))
+        {
+            RaycastHit hit;
+            Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit);
+            //foreach (Collider c in hit.collider)
+            if (hit.collider.GetComponent<TurbineObject>() != null)
+            {
+                hit.collider.GetComponent<TurbineObject>().IncreaseEfficiency();
+            }
+        }
 	}
 
 	public void OnTouch(Touch t, RaycastHit hit)
