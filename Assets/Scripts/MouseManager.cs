@@ -12,9 +12,28 @@ public class MouseManager : MonoBehaviour {
 				RaycastHit hit;
 				Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit);
 				if(hit.collider != null && hit.collider.GetComponent<IMouseSensitive>() != null){
-					hit.collider.gameObject.GetComponent<IMouseSensitive>().OnClick (hit);
+					foreach (IMouseSensitive ms in hit.collider.GetComponents<IMouseSensitive>()){
+						ms.OnClick (ClickState.Down, hit);
+					}
+				}
+			} else if (Input.GetMouseButtonUp(0)){
+				RaycastHit hit;
+				Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit);
+				if(hit.collider != null && hit.collider.GetComponent<IMouseSensitive>() != null){
+					foreach (IMouseSensitive ms in hit.collider.GetComponents<IMouseSensitive>()){
+						ms.OnClick (ClickState.Up, hit);
+					}
+				}
+			} else if(Input.GetMouseButton(0)){
+				RaycastHit hit;
+				Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit);
+				if(hit.collider != null && hit.collider.GetComponent<IMouseSensitive>() != null){
+					foreach (IMouseSensitive ms in hit.collider.GetComponents<IMouseSensitive>()){
+						ms.OnClick (ClickState.Pressed, hit);
+					}
 				}
 			}
 		}
 	}
 }
+	
