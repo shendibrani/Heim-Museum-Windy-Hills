@@ -17,7 +17,7 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive, IMouseSensitiv
 		//OnObjectPlaced += FindObjectOfType<PowerHUDManager>().;
 	}
 
-	public void OnClick(RaycastHit hit)
+	public void OnClick(ClickState state, RaycastHit hit)
 	{
 		PlaceObject (hit.point.x, hit.point.z);
 //        if (Input.GetMouseButton(0))
