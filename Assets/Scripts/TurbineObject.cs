@@ -88,16 +88,16 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive
 		}
 	}
 
-	/*public void OnTouch(Touch t, RaycastHit hit)
+	public void OnTouch(Touch t, RaycastHit hit)
 	{
-		IncreaseEfficiency();
+		//IncreaseEfficiency();
 	}
 
 	public void OnClick(ClickState state, RaycastHit hit)
 	{
-		IncreaseEfficiency();
+		//IncreaseEfficiency();
 	}
-	*/
+	
 
     public void IncreaseEfficiency()
     {
