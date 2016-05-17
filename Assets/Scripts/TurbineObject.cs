@@ -2,18 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class TurbineObject : MonoBehaviour, Cached<TurbineObject>
+public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive
 {
 
     //Wind Direction in Vector
 	public static Monitored<Vector3> windVelocity = new Monitored<Vector3>(new Vector3(0, 0, 1));
 
-	static List<TurbineObject> _all;
+	static HashSet<TurbineObject> _all;
 
-	public IEnumerable<TurbineObject> all {
+	public static IEnumerable<TurbineObject> all {
 		get {
 			if (_all == null) {
-				_all = new List<TurbineObject>(FindObjectsOfType<TurbineObject>());
+				_all = new HashSet<TurbineObject>(FindObjectsOfType<TurbineObject>());
 			}
 			return _all;
 		}
@@ -84,7 +84,16 @@ public class TurbineObject : MonoBehaviour, Cached<TurbineObject>
 		if(_all != null){
 			_all.Remove(this);
 		}
+	}
 
+	public void OnTouch(Touch t, RaycastHit hit)
+	{
+		IncreaseEfficiency();
+	}
+
+	public void OnClick(ClickState state, RaycastHit hit)
+	{
+		IncreaseEfficiency();
 	}
 
     public void IncreaseEfficiency()
