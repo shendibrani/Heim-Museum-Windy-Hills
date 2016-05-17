@@ -24,8 +24,8 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive, IMouseSensitiv
 
 	public void OnClick(ClickState state, RaycastHit hit)
 	{
-        if (state == ClickState.Pressed) PlaceObject (hit.point.x, hit.point.z);
-        if (state == ClickState.Down) PointHold(hit.point.x, hit.point.z);
+		if (state == ClickState.Pressed) PointHold(hit.point.x, hit.point.z);
+        if (state == ClickState.Down) PlaceObject (hit.point.x, hit.point.z);
         if (state == ClickState.Up) ReleaseHold();
 	}
 
