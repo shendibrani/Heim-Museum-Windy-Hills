@@ -9,6 +9,7 @@ public class Arguments : MonoBehaviour {
 	private string username;
 	private int gametime;
 	private string conURL;
+    
 	
 	void Awake() {
 		string[] arguments = Environment.GetCommandLineArgs();
