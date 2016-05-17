@@ -34,8 +34,10 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive
     float overchargeIncrease = 0.02f;
 
     [SerializeField]
-    float overchargeDecreaseMultiplier = 0.01f;
+    float overchargeDecrease = 0.01f;
 
+	[SerializeField]
+	float maxOvercharge = 2f;
 
     [SerializeField]
     float _turbineDiameter = 4f;
@@ -75,7 +77,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive
 	void Update()
 	{
 		transform.forward = Vector3.Lerp(transform.forward, windDirection, 0.5f);
-        efficencyOvercharge -= efficencyOvercharge * overchargeDecreaseMultiplier;
+        efficencyOvercharge -= overchargeDecrease;
         if (efficencyOvercharge < 0) efficencyOvercharge = 0;
     }
 
@@ -86,7 +88,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive
 		}
 	}
 
-	public void OnTouch(Touch t, RaycastHit hit)
+	/*public void OnTouch(Touch t, RaycastHit hit)
 	{
 		IncreaseEfficiency();
 	}
@@ -95,10 +97,11 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive
 	{
 		IncreaseEfficiency();
 	}
+	*/
 
     public void IncreaseEfficiency()
     {
-        efficencyOvercharge += overchargeIncrease;
+		efficencyOvercharge += (overchargeIncrease + overchargeDecrease);
     }
 
     public void UpdateEfficiency(GameObject go)
