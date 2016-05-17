@@ -4,6 +4,25 @@ using UnityEngine.UI;
 
 public class TurbineLimitManager : MonoBehaviour {
 
+    public static TurbineLimitManager instance;
+    public static TurbineLimitManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                if (FindObjectsOfType<TurbineLimitManager>().Length > 1)
+                {
+                    Debug.LogError("Multiple instances of TurbineLimitManager detected");
+                }
+                instance = FindObjectOfType<TurbineLimitManager>();
+                Debug.Log("TurbineLimitManager Set");
+            }
+            return instance;
+        }
+    }
+
+
     [SerializeField]
     int maxCount = 5;
 
@@ -12,6 +31,9 @@ public class TurbineLimitManager : MonoBehaviour {
 
     [SerializeField]
     Text maxText;
+
+    [SerializeField]
+    bool debug;
 
     public int currentCount
     {
@@ -33,7 +55,7 @@ public class TurbineLimitManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (countText != null) countText.text = currentCount.ToString();
-        if (maxText != null) maxText.text = maxCount.ToString(); 
+        if (maxText != null && debug) maxText.text = maxCount.ToString(); 
 	
 	}
 
