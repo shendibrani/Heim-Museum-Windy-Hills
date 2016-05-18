@@ -12,7 +12,35 @@ public static class TurbineStateManager {
 
 	public static bool Initialize()
 	{
+		string JSONAggregate = Resources.Load<TextAsset>("States").text;
+		string[] objects = JSONAggregate.Split('#');
 
+		lowFireState = JsonUtility.FromJson<TurbineState>(objects[0]);
+		highFireState = JsonUtility.FromJson<TurbineState>(objects[1]); 
+		saboteurState = JsonUtility.FromJson<TurbineState>(objects[2]);
+		brokenState = JsonUtility.FromJson<TurbineState>(objects[3]);
+		dirtyState = JsonUtility.FromJson<TurbineState>(objects[4]);
+
+		Debug.Log(lowFireState.name);
+		Debug.Log(highFireState.name);
+		Debug.Log(saboteurState.name);
+		Debug.Log(brokenState.name);
+		Debug.Log(dirtyState.name);
+
+		return true;
+	}
+
+	public static void CreateTemplate ()
+	{
+		lowFireState = new TurbineState();
+
+		string str = JsonUtility.ToJson(lowFireState,true) + "\n#\n" + 
+			JsonUtility.ToJson(lowFireState,true) + "\n#\n" + 
+			JsonUtility.ToJson(lowFireState,true) + "\n#\n" + 
+			JsonUtility.ToJson(lowFireState,true) + "\n#\n" + 
+			JsonUtility.ToJson(lowFireState,true);
+
+		System.IO.File.WriteAllText(@"C:\Users\Giulio Robecchi\Desktop\States.txt", str);
 	}
 }
 
@@ -69,24 +97,24 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 	public void OnClick (ClickState state, RaycastHit hit)
 	{
 		if(endsOnTap){
-			if(state == ClickState.Down) End();
+			if(state == ClickState.Down) End(true);
 		}
 	}
 
 	public void OnTouch(Touch t, RaycastHit hit)
 	{
 		if(endsOnTap){
-			if(t.phase == TouchPhase.Ended) End();
+			if(t.phase == TouchPhase.Ended) End(true);
 		}
 	}
 
 	public void OnEnterWindzone ()
 	{
-		if(endsOnWind) End();
+		if(endsOnWind) End(true);
 	}
 	public void OnExitWindzone ()
 	{
-		if(winzoneDependent) End();
+		if(winzoneDependent) End(true);
 	}
 
 	#endregion
