@@ -1,0 +1,69 @@
+{
+    "name": "",
+    "timer": 0.0,
+    "_efficiencyMultiplyer": 0.0,
+    "negativeEffect": false,
+    "timed": false,
+    "endsOnTap": false,
+    "endsOnWind": false,
+    "winzoneDependent": false,
+    "setsOnHighFire": false,
+    "breaksTurbine": false,
+    "dirtiesTurbine": false
+}
+#
+{
+    "name": "",
+    "timer": 0.0,
+    "_efficiencyMultiplyer": 0.0,
+    "negativeEffect": false,
+    "timed": false,
+    "endsOnTap": false,
+    "endsOnWind": false,
+    "winzoneDependent": false,
+    "setsOnHighFire": false,
+    "breaksTurbine": false,
+    "dirtiesTurbine": false
+}
+#
+{
+    "name": "",
+    "timer": 0.0,
+    "_efficiencyMultiplyer": 0.0,
+    "negativeEffect": false,
+    "timed": false,
+    "endsOnTap": false,
+    "endsOnWind": false,
+    "winzoneDependent": false,
+    "setsOnHighFire": false,
+    "breaksTurbine": false,
+    "dirtiesTurbine": false
+}
+#
+{
+    "name": "",
+    "timer": 0.0,
+    "_efficiencyMultiplyer": 0.0,
+    "negativeEffect": false,
+    "timed": false,
+    "endsOnTap": false,
+    "endsOnWind": false,
+    "winzoneDependent": false,
+    "setsOnHighFire": false,
+    "breaksTurbine": false,
+    "dirtiesTurbine": false
+}
+#
+{
+    "name": "",
+    "timer": 0.0,
+    "_efficiencyMultiplyer": 0.0,
+    "negativeEffect": false,
+    "timed": false,
+    "endsOnTap": false,
+    "endsOnWind": false,
+    "winzoneDependent": false,
+    "setsOnHighFire": false,
+    "breaksTurbine": false,
+    "dirtiesTurbine": false
+}
