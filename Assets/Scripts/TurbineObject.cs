@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive
+public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IWindSensitive
 {
 
     //Wind Direction in Vector
@@ -21,6 +21,8 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive
 
 	Vector3 windDirection;
 
+	HashSet<TurbineState> currentStates;
+
     //Maximum Power Avalible from Turbine (in MW)
     float _maxPower = 1;
 
@@ -35,7 +37,6 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive
 
     [SerializeField]
     float overchargeDecreaseMultiplier = 0.01f;
-
 
     [SerializeField]
     float _turbineDiameter = 4f;
@@ -56,6 +57,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive
 			_all.Add(this);
 		}
 
+		currentStates = new HashSet<TurbineState>();
 		windDirection = windVelocity.value.normalized;
 		transform.forward = windDirection;
 		windVelocity.OnValueChanged += OnWindVelocityChanged;
@@ -74,6 +76,10 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive
 
 	void Update()
 	{
+		foreach (TurbineState ts in currentStates){
+			ts.Update();
+		}
+
 		transform.forward = Vector3.Lerp(transform.forward, windDirection, 0.5f);
         efficencyOvercharge -= efficencyOvercharge * overchargeDecreaseMultiplier;
         if (efficencyOvercharge < 0) efficencyOvercharge = 0;
@@ -88,12 +94,25 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive
 
 	public void OnTouch(Touch t, RaycastHit hit)
 	{
-		IncreaseEfficiency();
+		foreach (TurbineState ts in currentStates){
+			ts.OnTouch(t,hit);
+		}
 	}
 
 	public void OnClick(ClickState state, RaycastHit hit)
 	{
+		foreach (TurbineState ts in currentStates){
+			ts.OnClick(state,hit);
+		}
+	}
+
+	public void OnEnterWindzone() 
+	{
 		IncreaseEfficiency();
+
+		foreach (TurbineState ts in currentStates){
+			ts.OnEnterWindzone();
+		}
 	}
 
     public void IncreaseEfficiency()
@@ -183,5 +202,20 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive
 	void OnWindVelocityChanged(Vector3 oldValue, Vector3 newValue)
 	{
 		windDirection = newValue.normalized;
+	}
+
+	public void AddState(TurbineState ts)
+	{
+		currentStates.Add(ts);
+	}
+
+	public void RemoveState (TurbineState ts)
+	{
+		currentStates.Remove(ts);
+	}
+
+	public void Damage()
+	{
+		//TODO: breaking windmill
 	}
 }

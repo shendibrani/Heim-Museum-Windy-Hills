@@ -11,6 +11,11 @@ public interface IMouseSensitive
 	void OnClick(ClickState state, RaycastHit hit);
 }
 
+public interface IWindSensitive
+{
+	void OnEnterWindzone ();
+}
+
 public enum ClickState {
 	Down, Pressed, Up
 }
