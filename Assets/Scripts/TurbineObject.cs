@@ -203,7 +203,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 	public void OnClick(ClickState state, RaycastHit hit)
 	{
 		foreach(TurbineState ts in states){
-			ts.OnClick(states, hit);
+			ts.OnClick(state, hit);
 		}
 	}
 
