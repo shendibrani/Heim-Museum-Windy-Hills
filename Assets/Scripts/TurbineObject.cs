@@ -32,6 +32,18 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
         private set;
     }
 
+    float stateMultiplier
+    {
+        get {
+            float multi = 1f;
+            foreach (TurbineState ts in states)
+            {
+                multi *= ts.multiplier;
+            }
+            return multi;
+        }
+    }
+
     [SerializeField]
     float overchargeIncrease = 0.02f;
 
@@ -171,7 +183,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 
 	public float GetPowerOutput()
 	{
-		return (currentEfficency + efficencyOvercharge) * _maxPower;
+		return currentEfficency * stateMultiplier * _maxPower;
 	}
 
 	void OnWindVelocityChanged(Vector3 oldValue, Vector3 newValue)
