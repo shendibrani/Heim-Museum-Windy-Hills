@@ -36,10 +36,11 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
     {
         get {
             float multi = 1f;
-            foreach (TurbineState ts in states)
-            {
-                multi *= ts.multiplier;
-            }
+            if (states != null)
+                foreach (TurbineState ts in states)
+                {
+                    multi *= ts.efficiencyMultiplyer;
+                }
             return multi;
         }
     }
@@ -51,12 +52,15 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
     float overchargeDecrease = 0.01f;
 
 	[SerializeField]
-	float maxOvercharge = 2f;
+	float maxOvercharge = 1f;
 
     [SerializeField]
     float _turbineDiameter = 4f;
     [SerializeField]
     float _turbineHeight = 8f;
+
+    [SerializeField]
+    bool isCharging;
 
     [SerializeField]
     bool _debug;
@@ -89,7 +93,8 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 	void Update()
 	{
 		transform.forward = Vector3.Lerp(transform.forward, windDirection, 0.5f);
-        efficencyOvercharge -= overchargeDecrease;
+        if (isCharging) IncreaseEfficiency();
+        else efficencyOvercharge -= overchargeDecrease;
         if (efficencyOvercharge < 0) efficencyOvercharge = 0;
     }
 
@@ -102,7 +107,9 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 
     public void IncreaseEfficiency()
     {
-		efficencyOvercharge += (overchargeIncrease + overchargeDecrease);
+        efficencyOvercharge += overchargeIncrease;
+        if (efficencyOvercharge > maxOvercharge) efficencyOvercharge = maxOvercharge;
+        //efficencyOvercharge += (overchargeIncrease + overchargeDecrease);
     }
 
     public void UpdateEfficiency(GameObject go)
@@ -181,7 +188,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 
 	public float GetPowerOutput()
 	{
-		return currentEfficency * stateMultiplier * _maxPower;
+		return currentEfficency * stateMultiplier * (1  + efficencyOvercharge) * _maxPower;
 	}
 
 	void OnWindVelocityChanged(Vector3 oldValue, Vector3 newValue)
@@ -205,33 +212,39 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 
 	public void OnTouch(Touch t, RaycastHit hit)
 	{
-		foreach(TurbineState ts in states){
-			ts.OnTouch(t,hit);
-		}
+        if (states != null)
+            foreach (TurbineState ts in states){
+			    ts.OnTouch(t,hit);
+		    }
 	}
 
 	public void OnClick(ClickState state, RaycastHit hit)
 	{
-		foreach(TurbineState ts in states){
-			ts.OnClick(state, hit);
-		}
+        if (states != null)
+            foreach (TurbineState ts in states){
+			    ts.OnClick(state, hit);
+		    }
 	}
 
 	public void OnEnterWindzone ()
 	{
-		if (_debug) Debug.Log("Enter Windzone");
-		foreach(TurbineState ts in states){
-			ts.OnEnterWindzone();
-		}
+        if (_debug) Debug.Log("Enter Windzone");
+        isCharging = true;
+        if (states != null)
+            foreach (TurbineState ts in states){
+			    ts.OnEnterWindzone();
+		    }
 	}
 
     public void OnExitWindzone ()
     {
 		if (_debug) Debug.Log("Exit Windzone");
-        foreach (TurbineState ts in states)
-        {
-            ts.OnExitWindzone();
-        }
+        isCharging = false;
+        if (states != null)
+            foreach (TurbineState ts in states)
+            {
+                ts.OnExitWindzone();
+            }
     }
 	#endregion
 }

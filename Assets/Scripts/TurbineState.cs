@@ -12,7 +12,7 @@ public static class TurbineStateManager {
 
 	public static bool Initialize()
 	{
-
+        return true;
 	}
 }
 
@@ -22,7 +22,10 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 
 	public string name;
 
-	[SerializeField] float timer, _efficiencyMultiplyer;
+    [SerializeField]
+    float timer;
+    [SerializeField]
+    float  _efficiencyMultiplyer = 1;
 
 	[SerializeField] bool negativeEffect, timed, endsOnTap, endsOnWind, winzoneDependent, setsOnHighFire, breaksTurbine, dirtiesTurbine;
 
@@ -69,24 +72,24 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 	public void OnClick (ClickState state, RaycastHit hit)
 	{
 		if(endsOnTap){
-			if(state == ClickState.Down) End();
+			if(state == ClickState.Down) End(true);
 		}
 	}
 
 	public void OnTouch(Touch t, RaycastHit hit)
 	{
 		if(endsOnTap){
-			if(t.phase == TouchPhase.Ended) End();
+			if(t.phase == TouchPhase.Ended) End(true);
 		}
 	}
 
 	public void OnEnterWindzone ()
 	{
-		if(endsOnWind) End();
+		if(endsOnWind) End(true);
 	}
 	public void OnExitWindzone ()
 	{
-		if(winzoneDependent) End();
+		if(winzoneDependent) End(true);
 	}
 
 	#endregion
