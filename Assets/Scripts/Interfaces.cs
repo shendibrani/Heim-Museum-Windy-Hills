@@ -14,6 +14,7 @@ public interface IMouseSensitive
 public interface IWindSensitive
 {
 	void OnEnterWindzone ();
+    void OnExitWindzone();
 }
 
 public enum ClickState {

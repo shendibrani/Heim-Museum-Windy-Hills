@@ -17,7 +17,7 @@ public class CloudGameplayObject : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		cloudObject = this.gameObject;
-        TurbineObject.windVelocity.value = transform.TransformDirection(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z);
+        TurbineObject.windVelocity.value = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z);
         cloudObject.transform.localPosition = new Vector3(0, cloudObject.transform.localPosition.y, cloudObject.transform.localPosition.z);
     }
 	

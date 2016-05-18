@@ -26,6 +26,7 @@ public abstract class TurbineState : IMouseSensitive, ITouchSensitive, IWindSens
 	public virtual void OnClick (ClickState state, RaycastHit hit){}
 	public virtual void OnTouch(Touch t, RaycastHit hit) {}
 	public virtual void OnEnterWindzone (){}
+    public virtual void OnExitWindzone(){}
 
 	public virtual void End (bool solved)
 	{
