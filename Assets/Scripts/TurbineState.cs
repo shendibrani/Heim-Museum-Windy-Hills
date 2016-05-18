@@ -1,124 +1,123 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public abstract class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
+[System.Serializable]
+public static class TurbineStateManager {
+
+	public static TurbineState lowFireState {get; private set;}
+	public static TurbineState highFireState {get; private set;}
+	public static TurbineState saboteurState {get; private set;}
+	public static TurbineState brokenState {get; private set;}
+	public static TurbineState dirtyState {get; private set;}
+
+	public static bool Initialize()
+	{
+
+	}
+}
+
+public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 {
+	#region Json serialized values
+
+	public string name;
+
+	[SerializeField] float timer, _efficiencyMultiplyer;
+
+	[SerializeField] bool negativeEffect, timed, endsOnTap, endsOnWind, winzoneDependent, setsOnHighFire, breaksTurbine, dirtiesTurbine;
+
+	#endregion
+
+	#region Properties
+
 	protected TurbineObject owner {get; private set;}
 
-	float timer;
+	public float efficiencyMultiplyer {get {return _efficiencyMultiplyer;}}
 
-	public TurbineState(TurbineObject pOwner)
+	#endregion
+
+	#region Building Functions
+
+	public TurbineState(){}
+
+	/// <summary>
+	/// Sets the owner of the state and adds it to its HashSet.
+	/// Call this after cloning a static instance.
+	/// </summary>
+	/// <param name="pOwner">The owner.</param>
+	public void SetOwner(TurbineObject pOwner)
 	{
 		owner = pOwner;
 		owner.AddState(this);
 	}
+		
+	#endregion
 
-	// Update is called once per frame
+	#region Forwared calls
+
 	public virtual void Update () 
 	{
-		timer -= Time.deltaTime;
+		if(timed){
+			timer -= Time.deltaTime;
 
-		if (timer <= 0) {
-			End (false);
+			if (timer <= 0) {
+				End (false);
+			}
 		}
 	}
 
-	public virtual void OnClick (ClickState state, RaycastHit hit){}
-	public virtual void OnTouch(Touch t, RaycastHit hit) {}
-	public virtual void OnEnterWindzone (){}
-    public virtual void OnExitWindzone(){}
+	public void OnClick (ClickState state, RaycastHit hit)
+	{
+		if(endsOnTap){
+			if(state == ClickState.Down) End();
+		}
+	}
 
-	public virtual void End (bool solved)
+	public void OnTouch(Touch t, RaycastHit hit)
+	{
+		if(endsOnTap){
+			if(t.phase == TouchPhase.Ended) End();
+		}
+	}
+
+	public void OnEnterWindzone ()
+	{
+		if(endsOnWind) End();
+	}
+	public void OnExitWindzone ()
+	{
+		if(winzoneDependent) End();
+	}
+
+	#endregion
+
+	public void End (bool solved)
 	{
 		if(solved) {
 			owner.RemoveState(this);
 		} else {
-			
+			if(negativeEffect) Fail();
 			owner.RemoveState(this);
 		}
 	}
 
-	public abstract void Fail();
-}
-
-public class LowFireState : TurbineState
-{
-	public LowFireState(TurbineObject pOwner) : base(pOwner){}
-
-	public override void OnEnterWindzone ()
+	public void Fail() 
 	{
-		End(true);
-	}
+		TurbineState state;
 
-	public override void Fail ()
-	{
-		owner.AddState(new HighFireState(owner));
-	}
-}
-
-public class HighFireState : TurbineState
-{
-	int touchcount = 5;
-
-	public HighFireState(TurbineObject pOwner) : base(pOwner){}
-
-	public override void OnTouch (Touch t, RaycastHit hit)
-	{
-		if(t.phase == TouchPhase.Ended) {
-			touchcount--;
-			if(touchcount <=0) {
-				End(true);
-			}
+		if(setsOnHighFire){
+			state = TurbineStateManager.highFireState;
+			state.SetOwner(owner);
 		}
-	}
 
-	public override void OnClick (ClickState state, RaycastHit hit)
-	{
-		if(state == ClickState.Down) {
-			touchcount--;
-			if(touchcount <=0) {
-				End(true);
-			}
+		if(breaksTurbine){
+			state = TurbineStateManager.brokenState;
+			state.SetOwner(owner);
 		}
-	}
 
-	public override void Fail ()
-	{
-		owner.Damage();
-	}
-}
-
-public class SaboteurState : TurbineState
-{
-	public SaboteurState(TurbineObject pOwner) : base(pOwner){}
-
-	public override void OnClick (ClickState state, RaycastHit hit)
-	{
-		if(state == ClickState.Down)	End(true);
-	}
-
-	public override void OnTouch (Touch t, RaycastHit hit)
-	{
-		if(t.phase == TouchPhase.Ended)	End(true);
-	}
-
-	public override void Fail ()
-	{
-		owner.Damage();
-	}
-}
-
-public class BrokenState : TurbineState
-{
-	public BrokenState(TurbineObject pOwner) : base(pOwner){}
-
-	public override void OnEnterWindzone ()
-	{
-		End(true);
-	}
-
-	public override void Fail ()
-	{
-		owner.AddState(new HighFireState(owner));
+		if(dirtiesTurbine){
+			state = TurbineStateManager.dirtyState;
+			state.SetOwner(owner);
+		}
 	}
 }
