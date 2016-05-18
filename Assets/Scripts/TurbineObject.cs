@@ -49,9 +49,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
     [SerializeField]
     bool _debug;
 
-    public float currentEfficency { get;
-    private set;
-    }
+    public float currentEfficency { get; private set; }
 
     // Use this for initialization
     void Start()
@@ -209,7 +207,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 
 	public void OnEnterWindzone ()
 	{
-        Debug.Log("Enter Windzone");
+		if (_debug) Debug.Log("Enter Windzone");
 		foreach(TurbineState ts in states){
 			ts.OnEnterWindzone();
 		}
@@ -217,7 +215,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 
     public void OnExitWindzone ()
     {
-        Debug.Log("Exit Windzone");
+		if (_debug) Debug.Log("Exit Windzone");
         foreach (TurbineState ts in states)
         {
             ts.OnExitWindzone();
