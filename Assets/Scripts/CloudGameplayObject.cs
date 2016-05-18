@@ -11,15 +11,25 @@ public class CloudGameplayObject : MonoBehaviour {
     [SerializeField]
     float extent;
 
+    [SerializeField]
+    float radius;
+
 	// Use this for initialization
 	void Start () {
-        TurbineObject.windVelocity.value = transform.TransformDirection(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z);
+		cloudObject = this.gameObject;
+        TurbineObject.windVelocity.value = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z);
         cloudObject.transform.localPosition = new Vector3(0, cloudObject.transform.localPosition.y, cloudObject.transform.localPosition.z);
     }
 	
 	// Update is called once per frame
 	void Update () {
-	
+        RaycastHit[] hits;
+        //Ray ray = new Ray();
+        hits = Physics.BoxCastAll(cloudObject.transform.position, new Vector3(radius, radius * 4, radius), TurbineObject.windVelocity);
+        foreach(RaycastHit hit in hits)
+        {
+            if (hit.collider.GetComponent<IWindSensitive>() != null) hit.collider.GetComponent<IWindSensitive>().OnEnterWindzone();
+        }
 	}
 
 	/*public void OnTouch(Touch t, RaycastHit hit)

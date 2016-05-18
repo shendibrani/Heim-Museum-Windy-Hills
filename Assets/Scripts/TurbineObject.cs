@@ -209,10 +209,19 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 
 	public void OnEnterWindzone ()
 	{
+        Debug.Log("Enter Windzone");
 		foreach(TurbineState ts in states){
 			ts.OnEnterWindzone();
 		}
 	}
 
+    public void OnExitWindzone ()
+    {
+        Debug.Log("Exit Windzone");
+        foreach (TurbineState ts in states)
+        {
+            ts.OnExitWindzone();
+        }
+    }
 	#endregion
 }

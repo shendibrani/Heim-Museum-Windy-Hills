@@ -227,7 +227,6 @@ GameObject:
   m_Component:
   - 224: {fileID: 390119304}
   - 114: {fileID: 390119305}
-  - 114: {fileID: 390119306}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -301,7 +300,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 390119306}
+      - m_Target: {fileID: 1744704847}
         m_MethodName: CloudMove
         m_Mode: 0
         m_Arguments:
@@ -314,19 +313,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &390119306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 390119303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bcebc706c4abe3409c0be879fcf3901, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cloudObject: {fileID: 1744704842}
-  extent: 274
 --- !u!1001 &852525003
 Prefab:
   m_ObjectHideFlags: 0
@@ -666,6 +652,7 @@ GameObject:
   - 33: {fileID: 1744704846}
   - 135: {fileID: 1744704845}
   - 23: {fileID: 1744704844}
+  - 114: {fileID: 1744704847}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -730,6 +717,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1744704842}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1744704847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1744704842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bcebc706c4abe3409c0be879fcf3901, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cloudObject: {fileID: 1744704842}
+  extent: 274
 --- !u!1 &1796588283
 GameObject:
   m_ObjectHideFlags: 0
