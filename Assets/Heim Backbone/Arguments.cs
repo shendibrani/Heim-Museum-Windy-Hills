@@ -9,14 +9,15 @@ public class Arguments : MonoBehaviour {
 	private string username;
 	private int gametime;
 	private string conURL;
-	
+    
+	//Uncomment arguments to test with RFID card for getting the Command Line Arguments!
 	void Awake() {
-		string[] arguments = Environment.GetCommandLineArgs();
-		userID = Convert.ToInt32(arguments[2]);
-		gameID = Convert.ToInt32(arguments[3]);
-		username = arguments[4];
-		gametime = Convert.ToInt32(arguments[5]);
-		conURL = arguments[6];
+		//string[] arguments = Environment.GetCommandLineArgs();
+  //      userID = Convert.ToInt32(arguments[2]);
+		//gameID = Convert.ToInt32(arguments[3]);
+		//username = arguments[4];
+		//gametime = Convert.ToInt32(arguments[5]);
+		//conURL = arguments[6];
 //
 //		userID = 2;
 //		gameID = 6;
