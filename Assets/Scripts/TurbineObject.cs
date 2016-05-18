@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive
+public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IWindSensitive
 {
 
     //Wind Direction in Vector
@@ -20,6 +20,8 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive
 	}
 
 	Vector3 windDirection;
+
+	HashSet<TurbineState> states;
 
     //Maximum Power Avalible from Turbine (in MW)
     float _maxPower = 1;
@@ -87,17 +89,6 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive
 			_all.Remove(this);
 		}
 	}
-
-	public void OnTouch(Touch t, RaycastHit hit)
-	{
-		//IncreaseEfficiency();
-	}
-
-	public void OnClick(ClickState state, RaycastHit hit)
-	{
-		//IncreaseEfficiency();
-	}
-	
 
     public void IncreaseEfficiency()
     {
@@ -187,4 +178,41 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive
 	{
 		windDirection = newValue.normalized;
 	}
+
+	public void AddState(TurbineState state)
+	{
+		if(!states.Contains(state)){
+			states.Add(state);
+		}
+	}
+
+	public void RemoveState(TurbineState state)
+	{
+		states.Remove(state);
+	}
+
+	#region Interfaces
+
+	public void OnTouch(Touch t, RaycastHit hit)
+	{
+		foreach(TurbineState ts in states){
+			ts.OnTouch(t,hit);
+		}
+	}
+
+	public void OnClick(ClickState state, RaycastHit hit)
+	{
+		foreach(TurbineState ts in states){
+			ts.OnClick(states, hit);
+		}
+	}
+
+	public void OnEnterWindzone ()
+	{
+		foreach(TurbineState ts in states){
+			ts.OnEnterWindzone();
+		}
+	}
+
+	#endregion
 }
