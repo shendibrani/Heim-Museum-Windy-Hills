@@ -8,12 +8,12 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
     //Wind Direction in Vector
 	public static Monitored<Vector3> windVelocity = new Monitored<Vector3>(new Vector3(0, 0, 1));
 
-	static HashSet<TurbineObject> _all;
+	static List<TurbineObject> _all;
 
-	public static IEnumerable<TurbineObject> all {
+	public static List<TurbineObject> all {
 		get {
 			if (_all == null) {
-				_all = new HashSet<TurbineObject>(FindObjectsOfType<TurbineObject>());
+				_all = new List<TurbineObject>(FindObjectsOfType<TurbineObject>());
 			}
 			return _all;
 		}
@@ -59,11 +59,14 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
     [SerializeField]
     float _turbineHeight = 8f;
 
-    [SerializeField]
     bool isCharging;
+    bool hasOverchargeDanger;
 
     [SerializeField]
     bool _debug;
+
+    [SerializeField]
+    Vector3 raycastPoint;
 
     public float currentEfficency { get; private set; }
 
@@ -74,6 +77,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 			_all.Add(this);
 		}
 
+        states = new HashSet<TurbineState>();
 		windDirection = windVelocity.value.normalized;
 		transform.forward = windDirection;
 		windVelocity.OnValueChanged += OnWindVelocityChanged;
@@ -86,7 +90,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
         if (_debug)
         {
             Gizmos.color = Color.blue;
-			Gizmos.DrawLine(transform.position, transform.position + -windVelocity.value.normalized * _turbineDiameter * 8);
+			Gizmos.DrawLine(transform.position + raycastPoint, transform.position + raycastPoint + -windVelocity.value.normalized * _turbineDiameter * 8);
         }
     }
 
@@ -108,7 +112,11 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
     public void IncreaseEfficiency()
     {
         efficencyOvercharge += overchargeIncrease;
-        if (efficencyOvercharge > maxOvercharge) efficencyOvercharge = maxOvercharge;
+        if (efficencyOvercharge >= maxOvercharge) {
+            efficencyOvercharge = maxOvercharge;
+            TurbineStateManager.brokenState.Copy(this);
+            
+        }
         //efficencyOvercharge += (overchargeIncrease + overchargeDecrease);
     }
 
@@ -120,7 +128,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
     //Raycast to the this object according to wind direction. If an object is in the way, the efficency descreases depending on objects in the way
     public float GetEfficiency()
     {
-		Ray obstructionRay = new Ray(transform.position, -windDirection);
+		Ray obstructionRay = new Ray(transform.position + raycastPoint, -windDirection);
 
         RaycastHit[] hitObjects;
         hitObjects = Physics.RaycastAll(obstructionRay);
@@ -140,6 +148,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
                     float mod = Mathf.Pow(diff, (2f / 3f)) * 1 / 4;
                     if (mod > 1) mod = 1;
                     value *= mod;
+                    if (_debug) Debug.Log("diff: " + diff + " value " + value);
                 }
 
                 //reduced the power generated if there is an object blocking wind
@@ -156,7 +165,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
                 {
                     //checks the height and uses to deterine the shadow
                     float terrainShadow = _turbineHeight;
-                    Vector3 upOneObstruction = transform.position;
+                    Vector3 upOneObstruction = transform.position + raycastPoint;
 
                     for (int i = 0; i < 100; i++)
                     {
