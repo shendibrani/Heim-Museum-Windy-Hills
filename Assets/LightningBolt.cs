@@ -45,7 +45,7 @@ public class LightningBolt : MonoBehaviour
 	{     
         randomColor = Random.RandomRange(0, 1);
         randY = Random.RandomRange(12,30);
-        print(randY);
+
         randX = Random.RandomRange(-4, 4);
         randZ = Random.RandomRange(-4, 4);
         if (noise == null)
