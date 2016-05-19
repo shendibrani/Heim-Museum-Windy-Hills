@@ -81,7 +81,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 		windDirection = windVelocity.value.normalized;
 		transform.forward = windDirection;
 		windVelocity.OnValueChanged += OnWindVelocityChanged;
-        UpdateEfficiency(this.gameObject);
+        UpdateEfficiency();
     }
 
     //draw the a line along the line calculated for the raycast below
@@ -96,6 +96,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 
 	void Update()
 	{
+        UpdateEfficiency();
 		transform.forward = Vector3.Lerp(transform.forward, windDirection, 0.5f);
         if (isCharging) IncreaseEfficiency();
         else efficencyOvercharge -= overchargeDecrease;
@@ -120,7 +121,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
         //efficencyOvercharge += (overchargeIncrease + overchargeDecrease);
     }
 
-    public void UpdateEfficiency(GameObject go)
+    public void UpdateEfficiency()
     {
         currentEfficency = GetEfficiency();
     }
