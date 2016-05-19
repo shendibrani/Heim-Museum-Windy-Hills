@@ -8,12 +8,12 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
     //Wind Direction in Vector
 	public static Monitored<Vector3> windVelocity = new Monitored<Vector3>(new Vector3(0, 0, 1));
 
-	static HashSet<TurbineObject> _all;
+	static List<TurbineObject> _all;
 
-	public static IEnumerable<TurbineObject> all {
+	public static List<TurbineObject> all {
 		get {
 			if (_all == null) {
-				_all = new HashSet<TurbineObject>(FindObjectsOfType<TurbineObject>());
+				_all = new List<TurbineObject>(FindObjectsOfType<TurbineObject>());
 			}
 			return _all;
 		}
@@ -59,8 +59,8 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
     [SerializeField]
     float _turbineHeight = 8f;
 
-    [SerializeField]
     bool isCharging;
+    bool hasOverchargeDanger;
 
     [SerializeField]
     bool _debug;
@@ -74,6 +74,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 			_all.Add(this);
 		}
 
+        states = new HashSet<TurbineState>();
 		windDirection = windVelocity.value.normalized;
 		transform.forward = windDirection;
 		windVelocity.OnValueChanged += OnWindVelocityChanged;
@@ -108,7 +109,12 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
     public void IncreaseEfficiency()
     {
         efficencyOvercharge += overchargeIncrease;
-        if (efficencyOvercharge > maxOvercharge) efficencyOvercharge = maxOvercharge;
+        if (efficencyOvercharge >= maxOvercharge) {
+            efficencyOvercharge = maxOvercharge;
+            TurbineState state = TurbineStateManager.brokenState;
+            //state.SetOwner(this);
+            //states.Add(state);
+        }
         //efficencyOvercharge += (overchargeIncrease + overchargeDecrease);
     }
 
