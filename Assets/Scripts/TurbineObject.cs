@@ -96,11 +96,16 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 
 	void Update()
 	{
-        UpdateEfficiency();
+        
 		transform.forward = Vector3.Lerp(transform.forward, windDirection, 0.5f);
         if (isCharging) IncreaseEfficiency();
         else efficencyOvercharge -= overchargeDecrease;
         if (efficencyOvercharge < 0) efficencyOvercharge = 0;
+    }
+
+    void FixedUpdate()
+    {
+        UpdateEfficiency();
     }
 
 	void OnDestroy()
