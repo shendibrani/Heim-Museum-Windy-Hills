@@ -291,6 +291,7 @@ MonoBehaviour:
   _turbineDiameter: 4
   _turbineHeight: 8
   _debug: 1
+  raycastPoint: {x: 0, y: 10, z: 0}
 --- !u!114 &11412444
 MonoBehaviour:
   m_ObjectHideFlags: 1

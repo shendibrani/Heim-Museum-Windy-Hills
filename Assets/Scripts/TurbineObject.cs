@@ -90,7 +90,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
         if (_debug)
         {
             Gizmos.color = Color.blue;
-			Gizmos.DrawLine(transform.position + raycastPoint, transform.position + raycastPoint + -windVelocity.value.normalized * _turbineDiameter * 8);
+			Gizmos.DrawLine(transform.position + raycastPoint, transform.position + raycastPoint + windVelocity.value.normalized * _turbineDiameter * -8);
         }
     }
 
@@ -140,6 +140,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
             //if not this object, reduce the power generated
             if (hit.collider != GetComponent<Collider>())
             {
+                if (_debug) Debug.Log(hit.collider.gameObject);
                 //reduce the power generated according distance to turbine in the way
                 if (hit.collider.GetComponent<TurbineObject>() != null)
                 {

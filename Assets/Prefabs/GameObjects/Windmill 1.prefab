@@ -195,7 +195,7 @@ MonoBehaviour:
   overchargeIncrease: 0.02
   overchargeDecrease: 0.01
   maxOvercharge: 1
-  _turbineDiameter: 10
+  _turbineDiameter: 15
   _turbineHeight: 30
   _debug: 1
   raycastPoint: {x: 0, y: 20, z: 0}
