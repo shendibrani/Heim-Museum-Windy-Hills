@@ -64,6 +64,7 @@ GameObject:
   - 4: {fileID: 464008}
   - 136: {fileID: 13683946}
   - 114: {fileID: 11402746}
+  - 114: {fileID: 11470440}
   m_Layer: 0
   m_Name: Windmill
   m_TagString: Untagged
@@ -285,7 +286,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   overchargeIncrease: 0.01
-  overchargeDecreaseMultiplier: 0.015
+  overchargeDecrease: 0.01
+  maxOvercharge: 1
   _turbineDiameter: 4
   _turbineHeight: 8
   _debug: 1
@@ -302,6 +304,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   angularVelocityPerMetreSecond: 10
   turbine: {fileID: 11402746}
+--- !u!114 &11470440
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1500cd075c8ef4946be0eb2a5bcf696f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &13683946
 CapsuleCollider:
   m_ObjectHideFlags: 1
