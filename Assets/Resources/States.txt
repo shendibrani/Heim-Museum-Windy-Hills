@@ -1,5 +1,5 @@
 {
-    "name": "",
+    "name": "Low Fire State",
     "timer": 0.0,
     "_efficiencyMultiplyer": 0.0,
     "negativeEffect": false,
@@ -13,7 +13,7 @@
 }
 #
 {
-    "name": "",
+    "name": "High Fire State",
     "timer": 0.0,
     "_efficiencyMultiplyer": 0.0,
     "negativeEffect": false,
@@ -27,7 +27,7 @@
 }
 #
 {
-    "name": "",
+    "name": "Saboteurs State",
     "timer": 0.0,
     "_efficiencyMultiplyer": 0.0,
     "negativeEffect": false,
@@ -41,7 +41,7 @@
 }
 #
 {
-    "name": "",
+    "name": "Broken State",
     "timer": 0.0,
     "_efficiencyMultiplyer": 0.0,
     "negativeEffect": false,
@@ -55,7 +55,7 @@
 }
 #
 {
-    "name": "",
+    "name": "Dirty State",
     "timer": 0.0,
     "_efficiencyMultiplyer": 0.0,
     "negativeEffect": false,
