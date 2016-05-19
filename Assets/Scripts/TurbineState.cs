@@ -73,9 +73,10 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 	/// Call this after cloning a static instance.
 	/// </summary>
 	/// <param name="pOwner">The owner.</param>
-	public void SetOwner(TurbineObject pOwner)
+	void SetOwner(TurbineObject pOwner)
 	{
 		owner = pOwner;
+		owner.GetComponent<TurbineMenu>().Show();
 		owner.AddState(this);
 	}
 		
@@ -126,6 +127,7 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 		} else {
 			if(negativeEffect) Fail();
 			owner.RemoveState(this);
+			owner.GetComponent<TurbineMenu>().Hide();
 		}
 	}
 
@@ -147,5 +149,32 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 			state = TurbineStateManager.dirtyState;
 			state.SetOwner(owner);
 		}
+	}
+
+	/// <summary>
+	/// Returns a copy of this instance, with the specificed owner.
+	/// </summary>
+	/// <param name="pOwner">The owner of the new instance.</param>
+	public TurbineState Copy(TurbineObject pOwner)
+	{
+		TurbineState ts = new TurbineState();
+
+		ts.name = this.name;
+
+		ts.timer = this.timer;
+		ts._efficiencyMultiplyer = this._efficiencyMultiplyer;
+
+		ts.negativeEffect = this.negativeEffect;
+		ts.timed = this.timed;
+		ts.endsOnTap = this.endsOnTap;
+		ts.endsOnWind = this.endsOnWind;
+		ts.winzoneDependent = this.winzoneDependent;
+		ts.setsOnHighFire = this.setsOnHighFire;
+		ts.breaksTurbine = this.breaksTurbine;
+		ts.dirtiesTurbine = this.dirtiesTurbine;
+
+		ts.SetOwner(pOwner);
+
+		return ts;
 	}
 }

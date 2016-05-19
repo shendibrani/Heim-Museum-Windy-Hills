@@ -65,6 +65,9 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
     [SerializeField]
     bool _debug;
 
+    [SerializeField]
+    Vector3 raycastPoint;
+
     public float currentEfficency { get; private set; }
 
     // Use this for initialization
@@ -87,7 +90,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
         if (_debug)
         {
             Gizmos.color = Color.blue;
-			Gizmos.DrawLine(transform.position, transform.position + -windVelocity.value.normalized * _turbineDiameter * 8);
+			Gizmos.DrawLine(transform.position + raycastPoint, transform.position + raycastPoint + windVelocity.value.normalized * _turbineDiameter * -8);
         }
     }
 
@@ -111,9 +114,8 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
         efficencyOvercharge += overchargeIncrease;
         if (efficencyOvercharge >= maxOvercharge) {
             efficencyOvercharge = maxOvercharge;
-            TurbineState state = TurbineStateManager.brokenState;
-            //state.SetOwner(this);
-            //states.Add(state);
+            TurbineStateManager.brokenState.Copy(this);
+            
         }
         //efficencyOvercharge += (overchargeIncrease + overchargeDecrease);
     }
@@ -126,7 +128,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
     //Raycast to the this object according to wind direction. If an object is in the way, the efficency descreases depending on objects in the way
     public float GetEfficiency()
     {
-		Ray obstructionRay = new Ray(transform.position, -windDirection);
+		Ray obstructionRay = new Ray(transform.position + raycastPoint, -windDirection);
 
         RaycastHit[] hitObjects;
         hitObjects = Physics.RaycastAll(obstructionRay);
@@ -138,6 +140,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
             //if not this object, reduce the power generated
             if (hit.collider != GetComponent<Collider>())
             {
+                if (_debug) Debug.Log(hit.collider.gameObject);
                 //reduce the power generated according distance to turbine in the way
                 if (hit.collider.GetComponent<TurbineObject>() != null)
                 {
@@ -146,6 +149,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
                     float mod = Mathf.Pow(diff, (2f / 3f)) * 1 / 4;
                     if (mod > 1) mod = 1;
                     value *= mod;
+                    if (_debug) Debug.Log("diff: " + diff + " value " + value);
                 }
 
                 //reduced the power generated if there is an object blocking wind
@@ -162,7 +166,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
                 {
                     //checks the height and uses to deterine the shadow
                     float terrainShadow = _turbineHeight;
-                    Vector3 upOneObstruction = transform.position;
+                    Vector3 upOneObstruction = transform.position + raycastPoint;
 
                     for (int i = 0; i < 100; i++)
                     {
