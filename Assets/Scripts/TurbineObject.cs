@@ -22,6 +22,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 	Vector3 windDirection;
 
 	HashSet<TurbineState> states;
+	HashSet<TurbineState> deletionQueue;
 
     //Maximum Power Avalible from Turbine (in MW)
     float _maxPower = 1;
@@ -78,6 +79,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 		}
 
         states = new HashSet<TurbineState>();
+		deletionQueue = new HashSet<TurbineState>();
 		windDirection = windVelocity.value.normalized;
 		transform.forward = windDirection;
 		windVelocity.OnValueChanged += OnWindVelocityChanged;
@@ -96,6 +98,14 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 
 	void Update()
 	{
+		foreach (TurbineState ts in deletionQueue){
+			states.Remove(ts);
+		}
+
+		if (states.Count == 0){
+			GetComponent<TurbineMenu>().Hide();
+		}
+
 		foreach (TurbineState ts in states){
 			ts.Update();
 		}
@@ -220,7 +230,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 
 	public void RemoveState(TurbineState state)
 	{
-		states.Remove(state);
+		deletionQueue.Add(state);
 	}
 
 	#region Interfaces
