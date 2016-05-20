@@ -248,6 +248,8 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 	    }
 	}
 
+	public void OnStayWindzone(){}
+
     public void OnExitWindzone ()
     {
 		if (_debug) Debug.Log("Exit Windzone");
