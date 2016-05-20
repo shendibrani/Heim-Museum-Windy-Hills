@@ -99,13 +99,17 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 		foreach (TurbineState ts in states){
 			ts.Update();
 		}
-
-        UpdateEfficiency();
+			
 		transform.forward = Vector3.Lerp(transform.forward, windDirection, 0.5f);
         if (isCharging) IncreaseEfficiency();
         else efficencyOvercharge -= overchargeDecrease;
         if (efficencyOvercharge < 0) efficencyOvercharge = 0;
     }
+
+	void FixedUpdate()
+	{
+		UpdateEfficiency();
+	}
 
 	void OnDestroy()
 	{
@@ -215,12 +219,16 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 	{
 		if(!states.Contains(state)){
 			states.Add(state);
+			GetComponent<TurbineMenu>().Show();
 		}
 	}
 
 	public void RemoveState(TurbineState state)
 	{
 		states.Remove(state);
+		if(states.Count == 0){
+			GetComponent<TurbineMenu>().Hide();
+		}
 	}
 
 	#region Interfaces

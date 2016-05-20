@@ -78,7 +78,6 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 	void SetOwner(TurbineObject pOwner)
 	{
 		owner = pOwner;
-		owner.GetComponent<TurbineMenu>().Show();
 		owner.AddState(this);
 	}
 		
@@ -150,11 +149,9 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 	{
 		if(solved) {
 			owner.RemoveState(this);
-			owner.GetComponent<TurbineMenu>().Hide();
 		} else {
 			if(negativeEffect) Fail();
 			owner.RemoveState(this);
-			owner.GetComponent<TurbineMenu>().Hide();
 		}
 	}
 
@@ -201,6 +198,8 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 		ts.dirtiesTurbine = this.dirtiesTurbine;
 
 		ts.SetOwner(pOwner);
+
+		Debug.Log(ts.name+ " added to turbine");
 
 		return ts;
 	}
