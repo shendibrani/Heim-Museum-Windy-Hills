@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
 
 [RequireComponent(typeof(TurbineObject))]
 public class TurbineMenu : MonoBehaviour
 {
-    [SerializeField] GameObject menuParent;
+    [SerializeField]
+    GameObject menuParent;
 
     Quaternion rotation;
 
@@ -13,7 +13,6 @@ public class TurbineMenu : MonoBehaviour
 	void Start ()
 	{
         rotation = menuParent.transform.rotation;
-		Hide();
         //menuParent.GetComponent<LookAtTransformBehaviour>().SetTarget(Camera.main.gameObject);
 	}
 	
