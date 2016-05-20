@@ -1,69 +1,89 @@
 {
-    "name": "Low Fire State",
+    "name": "Low Fire",
     "timer": 0.0,
     "_efficiencyMultiplyer": 0.0,
     "negativeEffect": false,
     "timed": false,
-    "endsOnTap": false,
-    "endsOnWind": false,
+    "endOnTap": false,
+    "endOnWind": false,
     "winzoneDependent": false,
     "setsOnHighFire": false,
     "breaksTurbine": false,
-    "dirtiesTurbine": false
+    "dirtiesTurbine": false,
+    "endOnPolice": false,
+    "endOnFiremen": false,
+    "endOnRepair": false,
+    "endOnCleanup": false
 }
 #
 {
-    "name": "High Fire State",
+    "name": "High Fire",
     "timer": 0.0,
     "_efficiencyMultiplyer": 0.0,
     "negativeEffect": false,
     "timed": false,
-    "endsOnTap": false,
-    "endsOnWind": false,
+    "endOnTap": false,
+    "endOnWind": false,
     "winzoneDependent": false,
     "setsOnHighFire": false,
     "breaksTurbine": false,
-    "dirtiesTurbine": false
+    "dirtiesTurbine": false,
+    "endOnPolice": false,
+    "endOnFiremen": false,
+    "endOnRepair": false,
+    "endOnCleanup": false
 }
 #
 {
-    "name": "Saboteurs State",
+    "name": "Saboteur",
     "timer": 0.0,
     "_efficiencyMultiplyer": 0.0,
     "negativeEffect": false,
     "timed": false,
-    "endsOnTap": false,
-    "endsOnWind": false,
+    "endOnTap": false,
+    "endOnWind": false,
     "winzoneDependent": false,
     "setsOnHighFire": false,
     "breaksTurbine": false,
-    "dirtiesTurbine": false
+    "dirtiesTurbine": false,
+    "endOnPolice": false,
+    "endOnFiremen": false,
+    "endOnRepair": false,
+    "endOnCleanup": false
 }
 #
 {
-    "name": "Broken State",
+    "name": "Broken",
     "timer": 0.0,
     "_efficiencyMultiplyer": 0.0,
     "negativeEffect": false,
     "timed": false,
-    "endsOnTap": false,
-    "endsOnWind": false,
+    "endOnTap": false,
+    "endOnWind": false,
     "winzoneDependent": false,
     "setsOnHighFire": false,
     "breaksTurbine": false,
-    "dirtiesTurbine": false
+    "dirtiesTurbine": false,
+    "endOnPolice": false,
+    "endOnFiremen": false,
+    "endOnRepair": true,
+    "endOnCleanup": false
 }
 #
 {
-    "name": "Dirty State",
+    "name": "Dirty",
     "timer": 0.0,
     "_efficiencyMultiplyer": 0.0,
     "negativeEffect": false,
     "timed": false,
-    "endsOnTap": false,
-    "endsOnWind": false,
+    "endOnTap": false,
+    "endOnWind": false,
     "winzoneDependent": false,
     "setsOnHighFire": false,
     "breaksTurbine": false,
-    "dirtiesTurbine": false
+    "dirtiesTurbine": false,
+    "endOnPolice": false,
+    "endOnFiremen": false,
+    "endOnRepair": false,
+    "endOnCleanup": false
 }
