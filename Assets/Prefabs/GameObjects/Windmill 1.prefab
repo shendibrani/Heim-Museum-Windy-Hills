@@ -644,7 +644,7 @@ MonoBehaviour:
   maxOvercharge: 1
   _turbineDiameter: 15
   _turbineHeight: 30
-  _debug: 1
+  _debug: 0
   raycastPoint: {x: 0, y: 10, z: 0}
 --- !u!114 &11474758
 MonoBehaviour:

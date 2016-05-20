@@ -129,8 +129,11 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
         efficencyOvercharge += overchargeIncrease;
         if (efficencyOvercharge >= maxOvercharge) {
             efficencyOvercharge = maxOvercharge;
-            TurbineStateManager.brokenState.Copy(this);
-            
+
+			foreach (TurbineState ts in states){
+				if(ts.name == TurbineStateManager.brokenState.name) return;
+			}
+			TurbineStateManager.brokenState.Copy(this);
         }
         //efficencyOvercharge += (overchargeIncrease + overchargeDecrease);
     }

@@ -198,6 +198,11 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 		ts.breaksTurbine = this.breaksTurbine;
 		ts.dirtiesTurbine = this.dirtiesTurbine;
 
+		ts.endOnCleanup = this.endOnCleanup;
+		ts.endOnFiremen = this.endOnFiremen;
+		ts.endOnPolice = this.endOnPolice;
+		ts.endOnRepair = this.endOnRepair;
+
 		ts.SetOwner(pOwner);
 
 		return ts;
