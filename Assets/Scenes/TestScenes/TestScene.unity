@@ -231,23 +231,23 @@ Prefab:
       objectReference: {fileID: 1744704847}
     - target: {fileID: 22471456, guid: 8952646635ca4a246937ea8256fde184, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22471456, guid: 8952646635ca4a246937ea8256fde184, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22458016, guid: 8952646635ca4a246937ea8256fde184, type: 2}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22458016, guid: 8952646635ca4a246937ea8256fde184, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22458016, guid: 8952646635ca4a246937ea8256fde184, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8952646635ca4a246937ea8256fde184, type: 2}
@@ -726,7 +726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 0
-  prefab: {fileID: 103246, guid: 2a83c4cf2fef9de4e991ca9af4935e40, type: 2}
+  prefab: {fileID: 121002, guid: 881fe816b2662d04eb423cbd6da0aba5, type: 2}
   tileSize: 15
   holdTime: 30
 --- !u!114 &1882190963
