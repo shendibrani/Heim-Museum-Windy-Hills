@@ -262,5 +262,10 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
                 ts.OnExitWindzone();
             }
     }
+
+    public void OnStayWindzone()
+    {
+
+    }
 	#endregion
 }

@@ -63,4 +63,9 @@ public class StormCloudEvent : EventsClass, IWindSensitive {
     {
         EnteredWindzone = false;
     }
+
+    public void OnStayWindzone()
+    {
+
+    }
 }
