@@ -223,9 +223,11 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 
 	public void AddState(TurbineState state)
 	{
-		if(!states.Contains(state)){
-			states.Add(state);
+		foreach (TurbineState ts in states){
+			if (ts.name == state.name) return;
 		}
+
+		states.Add(state);
 	}
 
 	public void RemoveState(TurbineState state)

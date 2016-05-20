@@ -115,6 +115,9 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 	{
 		if(endOnWind) End(true);
 	}
+
+	public void OnStayWindzone () {}
+
 	public void OnExitWindzone ()
 	{
 		if(winzoneDependent) End(true);
@@ -148,14 +151,9 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 
 	public void End (bool solved)
 	{
-		if(solved) {
-			owner.RemoveState(this);
-			owner.GetComponent<TurbineMenu>().Hide();
-		} else {
-			if(negativeEffect) Fail();
-			owner.RemoveState(this);
-			owner.GetComponent<TurbineMenu>().Hide();
-		}
+		if(!solved && negativeEffect) Fail();
+
+		owner.RemoveState(this);
 	}
 
 	public void Fail() 
