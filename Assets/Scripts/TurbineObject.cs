@@ -2,24 +2,27 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive
+public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IWindSensitive
 {
 
     //Wind Direction in Vector
 	public static Monitored<Vector3> windVelocity = new Monitored<Vector3>(new Vector3(0, 0, 1));
 
-	static HashSet<TurbineObject> _all;
+	static List<TurbineObject> _all;
 
-	public static IEnumerable<TurbineObject> all {
+	public static List<TurbineObject> all {
 		get {
 			if (_all == null) {
-				_all = new HashSet<TurbineObject>(FindObjectsOfType<TurbineObject>());
+				_all = new List<TurbineObject>(FindObjectsOfType<TurbineObject>());
 			}
 			return _all;
 		}
 	}
 
 	Vector3 windDirection;
+
+	HashSet<TurbineState> states;
+	HashSet<TurbineState> deletionQueue;
 
     //Maximum Power Avalible from Turbine (in MW)
     float _maxPower = 1;
@@ -30,6 +33,19 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive
         private set;
     }
 
+    float stateMultiplier
+    {
+        get {
+            float multi = 1f;
+            if (states != null)
+                foreach (TurbineState ts in states)
+                {
+                    multi *= ts.efficiencyMultiplyer;
+                }
+            return multi;
+        }
+    }
+
     [SerializeField]
     float overchargeIncrease = 0.02f;
 
@@ -37,19 +53,23 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive
     float overchargeDecrease = 0.01f;
 
 	[SerializeField]
-	float maxOvercharge = 2f;
+	float maxOvercharge = 1f;
 
     [SerializeField]
     float _turbineDiameter = 4f;
     [SerializeField]
     float _turbineHeight = 8f;
 
+    bool isCharging;
+    bool hasOverchargeDanger;
+
     [SerializeField]
     bool _debug;
 
-    public float currentEfficency { get;
-    private set;
-    }
+    [SerializeField]
+    Vector3 raycastPoint;
+
+    public float currentEfficency { get; private set; }
 
     // Use this for initialization
     void Start()
@@ -58,10 +78,12 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive
 			_all.Add(this);
 		}
 
+        states = new HashSet<TurbineState>();
+		deletionQueue = new HashSet<TurbineState>();
 		windDirection = windVelocity.value.normalized;
 		transform.forward = windDirection;
 		windVelocity.OnValueChanged += OnWindVelocityChanged;
-        UpdateEfficiency(this.gameObject);
+        UpdateEfficiency();
     }
 
     //draw the a line along the line calculated for the raycast below
@@ -70,14 +92,28 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive
         if (_debug)
         {
             Gizmos.color = Color.blue;
-			Gizmos.DrawLine(transform.position, transform.position + -windVelocity.value.normalized * _turbineDiameter * 8);
+			Gizmos.DrawLine(transform.position + raycastPoint, transform.position + raycastPoint + windVelocity.value.normalized * _turbineDiameter * -8);
         }
     }
 
 	void Update()
 	{
+		foreach (TurbineState ts in deletionQueue){
+			states.Remove(ts);
+		}
+
+		if (states.Count == 0){
+			GetComponent<TurbineMenu>().Hide();
+		}
+
+		foreach (TurbineState ts in states){
+			ts.Update();
+		}
+
+        UpdateEfficiency();
 		transform.forward = Vector3.Lerp(transform.forward, windDirection, 0.5f);
-        efficencyOvercharge -= overchargeDecrease;
+        if (isCharging) IncreaseEfficiency();
+        else efficencyOvercharge -= overchargeDecrease;
         if (efficencyOvercharge < 0) efficencyOvercharge = 0;
     }
 
@@ -88,23 +124,21 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive
 		}
 	}
 
-	/*public void OnTouch(Touch t, RaycastHit hit)
-	{
-		IncreaseEfficiency();
-	}
-
-	public void OnClick(ClickState state, RaycastHit hit)
-	{
-		IncreaseEfficiency();
-	}
-	*/
-
     public void IncreaseEfficiency()
     {
-		efficencyOvercharge += (overchargeIncrease + overchargeDecrease);
+        efficencyOvercharge += overchargeIncrease;
+        if (efficencyOvercharge >= maxOvercharge) {
+            efficencyOvercharge = maxOvercharge;
+
+			foreach (TurbineState ts in states){
+				if(ts.name == TurbineStateManager.brokenState.name) return;
+			}
+			TurbineStateManager.brokenState.Copy(this);
+        }
+        //efficencyOvercharge += (overchargeIncrease + overchargeDecrease);
     }
 
-    public void UpdateEfficiency(GameObject go)
+    public void UpdateEfficiency()
     {
         currentEfficency = GetEfficiency();
     }
@@ -112,7 +146,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive
     //Raycast to the this object according to wind direction. If an object is in the way, the efficency descreases depending on objects in the way
     public float GetEfficiency()
     {
-		Ray obstructionRay = new Ray(transform.position, -windDirection);
+		Ray obstructionRay = new Ray(transform.position + raycastPoint, -windDirection);
 
         RaycastHit[] hitObjects;
         hitObjects = Physics.RaycastAll(obstructionRay);
@@ -124,6 +158,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive
             //if not this object, reduce the power generated
             if (hit.collider != GetComponent<Collider>())
             {
+                if (_debug) Debug.Log(hit.collider.gameObject);
                 //reduce the power generated according distance to turbine in the way
                 if (hit.collider.GetComponent<TurbineObject>() != null)
                 {
@@ -132,6 +167,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive
                     float mod = Mathf.Pow(diff, (2f / 3f)) * 1 / 4;
                     if (mod > 1) mod = 1;
                     value *= mod;
+                    if (_debug) Debug.Log("diff: " + diff + " value " + value);
                 }
 
                 //reduced the power generated if there is an object blocking wind
@@ -148,7 +184,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive
                 {
                     //checks the height and uses to deterine the shadow
                     float terrainShadow = _turbineHeight;
-                    Vector3 upOneObstruction = transform.position;
+                    Vector3 upOneObstruction = transform.position + raycastPoint;
 
                     for (int i = 0; i < 100; i++)
                     {
@@ -180,11 +216,105 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive
 
 	public float GetPowerOutput()
 	{
-		return (currentEfficency + efficencyOvercharge) * _maxPower;
+		return currentEfficency * stateMultiplier * (1  + efficencyOvercharge) * _maxPower;
 	}
 
 	void OnWindVelocityChanged(Vector3 oldValue, Vector3 newValue)
 	{
 		windDirection = newValue.normalized;
 	}
+
+	public void AddState(TurbineState state)
+	{
+		foreach (TurbineState ts in states){
+			if (ts.name == state.name) return;
+		}
+
+		states.Add(state);
+	}
+
+	public void RemoveState(TurbineState state)
+	{
+		deletionQueue.Add(state);
+	}
+
+	#region Interfaces
+
+	public void OnTouch(Touch t, RaycastHit hit)
+	{
+        foreach (TurbineState ts in states){
+		    ts.OnTouch(t,hit);
+	    }
+	}
+
+	public void OnClick(ClickState state, RaycastHit hit)
+	{
+        foreach (TurbineState ts in states){
+		    ts.OnClick(state, hit);
+	    }
+	}
+
+	public void OnEnterWindzone ()
+	{
+        if (_debug) Debug.Log("Enter Windzone");
+        isCharging = true;
+        foreach (TurbineState ts in states){
+		    ts.OnEnterWindzone();
+	    }
+	}
+
+	public void OnStayWindzone(){}
+
+    public void OnExitWindzone ()
+    {
+		if (_debug) Debug.Log("Exit Windzone");
+        isCharging = false;
+        foreach (TurbineState ts in states)
+        {
+            ts.OnExitWindzone();
+        }
+    }
+
+	#endregion
+
+	#region Button Callbacks
+
+	public void Police()
+	{
+		Debug.Log("Police");
+
+		foreach (TurbineState ts in states)
+		{
+			ts.OnPolice();
+		}
+	}
+
+	public void Firemen()
+	{
+		Debug.Log("Firemen");
+		foreach (TurbineState ts in states)
+		{
+			ts.OnFiremen();
+		}
+	}
+
+	public void Repair()
+	{
+		Debug.Log("Repair");
+		foreach (TurbineState ts in states)
+		{
+			ts.OnRepair();
+		}
+	}
+
+	public void Cleanup()
+	{
+		Debug.Log("Cleanup");
+		foreach (TurbineState ts in states)
+		{
+			ts.OnCleanup();
+		}
+	}
+
+	#endregion
 }

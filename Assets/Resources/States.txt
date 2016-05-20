@@ -1,0 +1,89 @@
+{
+    "name": "Low Fire",
+    "timer": 0.0,
+    "_efficiencyMultiplyer": 0.0,
+    "negativeEffect": false,
+    "timed": false,
+    "endOnTap": false,
+    "endOnWind": false,
+    "winzoneDependent": false,
+    "setsOnHighFire": false,
+    "breaksTurbine": false,
+    "dirtiesTurbine": false,
+    "endOnPolice": false,
+    "endOnFiremen": false,
+    "endOnRepair": false,
+    "endOnCleanup": false
+}
+#
+{
+    "name": "High Fire",
+    "timer": 0.0,
+    "_efficiencyMultiplyer": 0.0,
+    "negativeEffect": false,
+    "timed": false,
+    "endOnTap": false,
+    "endOnWind": false,
+    "winzoneDependent": false,
+    "setsOnHighFire": false,
+    "breaksTurbine": false,
+    "dirtiesTurbine": false,
+    "endOnPolice": false,
+    "endOnFiremen": false,
+    "endOnRepair": false,
+    "endOnCleanup": false
+}
+#
+{
+    "name": "Saboteurs",
+    "timer": 0.0,
+    "_efficiencyMultiplyer": 0.0,
+    "negativeEffect": false,
+    "timed": false,
+    "endOnTap": false,
+    "endOnWind": false,
+    "winzoneDependent": false,
+    "setsOnHighFire": false,
+    "breaksTurbine": false,
+    "dirtiesTurbine": false,
+    "endOnPolice": false,
+    "endOnFiremen": false,
+    "endOnRepair": false,
+    "endOnCleanup": false
+}
+#
+{
+    "name": "Broken",
+    "timer": 0.0,
+    "_efficiencyMultiplyer": 0.0,
+    "negativeEffect": false,
+    "timed": false,
+    "endOnTap": false,
+    "endOnWind": false,
+    "winzoneDependent": false,
+    "setsOnHighFire": false,
+    "breaksTurbine": false,
+    "dirtiesTurbine": false,
+    "endOnPolice": false,
+    "endOnFiremen": false,
+    "endOnRepair": true,
+    "endOnCleanup": false
+}
+#
+{
+    "name": "Dirty",
+    "timer": 0.0,
+    "_efficiencyMultiplyer": 0.0,
+    "negativeEffect": false,
+    "timed": false,
+    "endOnTap": false,
+    "endOnWind": false,
+    "winzoneDependent": false,
+    "setsOnHighFire": false,
+    "breaksTurbine": false,
+    "dirtiesTurbine": false,
+    "endOnPolice": false,
+    "endOnFiremen": false,
+    "endOnRepair": false,
+    "endOnCleanup": false
+}

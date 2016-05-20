@@ -17,7 +17,7 @@ public class BladeBehaviour : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		transform.Rotate(Vector3.forward,angularVelocityPerMetreSecond*windSpeed*turbine.currentEfficency);
+		transform.Rotate(Vector3.up,angularVelocityPerMetreSecond*windSpeed*turbine.GetPowerOutput());
 	}
 
 	void OnWindVelocityChanged(Vector3 oldValue, Vector3 newValue) 
