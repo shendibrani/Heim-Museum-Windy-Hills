@@ -52,7 +52,9 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 
 	[SerializeField] float timer, _efficiencyMultiplyer;
 
-	[SerializeField] bool negativeEffect, timed, endsOnTap, endsOnWind, winzoneDependent, setsOnHighFire, breaksTurbine, dirtiesTurbine;
+	[SerializeField] bool negativeEffect, timed, endOnTap, endOnWind, winzoneDependent, setsOnHighFire, breaksTurbine, dirtiesTurbine;
+
+	[SerializeField] bool endOnPolice, endOnFiremen, endOnRepair, endOnCleanup;
 
 	#endregion
 
@@ -97,30 +99,50 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 
 	public void OnClick (ClickState state, RaycastHit hit)
 	{
-		if(endsOnTap){
+		if(endOnTap){
 			if(state == ClickState.Down) End(true);
 		}
 	}
 
 	public void OnTouch(Touch t, RaycastHit hit)
 	{
-		if(endsOnTap){
+		if(endOnTap){
 			if(t.phase == TouchPhase.Ended) End(true);
 		}
 	}
 
 	public void OnEnterWindzone ()
 	{
-		if(endsOnWind) End(true);
+		if(endOnWind) End(true);
 	}
 	public void OnExitWindzone ()
 	{
 		if(winzoneDependent) End(true);
 	}
-    public void OnStayWindzone()
-    {
 
-    }
+	#endregion
+
+	#region Menu Callbacks
+
+	public void OnPolice()
+	{
+		if(endOnPolice) End(true);
+	}
+
+	public void OnFiremen()
+	{
+		if(endOnFiremen) End(true);
+	}
+
+	public void OnRepair()
+	{
+		if(endOnRepair) End(true);
+	}
+
+	public void OnCleanup()
+	{
+		if(endOnCleanup) End(true);
+	}
 
 	#endregion
 
@@ -128,6 +150,7 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 	{
 		if(solved) {
 			owner.RemoveState(this);
+			owner.GetComponent<TurbineMenu>().Hide();
 		} else {
 			if(negativeEffect) Fail();
 			owner.RemoveState(this);
@@ -170,8 +193,8 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 
 		ts.negativeEffect = this.negativeEffect;
 		ts.timed = this.timed;
-		ts.endsOnTap = this.endsOnTap;
-		ts.endsOnWind = this.endsOnWind;
+		ts.endOnTap = this.endOnTap;
+		ts.endOnWind = this.endOnWind;
 		ts.winzoneDependent = this.winzoneDependent;
 		ts.setsOnHighFire = this.setsOnHighFire;
 		ts.breaksTurbine = this.breaksTurbine;

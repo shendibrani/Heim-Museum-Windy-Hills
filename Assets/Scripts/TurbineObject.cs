@@ -96,16 +96,15 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 
 	void Update()
 	{
-        
+		foreach (TurbineState ts in states){
+			ts.Update();
+		}
+
+        UpdateEfficiency();
 		transform.forward = Vector3.Lerp(transform.forward, windDirection, 0.5f);
         if (isCharging) IncreaseEfficiency();
         else efficencyOvercharge -= overchargeDecrease;
         if (efficencyOvercharge < 0) efficencyOvercharge = 0;
-    }
-
-    void FixedUpdate()
-    {
-        UpdateEfficiency();
     }
 
 	void OnDestroy()
@@ -228,44 +227,77 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 
 	public void OnTouch(Touch t, RaycastHit hit)
 	{
-        if (states != null)
-            foreach (TurbineState ts in states){
-			    ts.OnTouch(t,hit);
-		    }
+        foreach (TurbineState ts in states){
+		    ts.OnTouch(t,hit);
+	    }
 	}
 
 	public void OnClick(ClickState state, RaycastHit hit)
 	{
-        if (states != null)
-            foreach (TurbineState ts in states){
-			    ts.OnClick(state, hit);
-		    }
+        foreach (TurbineState ts in states){
+		    ts.OnClick(state, hit);
+	    }
 	}
 
 	public void OnEnterWindzone ()
 	{
         if (_debug) Debug.Log("Enter Windzone");
         isCharging = true;
-        if (states != null)
-            foreach (TurbineState ts in states){
-			    ts.OnEnterWindzone();
-		    }
+        foreach (TurbineState ts in states){
+		    ts.OnEnterWindzone();
+	    }
 	}
 
     public void OnExitWindzone ()
     {
 		if (_debug) Debug.Log("Exit Windzone");
         isCharging = false;
-        if (states != null)
-            foreach (TurbineState ts in states)
-            {
-                ts.OnExitWindzone();
-            }
+        foreach (TurbineState ts in states)
+        {
+            ts.OnExitWindzone();
+        }
     }
 
-    public void OnStayWindzone()
-    {
+	#endregion
 
-    }
+	#region Button Callbacks
+
+	public void Police()
+	{
+		Debug.Log("Police");
+
+		foreach (TurbineState ts in states)
+		{
+			ts.OnPolice();
+		}
+	}
+
+	public void Firemen()
+	{
+		Debug.Log("Firemen");
+		foreach (TurbineState ts in states)
+		{
+			ts.OnFiremen();
+		}
+	}
+
+	public void Repair()
+	{
+		Debug.Log("Repair");
+		foreach (TurbineState ts in states)
+		{
+			ts.OnRepair();
+		}
+	}
+
+	public void Cleanup()
+	{
+		Debug.Log("Cleanup");
+		foreach (TurbineState ts in states)
+		{
+			ts.OnCleanup();
+		}
+	}
+
 	#endregion
 }
