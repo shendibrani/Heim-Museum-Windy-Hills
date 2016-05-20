@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System;
 using System.Diagnostics;
 
-public class StormCloudEvent : EventsClass {
+public class StormCloudEvent : EventsClass, IWindSensitive {
 
     public float Speed;
     private GameObject stormPrefab;
@@ -53,6 +53,16 @@ public class StormCloudEvent : EventsClass {
             Destroy(tempStorm);
         }
         
+    }
+
+    public void OnEnterWindzone()
+    {
+        isInWindzone = true;
+    }
+
+    public void OnExitWindzone()
+    {
+        isInWindzone = false;
     }
 
     bool StormPassedScreen() {
