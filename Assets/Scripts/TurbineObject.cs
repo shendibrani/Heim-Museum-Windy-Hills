@@ -68,6 +68,9 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
     [SerializeField]
     Vector3 raycastPoint;
 
+    [SerializeField]
+    GameObject particleContainer;
+
     public float currentEfficency { get; private set; }
 
     // Use this for initialization
@@ -124,6 +127,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
         if (efficencyOvercharge >= maxOvercharge) {
             efficencyOvercharge = maxOvercharge;
             TurbineStateManager.brokenState.Copy(this);
+            BreakTriggerParticles(true);
             
         }
         //efficencyOvercharge += (overchargeIncrease + overchargeDecrease);
@@ -215,6 +219,12 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 		windDirection = newValue.normalized;
 	}
 
+    public void BreakTriggerParticles(bool s)
+    {
+        particleContainer.SetActive(s);
+
+    }
+
 	public void AddState(TurbineState state)
 	{
 		if(!states.Contains(state)){
@@ -264,6 +274,11 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
         {
             ts.OnExitWindzone();
         }
+    }
+
+    public void OnStayWindzone()
+    {
+
     }
 
 	#endregion

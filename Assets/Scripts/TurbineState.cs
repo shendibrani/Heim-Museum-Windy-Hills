@@ -118,6 +118,10 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 	{
 		if(winzoneDependent) End(true);
 	}
+    public void OnStayWindzone()
+    {
+
+    }
 
 	#endregion
 
