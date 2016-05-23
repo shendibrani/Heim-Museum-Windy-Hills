@@ -4,14 +4,14 @@ using System.Collections;
 [RequireComponent(typeof(RectTransform))]
 public class FogOfWarPiece : MonoBehaviour {
 
-	Vector2 originalPosition;
+	public Vector2 originalPosition {get; private set;}
 
 	Vector2 currentTargetPositon;
 
-	// Use this for initialization
-	void Start () 
+	public void Initialize () 
 	{
 		originalPosition = GetComponent<RectTransform>().anchoredPosition;
+		currentTargetPositon = originalPosition;
 	}
 	
 	// Update is called once per frame
@@ -25,6 +25,8 @@ public class FogOfWarPiece : MonoBehaviour {
 		Vector2 direction = (GetComponent<RectTransform>().anchoredPosition - point).normalized;
 
 		currentTargetPositon = originalPosition + (direction * radius);
+
+		Debug.Log(point);
 	}
 
 	public void MoveBack()
