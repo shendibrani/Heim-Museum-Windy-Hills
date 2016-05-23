@@ -155,11 +155,18 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
         if (efficencyOvercharge >= maxOvercharge) {
             efficencyOvercharge = maxOvercharge;
 
-			if(isBroken) return;
+			
 
 			TurbineStateManager.brokenState.Copy(this);
         }
         //efficencyOvercharge += (overchargeIncrease + overchargeDecrease);
+    }
+
+    public void BreakTurbine()
+    {
+        if (isBroken) return;
+        TurbineStateManager.brokenState.Copy(this);
+        if (GetComponent<TurbineParticle>() != null) GetComponent<TurbineParticle>().ActivateBreaking();
     }
 
     public void UpdateEfficiency()
@@ -172,7 +179,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
     {
         float power = currentEfficency * (1 + efficencyOvercharge);
        if (powerHUD.gameObject != null) {
-            powerHUD.fillAmount = power / _maxPower * (1 + maxOvercharge);
+            powerHUD.fillAmount = power / (_maxPower * (1 + maxOvercharge));
             if (currentEfficency <= 0.5f) powerHUD.color = Color.blue;
             else powerHUD.color = Color.green;
             if (efficencyOvercharge >= maxOvercharge / 2f) powerHUD.color = Color.yellow;

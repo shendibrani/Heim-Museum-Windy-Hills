@@ -12,6 +12,11 @@ public class StormCloudEvent : EventsClass, IWindSensitive {
     private Vector3 turbinePos;
     private Vector3 stormSpawnPos;
 
+    float WindRadius = 60f;
+    float DamageRadius = 40f;
+
+    bool debug = true;
+
     // Use this for initialization
     void Start () {
         
@@ -25,7 +30,18 @@ public class StormCloudEvent : EventsClass, IWindSensitive {
             
             MoveCloud();
             if (EnteredWindzone) transform.Translate(5, 0, 5);
+            WindEffect();
 
+        }
+    }
+
+    void OnDrawGizmos()
+    {
+        if (debug)
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawSphere(transform.position, WindRadius);
+            Gizmos.DrawSphere(transform.position, DamageRadius);
         }
     }
 
@@ -33,6 +49,22 @@ public class StormCloudEvent : EventsClass, IWindSensitive {
     {
         transform.position = new Vector3(UnityEngine.Random.Range(500.0f, 700.0f), 60.0f, UnityEngine.Random.Range(50.0f, 300.0f));
        // tempStorm = (GameObject)Instantiate(stormPrefab, stormSpawnPos, Quaternion.identity);
+    }
+
+    void WindEffect()
+    {
+         foreach (TurbineObject to in TurbineObject.all)
+        {
+            float distance = Vector3.Distance(new Vector3(to.transform.position.x, 30, to.transform.position.z), this.transform.position);
+            if (distance <= WindRadius)
+            {
+                to.IncreaseEfficiency();
+            }
+            if (distance <= DamageRadius)
+            {
+                to.BreakTurbine();
+            }
+        }
     }
 
     void MoveCloud() {
