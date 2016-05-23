@@ -271,8 +271,8 @@ MonoBehaviour:
   - {fileID: 1546801039}
   - {fileID: 2022599353}
   Margin: 0.01
-  Speed: 0.002
-  Size: 5
+  Speed: 0.01
+  ZoomOut: 5
 --- !u!81 &1542701870
 AudioListener:
   m_ObjectHideFlags: 0

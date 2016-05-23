@@ -6,7 +6,7 @@ public class CameraMovement : MonoBehaviour {
 	[SerializeField] Transform[] Waypoints;
 	[SerializeField] float Margin = 0.1f;
 	[SerializeField] [Range(0,1)] float Speed = 0.5f;
-	[SerializeField] float Size = 0;
+	[SerializeField] float ZoomOut = 0;
 
 	Vector3 _offset;
 	bool _reachedGoal = true;
@@ -20,8 +20,6 @@ public class CameraMovement : MonoBehaviour {
 	{
 		_offset = this.transform.position - Waypoints [_progress].position;
 		_size = GetComponent<Camera> ().orthographicSize;
-
-		Size *= 2;
 	}
 
 	void Update ()
@@ -46,7 +44,7 @@ public class CameraMovement : MonoBehaviour {
 		{
 			_move += Speed;
 
-			this.GetComponent<Camera> ().orthographicSize = Mathf.Lerp (_size, Size, (Mathf.Sin(Mathf.Lerp(-0.5f*Mathf.PI,1.5f*Mathf.PI,_move) ) + 1)*0.5f );
+			this.GetComponent<Camera> ().orthographicSize = Mathf.Lerp (_size, ZoomOut, (Mathf.Sin(Mathf.Lerp(-0.5f*Mathf.PI,1.5f*Mathf.PI,_move) ) + 1)*0.5f );
 
 			this.transform.position = Vector3.Lerp (_origin + _offset, _target + _offset, (Mathf.Sin(Mathf.Lerp(-0.5f*Mathf.PI,1.5f*Mathf.PI,_move/2) ) + 1)*0.5f);
 		}
