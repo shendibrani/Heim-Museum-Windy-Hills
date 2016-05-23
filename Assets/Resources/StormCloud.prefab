@@ -50,6 +50,7 @@ GameObject:
   - 26: {fileID: 2649122}
   - 12: {fileID: 1231772}
   - 65: {fileID: 6575832}
+  - 114: {fileID: 11402562}
   m_Layer: 0
   m_Name: StormCloud
   m_TagString: Untagged
@@ -97,7 +98,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 152544}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -72.41276, y: 12.93068, z: -329.77795}
+  m_LocalPosition: {x: 615.669, y: 60, z: 275.13895}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 451866}
@@ -421,11 +422,24 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 152544}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 69.84407, y: 37.480293, z: 44.082943}
   m_Center: {x: 0.33138275, y: 0.16661835, z: -1.2119617}
+--- !u!114 &11402562
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 152544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d79dbd0b4ff04c4aaf9257fdea00f2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 5
+  stormCloud: {fileID: 0}
 --- !u!114 &11455948
 MonoBehaviour:
   m_ObjectHideFlags: 1
