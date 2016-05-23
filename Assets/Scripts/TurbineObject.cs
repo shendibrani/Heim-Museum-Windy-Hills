@@ -27,6 +27,27 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
     //Maximum Power Avalible from Turbine (in MW)
     float _maxPower = 1;
 
+	#region State Booleans
+
+	public bool isFine {
+		get {
+			return states.Count == 0;
+		}
+	}
+
+	public bool isBroken
+	{
+		get {
+			foreach (TurbineState ts in states){
+				if(ts.name == TurbineStateManager.brokenState.name) return true;
+			}
+
+			return false;
+		}
+	}
+
+	#endregion
+
     public float efficencyOvercharge
     {
         get;
@@ -130,9 +151,8 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
         if (efficencyOvercharge >= maxOvercharge) {
             efficencyOvercharge = maxOvercharge;
 
-			foreach (TurbineState ts in states){
-				if(ts.name == TurbineStateManager.brokenState.name) return;
-			}
+			if(isBroken) return;
+
 			TurbineStateManager.brokenState.Copy(this);
         }
         //efficencyOvercharge += (overchargeIncrease + overchargeDecrease);
