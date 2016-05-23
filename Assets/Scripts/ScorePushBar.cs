@@ -24,11 +24,9 @@ public class ScorePushBar : MonoBehaviour
     }
 
     [SerializeField]
-    float greyPowerIncome = 5f;
-    float greenPowerIncome;
+    float maxRequired = 10f;
 
-    float currentGreenPower;
-    float currentGreyPower;
+    float greenPowerIncome;
 
     [SerializeField]
     Image _powerFillBar;
@@ -40,8 +38,6 @@ public class ScorePushBar : MonoBehaviour
     void Start()
     {
         _powerFillBar.fillAmount = 0;
-        currentGreenPower = 0;
-        currentGreyPower = 0;
         if (FindObjectsOfType<ScorePushBar>().Length > 1)
         {
             Debug.LogError("Multiple instances of ScorePushBar detected");
@@ -61,13 +57,6 @@ public class ScorePushBar : MonoBehaviour
         {
             greenPowerIncome += turbine.GetPowerOutput();
         }
-
-        //currentGreyPower += greyPowerIncome;
-        //_currentPower = 0;
-        //foreach (TurbineObject turbine in FindObjectsOfType<TurbineObject>())
-        //{
-        //    _currentPower += turbine.GetPowerOutput();
-        //}
     }
 
     // Update is called once per frame
@@ -76,20 +65,12 @@ public class ScorePushBar : MonoBehaviour
         ReadPower();
         if (_powerFillBar != null)
         {
-            if (greenPowerIncome + greyPowerIncome == 0) _powerFillBar.fillAmount = 0;
+            if (greenPowerIncome == 0) _powerFillBar.fillAmount = 0;
             else
             {
-                _powerFillBar.fillAmount = greenPowerIncome / 10;
-                //_powerFillBar.value = _currentPower;
+                _powerFillBar.fillAmount = greenPowerIncome / maxRequired;
             }
         }
-
-        /*if (_debugPowerText != null)
-        {
-            _debugPowerText.text = _currentPower + "/" + _targetPower;
-
-            //score calculated as 0 to 100, determined by ratio between actual placed turbines vs minimum required 
-        }*/
     }
 
 

@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IWindSensitive
 {
 
     //Wind Direction in Vector
-	public static Monitored<Vector3> windVelocity = new Monitored<Vector3>(new Vector3(0, 0, 1));
+    public static Monitored<Vector3> windVelocity = new Monitored<Vector3>(new Vector3(0, 0, 1));
 
 	static List<TurbineObject> _all;
 
@@ -70,6 +71,9 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
     Vector3 raycastPoint;
 
     public float currentEfficency { get; private set; }
+
+    [SerializeField]
+    Image powerHUD;
 
     // Use this for initialization
     void Start()
@@ -141,6 +145,19 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
     public void UpdateEfficiency()
     {
         currentEfficency = GetEfficiency();
+        UpdateHUDOverlay();
+    }
+
+    public void UpdateHUDOverlay()
+    {
+        float power = currentEfficency * (1 + efficencyOvercharge);
+       if (powerHUD.gameObject != null) {
+            powerHUD.fillAmount = power / _maxPower * (1 + maxOvercharge);
+            if (currentEfficency <= 0.5f) powerHUD.color = Color.blue;
+            else powerHUD.color = Color.green;
+            if (efficencyOvercharge >= maxOvercharge / 2f) powerHUD.color = Color.yellow;
+            if (efficencyOvercharge >= 3 * maxOvercharge / 4f) powerHUD.color = Color.red;
+        }
     }
 
     //Raycast to the this object according to wind direction. If an object is in the way, the efficency descreases depending on objects in the way
