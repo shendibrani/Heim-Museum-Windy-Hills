@@ -50,7 +50,7 @@ public class EventHandler : MonoBehaviour {
     void startWaves() {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            UnityEngine.Debug.Log("Wave Started!");
+            UnityEngine.Debug.Log("<color=red>Wave Started!</color>");
             WaveTimer.Start();
             waveEnded = false;
             waveStarted = true;
@@ -68,7 +68,7 @@ public class EventHandler : MonoBehaviour {
 
             if (WaveTimer.Elapsed.Seconds >= waveMaxTime && !waveEnded) // if Wave Time has ended, reset clock.
             {
-            
+                ClearLog();
                 waveEnded = true;
                 waveStarted = false;
                 WaveTimer.Reset();
@@ -78,28 +78,24 @@ public class EventHandler : MonoBehaviour {
 
         }
 
-        if (elapsedSeconds < waveCooldownTime && !waveStarted && waveEnded)
+        if (WaveTimer.Elapsed.Seconds < waveCooldownTime && !waveStarted && waveEnded)
         {
-            UnityEngine.Debug.Log("Wave Ended");
+            UnityEngine.Debug.Log("<color=red>Wave Ended</color>");
             UnityEngine.Debug.Log("Wave in Cooldown mode! Ending in: " + (waveCooldownTime - WaveTimer.Elapsed.Seconds));
             
         }
 
-        if (WaveTimer.Elapsed.Seconds > waveCooldownTime && waveEnded) //if waveCooldown has ended
+        if (WaveTimer.Elapsed.Seconds >= waveCooldownTime && waveEnded) //if waveCooldown has ended
         {
             secondToSpawn = Random.Range(0, waveMaxTime);
-            UnityEngine.Debug.Log("Wave Cooldown Ended... New Wave Starting!");
+            UnityEngine.Debug.Log("<color=red>Wave Cooldown Ended... New Wave Starting!</color>");
             WaveTimer.Reset();
             WaveTimer.Start();
             waveEnded = false;
             waveStarted = true;
-               
-            //go back to WaveStarted= true statements
-
-        }
-
+            
        
-
+        }
     }
 
     void InitializeEvent() {

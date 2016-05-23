@@ -13,7 +13,7 @@ public class StormBehavior : StormCloudEvent, IWindSensitive
     {
 
         Move();
-        if (EnteredWindzone) transform.Translate(5, 0, 5);
+        if (EnteredWindzone) transform.Translate(Speed, 0, Speed);
         WindEffect();
         DestroyCloud();
     }
