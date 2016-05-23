@@ -94,10 +94,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 452110}
-  - 114: {fileID: 11465828}
   - 136: {fileID: 13689454}
   - 114: {fileID: 11474758}
   - 114: {fileID: 11461216}
+  - 114: {fileID: 11434324}
   m_Layer: 0
   m_Name: Windmill
   m_TagString: Untagged
@@ -302,7 +302,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 121002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.182362, y: 0, z: 13.761806}
+  m_LocalPosition: {x: 38.230442, y: 0.0000038146973, z: 260.0482}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 478002}
@@ -481,7 +481,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11465828}
+      - m_Target: {fileID: 0}
         m_MethodName: Cleanup
         m_Mode: 1
         m_Arguments:
@@ -624,7 +624,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   angularVelocityPerMetreSecond: 10
-  turbine: {fileID: 11465828}
+  turbine: {fileID: 11434324}
+--- !u!114 &11434324
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 121002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f90b58ba78ecd1147ae13ca84ee37bd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overchargeIncrease: 0.02
+  overchargeDecrease: 0.01
+  maxOvercharge: 2
+  _turbineDiameter: 6
+  _turbineHeight: 30
+  _debug: 0
+  raycastPoint: {x: 0, y: 30, z: 0}
+  powerHUD: {fileID: 11491042}
 --- !u!114 &11437320
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -664,7 +683,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11465828}
+      - m_Target: {fileID: 0}
         m_MethodName: Police
         m_Mode: 1
         m_Arguments:
@@ -716,7 +735,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11465828}
+      - m_Target: {fileID: 0}
         m_MethodName: Repair
         m_Mode: 1
         m_Arguments:
@@ -768,7 +787,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11465828}
+      - m_Target: {fileID: 0}
         m_MethodName: Firemen
         m_Mode: 1
         m_Arguments:
@@ -832,25 +851,6 @@ MonoBehaviour:
   breakingPoof: {fileID: 169880}
   brokenSmoke: {fileID: 162834}
   windParticle: {fileID: 0}
---- !u!114 &11465828
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 121002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8257956623549114d83fe51149caf4b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  overchargeIncrease: 0.02
-  overchargeDecrease: 0.01
-  maxOvercharge: 1
-  _turbineDiameter: 15
-  _turbineHeight: 30
-  _debug: 0
-  raycastPoint: {x: 0, y: 10, z: 0}
-  powerHUD: {fileID: 11491042}
 --- !u!114 &11474758
 MonoBehaviour:
   m_ObjectHideFlags: 1
