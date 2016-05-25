@@ -67,7 +67,7 @@ public class CameraMovement : MonoBehaviour {
 
 			_main.GetComponent<Camera> ().orthographicSize = Mathf.Lerp (_size, ZoomOut, (Mathf.Sin(Mathf.Lerp(-0.5f*Mathf.PI,1.5f*Mathf.PI,_move) ) + 1)*0.5f );
 
-            _main.transform.position = Vector3.Lerp (_origin + _offset, _target + _offset, (Mathf.Sin(Mathf.Lerp(-0.5f*Mathf.PI,1.5f*Mathf.PI,_move/2) ) + 1)*0.5f);
+            _main.transform.position = Vector3.Lerp (_origin + _offset, _target + _offset, (Mathf.Sin(Mathf.Lerp(-0.5f*Mathf.PI,0.5f*Mathf.PI,_move) ) + 1)*0.5f);
 		}
 	}
 }
