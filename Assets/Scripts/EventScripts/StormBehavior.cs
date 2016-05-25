@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class StormBehavior : StormCloudEvent, IWindSensitive
+public class StormBehavior : MonoBehaviour, IWindSensitive
 {
 
     float WindRadius = 60.0f;
     float DamageRadius = 40.0f;
+
+	public float speed;
 
     bool debug = true;
     // Update is called once per frame
@@ -13,7 +15,7 @@ public class StormBehavior : StormCloudEvent, IWindSensitive
     {
 
         Move();
-        if (EnteredWindzone) transform.Translate(Speed, 0, Speed);
+        if (EnteredWindzone) transform.Translate(speed, 0, speed);
         WindEffect();
         DestroyCloud();
     }
@@ -31,7 +33,7 @@ public class StormBehavior : StormCloudEvent, IWindSensitive
     void Move()
     {
 
-        transform.Translate(-Speed, 0, 0);
+        transform.Translate(-speed, 0, 0);
     }
 
     void OnDrawGizmos() {
