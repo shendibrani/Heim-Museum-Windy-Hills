@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
 
-
 public class EventHandler : MonoBehaviour {
     
 	private Stopwatch WaveTimer;
@@ -124,11 +123,11 @@ public class EventHandler : MonoBehaviour {
 
 	EventClass GetRandomEventUnderDifficluty (int difficulty)
 	{
-		EventClass[] viable = eventsList.FindAll(x => x.difficulty < difficulty);
+		List<EventClass> viable = eventsList.FindAll(x => x.difficulty < difficulty);
 
-		if(viable.Length == 0) return null;
+		if(viable.Count == 0) return null;
 
-		return viable[RNG.Next(0, viable.Length)];
+		return viable[RNG.Next(0, viable.Count)];
 	}
 
     void InitializeEvent() 
