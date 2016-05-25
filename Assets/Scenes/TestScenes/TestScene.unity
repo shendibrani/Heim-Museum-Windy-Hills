@@ -231,23 +231,23 @@ Prefab:
       objectReference: {fileID: 1744704847}
     - target: {fileID: 22471456, guid: 8952646635ca4a246937ea8256fde184, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22471456, guid: 8952646635ca4a246937ea8256fde184, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22458016, guid: 8952646635ca4a246937ea8256fde184, type: 2}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22458016, guid: 8952646635ca4a246937ea8256fde184, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22458016, guid: 8952646635ca4a246937ea8256fde184, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8952646635ca4a246937ea8256fde184, type: 2}
@@ -340,6 +340,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 375739fcf75b36248aecc18c6901d242, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  secondToSpawn: 0
+  waveNumber: 0
+  waveMaxTime: 10
+  waveCooldownTime: 5
+  stormEvent:
+    difficulty: 2
+    speed: 5
+  fireEvent:
+    difficulty: 3
+  saboteurEvent:
+    difficulty: 4
+  flockEvent:
+    difficulty: 5
 --- !u!4 &1306633067
 Transform:
   m_ObjectHideFlags: 0
