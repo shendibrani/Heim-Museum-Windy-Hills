@@ -3,6 +3,14 @@ using System.Collections;
 
 public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive, IMouseSensitive {
 
+    static PlaceObjectOnClick instance;
+    public static PlaceObjectOnClick Instance
+    {
+       get { if (instance == null) instance = FindObjectOfType<PlaceObjectOnClick>();
+            return instance;
+        }
+    }
+
 	[SerializeField] bool debug;
 
 	[SerializeField] GameObject prefab;
@@ -14,6 +22,8 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive, IMouseSensitiv
 
     float timer;
 
+    bool dirtyFlag = false;
+
 	public delegate void ObjectPlaced (GameObject go);
 	public ObjectPlaced OnObjectPlaced;
 
@@ -21,6 +31,11 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive, IMouseSensitiv
 	void Start () {
 		//OnObjectPlaced += FindObjectOfType<PowerHUDManager>().;
 	}
+
+    void OnDestroy()
+    {
+        instance = null;
+    }
 
 	public void OnClick(ClickState state, RaycastHit hit)
 	{
@@ -35,6 +50,11 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive, IMouseSensitiv
 			PlaceObject (hit.point.x, hit.point.z);
 		}
 	}
+
+    public void SetDirty(bool s)
+    {
+        dirtyFlag = s;
+    }
 
     bool PointHold(float hx, float hz)
     {
@@ -51,7 +71,7 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive, IMouseSensitiv
 
     bool PlaceObject(float hx, float hz)
 	{
-		if(!FindObjectOfType<TurbineLimitManager>().isCap){
+		if(!FindObjectOfType<TurbineLimitManager>().isCap && !dirtyFlag){
 			if(debug) Debug.Log("Building points array");
 			Vector2[] points = new Vector2[5];
 
@@ -78,7 +98,11 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive, IMouseSensitiv
 			if(debug) Debug.Log("Instantiating");
 			GameObject instance = (GameObject)GameObject.Instantiate (prefab, snapPoint, Quaternion.identity); 
 	        if (OnObjectPlaced != null) OnObjectPlaced (instance);
-			return true;
+            SetDirty(true);
+
+            //Dirty Flag set false by Tutorial Progression
+            TutorialProgression.Instance.BeginStepTimer();
+            return true;
 		}
 		return false;
 	}

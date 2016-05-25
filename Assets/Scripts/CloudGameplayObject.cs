@@ -10,6 +10,9 @@ public class CloudGameplayObject : MonoBehaviour {
     GameObject cloudObject;
 
     [SerializeField]
+    GameObject canvasBar;
+
+    [SerializeField]
     float extent;
 
     [SerializeField]
@@ -26,6 +29,7 @@ public class CloudGameplayObject : MonoBehaviour {
 		cloudObject = this.gameObject;
         TurbineObject.windVelocity.value = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z);
         cloudObject.transform.localPosition = new Vector3(0, cloudObject.transform.localPosition.y, cloudObject.transform.localPosition.z);
+        if (canvasBar != null) canvasBar.SetActive(TutorialProgression.Instance.IsComplete);
     }
 
     void OnDrawGizmos()
@@ -38,43 +42,49 @@ public class CloudGameplayObject : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
 
-        HashSet<IWindSensitive> tmpList = new HashSet<IWindSensitive>();
-        HashSet<IWindSensitive> deleteList = new HashSet<IWindSensitive>();
-
-        RaycastHit[] hits;
-        hits = Physics.BoxCastAll(cloudObject.transform.position, new Vector3(radius, radius * 4, radius), TurbineObject.windVelocity);
-        foreach(RaycastHit hit in hits)
+        if (TutorialProgression.Instance.IsComplete)
         {
-            IWindSensitive tmpCollider = hit.collider.GetComponent<IWindSensitive>();
-            if (tmpCollider != null)
+            if (canvasBar != null && canvasBar.activeSelf != TutorialProgression.Instance.IsComplete) canvasBar.SetActive(TutorialProgression.Instance.IsComplete);
+
+            HashSet<IWindSensitive> tmpList = new HashSet<IWindSensitive>();
+            HashSet<IWindSensitive> deleteList = new HashSet<IWindSensitive>();
+
+            RaycastHit[] hits;
+            hits = Physics.BoxCastAll(cloudObject.transform.position, new Vector3(radius, radius * 4, radius), TurbineObject.windVelocity);
+            foreach (RaycastHit hit in hits)
             {
-                tmpList.Add(tmpCollider);
-                if (!interfaces.Contains(tmpCollider))
+                IWindSensitive tmpCollider = hit.collider.GetComponent<IWindSensitive>();
+                if (tmpCollider != null)
                 {
-                    interfaces.Add(tmpCollider);
-                    hit.collider.GetComponent<IWindSensitive>().OnEnterWindzone();
+                    tmpList.Add(tmpCollider);
+                    if (!interfaces.Contains(tmpCollider))
+                    {
+                        interfaces.Add(tmpCollider);
+                        hit.collider.GetComponent<IWindSensitive>().OnEnterWindzone();
+                    }
                 }
             }
-        }
-        foreach (IWindSensitive i in interfaces)
-        {
-            if (tmpList.Contains(i))
+            foreach (IWindSensitive i in interfaces)
             {
-                //onstaywindzone if needed
+                if (tmpList.Contains(i))
+                {
+                    //onstaywindzone if needed
+                }
+                else
+                {
+                    i.OnExitWindzone();
+                    deleteList.Add(i);
+                }
             }
-            else
+            foreach (IWindSensitive i in deleteList)
             {
-                i.OnExitWindzone();
-                deleteList.Add(i);
-            } 
+                interfaces.Remove(i);
+            }
         }
-        foreach(IWindSensitive i in deleteList)
-        {
-            interfaces.Remove(i);
-        }
-	}
+    }
 
 	/*public void OnTouch(Touch t, RaycastHit hit)
 	{
