@@ -24,7 +24,6 @@ public class EventHandler : MonoBehaviour {
     bool waveEnded;
     #endregion
 
-    public bool debug;
     private List<EventClass> eventsList, currentWave;
   
     // Use this for initialization
@@ -55,7 +54,7 @@ public class EventHandler : MonoBehaviour {
 
     void StartWaves() 
 	{
-        if ( debug) UnityEngine.Debug.Log("<color=red>Wave with difficulty Started!</color>");
+		UnityEngine.Debug.Log("<color=red>Wave with difficulty "+ GetWaveDifficulty(currentWave) +" Started!</color>");
         WaveTimer.Start();
         waveEnded = false;
         waveStarted = true;
@@ -66,12 +65,12 @@ public class EventHandler : MonoBehaviour {
 	{
     	if (waveStarted)// if wave system was started
         {
-            if (debug)UnityEngine.Debug.Log("Elapsed Seconds: " + WaveTimer.Elapsed.Seconds);
+            UnityEngine.Debug.Log("Elapsed Seconds: " + WaveTimer.Elapsed.Seconds);
             InitializeEvent(); //initialize first event
 
             if (WaveTimer.Elapsed.Seconds >= waveMaxTime && !waveEnded) // if Wave Time has ended, reset clock.
             {
-                if (debug)ClearLog();
+              //ClearLog();
                 waveEnded = true;
                 waveStarted = false;
                 WaveTimer.Reset();
@@ -81,16 +80,14 @@ public class EventHandler : MonoBehaviour {
 
         if (WaveTimer.Elapsed.Seconds < waveCooldownTime && !waveStarted && waveEnded)
         {
-            if (debug) UnityEngine.Debug.Log("<color=red>Wave Ended</color>");
-            {
-                UnityEngine.Debug.Log("Wave in Cooldown mode! Ending in: " + (waveCooldownTime - WaveTimer.Elapsed.Seconds));
-            }
+            UnityEngine.Debug.Log("<color=red>Wave Ended</color>");
+            UnityEngine.Debug.Log("Wave in Cooldown mode! Ending in: " + (waveCooldownTime - WaveTimer.Elapsed.Seconds));
         }
 
         if (WaveTimer.Elapsed.Seconds >= waveCooldownTime && waveEnded) //if waveCooldown has ended
         {
             secondToSpawn = Random.Range(0, waveMaxTime);
-            if (debug)UnityEngine.Debug.Log("<color=red>Wave Cooldown Ended... New Wave Starting!</color>");
+            UnityEngine.Debug.Log("<color=red>Wave Cooldown Ended... New Wave Starting!</color>");
             WaveTimer.Reset();
             WaveTimer.Start();
             waveEnded = false;
@@ -103,12 +100,12 @@ public class EventHandler : MonoBehaviour {
 		List<EventClass> wave = new List<EventClass>();
 
 		int waveDiff = 0;
-		EventClass e = GetRandomEventUnderDifficluty(difficulty - waveDiff);
+		EventClass e = GetRandomEventUnderDifficulty(difficulty);
 
 		while (waveDiff < difficulty && e != null){
 			wave.Add(e);
 			waveDiff = GetWaveDifficulty(wave);
-			e = GetRandomEventUnderDifficluty(difficulty - waveDiff);
+			e = GetRandomEventUnderDifficulty(difficulty - waveDiff);
 		}
 
 		return wave;
@@ -125,7 +122,12 @@ public class EventHandler : MonoBehaviour {
 		return difficulty;
 	}
 
-	EventClass GetRandomEventUnderDifficluty (int difficulty)
+	/// <summary>
+	/// Gets a random event whose difficulty is equal or under the given value.
+	/// </summary>
+	/// <returns>A random event.</returns>
+	/// <param name="difficulty">The highest difficulty allowed.</param>
+	EventClass GetRandomEventUnderDifficulty (int difficulty)
 	{
 		List<EventClass> viable = eventsList.FindAll(x => x.difficulty < difficulty);
 
@@ -138,7 +140,7 @@ public class EventHandler : MonoBehaviour {
 	{
         if (WaveTimer.Elapsed.Seconds == secondToSpawn && !initializedEvent)
         {
-            if (debug)UnityEngine.Debug.Log("<color=red>Initializing random event!</color>");
+            UnityEngine.Debug.Log("<color=red>Initializing random event!</color>");
             currentWave[0].EventStart();
             currentWave.RemoveAt(0);
             initializedEvent = true;
