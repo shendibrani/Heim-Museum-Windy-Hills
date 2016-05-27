@@ -25,7 +25,6 @@ public class EventHandler : MonoBehaviour {
 
     private List<EventClass> eventsList, currentWave;
   
-
     // Use this for initialization
     void Start () 
 	{
@@ -53,7 +52,7 @@ public class EventHandler : MonoBehaviour {
 
     void StartWaves() 
 	{
-        UnityEngine.Debug.Log("<color=red>Wave Started!</color>");
+        UnityEngine.Debug.Log("<color=red>Wave with difficulty Started!</color>");
         WaveTimer.Start();
         waveEnded = false;
         waveStarted = true;
@@ -135,11 +134,18 @@ public class EventHandler : MonoBehaviour {
         if (WaveTimer.Elapsed.Seconds == secondToSpawn && !initializedEvent)
         {
             UnityEngine.Debug.Log("<color=red>Initializing random event!</color>");
-            eventsList[Random.Range(0, eventsList.Count)].EventStart();
+            currentWave[0].EventStart();
+            currentWave.RemoveAt(0);
             initializedEvent = true;
+        }
+
+        if (currentWave.Count == 0) {
+            currentWave = GenerateWave(5);
 
         }
-        else if ( WaveTimer.Elapsed.Seconds > secondToSpawn) {
+
+        else if (WaveTimer.Elapsed.Seconds > secondToSpawn)
+        {
             initializedEvent = false;
         }
     }

@@ -61,9 +61,13 @@ public class FlockEvent : EventClass
 {
 	public override void EventStart ()
 	{
-		//TurbineStateManager.saboteurState.Copy(GetRandomTurbine());
-	}
+        Vector3 stormSpawnPos = new Vector3(UnityEngine.Random.Range(500.0f, 700.0f), 60.0f, UnityEngine.Random.Range(50.0f, 300.0f));
+        GameObject instance = (GameObject)GameObject.Instantiate(Resources.Load("PigeonEventMovement"), stormSpawnPos, Quaternion.identity);
+       
+    }
 
 	public override void EventEnd ()
-	{}
+	{
+
+    }
 }
