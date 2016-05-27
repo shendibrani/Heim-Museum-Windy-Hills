@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using System.Collections.Generic;
 
 public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive, IMouseSensitive {
 
@@ -37,7 +40,32 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive, IMouseSensitiv
         instance = null;
     }
 
-	public void OnClick(ClickState state, RaycastHit hit)
+    public bool TestUICast(float hx, float hz)
+    {
+        bool hitTestUI = false;
+        // get pointer event data, then set current mouse position
+        PointerEventData ped = new PointerEventData(EventSystem.current);
+        ped.position = new Vector2(hx, hz);
+
+        // create an empty list of raycast results
+        List <RaycastResult> hits = new List<RaycastResult>();
+
+        // ray cast into UI and check for hits
+        EventSystem.current.RaycastAll(ped, hits);
+
+        foreach(RaycastResult r in hits)
+        {
+            if (r.gameObject.GetComponent<RectTransform>() != null)
+            {
+                hitTestUI = true;
+                break;
+            }
+        }
+        if (debug) Debug.Log("raycast hits UI: " + hitTestUI);
+        return hitTestUI;
+    }
+
+    public void OnClick(ClickState state, RaycastHit hit)
 	{
 		if (state == ClickState.Pressed) PointHold(hit.point.x, hit.point.z);
         if (state == ClickState.Down) PlaceObject (hit.point.x, hit.point.z);
@@ -50,7 +78,6 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive, IMouseSensitiv
 			PlaceObject (hit.point.x, hit.point.z);
 		}
 	}
-
     public void SetDirty(bool s)
     {
         dirtyFlag = s;
@@ -71,7 +98,7 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive, IMouseSensitiv
 
     bool PlaceObject(float hx, float hz)
 	{
-		if(!FindObjectOfType<TurbineLimitManager>().isCap && !dirtyFlag){
+		if(!FindObjectOfType<TurbineLimitManager>().isCap && !dirtyFlag && TestUICast(hx, hz)){
 			if(debug) Debug.Log("Building points array");
 			Vector2[] points = new Vector2[5];
 

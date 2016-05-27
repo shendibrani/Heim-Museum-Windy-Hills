@@ -49,22 +49,23 @@ public class TurbineLimitManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        FindObjectOfType<PlaceObjectOnClick>().OnObjectPlaced += checkCount;
+        //FindObjectOfType<PlaceObjectOnClick>().OnObjectPlaced += checkCount;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (countText != null) countText.text = currentCount.ToString();
-        if (maxText != null && debug) maxText.text = maxCount.ToString(); 
+        if (countText != null) countText.text = (maxCount - currentCount).ToString();
+        if (maxText != null && debug) maxText.text = (maxCount - currentCount).ToString();
+        checkCount(); 
 	
 	}
     public void IncreaseMax()
     {
         maxCount += 1;
     }
-    public void checkCount(GameObject go)
+    public void checkCount()
     {
-        int c = FindObjectsOfType<TurbineObject>().Length;
+        int c = TurbineObject.all.Count;
         currentCount = c;
         if (c >= maxCount) isCap = true;
         else isCap = false;
