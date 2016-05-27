@@ -68,7 +68,7 @@ public class EventHandler : MonoBehaviour {
 
             if (WaveTimer.Elapsed.Seconds >= waveMaxTime && !waveEnded) // if Wave Time has ended, reset clock.
             {
-                ClearLog();
+              //  ClearLog();
                 waveEnded = true;
                 waveStarted = false;
                 WaveTimer.Reset();
