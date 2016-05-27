@@ -59,6 +59,9 @@ public class ScoreManager : MonoBehaviour {
     [SerializeField]
     Text scoreText;
 
+    [SerializeField]
+    bool debug;
+
     // Use this for initialization
     void Start () {
         cityPower = startCityPower;
@@ -97,12 +100,14 @@ public class ScoreManager : MonoBehaviour {
         {
             if (currentPower > cityPower)
             {
+                if (debug) Debug.Log("Current Power > City Power");
                 hasPositiveTimer = true;
                 hasNegativeTimer = false;
                 hasCheckedCity = true;
             }
             if (currentPower < cityPower)
             {
+                if (debug) Debug.Log("Current Power < City Power");
                 hasNegativeTimer = true;
                 hasPositiveTimer = false;
                 hasCheckedCity = true; 
@@ -119,6 +124,7 @@ public class ScoreManager : MonoBehaviour {
                     hasCheckedCity = false;
                     if (currentPower > cityPower)
                     {
+                        if (debug) Debug.Log("Increase City Power");
                         cityPower += 1;
                     }
                 }
@@ -127,6 +133,7 @@ public class ScoreManager : MonoBehaviour {
                     hasCheckedCity = false;
                     if (currentPower < cityPower)
                     {
+                        if (debug) Debug.Log("Decrease City Power");
                         cityPower -= 1;
                     }
                 }
