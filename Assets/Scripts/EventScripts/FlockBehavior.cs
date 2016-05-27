@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FlockBehavior : MonoBehaviour {
+public class FlockBehavior : MonoBehaviour
+{
 
     float WindRadius = 60.0f;
     float DamageRadius = 27.0f;
@@ -11,32 +12,38 @@ public class FlockBehavior : MonoBehaviour {
     TurbineObject selectedTurbined;
     public bool debug = true;
     // Update is called once per frame
-    void Start() {
-        randomed = Random.Range(0, TurbineObject.all.Count);
-        selectedTurbined = TurbineObject.all[randomed];
+    void Start()
+    {
+        if (TurbineObject.all.Count > 0)
+        {
+            randomed = Random.Range(0, TurbineObject.all.Count);
+            selectedTurbined = TurbineObject.all[randomed];
+        }
     }
 
     void Update()
     {
-
-        Move();
-        WindEffect();
-        Destroy(this, 10.0f);
+        if (TurbineObject.all.Count > 0)
+        {
+            Move();
+            WindEffect();
+            Destroy(this, 10.0f);
+        }
     }
 
     void WindEffect()
     {
-        float distance = Vector3.Distance(new Vector3(selectedTurbined.transform.position.x, 30, transform.position.z), this.transform.position); 
+        float distance = Vector3.Distance(new Vector3(selectedTurbined.transform.position.x, 30, transform.position.z), this.transform.position);
         if (distance <= DamageRadius) selectedTurbined.BreakTurbine();
-   
+
     }
 
     void Move()
     {
-        
+
         Vector3 target = TurbineObject.all[randomed].transform.position;
-       // transform
-        transform.position = Vector3.MoveTowards(transform.position, new Vector3(target.x,target.y + 30, target.z), 0.2f );
+        // transform
+        transform.position = Vector3.MoveTowards(transform.position, new Vector3(target.x, target.y + 30, target.z), 0.2f);
     }
 
     void OnDrawGizmos()
@@ -49,16 +56,16 @@ public class FlockBehavior : MonoBehaviour {
         }
     }
 
-    
+
     public void OnEnterWindzone()
     {
-        
+
 
     }
 
     public void OnExitWindzone()
     {
-        
+
     }
 
     public void OnStayWindzone()

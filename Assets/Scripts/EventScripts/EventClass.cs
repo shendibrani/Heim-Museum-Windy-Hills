@@ -24,7 +24,7 @@ public class StormCloudEvent : EventClass {
 
 	public override void EventStart()
 	{
-		Vector3 stormSpawnPos = new Vector3(UnityEngine.Random.Range(600.0f, 700.0f), 60.0f, UnityEngine.Random.Range(50.0f, 300.0f));
+		Vector3 stormSpawnPos = new Vector3(Random.Range(600.0f, 700.0f), 60.0f, Random.Range(50.0f, 300.0f));
 		GameObject instance = (GameObject) GameObject.Instantiate(Resources.Load("StormCloud"), stormSpawnPos, Quaternion.identity);
 		instance.GetComponent<StormBehavior>().speed = speed;
 	}

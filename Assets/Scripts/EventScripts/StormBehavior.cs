@@ -5,7 +5,7 @@ public class StormBehavior : MonoBehaviour, IWindSensitive
 {
 
     float WindRadius = 40.0f;
-    float DamageRadius =27.0f;
+    float DamageRadius =30.0f;
 
 	public float speed;
 
@@ -24,7 +24,7 @@ public class StormBehavior : MonoBehaviour, IWindSensitive
         foreach (TurbineObject to in TurbineObject.all) {
             float distance = Vector3.Distance(new Vector3(to.transform.position.x, 30, transform.position.z), this.transform.position);
 
-           // if (distance <= WindRadius) to.IncreaseEfficiency();
+          //if (distance <= WindRadius) to.IncreaseEfficiency();
             if (distance <= DamageRadius) to.BreakTurbine();
         }
 
@@ -32,7 +32,6 @@ public class StormBehavior : MonoBehaviour, IWindSensitive
 
     void Move()
     {
-
         transform.Translate(-speed, 0, 0);
     }
 
