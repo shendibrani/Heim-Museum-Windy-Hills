@@ -4,8 +4,8 @@ using System.Collections;
 public class StormBehavior : MonoBehaviour, IWindSensitive
 {
 
-    float WindRadius = 60.0f;
-    float DamageRadius = 40.0f;
+    float WindRadius = 50.0f;
+    float DamageRadius = 25.0f;
 
 	public float speed;
 
