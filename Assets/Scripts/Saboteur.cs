@@ -15,6 +15,6 @@ public class Saboteur : MonoBehaviour {
 	{
 		// += speed is for testingl use the public Progress for final verison
 		Progress += Speed;
-		this.transform.position = new Vector3(-2,Mathf.Lerp(_start,_end,Progress),0);
+		this.transform.localPosition = new Vector3(-2,Mathf.Lerp(_start,_end,Progress),0);
 	}
 }

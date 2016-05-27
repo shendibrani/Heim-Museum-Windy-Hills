@@ -274,12 +274,20 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 			if (ts.name == state.name) return;
 		}
 
+		if(state.name == TurbineStateManager.saboteurState.name){
+			GetComponentInChildren<Saboteur>().gameObject.SetActive(true);
+		}
+
 		states.Add(state);
 	}
 
 	public void RemoveState(TurbineState state)
 	{
 		deletionQueue.Add(state);
+
+		if(state.name == TurbineStateManager.saboteurState.name){
+			GetComponentInChildren<Saboteur>().gameObject.SetActive(false);
+		}
 	}
 
 	#region Interfaces
