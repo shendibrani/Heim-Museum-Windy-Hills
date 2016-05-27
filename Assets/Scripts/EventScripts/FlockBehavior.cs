@@ -4,7 +4,7 @@ using System.Collections;
 public class FlockBehavior : MonoBehaviour {
 
     float WindRadius = 60.0f;
-    float DamageRadius = 40.0f;
+    float DamageRadius = 27.0f;
 
     public float speed;
     int randomed;
@@ -20,22 +20,15 @@ public class FlockBehavior : MonoBehaviour {
     {
 
         Move();
-        
         WindEffect();
-        DestroyCloud();
-
         Destroy(this, 10.0f);
     }
 
     void WindEffect()
     {
-       
-            float distance = Vector3.Distance(new Vector3(selectedTurbined.transform.position.x, 30, transform.position.z), this.transform.position);
-
-            
-            if (distance <= DamageRadius) selectedTurbined.BreakTurbine();
-        
-
+        float distance = Vector3.Distance(new Vector3(selectedTurbined.transform.position.x, 30, transform.position.z), this.transform.position); 
+        if (distance <= DamageRadius) selectedTurbined.BreakTurbine();
+   
     }
 
     void Move()
@@ -54,11 +47,6 @@ public class FlockBehavior : MonoBehaviour {
             Gizmos.DrawSphere(transform.position, WindRadius);
             Gizmos.DrawSphere(transform.position, DamageRadius);
         }
-    }
-
-    private void DestroyCloud()
-    {
-        if (transform.position.x < -300) Destroy(gameObject);
     }
 
     

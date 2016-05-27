@@ -58,7 +58,10 @@ public class TurbineLimitManager : MonoBehaviour {
         if (maxText != null && debug) maxText.text = maxCount.ToString(); 
 	
 	}
-
+    public void IncreaseMax()
+    {
+        maxCount += 1;
+    }
     public void checkCount(GameObject go)
     {
         int c = FindObjectsOfType<TurbineObject>().Length;

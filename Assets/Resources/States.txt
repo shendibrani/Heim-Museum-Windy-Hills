@@ -1,13 +1,13 @@
 {
     "name": "Low Fire",
-    "timer": 0.0,
-    "_efficiencyMultiplyer": 0.0,
+    "timer": 5.0,
+    "_efficiencyMultiplyer": 1.0,
     "negativeEffect": false,
-    "timed": false,
+    "timed": true,
     "endOnTap": false,
-    "endOnWind": false,
+    "endOnWind": true,
     "winzoneDependent": false,
-    "setsOnHighFire": false,
+    "setsOnHighFire": true,
     "breaksTurbine": false,
     "dirtiesTurbine": false,
     "endOnPolice": false,
@@ -18,35 +18,35 @@
 #
 {
     "name": "High Fire",
-    "timer": 0.0,
-    "_efficiencyMultiplyer": 0.0,
+    "timer": 10.0,
+    "_efficiencyMultiplyer": 0.5,
     "negativeEffect": false,
-    "timed": false,
+    "timed": true,
     "endOnTap": false,
     "endOnWind": false,
     "winzoneDependent": false,
     "setsOnHighFire": false,
-    "breaksTurbine": false,
+    "breaksTurbine": true,
     "dirtiesTurbine": false,
     "endOnPolice": false,
-    "endOnFiremen": false,
+    "endOnFiremen": true,
     "endOnRepair": false,
     "endOnCleanup": false
 }
 #
 {
     "name": "Saboteurs",
-    "timer": 0.0,
-    "_efficiencyMultiplyer": 0.0,
+    "timer": 5.0,
+    "_efficiencyMultiplyer": 1.0,
     "negativeEffect": false,
-    "timed": false,
+    "timed": true,
     "endOnTap": false,
-    "endOnWind": false,
+    "endOnWind": true,
     "winzoneDependent": false,
     "setsOnHighFire": false,
     "breaksTurbine": false,
     "dirtiesTurbine": false,
-    "endOnPolice": false,
+    "endOnPolice": true,
     "endOnFiremen": false,
     "endOnRepair": false,
     "endOnCleanup": false
@@ -73,7 +73,7 @@
 {
     "name": "Dirty",
     "timer": 0.0,
-    "_efficiencyMultiplyer": 0.0,
+    "_efficiencyMultiplyer": 0.5,
     "negativeEffect": false,
     "timed": false,
     "endOnTap": false,
@@ -85,5 +85,5 @@
     "endOnPolice": false,
     "endOnFiremen": false,
     "endOnRepair": false,
-    "endOnCleanup": false
+    "endOnCleanup": true
 }

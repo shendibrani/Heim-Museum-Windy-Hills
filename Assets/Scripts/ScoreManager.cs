@@ -41,6 +41,9 @@ public class ScoreManager : MonoBehaviour {
     float startCityPower = 10f;
     float cityPower;
 
+    int newTurbineCount;
+    [SerializeField]
+    int newTurbineTarget = 3;
     float currentMorale = 1f;
 
     float currentPower;
@@ -72,6 +75,11 @@ public class ScoreManager : MonoBehaviour {
         ResetPower();
         CityProgression();
         EnergyProgression();
+        if (newTurbineCount == newTurbineTarget)
+        {
+            newTurbineCount = 0;
+            TurbineLimitManager.Instance.IncreaseMax();
+        }
         scoreText.text = Mathf.Floor(totalScore.value).ToString();
 	}
 
@@ -126,6 +134,7 @@ public class ScoreManager : MonoBehaviour {
                     {
                         if (debug) Debug.Log("Increase City Power");
                         cityPower += 1;
+                        newTurbineCount += 1;
                     }
                 }
                 if (hasNegativeTimer)
@@ -135,6 +144,7 @@ public class ScoreManager : MonoBehaviour {
                     {
                         if (debug) Debug.Log("Decrease City Power");
                         cityPower -= 1;
+                        newTurbineCount -= 1;
                     }
                 }
             }
