@@ -42,10 +42,11 @@ public class EventHandler : MonoBehaviour {
 
     bool initializedEvent = false;
     // Update is called once per frame
-   
+    bool initializeWaves = false;
     void Update () {
-		if (Input.GetKeyDown(KeyCode.Space)){
+		if (TutorialProgression.Instance.IsComplete && !initializeWaves){
         	StartWaves();
+            initializeWaves = true;
 		}
         UpdateWaves();
     }
