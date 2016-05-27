@@ -540,7 +540,7 @@ GameObject:
   - 4: {fileID: 479216}
   - 65: {fileID: 6520758}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Buttons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1406,7 +1406,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 121002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 159.8, y: 9.998171, z: 296.3}
+  m_LocalPosition: {x: 180.9355, y: 9.998169, z: 41.807343}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 478002}
@@ -1863,7 +1863,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: d9ebbfd66ead8034db941e70baf92a76, type: 2}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1889,7 +1889,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: d9ebbfd66ead8034db941e70baf92a76, type: 2}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1940,7 +1940,7 @@ Animator:
   m_GameObject: {fileID: 105816}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 22dcbbdad323b074c935dfa2a9e03706, type: 3}
-  m_Controller: {fileID: 9100000, guid: a39a00d34bef82e4ba9d814dbf836cb5, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1987,7 +1987,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11434324}
         m_MethodName: Cleanup
         m_Mode: 1
         m_Arguments:
@@ -2189,7 +2189,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11434324}
         m_MethodName: Police
         m_Mode: 1
         m_Arguments:
@@ -2254,7 +2254,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11434324}
         m_MethodName: Repair
         m_Mode: 1
         m_Arguments:
@@ -2306,7 +2306,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11434324}
         m_MethodName: Firemen
         m_Mode: 1
         m_Arguments:
@@ -2471,7 +2471,7 @@ SkinnedMeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: fab49941f373d194d8b8feedff682178, type: 2}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
