@@ -38,6 +38,7 @@ public class CloudGameplayObject : MonoBehaviour {
         {
             Gizmos.color = Color.blue;
             Gizmos.DrawWireCube(cloudObject.transform.position, new Vector3(radius, radius * 4, radius));
+            //Gizmos.DrawLine(cloudObject.transform.position, Vector3.Scale(TurbineObject.windVelocity, cloudObject.transform.position);
         }
     }
 

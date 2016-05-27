@@ -29,6 +29,9 @@ public class TutorialProgression : MonoBehaviour {
 
     CameraMovement cameraMover;
 
+    [SerializeField]
+    bool Skip;
+
     float timer = 0;
     float timerTarget = 0;
     bool isTiming = false;
@@ -46,13 +49,20 @@ public class TutorialProgression : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-	     if (isTiming == true)
+        if (Skip)
         {
-            timer += Time.deltaTime;
-            if (timer >= timerTarget)
+            PlaceObjectOnClick.Instance.SetDirty(false);
+            SetComplete();
+        }
+        else {
+            if (isTiming == true)
             {
-                OnStepTutorial();
-                isTiming = false;
+                timer += Time.deltaTime;
+                if (timer >= timerTarget)
+                {
+                    OnStepTutorial();
+                    isTiming = false;
+                }
             }
         }
 	}
