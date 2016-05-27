@@ -17,7 +17,7 @@ public class Morale : MonoBehaviour
 	{
         morale = new Monitored<float>(1f);
 		FindObjectOfType<PlaceObjectOnClick>().OnObjectPlaced += OnObjectPlaced;
-        onMoraleUpdate = FindObjectOfType<MoraleHUDManager>().MoraleUpdate;
+        onMoraleUpdate = ScoreManager.Instance.MoraleUpdate;
 	}
 
     void OnDrawGizmos()
@@ -40,8 +40,14 @@ public class Morale : MonoBehaviour
             {
                 if (Vector3.Distance(transform.position, go.transform.position) < range)
                 {
-                    morale.value -= 0.2f;
-                    onMoraleUpdate(-0.2f);
+                    morale.value -= 0.05f;
+                    onMoraleUpdate(-0.05f);
+                    if (debug) Debug.Log("Update Morale");
+                }
+                else
+                {
+                    morale.value += 0.05f;
+                    onMoraleUpdate(0.05f);
                     if (debug) Debug.Log("Update Morale");
                 }
             }
