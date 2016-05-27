@@ -24,6 +24,7 @@ public class HumanAnimator : MonoBehaviour {
 		else if (type == Type.Saboteur)
 		{
 			_anim.SetInteger ("Type", 1);
+			SetClimb(true);
 		}
 	}
 

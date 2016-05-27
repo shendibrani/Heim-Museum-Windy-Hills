@@ -54,7 +54,7 @@ public class EventHandler : MonoBehaviour {
 
     void StartWaves() 
 	{
-        UnityEngine.Debug.Log("<color=red>Wave with difficulty Started!</color>");
+		UnityEngine.Debug.Log("<color=red>Wave with difficulty "+ GetWaveDifficulty(currentWave) +" Started!</color>");
         WaveTimer.Start();
         waveEnded = false;
         waveStarted = true;
@@ -100,12 +100,12 @@ public class EventHandler : MonoBehaviour {
 		List<EventClass> wave = new List<EventClass>();
 
 		int waveDiff = 0;
-		EventClass e = GetRandomEventUnderDifficluty(difficulty - waveDiff);
+		EventClass e = GetRandomEventUnderDifficulty(difficulty);
 
 		while (waveDiff < difficulty && e != null){
 			wave.Add(e);
 			waveDiff = GetWaveDifficulty(wave);
-			e = GetRandomEventUnderDifficluty(difficulty - waveDiff);
+			e = GetRandomEventUnderDifficulty(difficulty - waveDiff);
 		}
 
 		return wave;
@@ -122,7 +122,12 @@ public class EventHandler : MonoBehaviour {
 		return difficulty;
 	}
 
-	EventClass GetRandomEventUnderDifficluty (int difficulty)
+	/// <summary>
+	/// Gets a random event whose difficulty is equal or under the given value.
+	/// </summary>
+	/// <returns>A random event.</returns>
+	/// <param name="difficulty">The highest difficulty allowed.</param>
+	EventClass GetRandomEventUnderDifficulty (int difficulty)
 	{
 		List<EventClass> viable = eventsList.FindAll(x => x.difficulty < difficulty);
 
