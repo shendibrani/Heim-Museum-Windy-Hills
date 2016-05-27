@@ -275,7 +275,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 		}
 
 		if(state.name == TurbineStateManager.saboteurState.name){
-			GetComponentInChildren<Saboteur>().gameObject.SetActive(true);
+			GetComponentInChildren<Saboteur>().StartAnimation();
 		}
 
 		states.Add(state);
@@ -286,7 +286,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 		deletionQueue.Add(state);
 
 		if(state.name == TurbineStateManager.saboteurState.name){
-			GetComponentInChildren<Saboteur>().gameObject.SetActive(false);
+			GetComponentInChildren<Saboteur>().EndAnimation();
 		}
 	}
 
