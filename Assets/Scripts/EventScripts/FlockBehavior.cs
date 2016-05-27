@@ -8,10 +8,12 @@ public class FlockBehavior : MonoBehaviour {
 
     public float speed;
     int randomed;
+    TurbineObject selectedTurbined;
     public bool debug = true;
     // Update is called once per frame
     void Start() {
-       randomed = Random.Range(0, TurbineObject.all.Count);
+        randomed = Random.Range(0, TurbineObject.all.Count);
+        selectedTurbined = TurbineObject.all[randomed];
     }
 
     void Update()
@@ -27,13 +29,12 @@ public class FlockBehavior : MonoBehaviour {
 
     void WindEffect()
     {
-        foreach (TurbineObject to in TurbineObject.all)
-        {
-            float distance = Vector3.Distance(new Vector3(to.transform.position.x, 30, transform.position.z), this.transform.position);
+       
+            float distance = Vector3.Distance(new Vector3(selectedTurbined.transform.position.x, 30, transform.position.z), this.transform.position);
 
             
-            if (distance <= DamageRadius) to.BreakTurbine();
-        }
+            if (distance <= DamageRadius) selectedTurbined.BreakTurbine();
+        
 
     }
 
