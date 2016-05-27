@@ -42,9 +42,9 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive, IMouseSensitiv
 
     public bool TestUICast(float hx, float hz)
     {
-        bool hitTestUI = false;
+        bool hitTestUI = true;
         // get pointer event data, then set current mouse position
-        PointerEventData ped = new PointerEventData(EventSystem.current);
+        /*PointerEventData ped = new PointerEventData(EventSystem.current);
         ped.position = new Vector2(hx, hz);
 
         // create an empty list of raycast results
@@ -55,12 +55,17 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive, IMouseSensitiv
 
         foreach(RaycastResult r in hits)
         {
-            if (r.gameObject.GetComponent<RectTransform>() != null)
+            if (r.gameObject.GetComponent<RectTransform>() != null & r.gameObject.layer == 1)
             {
                 hitTestUI = true;
                 break;
             }
-        }
+        }*/
+        if (EventSystem.current.IsPointerOverGameObject())
+            {
+                Debug.Log("Clicked on the UI");
+                hitTestUI = false;
+            }
         if (debug) Debug.Log("raycast hits UI: " + hitTestUI);
         return hitTestUI;
     }
