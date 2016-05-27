@@ -24,7 +24,9 @@ public class TurbineParticle : MonoBehaviour {
         if (activate) timer += Time.deltaTime;
         if (timer >= 0.7f) {
             brokenSmoke.SetActive(true);
-            activate = false; } 
+            activate = false;
+            timer = 0;
+        } 
 	}
 
     public void ActivateBreaking()
@@ -36,6 +38,7 @@ public class TurbineParticle : MonoBehaviour {
     public void DeactivateBreaking()
     {
         breakingPoof.SetActive(false);
+        brokenSmoke.GetComponent<ParticleSystem>().Stop();
         brokenSmoke.SetActive(false);
     }
 }

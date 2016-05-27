@@ -166,7 +166,6 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
     {
         if (isBroken) return;
         TurbineStateManager.brokenState.Copy(this);
-        if (GetComponent<TurbineParticle>() != null) GetComponent<TurbineParticle>().ActivateBreaking();
     }
 
     public void UpdateEfficiency()
@@ -277,8 +276,12 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 		if(state.name == TurbineStateManager.saboteurState.name){
 			GetComponentInChildren<Saboteur>().gameObject.SetActive(true);
 		}
+        if (state.name == TurbineStateManager.brokenState.name)
+        {
+            GetComponent<TurbineParticle>().ActivateBreaking();
+        }
 
-		states.Add(state);
+        states.Add(state);
 	}
 
 	public void RemoveState(TurbineState state)
@@ -288,6 +291,10 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 		if(state.name == TurbineStateManager.saboteurState.name){
 			GetComponentInChildren<Saboteur>().gameObject.SetActive(false);
 		}
+        if(state.name == TurbineStateManager.brokenState.name)
+        {
+            GetComponent<TurbineParticle>().DeactivateBreaking();
+        }
 	}
 
 	#region Interfaces
