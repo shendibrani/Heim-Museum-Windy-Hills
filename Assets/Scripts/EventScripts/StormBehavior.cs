@@ -4,8 +4,8 @@ using System.Collections;
 public class StormBehavior : MonoBehaviour, IWindSensitive
 {
 
-    float WindRadius = 50.0f;
-    float DamageRadius = 25.0f;
+    float WindRadius = 40.0f;
+    float DamageRadius =27.0f;
 
 	public float speed;
 
@@ -24,7 +24,7 @@ public class StormBehavior : MonoBehaviour, IWindSensitive
         foreach (TurbineObject to in TurbineObject.all) {
             float distance = Vector3.Distance(new Vector3(to.transform.position.x, 30, transform.position.z), this.transform.position);
 
-            if (distance <= WindRadius) to.IncreaseEfficiency();
+           // if (distance <= WindRadius) to.IncreaseEfficiency();
             if (distance <= DamageRadius) to.BreakTurbine();
         }
 
@@ -40,7 +40,7 @@ public class StormBehavior : MonoBehaviour, IWindSensitive
         if (debug)
         {
             Gizmos.color = Color.blue;
-            Gizmos.DrawSphere(transform.position, WindRadius);
+           // Gizmos.DrawSphere(transform.position, WindRadius);
             Gizmos.DrawSphere(transform.position, DamageRadius);
         }
     }

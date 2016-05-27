@@ -17,7 +17,7 @@ public class EventHandler : MonoBehaviour {
 	[SerializeField] SaboteurEvent saboteurEvent;
 	[SerializeField] FlockEvent flockEvent;
 	#endregion
-
+    
     #region EventFlags
     bool waveStarted;
     bool waveEnded;
@@ -69,7 +69,7 @@ public class EventHandler : MonoBehaviour {
 
             if (WaveTimer.Elapsed.Seconds >= waveMaxTime && !waveEnded) // if Wave Time has ended, reset clock.
             {
-              //  ClearLog();
+              //ClearLog();
                 waveEnded = true;
                 waveStarted = false;
                 WaveTimer.Reset();
