@@ -22,6 +22,19 @@ public class ScoreManager : MonoBehaviour {
         }
     }
 
+    public float CityPower
+    {
+        get
+        {
+            return cityPower;
+        }
+
+        set
+        {
+            cityPower = value;
+        }
+    }
+
     public static Monitored<float> totalScore = new Monitored<float>(0);
 
     [SerializeField]
@@ -30,7 +43,7 @@ public class ScoreManager : MonoBehaviour {
 
     float currentMorale = 1f;
 
-    float _currentPower;
+    float currentPower;
 
     [SerializeField]
     float energyProgressionTimerTarget = 10f;
@@ -43,6 +56,12 @@ public class ScoreManager : MonoBehaviour {
     bool hasPositiveTimer;
     bool hasNegativeTimer;
 
+    [SerializeField]
+    Text scoreText;
+
+    [SerializeField]
+    bool debug;
+
     // Use this for initialization
     void Start () {
         cityPower = startCityPower;
@@ -53,6 +72,7 @@ public class ScoreManager : MonoBehaviour {
         ResetPower();
         CityProgression();
         EnergyProgression();
+        scoreText.text = Mathf.Floor(totalScore.value).ToString();
 	}
 
     void OnDestroy()
@@ -67,10 +87,10 @@ public class ScoreManager : MonoBehaviour {
 
     void ResetPower()
     {
-        _currentPower = 0;
+        currentPower = 0;
         foreach (TurbineObject turbine in FindObjectsOfType<TurbineObject>())
         {
-            _currentPower += turbine.GetPowerOutput();
+            currentPower += turbine.GetPowerOutput();
         }
     }
 
@@ -78,14 +98,16 @@ public class ScoreManager : MonoBehaviour {
     {
         if (!hasCheckedCity)
         {
-            if (_currentPower > cityPower)
+            if (currentPower > cityPower)
             {
+                if (debug) Debug.Log("Current Power > City Power");
                 hasPositiveTimer = true;
                 hasNegativeTimer = false;
                 hasCheckedCity = true;
             }
-            if (_currentPower < cityPower)
+            if (currentPower < cityPower)
             {
+                if (debug) Debug.Log("Current Power < City Power");
                 hasNegativeTimer = true;
                 hasPositiveTimer = false;
                 hasCheckedCity = true; 
@@ -100,16 +122,18 @@ public class ScoreManager : MonoBehaviour {
                 if (hasPositiveTimer)
                 {
                     hasCheckedCity = false;
-                    if (_currentPower > cityPower)
+                    if (currentPower > cityPower)
                     {
+                        if (debug) Debug.Log("Increase City Power");
                         cityPower += 1;
                     }
                 }
                 if (hasNegativeTimer)
                 {
                     hasCheckedCity = false;
-                    if (_currentPower < cityPower)
+                    if (currentPower < cityPower)
                     {
+                        if (debug) Debug.Log("Decrease City Power");
                         cityPower -= 1;
                     }
                 }
@@ -122,7 +146,7 @@ public class ScoreManager : MonoBehaviour {
         energyProgressionTimer += Time.deltaTime;
         if (energyProgressionTimer >= energyProgressionTimerTarget)
         {
-            float value = _currentPower *= currentMorale;
+            float value = currentPower *= currentMorale;
             totalScore.value += value;
             energyProgressionTimer = 0f;
         }
