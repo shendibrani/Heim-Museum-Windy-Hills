@@ -10,6 +10,7 @@ public class EventHandler : MonoBehaviour {
 	[SerializeField] int waveNumber;
 	[SerializeField] int waveMaxTime = 10;
 	[SerializeField] int waveCooldownTime = 5;
+	[SerializeField] int waveDifficulty = 5;
 
 	#region Events
 	[SerializeField] StormCloudEvent stormEvent;
@@ -37,7 +38,7 @@ public class EventHandler : MonoBehaviour {
 		eventsList.Add(saboteurEvent);
 		eventsList.Add(flockEvent);
 
-		currentWave = GenerateWave(5);
+		currentWave = GenerateWave(waveDifficulty);
 	}
 
     bool initializedEvent = false;
@@ -141,7 +142,7 @@ public class EventHandler : MonoBehaviour {
         }
 
         if (currentWave.Count == 0) {
-            currentWave = GenerateWave(5);
+			currentWave = GenerateWave(waveDifficulty);
 
         }
 
