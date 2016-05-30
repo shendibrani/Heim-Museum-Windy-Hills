@@ -44,7 +44,7 @@
     "endOnWind": true,
     "winzoneDependent": false,
     "setsOnHighFire": false,
-    "breaksTurbine": false,
+    "breaksTurbine": true,
     "dirtiesTurbine": false,
     "endOnPolice": true,
     "endOnFiremen": false,

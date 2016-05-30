@@ -22,9 +22,9 @@ public class StormBehavior : MonoBehaviour, IWindSensitive
 
     void WindEffect() {
         foreach (TurbineObject to in TurbineObject.all) {
-            float distance = Vector3.Distance(new Vector3(to.transform.position.x, 30, transform.position.z), this.transform.position);
+            float distance = Vector3.Distance(new Vector3(to.transform.position.x, 0, transform.position.z), new Vector3(this.transform.position.x, 0, this.transform.position.z));
 
-          //if (distance <= WindRadius) to.IncreaseEfficiency();
+            if (distance <= WindRadius) to.IncreaseEfficiency();
             if (distance <= DamageRadius) to.BreakTurbine();
         }
 
