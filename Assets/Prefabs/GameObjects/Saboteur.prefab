@@ -1516,7 +1516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 0
-  _anim: {fileID: 9578310}
+  Anim: {fileID: 9578310}
 --- !u!137 &13711898
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

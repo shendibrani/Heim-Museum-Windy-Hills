@@ -37,7 +37,7 @@ public class Saboteur : MonoBehaviour {
 		{
 			Speed = 0;
 			_progress = 0;
-			gameObject.SetActive(false);
+			gameObject.SetActive (false);
 		}
 		else
 		{
