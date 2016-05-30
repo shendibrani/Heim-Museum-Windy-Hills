@@ -48,6 +48,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &104868
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 435530}
+  - 198: {fileID: 19862954}
+  - 199: {fileID: 19932894}
+  - 114: {fileID: 11447982}
+  m_Layer: 0
+  m_Name: Wind
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &105816
 GameObject:
   m_ObjectHideFlags: 1
@@ -997,23 +1015,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &192946
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 465904}
-  - 198: {fileID: 19874048}
-  - 199: {fileID: 19961002}
-  m_Layer: 0
-  m_Name: Wind
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &193136
 GameObject:
   m_ObjectHideFlags: 1
@@ -1354,6 +1355,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 496924}
   m_RootOrder: 0
+--- !u!4 &435530
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 104868}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
+  m_LocalPosition: {x: 0, y: 27.72, z: -3.73}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 457076}
+  m_RootOrder: 2
 --- !u!4 &435532
 Transform:
   m_ObjectHideFlags: 1
@@ -1423,7 +1436,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 121002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 331.68723, y: 9.998169, z: 306.96194}
+  m_LocalPosition: {x: 180.9355, y: 9.998169, z: 41.807343}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 478002}
@@ -1510,7 +1523,7 @@ Transform:
   m_Children:
   - {fileID: 450594}
   - {fileID: 418910}
-  - {fileID: 465904}
+  - {fileID: 435530}
   m_Father: {fileID: 452110}
   m_RootOrder: 4
 --- !u!4 &457928
@@ -1540,18 +1553,6 @@ Transform:
   - {fileID: 474992}
   m_Father: {fileID: 491894}
   m_RootOrder: 0
---- !u!4 &465904
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 192946}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
-  m_LocalPosition: {x: 0, y: 27.72, z: 3.59}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 457076}
-  m_RootOrder: 2
 --- !u!4 &465908
 Transform:
   m_ObjectHideFlags: 1
@@ -2348,6 +2349,21 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &11447982
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 104868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01aa22fac33161341bedd45cb9e664b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Wind: {fileID: 19862954}
+  Strength: 0
+  BaseSize: 2
+  BaseLifetime: 2
 --- !u!114 &11455856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2398,7 +2414,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   breakingPoof: {fileID: 169880}
   brokenSmoke: {fileID: 162834}
-  windParticle: {fileID: 192946}
+  windParticle: {fileID: 0}
 --- !u!114 &11474758
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5491,12 +5507,12 @@ ParticleSystem:
     subEmitterCollision1: {fileID: 0}
     subEmitterDeath: {fileID: 0}
     subEmitterDeath1: {fileID: 0}
---- !u!198 &19874048
+--- !u!198 &19862954
 ParticleSystem:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 192946}
+  m_GameObject: {fileID: 104868}
   serializedVersion: 2
   lengthInSec: 5
   startDelay:
@@ -6986,12 +7002,12 @@ ParticleSystemRenderer:
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
---- !u!199 &19961002
+--- !u!199 &19932894
 ParticleSystemRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 192946}
+  m_GameObject: {fileID: 104868}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
