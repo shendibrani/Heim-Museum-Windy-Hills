@@ -9,6 +9,7 @@ public class Saboteur : MonoBehaviour {
  	[SerializeField] float Speed = 0f;
 	[SerializeField] Animator Anim;
 
+	Renderer _rend;
 	float _progress = 0;
 	bool _isDone = false;
 
@@ -16,6 +17,7 @@ public class Saboteur : MonoBehaviour {
 	{
 		_startPosition = transform.localPosition;
 		Anim.SetInteger ("Type", 1);
+		_rend = GetComponentInChildren<Renderer> ();
 	}
 
 	void Update ()
@@ -33,11 +35,11 @@ public class Saboteur : MonoBehaviour {
 				_isDone = true;
 			}
 		}
-		else if (_progress < 0)
+		else if (_progress < -1)
 		{
 			Speed = 0;
 			_progress = 0;
-			gameObject.SetActive (false);
+			_rend.enabled = false;
 		}
 		else
 		{
@@ -50,14 +52,17 @@ public class Saboteur : MonoBehaviour {
 	{
 		_progress = 0;
 		transform.localPosition = _startPosition;
-		gameObject.SetActive(true);
+
+		_rend.enabled = true;
 		Anim.SetBool ("Climbing", true);
-		Speed = 0.001f;
+		Anim.SetBool ("Defeated", false);
+		Anim.SetBool ("Succes", false);
+		Speed = 0.003f;
 	}
 
 	public void EndAnimation()
 	{
 		Anim.SetBool ("Defeated", true);
-		Speed = -0.01f;
+		Speed = -0.03f;
 	}
 }
