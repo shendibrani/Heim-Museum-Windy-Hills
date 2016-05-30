@@ -141,7 +141,7 @@ public class EventHandler : MonoBehaviour {
 	{
         if (WaveTimer.Elapsed.Seconds == secondToSpawn && !initializedEvent)
         {
-            UnityEngine.Debug.Log("<color=red>Initializing random event!</color>");
+            UnityEngine.Debug.Log("<color=red>Initializing event: </color>" + currentWave[0].name);
             currentWave[0].EventStart();
             currentWave.RemoveAt(0);
             initializedEvent = true;
