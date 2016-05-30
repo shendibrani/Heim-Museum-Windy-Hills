@@ -170,13 +170,14 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 
     public void UpdateEfficiency()
     {
+        if (isBroken) { efficencyOvercharge = 0; }
         currentEfficency = GetEfficiency();
         UpdateHUDOverlay();
     }
 
     public void UpdateHUDOverlay()
     {
-        float power = currentEfficency * (1 + efficencyOvercharge);
+        float power = currentEfficency * (1 + efficencyOvercharge) * stateMultiplier;
        if (powerHUD.gameObject != null) {
             powerHUD.fillAmount = power / (_maxPower * (1 + maxOvercharge));
             if (currentEfficency <= 0.5f) powerHUD.color = Color.blue;
