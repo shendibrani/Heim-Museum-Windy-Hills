@@ -175,23 +175,23 @@ Prefab:
       objectReference: {fileID: 1713543669}
     - target: {fileID: 22471456, guid: 8952646635ca4a246937ea8256fde184, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 22471456, guid: 8952646635ca4a246937ea8256fde184, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22458016, guid: 8952646635ca4a246937ea8256fde184, type: 2}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 22458016, guid: 8952646635ca4a246937ea8256fde184, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 22458016, guid: 8952646635ca4a246937ea8256fde184, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8952646635ca4a246937ea8256fde184, type: 2}
@@ -347,14 +347,18 @@ MonoBehaviour:
   waveDifficulty: 5
   stormEvent:
     difficulty: 2
+    name: 
     speed: 5
   fireEvent:
     difficulty: 3
+    name: 
   saboteurEvent:
     difficulty: 4
+    name: 
   flockEvent:
     difficulty: 5
-  debug: 0
+    name: 
+  debug: 1
 --- !u!4 &1306633067
 Transform:
   m_ObjectHideFlags: 0
