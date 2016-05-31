@@ -95,6 +95,8 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 
     [SerializeField]
     Image powerHUD;
+	[SerializeField]
+	WindParticleControll windParticle;
 
     // Use this for initialization
     void Start()
@@ -180,6 +182,9 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
         float power = currentEfficency * (1 + efficencyOvercharge) * stateMultiplier;
        if (powerHUD.gameObject != null) {
             powerHUD.fillAmount = power / (_maxPower * (1 + maxOvercharge));
+
+			windParticle.Strength = powerHUD.fillAmount;
+
             if (currentEfficency <= 0.5f) powerHUD.color = Color.blue;
             else powerHUD.color = Color.green;
             if (efficencyOvercharge >= maxOvercharge / 2f) powerHUD.color = Color.yellow;
