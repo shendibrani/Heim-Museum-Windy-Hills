@@ -37,6 +37,6 @@ public class PigeonAnimator : MonoBehaviour {
 	{
 		_anim.SetFloat("SpeedRandom",Random.Range(0.5f,1.3f));
 		_goal = new Vector3 (Random.Range (-2, 2), 0, Random.Range (-2, 2));
-		Debug.Log (_goal);
+		//Debug.Log (_goal);
 	}
 }

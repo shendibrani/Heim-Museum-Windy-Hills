@@ -95,6 +95,8 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 
     [SerializeField]
     Image powerHUD;
+	[SerializeField]
+	WindParticleControll windParticle;
 
     // Use this for initialization
     void Start()
@@ -166,20 +168,23 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
     {
         if (isBroken) return;
         TurbineStateManager.brokenState.Copy(this);
-        if (GetComponent<TurbineParticle>() != null) GetComponent<TurbineParticle>().ActivateBreaking();
     }
 
     public void UpdateEfficiency()
     {
+        if (isBroken) { efficencyOvercharge = 0; }
         currentEfficency = GetEfficiency();
         UpdateHUDOverlay();
     }
 
     public void UpdateHUDOverlay()
     {
-        float power = currentEfficency * (1 + efficencyOvercharge);
+        float power = currentEfficency * (1 + efficencyOvercharge) * stateMultiplier;
        if (powerHUD.gameObject != null) {
             powerHUD.fillAmount = power / (_maxPower * (1 + maxOvercharge));
+
+			windParticle.Strength = powerHUD.fillAmount;
+
             if (currentEfficency <= 0.5f) powerHUD.color = Color.blue;
             else powerHUD.color = Color.green;
             if (efficencyOvercharge >= maxOvercharge / 2f) powerHUD.color = Color.yellow;
@@ -275,10 +280,14 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 		}
 
 		if(state.name == TurbineStateManager.saboteurState.name){
-			GetComponentInChildren<Saboteur>().gameObject.SetActive(true);
+			GetComponentInChildren<Saboteur>().StartAnimation();
 		}
+        if (state.name == TurbineStateManager.brokenState.name)
+        {
+            GetComponent<TurbineParticle>().ActivateBreaking();
+        }
 
-		states.Add(state);
+        states.Add(state);
 	}
 
 	public void RemoveState(TurbineState state)
@@ -286,8 +295,12 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 		deletionQueue.Add(state);
 
 		if(state.name == TurbineStateManager.saboteurState.name){
-			GetComponentInChildren<Saboteur>().gameObject.SetActive(false);
+			GetComponentInChildren<Saboteur>().EndAnimation();
 		}
+        if(state.name == TurbineStateManager.brokenState.name)
+        {
+            GetComponent<TurbineParticle>().DeactivateBreaking();
+        }
 	}
 
 	#region Interfaces
