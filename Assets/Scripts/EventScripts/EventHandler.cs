@@ -71,7 +71,7 @@ public class EventHandler : MonoBehaviour {
 
             if (WaveTimer.Elapsed.Seconds >= waveMaxTime && !waveEnded) // if Wave Time has ended, reset clock.
             {
-                if (debug) ClearLog();
+               // if (debug) ClearLog();
                 waveEnded = true;
                 waveStarted = false;
                 WaveTimer.Reset();
@@ -158,12 +158,12 @@ public class EventHandler : MonoBehaviour {
         }
     }
 
-    public static void ClearLog()
+  /*  public static void ClearLog()
     {
         var assembly = Assembly.GetAssembly(typeof(UnityEditor.ActiveEditorTracker));
         var type = assembly.GetType("UnityEditorInternal.LogEntries");
         var method = type.GetMethod("Clear");
         method.Invoke(new object(), null);
-	}
+	}*/
 
 }
