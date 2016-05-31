@@ -125,9 +125,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 
 	void Update()
 	{
-		foreach (TurbineState ts in deletionQueue){
-			states.Remove(ts);
-		}
+		CleanStateList ();
 
 		if (states.Count == 0){
 			GetComponent<TurbineMenu>().Hide();
@@ -163,6 +161,13 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
         }
         //efficencyOvercharge += (overchargeIncrease + overchargeDecrease);
     }
+
+	void CleanStateList ()
+	{
+		foreach (TurbineState ts in deletionQueue) {
+			states.Remove (ts);
+		}
+	}
 
     public void BreakTurbine()
     {
@@ -280,26 +285,22 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 	/// <param name="state">The state to add.</param>
 	public void AddState(TurbineState state)
 	{
+		CleanStateList ();
+
 		foreach (TurbineState ts in states){
 			if (ts.name == state.name) return;
 		}
 
-		switch (state.name) {
-		case TurbineStateManager.saboteurState.name:
-			GetComponentInChildren<Saboteur>().StartAnimation();
-			break;
-		case TurbineStateManager.brokenState.name:
+		if (state.name == TurbineStateManager.saboteurState.name) {
+			GetComponentInChildren<Saboteur> ().StartAnimation ();
+		} else if (state.name == TurbineStateManager.brokenState.name) {
 			GetComponent<TurbineParticle> ().Break (true);
-			break;
-		case TurbineStateManager.lowFireState.name:
+		} else if (state.name == TurbineStateManager.lowFireState.name) {
 			GetComponent<TurbineParticle> ().LowFire (true);
-			break;
-		case TurbineStateManager.highFireState.name:
+		} else if (state.name == TurbineStateManager.highFireState.name) {
 			GetComponent<TurbineParticle> ().HighFire (true);
-			break;
-		case TurbineStateManager.dirtyState.name:
+		} else if (state.name == TurbineStateManager.dirtyState.name) {
 			GetComponent<TurbineParticle> ().Dirty (true);
-			break;
 		}
 
         states.Add(state);
@@ -312,22 +313,16 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 	/// <param name="state">The state to remove.</param>
 	public void RemoveState(TurbineState state)
 	{
-		switch (state.name) {
-		case TurbineStateManager.saboteurState.name:
+		if (state.name == TurbineStateManager.saboteurState.name) {
 			GetComponentInChildren<Saboteur> ().EndAnimation ();
-			break;
-		case TurbineStateManager.brokenState.name:
+		} else if (state.name == TurbineStateManager.brokenState.name) {
 			GetComponent<TurbineParticle> ().Break (false);
-			break;
-		case TurbineStateManager.lowFireState.name:
+		} else if (state.name == TurbineStateManager.lowFireState.name) {
 			GetComponent<TurbineParticle> ().LowFire (false);
-			break;
-		case TurbineStateManager.highFireState.name:
+		} else if (state.name == TurbineStateManager.highFireState.name) {
 			GetComponent<TurbineParticle> ().HighFire (false);
-			break;
-		case TurbineStateManager.dirtyState.name:
+		} else if (state.name == TurbineStateManager.dirtyState.name) {
 			GetComponent<TurbineParticle> ().Dirty (false);
-			break;
 		}
 
 		deletionQueue.Add(state);
