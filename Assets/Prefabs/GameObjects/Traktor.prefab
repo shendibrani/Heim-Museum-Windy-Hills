@@ -1,45 +1,46 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &123488
+--- !u!1 &120732
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 409306}
-  - 33: {fileID: 3331602}
-  - 23: {fileID: 2321094}
+  - 4: {fileID: 437288}
+  - 33: {fileID: 3309774}
+  - 23: {fileID: 2301302}
+  - 95: {fileID: 9503540}
   m_Layer: 0
-  m_Name: Human_Body_ForTexturing
+  m_Name: Traktor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &409306
+--- !u!4 &437288
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 123488}
-  m_LocalRotation: {x: -0.4472366, y: 0.54770386, z: 0.54770386, w: 0.44723648}
-  m_LocalPosition: {x: 361.17233, y: 9.354639, z: 187.12682}
-  m_LocalScale: {x: 114.486275, y: 114.486275, z: 114.486275}
+  m_GameObject: {fileID: 120732}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.08290368, y: 0.08290368, z: 0.08290368}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!23 &2321094
+--- !u!23 &2301302
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 123488}
+  m_GameObject: {fileID: 120732}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: fb7487dd9697e224993c936b20e5d26b, type: 2}
+  - {fileID: 2100000, guid: 69171aaf1ff42884e9c066e5dc82e269, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -55,13 +56,30 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &3331602
+--- !u!33 &3309774
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 123488}
-  m_Mesh: {fileID: 4300000, guid: 7f524813d81ad1c418867e24746d1973, type: 3}
+  m_GameObject: {fileID: 120732}
+  m_Mesh: {fileID: 4300000, guid: 64e2c6ece31db7c4eaf81c84ed052ff6, type: 3}
+--- !u!95 &9503540
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 120732}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 64e2c6ece31db7c4eaf81c84ed052ff6, type: 3}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -71,5 +89,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 123488}
+  m_RootGameObject: {fileID: 120732}
   m_IsPrefabParent: 1
