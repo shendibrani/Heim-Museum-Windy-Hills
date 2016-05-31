@@ -273,34 +273,64 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 		windDirection = newValue.normalized;
 	}
 
+	/// <summary>
+	/// Adds the state to the turbine and updates the particle systems and animations accordingly.
+	/// Remember to remove the state before adding a new one during transitions or the particle systems won't work correctly.
+	/// </summary>
+	/// <param name="state">The state to add.</param>
 	public void AddState(TurbineState state)
 	{
 		foreach (TurbineState ts in states){
 			if (ts.name == state.name) return;
 		}
 
-		if(state.name == TurbineStateManager.saboteurState.name){
+		switch (state.name) {
+		case TurbineStateManager.saboteurState.name:
 			GetComponentInChildren<Saboteur>().StartAnimation();
+			break;
+		case TurbineStateManager.brokenState.name:
+			GetComponent<TurbineParticle> ().Break (true);
+			break;
+		case TurbineStateManager.lowFireState.name:
+			GetComponent<TurbineParticle> ().LowFire (true);
+			break;
+		case TurbineStateManager.highFireState.name:
+			GetComponent<TurbineParticle> ().HighFire (true);
+			break;
+		case TurbineStateManager.dirtyState.name:
+			GetComponent<TurbineParticle> ().Dirty (true);
+			break;
 		}
-        if (state.name == TurbineStateManager.brokenState.name)
-        {
-            GetComponent<TurbineParticle>().ActivateBreaking();
-        }
 
         states.Add(state);
 	}
 
+	/// <summary>
+	/// Removes the state from the turbine and updates the particle systems and animations accordingly.
+	/// Remember to remove the state before adding a new one during transitions or the particle systems won't work correctly.
+	/// </summary>
+	/// <param name="state">The state to remove.</param>
 	public void RemoveState(TurbineState state)
 	{
-		deletionQueue.Add(state);
-
-		if(state.name == TurbineStateManager.saboteurState.name){
-			GetComponentInChildren<Saboteur>().EndAnimation();
+		switch (state.name) {
+		case TurbineStateManager.saboteurState.name:
+			GetComponentInChildren<Saboteur> ().EndAnimation ();
+			break;
+		case TurbineStateManager.brokenState.name:
+			GetComponent<TurbineParticle> ().Break (false);
+			break;
+		case TurbineStateManager.lowFireState.name:
+			GetComponent<TurbineParticle> ().LowFire (false);
+			break;
+		case TurbineStateManager.highFireState.name:
+			GetComponent<TurbineParticle> ().HighFire (false);
+			break;
+		case TurbineStateManager.dirtyState.name:
+			GetComponent<TurbineParticle> ().Dirty (false);
+			break;
 		}
-        if(state.name == TurbineStateManager.brokenState.name)
-        {
-            GetComponent<TurbineParticle>().DeactivateBreaking();
-        }
+
+		deletionQueue.Add(state);
 	}
 
 	#region Interfaces
