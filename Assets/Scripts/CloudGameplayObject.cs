@@ -48,11 +48,12 @@ public class CloudGameplayObject : MonoBehaviour, ITouchSensitive, IMouseSensiti
     // Update is called once per frame
     void Update()
     {
-        HashSet<IWindSensitive> tmpList = new HashSet<IWindSensitive>();
-        HashSet<IWindSensitive> deleteList = new HashSet<IWindSensitive>();
+        
+        //HashSet<IWindSensitive> deleteList = new HashSet<IWindSensitive>();
 
         if (TutorialProgression.Instance.IsComplete && cloudSelect)
         {
+            HashSet<IWindSensitive> tmpList = new HashSet<IWindSensitive>();
             CloudMove();
             RaycastHit[] hits;
             hits = Physics.BoxCastAll(cloudObject.transform.position, new Vector3(radius, radius * 4, radius), TurbineObject.windVelocity);
@@ -62,28 +63,20 @@ public class CloudGameplayObject : MonoBehaviour, ITouchSensitive, IMouseSensiti
                 if (tmpCollider != null)
                 {
                     tmpList.Add(tmpCollider);
-                    if (!interfaces.Contains(tmpCollider))
-                    {
-                        interfaces.Add(tmpCollider);
-                        tmpCollider.OnEnterWindzone();
-                    }
+					if (!interfaces.Contains (tmpCollider)) {
+						interfaces.Add (tmpCollider);
+						tmpCollider.OnEnterWindzone ();
+					} else {
+						tmpCollider.OnStayWindzone ();
+					}
                 }
             }
-            foreach (IWindSensitive i in interfaces)
+			foreach (IWindSensitive i in interfaces)
             {
-                if (tmpList.Contains(i))
-                {
-                   i.OnStayWindzone();
-                }
-                else
-                {
-                    i.OnExitWindzone();
-                    deleteList.Add(i);
-                }   
-            }
-            foreach (IWindSensitive i in deleteList)
-            {
-                interfaces.Remove(i);
+				if (!tmpList.Contains (i)) {
+					i.OnExitWindzone ();
+					interfaces.Remove(i);
+				}  
             }
         }
         if (!cloudSelect)
@@ -91,11 +84,8 @@ public class CloudGameplayObject : MonoBehaviour, ITouchSensitive, IMouseSensiti
             foreach (IWindSensitive i in interfaces)
             {
                 i.OnExitWindzone();
-                deleteList.Add(i);
-            }
-            foreach (IWindSensitive i in deleteList)
-            {
-                interfaces.Remove(i);
+                //deleteList.Add(i);
+				interfaces.Remove(i);
             }
         }
         if (windParticles != null)
