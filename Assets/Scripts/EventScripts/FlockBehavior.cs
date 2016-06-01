@@ -63,7 +63,8 @@ public class FlockBehavior : MonoBehaviour
 
     void MoveAway() {
         if (!moveToWindmill) {
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x - 500, transform.position.y, transform.position.z), 1.5f);
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x - 300, transform.position.y, transform.position.z), 1.5f);
+            if (transform.position.x < -20) Destroy(gameObject);
         }
 
     }
