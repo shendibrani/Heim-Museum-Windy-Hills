@@ -149,7 +149,6 @@ public class EventHandler : MonoBehaviour {
 
         if (currentWave.Count == 0) {
 			currentWave = GenerateWave(waveDifficulty);
-
         }
 
         else if (WaveTimer.Elapsed.Seconds > secondToSpawn)
