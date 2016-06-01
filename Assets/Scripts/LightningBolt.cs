@@ -43,11 +43,10 @@ public class LightningBolt : MonoBehaviour
 
 	void Update ()
 	{     
-        randomColor = Random.Range(0, 1);
-        randY = Random.Range(12,30);
-
-        randX = Random.Range(-4, 4);
-        randZ = Random.Range(-4, 4);
+        randomColor = Random.RandomRange(0, 1);
+        randY = Random.RandomRange(5,40);
+        randX = Random.RandomRange(-4, 4);
+        randZ = Random.RandomRange(-4, 4);
         if (noise == null)
 			noise = new Perlin();
 			
@@ -79,7 +78,7 @@ public class LightningBolt : MonoBehaviour
 		}
 
         count += 1;
-        randNumber = Random.Range(11, 18);
+        randNumber = Random.RandomRange(11, 18);
      
 
         if (count < 10)
