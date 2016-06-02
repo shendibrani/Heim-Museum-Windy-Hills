@@ -42,6 +42,7 @@ public class Morale : MonoBehaviour
                 {
                     morale.value -= 0.05f;
                     onMoraleUpdate(-0.05f);
+					TutorialProgression.Instance.Mess (go);
                     if (debug) Debug.Log("Update Morale");
                 }
                 else

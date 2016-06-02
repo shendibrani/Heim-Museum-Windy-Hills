@@ -4,7 +4,6 @@ using System.Collections;
 public class CameraMovement : MonoBehaviour {
 
 	[SerializeField] CameraPosition[] Waypoints;
-	[SerializeField] float Margin = 0.1f;
 	[SerializeField] [Range(0,1)] float Speed = 0.5f;
 	[SerializeField] float ZoomOut = 0;
 
@@ -49,16 +48,12 @@ public class CameraMovement : MonoBehaviour {
 
                 _reachedGoal = false;
             }
-            else
-            {
-                GetComponent<TutorialProgression>().SetComplete();
-            }
         }
     }
 
 	void Update ()
 	{
-		if (_move >= 1)
+		if (_move >= 1 && !_reachedGoal)
 		{
             PlaceObjectOnClick.Instance.SetDirty(false);
 			_progress++;
