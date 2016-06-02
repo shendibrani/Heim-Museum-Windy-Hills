@@ -115,9 +115,9 @@ public class CloudGameplayObject : MonoBehaviour, ITouchSensitive, IMouseSensiti
 	{
 		//IncreaseEfficiency();
 		if (t.phase == TouchPhase.Ended) {
-			OnCloudSelect (false);
+			OnCloudSelect (false, hit);
 		} else if (t.phase != TouchPhase.Canceled) {
-			OnCloudSelect (true);
+			OnCloudSelect (true, hit);
 		}
 	}
 
