@@ -25,6 +25,8 @@ public class CloudGameplayObject : MonoBehaviour, ITouchSensitive, IMouseSensiti
     bool _debug;
 
     HashSet<IWindSensitive> interfaces;
+    HashSet<IWindSensitive> tmpList = new HashSet<IWindSensitive>();
+    HashSet<IWindSensitive> deleteList = new HashSet<IWindSensitive>();
 
     // Use this for initialization
     void Start () {
@@ -48,42 +50,47 @@ public class CloudGameplayObject : MonoBehaviour, ITouchSensitive, IMouseSensiti
     // Update is called once per frame
     void Update()
     {
-        HashSet<IWindSensitive> tmpList = new HashSet<IWindSensitive>();
-        HashSet<IWindSensitive> deleteList = new HashSet<IWindSensitive>();
+
+        //HashSet<IWindSensitive> deleteList = new HashSet<IWindSensitive>();
 
         if (TutorialProgression.Instance.IsComplete && cloudSelect)
         {
-            CloudMove();
+
+            //CloudMove();
             RaycastHit[] hits;
             hits = Physics.BoxCastAll(cloudObject.transform.position, new Vector3(radius, radius * 4, radius), TurbineObject.windVelocity);
-            foreach (RaycastHit hit in hits)
+            /*if (hits.Length != 0)
             {
-                IWindSensitive tmpCollider = hit.collider.GetComponent<IWindSensitive>();
-                if (tmpCollider != null)
+                foreach (RaycastHit hit in hits)
                 {
-                    tmpList.Add(tmpCollider);
-                    if (!interfaces.Contains(tmpCollider))
+                    IWindSensitive tmpCollider = hit.collider.GetComponent<IWindSensitive>();
+                    if (tmpCollider != null)
                     {
-                        interfaces.Add(tmpCollider);
-                        tmpCollider.OnEnterWindzone();
+                        tmpList.Add(tmpCollider);
+                        if (!interfaces.Contains(tmpCollider))
+                        {
+                            interfaces.Add(tmpCollider);
+                            tmpCollider.OnEnterWindzone();
+                        }
+                        else {
+                            tmpCollider.OnStayWindzone();
+                        }
                     }
                 }
             }
-            foreach (IWindSensitive i in interfaces)
+
+            HashSet<IWindSensitive> tmpIntersect = new HashSet<IWindSensitive>(interfaces);
+            tmpIntersect.ExceptWith(tmpList);
+            interfaces.IntersectWith(tmpList);
+
+            if (tmpIntersect.Count != 0)
             {
-                if (tmpList.Contains(i))
+                foreach (IWindSensitive i in tmpIntersect)
                 {
-                   i.OnStayWindzone();
+                    {
+                        i.OnExitWindzone();
+                    }
                 }
-                else
-                {
-                    i.OnExitWindzone();
-                    deleteList.Add(i);
-                }   
-            }
-            foreach (IWindSensitive i in deleteList)
-            {
-                interfaces.Remove(i);
             }
         }
         if (!cloudSelect)
@@ -91,18 +98,17 @@ public class CloudGameplayObject : MonoBehaviour, ITouchSensitive, IMouseSensiti
             foreach (IWindSensitive i in interfaces)
             {
                 i.OnExitWindzone();
-                deleteList.Add(i);
             }
-            foreach (IWindSensitive i in deleteList)
-            {
-                interfaces.Remove(i);
-            }
+            interfaces = new HashSet<IWindSensitive>();
         }
         if (windParticles != null)
         {
             windParticles.SetActive(cloudSelect);
         }
+        */
+        }
         OnCloudSelect(false);
+        
     }
 
 	public void OnTouch(Touch t, RaycastHit hit)

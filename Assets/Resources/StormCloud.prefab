@@ -11,6 +11,8 @@ GameObject:
   - 15: {fileID: 1516254}
   - 26: {fileID: 2606890}
   - 12: {fileID: 1201810}
+  - 65: {fileID: 6538698}
+  - 114: {fileID: 11473966}
   m_Layer: 0
   m_Name: StormCloud
   m_TagString: Untagged
@@ -72,6 +74,23 @@ GameObject:
   - 135: {fileID: 13541216}
   m_Layer: 0
   m_Name: Lightning Emitter3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &191700
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 472672}
+  - 114: {fileID: 11473488}
+  - 136: {fileID: 13623690}
+  m_Layer: 0
+  m_Name: WindEffectCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -141,13 +160,14 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 102728}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 151.19281, y: 113.5, z: 177.4669}
+  m_LocalPosition: {x: 305.9, y: 77.4, z: 309.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 463804}
   - {fileID: 407842}
   - {fileID: 413430}
   - {fileID: 414560}
+  - {fileID: 472672}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &463804
@@ -162,6 +182,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 422758}
   m_RootOrder: 0
+--- !u!4 &472672
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191700}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -48.5, z: 0}
+  m_LocalScale: {x: 0.8575493, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 422758}
+  m_RootOrder: 4
 --- !u!12 &1201810
 ParticleAnimator:
   m_ObjectHideFlags: 1
@@ -543,6 +575,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187648}
   m_Mesh: {fileID: 0}
+--- !u!65 &6538698
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102728}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 75.05298, y: 45.249832, z: 43.7}
+  m_Center: {x: -0.5857849, y: -24.80751, z: -0.4779663}
 --- !u!114 &11405022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -594,6 +638,30 @@ MonoBehaviour:
   scale: 1.5
   startLight: {fileID: 0}
   endLight: {fileID: 0}
+--- !u!114 &11473488
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7555285c8146980419294817d4ed8fe7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11473966
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d79dbd0b4ff04c4aaf9257fdea00f2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  debug: 0
 --- !u!135 &13541216
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -630,6 +698,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!136 &13623690
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191700}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 59.2
+  m_Height: 98.3
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 6.8}
 --- !u!198 &19882106
 ParticleSystem:
   m_ObjectHideFlags: 1
