@@ -40,8 +40,13 @@ public class TutorialProgression : MonoBehaviour {
 	bool fuckedUp = false;
 	GameObject badMill;
 	TurbineObject firstMill;
+	TurbineObject randomMill;
+
 	bool missionIsSetUp = false;
 	bool cameraStopped = true;
+
+	bool fireWasFought = false;
+	bool saboteurWasFought = false;
 
 	int tutorialstep = 0;
 	int requiredMills = 0;
@@ -155,7 +160,93 @@ public class TutorialProgression : MonoBehaviour {
 			}
 			else if (tutorialstep == 3)
 			{
-				TurbineStateManager.lowFireState.Copy (firstMill);
+				if (!missionIsSetUp && cameraStopped)
+				{
+					PlaceObjectOnClick.Instance.SetDirty(true);
+					currentMills = 0;
+					requiredMills = 0;
+					TurbineStateManager.lowFireState.Copy (firstMill);
+					missionIsSetUp = true;
+				}
+				if (missionIsSetUp)
+				{
+					if (Input.GetKey(KeyCode.Space))
+					{
+						fireWasFought = true;
+					}
+					if (fireWasFought)
+					{
+						EndMission (0);
+					}
+				}
+			}
+			else if (tutorialstep == 4)
+			{
+				if (!missionIsSetUp && cameraStopped)
+				{
+					NewMission (3);
+					missionIsSetUp = true;
+				}
+				if (missionIsSetUp)
+				{
+					if (fuckedUp && !isTiming)
+					{
+						//start animation
+						onTimerEvent = RemoveMill;
+						BeginTimer (1);
+					}
+					if (currentMills == requiredMills && !fuckedUp)
+					{
+						FindObjectOfType<Fossil_Fuel_Particle> ().lessFossil = true;
+						EndMission (0);
+					}
+				}
+			}
+			else if (tutorialstep == 5)
+			{
+				if (!missionIsSetUp && cameraStopped)
+				{
+					PlaceObjectOnClick.Instance.SetDirty(true);
+					currentMills = 0;
+					requiredMills = 0;
+					missionIsSetUp = true;
+				}
+				if (missionIsSetUp)
+				{
+					TurbineObject[] turbs = FindObjectsOfType<TurbineObject> ();
+					randomMill = turbs[Random.Range(0,turbs.Length)];
+					cameraMover.NewWaypoint (6, randomMill.transform, 60, false);
+					EndMission ();
+				}
+			}
+			else if (tutorialstep == 6)
+			{
+				if (!missionIsSetUp && cameraStopped)
+				{
+					PlaceObjectOnClick.Instance.SetDirty(true);
+					currentMills = 0;
+					requiredMills = 0;
+					TurbineStateManager.saboteurState.Copy (randomMill);
+					missionIsSetUp = true;
+				}
+				if (missionIsSetUp)
+				{
+					if (Input.GetKey(KeyCode.Space))
+					{
+						saboteurWasFought = true;
+					}
+					if (saboteurWasFought)
+					{
+						EndMission (0);
+					}
+				}
+			}
+			else if (tutorialstep == 7)
+			{
+				if (cameraStopped)
+				{
+					SetComplete ();
+				}
 			}
 		}
 	}
@@ -163,7 +254,6 @@ public class TutorialProgression : MonoBehaviour {
 	void NewMission(int pReq)
 	{
 		PlaceObjectOnClick.Instance.SetDirty(false);
-		Debug.Log ("this also");
 		requiredMills = pReq;
 		currentMills = 0;
 	}
