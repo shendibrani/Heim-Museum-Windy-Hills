@@ -78,7 +78,6 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 	void SetOwner(TurbineObject pOwner)
 	{
 		owner = pOwner;
-		owner.GetComponent<TurbineMenu>().Show();
 		owner.AddState(this);
 	}
 		

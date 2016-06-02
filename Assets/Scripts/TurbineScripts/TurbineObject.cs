@@ -127,10 +127,6 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 	{
 		CleanStateList ();
 
-		if (states.Count == 0){
-			GetComponent<TurbineMenu>().Hide();
-		}
-
 		foreach (TurbineState ts in states){
 			ts.Update();
 		}
