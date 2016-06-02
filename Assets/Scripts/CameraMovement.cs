@@ -47,6 +47,8 @@ public class CameraMovement : MonoBehaviour {
                 _move = 0;
 
                 _reachedGoal = false;
+				TutorialProgression.Instance.setCamera (false);
+
             }
         }
     }
@@ -55,9 +57,9 @@ public class CameraMovement : MonoBehaviour {
 	{
 		if (_move >= 1 && !_reachedGoal)
 		{
-            PlaceObjectOnClick.Instance.SetDirty(false);
 			_progress++;
             _reachedGoal = true;
+			TutorialProgression.Instance.setCamera (true);
 		}
 
 		if (!_reachedGoal && _move < 1 && Waypoints[_progress].zoomOut)

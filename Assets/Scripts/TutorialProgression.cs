@@ -41,6 +41,7 @@ public class TutorialProgression : MonoBehaviour {
 	GameObject badMill;
 	TurbineObject firstMill;
 	bool missionIsSetUp = false;
+	bool cameraStopped = true;
 
 	int tutorialstep = 0;
 	int requiredMills = 0;
@@ -69,90 +70,90 @@ public class TutorialProgression : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-        if (Skip)
-        {
-            PlaceObjectOnClick.Instance.SetDirty(false);
-            SetComplete();
-        }
-        else
+		if (Skip)
 		{
-            if (isTiming == true)
-            {
-                timer += Time.deltaTime;
-                if (timer >= timerTarget)
-                {
-					onTimerEvent ();
-                    isTiming = false;
-                }
-            }
-        }
-
-		//a story explanation or event shows, the whole map is in the background. Game tells you to click if wait too long
-		if (tutorialstep == 0)
-		{
-			startMessage.SetActive(true);
-
-			//enable clickbait
-
-			//progression requirement
-			if (Input.GetMouseButtonDown(0))
-			{
-				startMessage.SetActive(false);
-				onTimerEvent = OnStepTutorial;
-				BeginTimer ();
-			}
+			PlaceObjectOnClick.Instance.SetDirty (false);
+			SetComplete ();
 		}
-		//camera is on the first farm, you are eventually told to place a windmill if waited too long
-		else if (tutorialstep == 1)
+		else
 		{
-			if (!missionIsSetUp)
+			if (isTiming == true)
 			{
-				NewMission(1);
-				missionIsSetUp = true;
-			}
-			//enable clickbait
-
-			//back to black
-			if (fuckedUp && !isTiming)
-			{
-				//start animation
-				onTimerEvent = RemoveMill;
-				BeginTimer (1);
-			}
-
-			//progression requirement
-			if (currentMills == requiredMills && !fuckedUp)
-			{
-				if (firstMill == null)
+				timer += Time.deltaTime;
+				if (timer >= timerTarget)
 				{
-					firstMill = FindObjectOfType<TurbineObject> ();
+					onTimerEvent ();
+					isTiming = false;
 				}
-				EndMission (0);
 			}
-		}
-		else if (tutorialstep == 2) 
-		{
-			if (!missionIsSetUp)
-			{
-				NewMission(2);
-				missionIsSetUp = true;
-			}
+        
 
-			if (fuckedUp && !isTiming)
+			//a story explanation or event shows, the whole map is in the background. Game tells you to click if wait too long
+			if (tutorialstep == 0)
 			{
-				//start animation
-				onTimerEvent = RemoveMill;
-				BeginTimer (1);
-			}
+				startMessage.SetActive (true);
 
-			if (currentMills == requiredMills && !fuckedUp)
-			{
-				EndMission (0);
+				//enable clickbait
+
+				//progression requirement
+				if (Input.GetMouseButtonDown (0))
+				{
+					startMessage.SetActive (false);
+					OnStepTutorial ();
+				}
 			}
-		}
-		else if (tutorialstep == 3)
-		{
-			TurbineStateManager.lowFireState.Copy(firstMill);
+		//camera is on the first farm, you are eventually told to place a windmill if waited too long
+			else if (tutorialstep == 1)
+			{
+				if (!missionIsSetUp && cameraStopped)
+				{
+					NewMission (1);
+					missionIsSetUp = true;
+				}
+				//enable clickbait
+
+				//back to black
+				if (fuckedUp && !isTiming)
+				{
+					//start animation
+					onTimerEvent = RemoveMill;
+					BeginTimer (1);
+				}
+
+				//progression requirement
+				if (currentMills == requiredMills && !fuckedUp)
+				{
+					if (firstMill == null)
+					{
+						firstMill = FindObjectOfType<TurbineObject> ();
+					}
+					EndMission (0);
+				}
+			}
+			else if (tutorialstep == 2)
+			{
+				if (!missionIsSetUp && cameraStopped)
+				{
+					NewMission (2);
+					missionIsSetUp = true;
+				}
+
+				if (fuckedUp && !isTiming)
+				{
+					//start animation
+					onTimerEvent = RemoveMill;
+					BeginTimer (1);
+				}
+
+				if (currentMills == requiredMills && !fuckedUp)
+				{
+					EndMission (0);
+				}
+			}
+			else if (tutorialstep == 3)
+			{
+				TurbineStateManager.lowFireState.Copy (firstMill);
+			}
 		}
 	}
 
@@ -214,6 +215,10 @@ public class TutorialProgression : MonoBehaviour {
 		PlaceObjectOnClick.Instance.SetDirty(true);
 	}
 
+	public void setCamera(bool pCam)
+	{
+		cameraStopped = pCam;
+	}
 	/*void OnGUI()
 	{
 
