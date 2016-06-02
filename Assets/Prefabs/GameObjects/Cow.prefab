@@ -219,6 +219,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 420114}
+  - 114: {fileID: 11499498}
+  - 114: {fileID: 11419976}
   m_Layer: 0
   m_Name: Cow
   m_TagString: Untagged
@@ -765,7 +767,7 @@ Animator:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 131522}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 5a760011e794d3b4aa58773f11eadaa0, type: 3}
+  m_Avatar: {fileID: 9000000, guid: ecc800675d6b5934c84840974783a906, type: 3}
   m_Controller: {fileID: 9100000, guid: 07d4b5d4f64cc154e9ba6dd087c61731, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -774,6 +776,58 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11419976
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c04610efd0b3e2142a475a9858ac19a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 9568880}
+  goals:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  runGoals:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  minSpeed: 0.005
+  runSpeed: 0.2
+  stopDist: 2
+--- !u!114 &11499498
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a11d17dd4e9eef4abb1233c6ff22149, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minSeconds: 2
+  maxSeconds: 10
+  TimerEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11419976}
+        m_MethodName: Action
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!137 &13713808
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
