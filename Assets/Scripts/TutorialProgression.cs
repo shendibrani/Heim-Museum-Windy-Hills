@@ -36,10 +36,12 @@ public class TutorialProgression : MonoBehaviour {
     float timerTarget = 0;
     bool isTiming = false;
     bool isComplete = false;
+	int progress = 1;
 
     // Use this for initialization
     void Start() {
         cameraMover = GetComponent<CameraMovement>();
+		cameraMover.SetProgress ();
 	}
 	
     public void SetComplete()
@@ -74,7 +76,7 @@ public class TutorialProgression : MonoBehaviour {
 
     public void OnStepTutorial()
     {
-        cameraMover.SetProgress();
+		cameraMover.SetProgress();
     }
 
     public void BeginStepTimer(float t = 0)
