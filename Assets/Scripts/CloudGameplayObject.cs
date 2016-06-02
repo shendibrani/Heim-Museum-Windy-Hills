@@ -10,9 +10,6 @@ public class CloudGameplayObject : MonoBehaviour, ITouchSensitive, IMouseSensiti
     GameObject cloudObject;
 
     [SerializeField]
-    GameObject canvasBar;
-
-    [SerializeField]
     GameObject windParticles;
 
     [SerializeField]
@@ -28,13 +25,14 @@ public class CloudGameplayObject : MonoBehaviour, ITouchSensitive, IMouseSensiti
     HashSet<IWindSensitive> tmpList = new HashSet<IWindSensitive>();
     HashSet<IWindSensitive> deleteList = new HashSet<IWindSensitive>();
 
+    RaycastHit hitTarget;
+
     // Use this for initialization
     void Start () {
         interfaces = new HashSet<IWindSensitive>();
 		cloudObject = this.gameObject;
         TurbineObject.windVelocity.value = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z);
         cloudObject.transform.localPosition = new Vector3(0, cloudObject.transform.localPosition.y, cloudObject.transform.localPosition.z);
-        if (canvasBar != null) canvasBar.SetActive(TutorialProgression.Instance.IsComplete);
     }
 
     void OnDrawGizmos()
@@ -43,7 +41,7 @@ public class CloudGameplayObject : MonoBehaviour, ITouchSensitive, IMouseSensiti
         {
             Gizmos.color = Color.blue;
             Gizmos.DrawWireCube(cloudObject.transform.position, new Vector3(radius, radius * 4, radius));
-            //Gizmos.DrawLine(cloudObject.transform.position, Vector3.Scale(TurbineObject.windVelocity, cloudObject.transform.position);
+           
         }
     }
 
@@ -56,10 +54,10 @@ public class CloudGameplayObject : MonoBehaviour, ITouchSensitive, IMouseSensiti
         if (TutorialProgression.Instance.IsComplete && cloudSelect)
         {
 
-            //CloudMove();
+            CloudMove();
             RaycastHit[] hits;
             hits = Physics.BoxCastAll(cloudObject.transform.position, new Vector3(radius, radius * 4, radius), TurbineObject.windVelocity);
-            /*if (hits.Length != 0)
+            if (hits.Length != 0)
             {
                 foreach (RaycastHit hit in hits)
                 {
@@ -101,46 +99,47 @@ public class CloudGameplayObject : MonoBehaviour, ITouchSensitive, IMouseSensiti
             }
             interfaces = new HashSet<IWindSensitive>();
         }
+        
         if (windParticles != null)
         {
             windParticles.SetActive(cloudSelect);
         }
-        */
-        }
-        OnCloudSelect(false);
-        
+        OnCloudSelect(false, hitTarget);
     }
 
 	public void OnTouch(Touch t, RaycastHit hit)
 	{
 		//IncreaseEfficiency();
 		if (t.phase == TouchPhase.Ended) {
-			OnCloudSelect (false);
+			OnCloudSelect (false, hit);
 		} else if (t.phase != TouchPhase.Canceled) {
-			OnCloudSelect (true);
+			OnCloudSelect (true, hit);
 		}
 	}
 
 	public void OnClick(ClickState state, RaycastHit hit)
 	{	
-		if (state == ClickState.Pressed) OnCloudSelect(true);
-        if (state == ClickState.Down) OnCloudSelect(true);
-        if (state == ClickState.Up) OnCloudSelect(false);
+		if (state == ClickState.Pressed) OnCloudSelect(true, hit);
+        if (state == ClickState.Down) OnCloudSelect(true, hit);
+        if (state == ClickState.Up) OnCloudSelect(false, hit);
         //else OnCloudSelect(false);
 	}
 
-	void OnCloudSelect(bool state){
+	void OnCloudSelect(bool state, RaycastHit pHit){
 			cloudSelect = state;
+            hitTarget = pHit;
             Debug.Log("State: " + state);
 	}
     
 
 	public void CloudMove(){
-        RaycastHit hit;
-        Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit);
-        Vector3 transformedPoint = transform.parent.InverseTransformPoint(hit.point);
+        //RaycastHit hit;
+        //Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit);
+        Vector3 transformedPoint = transform.parent.InverseTransformPoint(hitTarget.point);
         //cloudObject.transform.localPosition = new Vector3(x * extent,cloudObject.transform.localPosition.y, cloudObject.transform.localPosition.z);
+        transformedPoint = new Vector3(transformedPoint.x, cloudObject.transform.localPosition.y, cloudObject.transform.localPosition.z);
         //cloudObject.transform.localPosition = transformedPoint;
-        cloudObject.transform.localPosition = new Vector3(transformedPoint.x, cloudObject.transform.localPosition.y, cloudObject.transform.localPosition.z);
+        //cloudObject.transform.localPosition = new Vector3(transformedPoint.x, cloudObject.transform.localPosition.y, cloudObject.transform.localPosition.z);
+        cloudObject.transform.localPosition = Vector3.Lerp(transform.localPosition, transformedPoint, 0.9f);
     }
 }
