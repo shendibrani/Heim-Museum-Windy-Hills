@@ -36,12 +36,30 @@ public class TutorialProgression : MonoBehaviour {
     float timerTarget = 0;
     bool isTiming = false;
     bool isComplete = false;
-	int progress = 1;
+
+	bool fuckedUp = false;
+	GameObject badMill;
+	TurbineObject firstMill;
+	bool missionIsSetUp = false;
+	bool cameraStopped = true;
+
+	int tutorialstep = 0;
+	int requiredMills = 0;
+	int currentMills = 0;
+
+	[SerializeField] GameObject startMessage;
+
+
+	delegate void TimerEvent();
+	TimerEvent onTimerEvent;
 
     // Use this for initialization
-    void Start() {
+    void Start()
+	{
         cameraMover = GetComponent<CameraMovement>();
-		cameraMover.SetProgress ();
+		onTimerEvent = OnStepTutorial;
+
+		PlaceObjectOnClick.Instance.SetDirty(true);
 	}
 	
     public void SetComplete()
@@ -50,23 +68,119 @@ public class TutorialProgression : MonoBehaviour {
     }
 
 	// Update is called once per frame
-	void Update () {
-        if (Skip)
-        {
-            PlaceObjectOnClick.Instance.SetDirty(false);
-            SetComplete();
-        }
-        else {
-            if (isTiming == true)
-            {
-                timer += Time.deltaTime;
-                if (timer >= timerTarget)
-                {
-                    OnStepTutorial();
-                    isTiming = false;
-                }
-            }
-        }
+	void Update ()
+	{
+		if (Skip)
+		{
+			PlaceObjectOnClick.Instance.SetDirty (false);
+			SetComplete ();
+		}
+		else
+		{
+			if (isTiming == true)
+			{
+				timer += Time.deltaTime;
+				if (timer >= timerTarget)
+				{
+					onTimerEvent ();
+					isTiming = false;
+				}
+			}
+        
+
+			//a story explanation or event shows, the whole map is in the background. Game tells you to click if wait too long
+			if (tutorialstep == 0)
+			{
+				startMessage.SetActive (true);
+
+				//enable clickbait
+
+				//progression requirement
+				if (Input.GetMouseButtonDown (0))
+				{
+					startMessage.SetActive (false);
+					OnStepTutorial ();
+				}
+			}
+		//camera is on the first farm, you are eventually told to place a windmill if waited too long
+			else if (tutorialstep == 1)
+			{
+				if (!missionIsSetUp && cameraStopped)
+				{
+					NewMission (1);
+					missionIsSetUp = true;
+				}
+				//enable clickbait
+
+				//back to black
+				if (fuckedUp && !isTiming)
+				{
+					//start animation
+					onTimerEvent = RemoveMill;
+					BeginTimer (1);
+				}
+
+				//progression requirement
+				if (currentMills == requiredMills && !fuckedUp)
+				{
+					if (firstMill == null)
+					{
+						firstMill = FindObjectOfType<TurbineObject> ();
+					}
+					EndMission (0);
+				}
+			}
+			else if (tutorialstep == 2)
+			{
+				if (!missionIsSetUp && cameraStopped)
+				{
+					NewMission (2);
+					missionIsSetUp = true;
+				}
+
+				if (fuckedUp && !isTiming)
+				{
+					//start animation
+					onTimerEvent = RemoveMill;
+					BeginTimer (1);
+				}
+
+				if (currentMills == requiredMills && !fuckedUp)
+				{
+					EndMission (0);
+				}
+			}
+			else if (tutorialstep == 3)
+			{
+				TurbineStateManager.lowFireState.Copy (firstMill);
+			}
+		}
+	}
+
+	void NewMission(int pReq)
+	{
+		PlaceObjectOnClick.Instance.SetDirty(false);
+		requiredMills = pReq;
+		currentMills = 0;
+	}
+
+	void EndMission(int pTimer = 0)
+	{
+		PlaceObjectOnClick.Instance.SetDirty(true);
+		onTimerEvent = OnStepTutorial;
+		BeginTimer (pTimer);
+		missionIsSetUp = false;
+	}
+
+	void RemoveMill()
+	{
+		if (badMill != null)
+		{
+			Object.Destroy (badMill);
+			currentMills--;
+			fuckedUp = false;
+			PlaceObjectOnClick.Instance.SetDirty(false);
+		}
 	}
 
     void OnDestroy()
@@ -77,13 +191,45 @@ public class TutorialProgression : MonoBehaviour {
     public void OnStepTutorial()
     {
 		cameraMover.SetProgress();
+		tutorialstep++;
     }
 
-    public void BeginStepTimer(float t = 0)
+    void BeginTimer(float t = 0)
     {
         isTiming = true;
         timerTarget = t;
         timer = 0;
     } 
 
+	public void Placed()
+	{
+		currentMills++;
+		Debug.Log (currentMills);
+	}
+
+	public void Mess(GameObject pMill)
+	{
+		fuckedUp = true;
+		badMill = pMill;
+		Debug.Log ("fucked Up");
+		PlaceObjectOnClick.Instance.SetDirty(true);
+	}
+
+	public void setCamera(bool pCam)
+	{
+		cameraStopped = pCam;
+	}
+	/*void OnGUI()
+	{
+
+		GUI.Label(new Rect(Screen.width - 250, Screen.height - 700, 250, 20), "Quest 1: Bouw een turbine " + q1 +"/1");
+		if(q1 == 1)
+			GUI.Label(new Rect(Screen.width - 250, Screen.height - 680, 250, 20), "Quest 2: Bouw twee turbines " + q2 +"/2");
+		if (q2 ==2)
+			GUI.Label(new Rect(Screen.width - 250, Screen.height - 660, 250, 20), "Quest 3: Bluss de brand op de turbine " + q3 +"/1");
+		if (q3 == 1)
+			GUI.Label(new Rect(Screen.width - 250, Screen.height - 640, 250, 20), "Quest 4: Bouw driw turbines " + q4 + "/3");
+		if (q4 == 3)
+			GUI.Label(new Rect(Screen.width - 250, Screen.height - 620, 250, 20), "Quest 5: Blaas de aanvallers weg " + q5 + "/1");
+	}*/
 }

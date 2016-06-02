@@ -130,10 +130,8 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive, IMouseSensitiv
 			if(debug) Debug.Log("Instantiating");
 			GameObject instance = (GameObject)GameObject.Instantiate (prefab, snapPoint, Quaternion.identity); 
 	        if (OnObjectPlaced != null) OnObjectPlaced (instance);
-            SetDirty(true);
 
-            //Dirty Flag set false by Tutorial Progression
-            TutorialProgression.Instance.BeginStepTimer();
+			TutorialProgression.Instance.Placed();
             return true;
 		}
 		return false;
