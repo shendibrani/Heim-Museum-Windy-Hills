@@ -10,9 +10,6 @@ public class CloudGameplayObject : MonoBehaviour, ITouchSensitive, IMouseSensiti
     GameObject cloudObject;
 
     [SerializeField]
-    GameObject canvasBar;
-
-    [SerializeField]
     GameObject windParticles;
 
     [SerializeField]
@@ -36,7 +33,6 @@ public class CloudGameplayObject : MonoBehaviour, ITouchSensitive, IMouseSensiti
 		cloudObject = this.gameObject;
         TurbineObject.windVelocity.value = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z);
         cloudObject.transform.localPosition = new Vector3(0, cloudObject.transform.localPosition.y, cloudObject.transform.localPosition.z);
-        if (canvasBar != null) canvasBar.SetActive(TutorialProgression.Instance.IsComplete);
     }
 
     void OnDrawGizmos()
@@ -45,7 +41,7 @@ public class CloudGameplayObject : MonoBehaviour, ITouchSensitive, IMouseSensiti
         {
             Gizmos.color = Color.blue;
             Gizmos.DrawWireCube(cloudObject.transform.position, new Vector3(radius, radius * 4, radius));
-            //Gizmos.DrawLine(cloudObject.transform.position, Vector3.Scale(TurbineObject.windVelocity, cloudObject.transform.position);
+           
         }
     }
 
@@ -141,7 +137,9 @@ public class CloudGameplayObject : MonoBehaviour, ITouchSensitive, IMouseSensiti
         //Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit);
         Vector3 transformedPoint = transform.parent.InverseTransformPoint(hitTarget.point);
         //cloudObject.transform.localPosition = new Vector3(x * extent,cloudObject.transform.localPosition.y, cloudObject.transform.localPosition.z);
+        transformedPoint = new Vector3(transformedPoint.x, cloudObject.transform.localPosition.y, cloudObject.transform.localPosition.z);
         //cloudObject.transform.localPosition = transformedPoint;
-        cloudObject.transform.localPosition = new Vector3(transformedPoint.x, cloudObject.transform.localPosition.y, cloudObject.transform.localPosition.z);
+        //cloudObject.transform.localPosition = new Vector3(transformedPoint.x, cloudObject.transform.localPosition.y, cloudObject.transform.localPosition.z);
+        cloudObject.transform.localPosition = Vector3.Lerp(transform.localPosition, transformedPoint, 0.9f);
     }
 }
