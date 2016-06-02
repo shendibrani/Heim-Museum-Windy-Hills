@@ -56,7 +56,7 @@ public class CloudGameplayObject : MonoBehaviour, ITouchSensitive, IMouseSensiti
 
             CloudMove();
             RaycastHit[] hits;
-            hits = Physics.BoxCastAll(cloudObject.transform.position, new Vector3(radius, radius * 4, radius), TurbineObject.windVelocity);
+            hits = Physics.SphereCastAll(cloudObject.transform.position, radius, TurbineObject.windVelocity);
             if (hits.Length != 0)
             {
                 foreach (RaycastHit hit in hits)
