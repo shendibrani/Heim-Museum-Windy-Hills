@@ -263,11 +263,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 543841712}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!95 &583693547 stripped
-Animator:
-  m_PrefabParentObject: {fileID: 9568880, guid: c484935292a2b4b468984c23a46fedd2,
-    type: 2}
-  m_PrefabInternal: {fileID: 1268453897}
 --- !u!1 &684026859
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,62 +452,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!1 &803497434 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 155926, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
-  m_PrefabInternal: {fileID: 1268453897}
---- !u!114 &803497436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 803497434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a11d17dd4e9eef4abb1233c6ff22149, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minSeconds: 2
-  maxSeconds: 4
-  TimerEnd:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 803497437}
-        m_MethodName: Action
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
---- !u!114 &803497437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 803497434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c04610efd0b3e2142a475a9858ac19a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 583693547}
-  goals:
-  - {fileID: 684026860}
-  - {fileID: 1182465850}
-  - {fileID: 921261536}
-  runGoals:
-  - {fileID: 250612002}
-  - {fileID: 1612628348}
-  - {fileID: 1112685243}
-  minSpeed: 0.005
-  runSpeed: 0.2
-  stopDist: 2
 --- !u!1 &881831323
 GameObject:
   m_ObjectHideFlags: 0
@@ -914,7 +853,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 420114, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 2.62
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 420114, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
       propertyPath: m_LocalRotation.x
@@ -936,14 +875,30 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 9568880, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
-      propertyPath: m_Avatar
+    - target: {fileID: 11419976, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
+      propertyPath: goals.Array.data[0]
       value: 
-      objectReference: {fileID: 9000000, guid: ecc800675d6b5934c84840974783a906, type: 3}
-    - target: {fileID: 155926, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 684026860}
+    - target: {fileID: 11419976, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
+      propertyPath: goals.Array.data[1]
+      value: 
+      objectReference: {fileID: 1182465850}
+    - target: {fileID: 11419976, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
+      propertyPath: goals.Array.data[2]
+      value: 
+      objectReference: {fileID: 921261536}
+    - target: {fileID: 11419976, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
+      propertyPath: runGoals.Array.data[0]
+      value: 
+      objectReference: {fileID: 250612002}
+    - target: {fileID: 11419976, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
+      propertyPath: runGoals.Array.data[1]
+      value: 
+      objectReference: {fileID: 1612628348}
+    - target: {fileID: 11419976, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
+      propertyPath: runGoals.Array.data[2]
+      value: 
+      objectReference: {fileID: 1112685243}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
   m_IsPrefabParent: 0
