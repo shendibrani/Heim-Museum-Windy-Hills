@@ -582,7 +582,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &149232
 GameObject:
   m_ObjectHideFlags: 1
@@ -2539,6 +2539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuParent: {fileID: 148978}
+  rotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &11478432
 MonoBehaviour:
   m_ObjectHideFlags: 1

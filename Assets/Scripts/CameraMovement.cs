@@ -40,7 +40,7 @@ public class CameraMovement : MonoBehaviour {
         {
 			_size = Camera.main.GetComponent<Camera> ().orthographicSize;
 			_origin = Waypoints[_progress].waypoint.position;
-			Debug.Log ("didthis");
+
             if (_progress < Waypoints.Length)
             {
 				_target = Waypoints[_progress+1].waypoint.position;
@@ -49,7 +49,6 @@ public class CameraMovement : MonoBehaviour {
 
                 _reachedGoal = false;
 				tutProg.setCamera (false);
-				Debug.Log ("didthat");
             }
         }
     }

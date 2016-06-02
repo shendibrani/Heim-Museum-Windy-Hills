@@ -39,7 +39,7 @@ public class TutorialProgression : MonoBehaviour {
 
 	bool fuckedUp = false;
 	GameObject badMill;
-	//TurbineObject firstMill;
+	TurbineObject firstMill;
 	bool missionIsSetUp = false;
 	bool cameraStopped = true;
 
@@ -123,10 +123,10 @@ public class TutorialProgression : MonoBehaviour {
 					//progression requirement
 					if (currentMills == requiredMills && !fuckedUp)
 					{
-						/*if (firstMill == null)
+						if (firstMill == null)
 					{
 						firstMill = FindObjectOfType<TurbineObject> ();
-					}*/
+					}
 						EndMission (0);
 					}
 				}
@@ -155,7 +155,7 @@ public class TutorialProgression : MonoBehaviour {
 			}
 			else if (tutorialstep == 3)
 			{
-				//TurbineStateManager.lowFireState.Copy (firstMill);
+				TurbineStateManager.lowFireState.Copy (firstMill);
 			}
 		}
 	}
