@@ -51,7 +51,7 @@ public class CloudGameplayObject : MonoBehaviour, ITouchSensitive, IMouseSensiti
 
         //HashSet<IWindSensitive> deleteList = new HashSet<IWindSensitive>();
 
-        if (TutorialProgression.Instance.IsComplete && cloudSelect)
+        if (cloudSelect)
         {
 
             CloudMove();
