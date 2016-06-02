@@ -18,6 +18,8 @@ public class CameraMovement : MonoBehaviour {
     Camera Camera.main;
 	bool start = true;
 
+	TutorialProgression tutProg;
+
     [System.Serializable]
     struct CameraPosition
     {
@@ -29,17 +31,16 @@ public class CameraMovement : MonoBehaviour {
 	void Start ()
 	{
 		_offset = Camera.main.transform.position - Waypoints [_progress].waypoint.position;
-		Debug.Log (_offset);
+		tutProg = this.GetComponent<TutorialProgression> ();
     }
 
 	public void SetProgress()
     {
-		Debug.Log (_progress);
         if (_reachedGoal && _progress < Waypoints.Length)
         {
 			_size = Camera.main.GetComponent<Camera> ().orthographicSize;
 			_origin = Waypoints[_progress].waypoint.position;
-
+			Debug.Log ("didthis");
             if (_progress < Waypoints.Length)
             {
 				_target = Waypoints[_progress+1].waypoint.position;
@@ -47,8 +48,8 @@ public class CameraMovement : MonoBehaviour {
                 _move = 0;
 
                 _reachedGoal = false;
-				TutorialProgression.Instance.setCamera (false);
-
+				tutProg.setCamera (false);
+				Debug.Log ("didthat");
             }
         }
     }
@@ -59,7 +60,7 @@ public class CameraMovement : MonoBehaviour {
 		{
 			_progress++;
             _reachedGoal = true;
-			TutorialProgression.Instance.setCamera (true);
+			tutProg.setCamera (true);
 		}
 
 		if (!_reachedGoal && _move < 1 && Waypoints[_progress].zoomOut)

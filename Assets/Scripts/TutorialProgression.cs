@@ -39,7 +39,7 @@ public class TutorialProgression : MonoBehaviour {
 
 	bool fuckedUp = false;
 	GameObject badMill;
-	TurbineObject firstMill;
+	//TurbineObject firstMill;
 	bool missionIsSetUp = false;
 	bool cameraStopped = true;
 
@@ -111,23 +111,24 @@ public class TutorialProgression : MonoBehaviour {
 					missionIsSetUp = true;
 				}
 				//enable clickbait
-
-				//back to black
-				if (fuckedUp && !isTiming)
+				if (missionIsSetUp)
 				{
-					//start animation
-					onTimerEvent = RemoveMill;
-					BeginTimer (1);
-				}
+					if (fuckedUp && !isTiming)
+					{
+						//start animation
+						onTimerEvent = RemoveMill;
+						BeginTimer (1);
+					}
 
-				//progression requirement
-				if (currentMills == requiredMills && !fuckedUp)
-				{
-					if (firstMill == null)
+					//progression requirement
+					if (currentMills == requiredMills && !fuckedUp)
+					{
+						/*if (firstMill == null)
 					{
 						firstMill = FindObjectOfType<TurbineObject> ();
+					}*/
+						EndMission (0);
 					}
-					EndMission (0);
 				}
 			}
 			else if (tutorialstep == 2)
@@ -137,22 +138,24 @@ public class TutorialProgression : MonoBehaviour {
 					NewMission (2);
 					missionIsSetUp = true;
 				}
-
-				if (fuckedUp && !isTiming)
+				if (missionIsSetUp)
 				{
-					//start animation
-					onTimerEvent = RemoveMill;
-					BeginTimer (1);
-				}
+					if (fuckedUp && !isTiming)
+					{
+						//start animation
+						onTimerEvent = RemoveMill;
+						BeginTimer (1);
+					}
 
-				if (currentMills == requiredMills && !fuckedUp)
-				{
-					EndMission (0);
+					if (currentMills == requiredMills && !fuckedUp)
+					{
+						EndMission (0);
+					}
 				}
 			}
 			else if (tutorialstep == 3)
 			{
-				TurbineStateManager.lowFireState.Copy (firstMill);
+				//TurbineStateManager.lowFireState.Copy (firstMill);
 			}
 		}
 	}
@@ -160,6 +163,7 @@ public class TutorialProgression : MonoBehaviour {
 	void NewMission(int pReq)
 	{
 		PlaceObjectOnClick.Instance.SetDirty(false);
+		Debug.Log ("this also");
 		requiredMills = pReq;
 		currentMills = 0;
 	}

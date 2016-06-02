@@ -128,7 +128,7 @@ public class CloudGameplayObject : MonoBehaviour, ITouchSensitive, IMouseSensiti
 	void OnCloudSelect(bool state, RaycastHit pHit){
 			cloudSelect = state;
             hitTarget = pHit;
-            Debug.Log("State: " + state);
+           // Debug.Log("State: " + state);
 	}
     
 

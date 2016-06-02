@@ -25,7 +25,7 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive, IMouseSensitiv
 
     float timer;
 
-    bool dirtyFlag = false;
+	bool dirtyFlag = true;
 
 	public delegate void ObjectPlaced (GameObject go);
 	public ObjectPlaced OnObjectPlaced;
