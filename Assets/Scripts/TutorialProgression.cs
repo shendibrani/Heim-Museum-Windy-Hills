@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(CameraMovement))]
 public class TutorialProgression : MonoBehaviour {
@@ -49,11 +50,16 @@ public class TutorialProgression : MonoBehaviour {
 	bool saboteurWasFought = false;
 
 	int tutorialstep = 0;
+	int next = 1;
 	int requiredMills = 0;
 	int currentMills = 0;
 
 	[SerializeField] GameObject startMessage;
+	[SerializeField] Text helpText;
+	[SerializeField] Image goodJob;
+	Animator popup;
 
+	[SerializeField] GameObject farmer_1;
 
 	delegate void TimerEvent();
 	TimerEvent onTimerEvent;
@@ -63,7 +69,7 @@ public class TutorialProgression : MonoBehaviour {
 	{
         cameraMover = GetComponent<CameraMovement>();
 		onTimerEvent = OnStepTutorial;
-
+		popup = goodJob.GetComponent<Animator> ();
 		PlaceObjectOnClick.Instance.SetDirty(true);
 	}
 	
@@ -92,6 +98,7 @@ public class TutorialProgression : MonoBehaviour {
 				}
 			}
         
+			popup.SetBool("play",false);
 
 			//a story explanation or event shows, the whole map is in the background. Game tells you to click if wait too long
 			if (tutorialstep == 0)
@@ -110,9 +117,11 @@ public class TutorialProgression : MonoBehaviour {
 		//camera is on the first farm, you are eventually told to place a windmill if waited too long
 			else if (tutorialstep == 1)
 			{
-				if (!missionIsSetUp && cameraStopped)
+				if (!missionIsSetUp && cameraStopped && next == 1)
 				{
 					NewMission (1);
+					helpText.text = "Bouw een turbine";
+					next = 2;
 					missionIsSetUp = true;
 				}
 				//enable clickbait
@@ -129,18 +138,22 @@ public class TutorialProgression : MonoBehaviour {
 					if (currentMills == requiredMills && !fuckedUp)
 					{
 						if (firstMill == null)
-					{
-						firstMill = FindObjectOfType<TurbineObject> ();
-					}
-						EndMission (0);
+						{
+							firstMill = FindObjectOfType<TurbineObject> ();
+						}
+						popup.SetBool("play",true);
+						EndMission (3);
 					}
 				}
 			}
 			else if (tutorialstep == 2)
 			{
-				if (!missionIsSetUp && cameraStopped)
+				if (!missionIsSetUp && cameraStopped && next == 2)
 				{
 					NewMission (2);
+					helpText.text = "Bouw twee turbines";
+					next = 3;
+
 					missionIsSetUp = true;
 				}
 				if (missionIsSetUp)
@@ -154,18 +167,21 @@ public class TutorialProgression : MonoBehaviour {
 
 					if (currentMills == requiredMills && !fuckedUp)
 					{
-						EndMission (0);
+						popup.SetBool("play",true);
+						EndMission (3);
 					}
 				}
 			}
 			else if (tutorialstep == 3)
 			{
-				if (!missionIsSetUp && cameraStopped)
+				if (!missionIsSetUp && cameraStopped && next == 3)
 				{
 					PlaceObjectOnClick.Instance.SetDirty(true);
 					currentMills = 0;
 					requiredMills = 0;
 					TurbineStateManager.lowFireState.Copy (firstMill);
+					helpText.text = "Bluss de brand op de turbine";
+					next = 4;
 					missionIsSetUp = true;
 				}
 				if (missionIsSetUp)
@@ -176,15 +192,18 @@ public class TutorialProgression : MonoBehaviour {
 					}
 					if (fireWasFought)
 					{
-						EndMission (0);
+						popup.SetBool("play",true);
+						EndMission (3);
 					}
 				}
 			}
 			else if (tutorialstep == 4)
 			{
-				if (!missionIsSetUp && cameraStopped)
+				if (!missionIsSetUp && cameraStopped && next == 4)
 				{
 					NewMission (3);
+					helpText.text = "Bouw driw turbines";
+					next = 5;
 					missionIsSetUp = true;
 				}
 				if (missionIsSetUp)
@@ -198,35 +217,42 @@ public class TutorialProgression : MonoBehaviour {
 					if (currentMills == requiredMills && !fuckedUp)
 					{
 						FindObjectOfType<Fossil_Fuel_Particle> ().lessFossil = true;
-						EndMission (0);
+						popup.SetBool("play",true);
+						EndMission (3);
 					}
 				}
 			}
 			else if (tutorialstep == 5)
 			{
-				if (!missionIsSetUp && cameraStopped)
+				if (!missionIsSetUp && cameraStopped && next == 5)
 				{
 					PlaceObjectOnClick.Instance.SetDirty(true);
 					currentMills = 0;
 					requiredMills = 0;
+					next = 5;
 					missionIsSetUp = true;
 				}
 				if (missionIsSetUp)
 				{
+					popup.SetBool("play",true);
+
 					TurbineObject[] turbs = FindObjectsOfType<TurbineObject> ();
 					randomMill = turbs[Random.Range(0,turbs.Length)];
 					cameraMover.NewWaypoint (6, randomMill.transform, 60, false);
+
 					EndMission ();
 				}
 			}
 			else if (tutorialstep == 6)
 			{
-				if (!missionIsSetUp && cameraStopped)
+				if (!missionIsSetUp && cameraStopped && next == 6)
 				{
 					PlaceObjectOnClick.Instance.SetDirty(true);
 					currentMills = 0;
 					requiredMills = 0;
 					TurbineStateManager.saboteurState.Copy (randomMill);
+					Debug.Log ("saboteur seeded");
+					next = 7;
 					missionIsSetUp = true;
 				}
 				if (missionIsSetUp)
@@ -237,7 +263,8 @@ public class TutorialProgression : MonoBehaviour {
 					}
 					if (saboteurWasFought)
 					{
-						EndMission (0);
+						popup.SetBool("play",true);
+						EndMission (3);
 					}
 				}
 			}
@@ -256,6 +283,7 @@ public class TutorialProgression : MonoBehaviour {
 		PlaceObjectOnClick.Instance.SetDirty(false);
 		requiredMills = pReq;
 		currentMills = 0;
+		Debug.Log (requiredMills);
 	}
 
 	void EndMission(int pTimer = 0)
@@ -263,6 +291,8 @@ public class TutorialProgression : MonoBehaviour {
 		PlaceObjectOnClick.Instance.SetDirty(true);
 		onTimerEvent = OnStepTutorial;
 		BeginTimer (pTimer);
+
+		helpText.text = "";
 		missionIsSetUp = false;
 	}
 
@@ -299,6 +329,7 @@ public class TutorialProgression : MonoBehaviour {
 	{
 		currentMills++;
 		Debug.Log (currentMills);
+		Debug.Log (requiredMills);
 	}
 
 	public void Mess(GameObject pMill)
@@ -313,17 +344,4 @@ public class TutorialProgression : MonoBehaviour {
 	{
 		cameraStopped = pCam;
 	}
-	/*void OnGUI()
-	{
-
-		GUI.Label(new Rect(Screen.width - 250, Screen.height - 700, 250, 20), "Quest 1: Bouw een turbine " + q1 +"/1");
-		if(q1 == 1)
-			GUI.Label(new Rect(Screen.width - 250, Screen.height - 680, 250, 20), "Quest 2: Bouw twee turbines " + q2 +"/2");
-		if (q2 ==2)
-			GUI.Label(new Rect(Screen.width - 250, Screen.height - 660, 250, 20), "Quest 3: Bluss de brand op de turbine " + q3 +"/1");
-		if (q3 == 1)
-			GUI.Label(new Rect(Screen.width - 250, Screen.height - 640, 250, 20), "Quest 4: Bouw driw turbines " + q4 + "/3");
-		if (q4 == 3)
-			GUI.Label(new Rect(Screen.width - 250, Screen.height - 620, 250, 20), "Quest 5: Blaas de aanvallers weg " + q5 + "/1");
-	}*/
 }
