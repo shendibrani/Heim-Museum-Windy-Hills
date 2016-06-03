@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IWindSensitive
 {
-
     //Wind Direction in Vector
     public static Monitored<Vector3> windVelocity = new Monitored<Vector3>(new Vector3(0, 0, 1));
 
@@ -20,14 +19,9 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 		}
 	}
 
-	public delegate void StateChange(string stateName);
-
-	public StateChange StateStart, StateEnd;
-
 	Vector3 windDirection;
 
-	HashSet<TurbineState> states;
-	HashSet<TurbineState> deletionQueue;
+	public Monitored<TurbineState> state { get; private set;}
 
     //Maximum Power Avalible from Turbine (in MW)
     float _maxPower = 1;
@@ -36,18 +30,14 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 
 	public bool isFine {
 		get {
-			return states.Count == 0;
+			return state.value == null;
 		}
 	}
 
 	public bool isBroken
 	{
 		get {
-			foreach (TurbineState ts in states){
-				if(ts.name == TurbineStateManager.brokenState.name) return true;
-			}
-
-			return false;
+			return (state.value != null && state.value.name == TurbineStateManager.brokenState.name);
 		}
 	}
 
@@ -62,13 +52,11 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
     float stateMultiplier
     {
         get {
-            float multi = 1f;
-            if (states != null)
-                foreach (TurbineState ts in states)
-                {
-                    multi *= ts.efficiencyMultiplyer;
-                }
-            return multi;
+			if (state != null) {
+				return state.value.efficiencyMultiplyer;
+			} else {
+				return 1;
+			}
         }
     }
 
@@ -109,8 +97,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 			_all.Add(this);
 		}
 
-        states = new HashSet<TurbineState>();
-		deletionQueue = new HashSet<TurbineState>();
+		state = new Monitored<TurbineState> (null);
 		windDirection = windVelocity.value.normalized;
 		transform.forward = windDirection;
 		windVelocity.OnValueChanged += OnWindVelocityChanged;
@@ -129,12 +116,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 
 	void Update()
 	{
-		CleanStateList ();
-
-		foreach (TurbineState ts in states){
-			ts.Update();
-		}
-
+		state.value.Update ();
         UpdateEfficiency();
 		transform.forward = Vector3.Lerp(transform.forward, windDirection, 0.5f);
         if (isCharging) IncreaseEfficiency();
@@ -161,13 +143,6 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
         }
         //efficencyOvercharge += (overchargeIncrease + overchargeDecrease);
     }
-
-	void CleanStateList ()
-	{
-		foreach (TurbineState ts in deletionQueue) {
-			states.Remove (ts);
-		}
-	}
 
     public void BreakTurbine()
     {
@@ -278,81 +253,23 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 		windDirection = newValue.normalized;
 	}
 
-	/// <summary>
-	/// Adds the state to the turbine and updates the particle systems and animations accordingly.
-	/// Remember to remove the state before adding a new one during transitions or the particle systems won't work correctly.
-	/// </summary>
-	/// <param name="state">The state to add.</param>
-	public void AddState(TurbineState state)
-	{
-		CleanStateList ();
-
-		foreach (TurbineState ts in states){
-			if (ts.name == state.name) return;
-		}
-
-		if (state.name == TurbineStateManager.saboteurState.name) {
-			GetComponentInChildren<Saboteur> ().StartAnimation ();
-		} else if (state.name == TurbineStateManager.brokenState.name) {
-			GetComponent<TurbineParticle> ().Break (true);
-		} else if (state.name == TurbineStateManager.lowFireState.name) {
-			GetComponent<TurbineParticle> ().LowFire (true);
-		} else if (state.name == TurbineStateManager.highFireState.name) {
-			GetComponent<TurbineParticle> ().HighFire (true);
-		} else if (state.name == TurbineStateManager.dirtyState.name) {
-			GetComponent<TurbineParticle> ().Dirty (true);
-		}
-
-        states.Add(state);
-		StateStart (state.name);
-	}
-
-	/// <summary>
-	/// Removes the state from the turbine and updates the particle systems and animations accordingly.
-	/// Remember to remove the state before adding a new one during transitions or the particle systems won't work correctly.
-	/// </summary>
-	/// <param name="state">The state to remove.</param>
-	public void RemoveState(TurbineState state)
-	{
-		if (state.name == TurbineStateManager.saboteurState.name) {
-			GetComponentInChildren<Saboteur> ().EndAnimation ();
-		} else if (state.name == TurbineStateManager.brokenState.name) {
-			GetComponent<TurbineParticle> ().Break (false);
-		} else if (state.name == TurbineStateManager.lowFireState.name) {
-			GetComponent<TurbineParticle> ().LowFire (false);
-		} else if (state.name == TurbineStateManager.highFireState.name) {
-			GetComponent<TurbineParticle> ().HighFire (false);
-		} else if (state.name == TurbineStateManager.dirtyState.name) {
-			GetComponent<TurbineParticle> ().Dirty (false);
-		}
-
-		deletionQueue.Add(state);
-		StateEnd (state.name);
-	}
-
 	#region Interfaces
 
 	public void OnTouch(Touch t, RaycastHit hit)
 	{
-        foreach (TurbineState ts in states){
-		    ts.OnTouch(t,hit);
-	    }
+		state.value.OnTouch (t,hit);
 	}
 
-	public void OnClick(ClickState state, RaycastHit hit)
+	public void OnClick(ClickState clickState, RaycastHit hit)
 	{
-        foreach (TurbineState ts in states){
-		    ts.OnClick(state, hit);
-	    }
+		state.value.OnClick (clickState, hit);
 	}
 
 	public void OnEnterWindzone ()
 	{
         if (_debug) Debug.Log("Enter Windzone");
         isCharging = true;
-        foreach (TurbineState ts in states){
-		    ts.OnEnterWindzone();
-	    }
+		state.value.OnEnterWindzone();
 	}
 
 	public void OnStayWindzone(){}
@@ -361,10 +278,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
     {
 		if (_debug) Debug.Log("Exit Windzone");
         isCharging = false;
-        foreach (TurbineState ts in states)
-        {
-            ts.OnExitWindzone();
-        }
+		state.value.OnExitWindzone();
     }
 
 	#endregion
@@ -375,37 +289,24 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 	{
 		Debug.Log("Police");
 
-		foreach (TurbineState ts in states)
-		{
-			ts.OnPolice();
-		}
+		state.value.OnPolice();
 	}
 
 	public void Firemen()
 	{
-		Debug.Log("Firemen");
-		foreach (TurbineState ts in states)
-		{
-			ts.OnFiremen();
-		}
+		state.value.OnFiremen();
 	}
 
 	public void Repair()
 	{
 		Debug.Log("Repair");
-		foreach (TurbineState ts in states)
-		{
-			ts.OnRepair();
-		}
+		state.value.OnRepair();
 	}
 
 	public void Cleanup()
 	{
 		Debug.Log("Cleanup");
-		foreach (TurbineState ts in states)
-		{
-			ts.OnCleanup();
-		}
+		state.value.OnCleanup();
 	}
 
 	#endregion

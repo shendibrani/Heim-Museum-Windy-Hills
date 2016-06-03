@@ -78,7 +78,7 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 	void SetOwner(TurbineObject pOwner)
 	{
 		owner = pOwner;
-		owner.AddState(this);
+		owner.state.value = this;
 	}
 		
 	#endregion
@@ -150,29 +150,23 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 
 	public void End (bool solved)
 	{
-		owner.RemoveState(this);
+		owner.state.value = null;
 		if(!solved && negativeEffect) Fail();
-
 		//owner.RemoveState(this);
 	}
 
 	public void Fail() 
 	{
-		TurbineState state;
-
 		if(setsOnHighFire){
-			state = TurbineStateManager.highFireState;
-			state.SetOwner(owner);
+			TurbineStateManager.highFireState.Copy(owner);
 		}
 
 		if(breaksTurbine){
-			state = TurbineStateManager.brokenState;
-			state.SetOwner(owner);
+			TurbineStateManager.brokenState.Copy(owner);
 		}
 
 		if(dirtiesTurbine){
-			state = TurbineStateManager.dirtyState;
-			state.SetOwner(owner);
+			TurbineStateManager.dirtyState.Copy(owner);
 		}
 	}
 

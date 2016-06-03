@@ -15,7 +15,7 @@ public class CameraMovement : MonoBehaviour {
 	int _progress = 0;
 	float _move = 0;
 	float _size = 0;
-    Camera Camera.main;
+    Camera camera = Camera.main;
 	bool start = true;
 
 	TutorialProgression tutProg;
