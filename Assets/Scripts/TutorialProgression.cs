@@ -45,6 +45,7 @@ public class TutorialProgression : MonoBehaviour {
 
 	bool missionIsSetUp = false;
 	bool cameraStopped = true;
+	bool missionEnded = false;
 
 	bool fireWasFought = false;
 	bool saboteurWasFought = false;
@@ -100,7 +101,7 @@ public class TutorialProgression : MonoBehaviour {
 				}
 			}
         
-			popup.SetBool("play",false);
+			//popup.SetBool("play",false);
 
 			//a story explanation or event shows, the whole map is in the background. Game tells you to click if wait too long
 			if (tutorialstep == 0)
@@ -138,7 +139,7 @@ public class TutorialProgression : MonoBehaviour {
 					}
 
 					//progression requirement
-					if (currentMills == requiredMills && !fuckedUp)
+					if (currentMills == requiredMills && !fuckedUp && !missionEnded)
 					{
 						if (firstMill == null)
 						{
@@ -153,6 +154,7 @@ public class TutorialProgression : MonoBehaviour {
 			{
 				if (!missionIsSetUp && cameraStopped && next == 2)
 				{
+					popup.SetBool("play",false);
 					NewMission (2);
 					helpText.text = "Bouw twee turbines";
 					next = 3;
@@ -168,7 +170,7 @@ public class TutorialProgression : MonoBehaviour {
 						BeginTimer (1);
 					}
 
-					if (currentMills == requiredMills && !fuckedUp)
+					if (currentMills == requiredMills && !fuckedUp && !missionEnded)
 					{
 						popup.SetBool("play",true);
 						EndMission (3);
@@ -179,12 +181,14 @@ public class TutorialProgression : MonoBehaviour {
 			{
 				if (!missionIsSetUp && cameraStopped && next == 3)
 				{
+					popup.SetBool("play",false);
 					PlaceObjectOnClick.Instance.SetDirty(true);
 					currentMills = 0;
 					requiredMills = 0;
 					TurbineStateManager.lowFireState.Copy (firstMill);
 					helpText.text = "Bluss de brand op de turbine";
 					next = 4;
+					missionEnded = false;
 					missionIsSetUp = true;
 				}
 				if (missionIsSetUp)
@@ -204,6 +208,7 @@ public class TutorialProgression : MonoBehaviour {
 			{
 				if (!missionIsSetUp && cameraStopped && next == 4)
 				{
+					popup.SetBool("play",false);
 					NewMission (3);
 					helpText.text = "Bouw driw turbines";
 					next = 5;
@@ -217,7 +222,7 @@ public class TutorialProgression : MonoBehaviour {
 						onTimerEvent = RemoveMill;
 						BeginTimer (1);
 					}
-					if (currentMills == requiredMills && !fuckedUp)
+					if (currentMills == requiredMills && !fuckedUp && !missionEnded)
 					{
 						FindObjectOfType<Fossil_Fuel_Particle> ().lessFossil = true;
 						popup.SetBool("play",true);
@@ -229,16 +234,17 @@ public class TutorialProgression : MonoBehaviour {
 			{
 				if (!missionIsSetUp && cameraStopped && next == 5)
 				{
+					popup.SetBool("play",false);
 					PlaceObjectOnClick.Instance.SetDirty(true);
 					currentMills = 0;
 					requiredMills = 0;
-					next = 5;
+					next = 6;
+
+					missionEnded = false;
 					missionIsSetUp = true;
 				}
-				if (missionIsSetUp)
+				if (missionIsSetUp && !missionEnded)
 				{
-					popup.SetBool("play",true);
-
 					TurbineObject[] turbs = FindObjectsOfType<TurbineObject> ();
 					randomMill = turbs[Random.Range(0,turbs.Length)];
 					cameraMover.NewWaypoint (6, randomMill.transform, 60, false);
@@ -250,12 +256,13 @@ public class TutorialProgression : MonoBehaviour {
 			{
 				if (!missionIsSetUp && cameraStopped && next == 6)
 				{
+					popup.SetBool("play",false);
 					PlaceObjectOnClick.Instance.SetDirty(true);
 					currentMills = 0;
 					requiredMills = 0;
 					TurbineStateManager.saboteurState.Copy (randomMill);
-					Debug.Log ("saboteur seeded");
 					next = 7;
+					missionEnded = false;
 					missionIsSetUp = true;
 				}
 				if (missionIsSetUp)
@@ -264,7 +271,7 @@ public class TutorialProgression : MonoBehaviour {
 					{
 						saboteurWasFought = true;
 					}
-					if (saboteurWasFought)
+					if (saboteurWasFought && !missionEnded)
 					{
 						popup.SetBool("play",true);
 						EndMission (3);
@@ -275,6 +282,7 @@ public class TutorialProgression : MonoBehaviour {
 			{
 				if (cameraStopped)
 				{
+					popup.SetBool("play",false);
 					SetComplete ();
 				}
 			}
@@ -286,6 +294,8 @@ public class TutorialProgression : MonoBehaviour {
 		PlaceObjectOnClick.Instance.SetDirty(false);
 		requiredMills = pReq;
 		currentMills = 0;
+
+		missionEnded = false;
 		missionIsSetUp = true;
 	}
 
@@ -296,6 +306,7 @@ public class TutorialProgression : MonoBehaviour {
 		BeginTimer (pTimer);
 
 		helpText.text = "";
+		missionEnded = true;
 		missionIsSetUp = false;
 	}
 

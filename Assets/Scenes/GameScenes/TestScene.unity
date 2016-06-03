@@ -450,6 +450,18 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11471718, guid: 8952646635ca4a246937ea8256fde184, type: 2}
+      propertyPath: m_Color.r
+      value: 0.5137931
+      objectReference: {fileID: 0}
+    - target: {fileID: 11471718, guid: 8952646635ca4a246937ea8256fde184, type: 2}
+      propertyPath: m_Color.g
+      value: 0.5137931
+      objectReference: {fileID: 0}
+    - target: {fileID: 11471718, guid: 8952646635ca4a246937ea8256fde184, type: 2}
+      propertyPath: m_Color.b
+      value: 0.5137931
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8952646635ca4a246937ea8256fde184, type: 2}
   m_IsPrefabParent: 0
@@ -610,7 +622,7 @@ MonoBehaviour:
     zoomOut: 1
   - waypoint: {fileID: 1976112908}
     zoom: 50
-    zoomOut: 0
+    zoomOut: 1
   - waypoint: {fileID: 1734572248}
     zoom: 60
     zoomOut: 1
