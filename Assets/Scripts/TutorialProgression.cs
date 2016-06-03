@@ -59,7 +59,7 @@ public class TutorialProgression : MonoBehaviour {
 	[SerializeField] Image goodJob;
 	Animator popup;
 
-	[SerializeField] GameObject farmer_1;
+	[SerializeField] Farmer farmer_1;
 
 	delegate void TimerEvent();
 	TimerEvent onTimerEvent;
@@ -69,7 +69,9 @@ public class TutorialProgression : MonoBehaviour {
 	{
         cameraMover = GetComponent<CameraMovement>();
 		onTimerEvent = OnStepTutorial;
+
 		popup = goodJob.GetComponent<Animator> ();
+
 		PlaceObjectOnClick.Instance.SetDirty(true);
 	}
 	
@@ -119,19 +121,20 @@ public class TutorialProgression : MonoBehaviour {
 			{
 				if (!missionIsSetUp && cameraStopped && next == 1)
 				{
+					farmer_1.Wave (true);
 					NewMission (1);
 					helpText.text = "Bouw een turbine";
 					next = 2;
-					missionIsSetUp = true;
+
 				}
 				//enable clickbait
 				if (missionIsSetUp)
 				{
 					if (fuckedUp && !isTiming)
 					{
-						//start animation
+						//farmer_1.Walk (badMill.transform.position);
 						onTimerEvent = RemoveMill;
-						BeginTimer (1);
+						BeginTimer (2);
 					}
 
 					//progression requirement
@@ -283,7 +286,7 @@ public class TutorialProgression : MonoBehaviour {
 		PlaceObjectOnClick.Instance.SetDirty(false);
 		requiredMills = pReq;
 		currentMills = 0;
-		Debug.Log (requiredMills);
+		missionIsSetUp = true;
 	}
 
 	void EndMission(int pTimer = 0)
