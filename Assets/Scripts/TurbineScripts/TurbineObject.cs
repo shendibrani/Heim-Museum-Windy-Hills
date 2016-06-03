@@ -52,7 +52,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
     float stateMultiplier
     {
         get {
-			if (state != null) {
+			if (state.value != null) {
 				return state.value.efficiencyMultiplyer;
 			} else {
 				return 1;

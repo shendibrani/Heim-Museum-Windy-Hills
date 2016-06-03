@@ -266,7 +266,6 @@ public class TutorialProgression : MonoBehaviour {
 					requiredMills = 0;
 					TurbineStateManager.saboteurState.Copy (randomMill);
 					randomMill.state.OnValueChanged += OnSaboteur;
-					randomMill.state.OnValueChanged += OnBreak;
 					next = 7;
 					missionEnded = false;
 					missionIsSetUp = true;
@@ -278,7 +277,6 @@ public class TutorialProgression : MonoBehaviour {
 						popup.SetBool("play",true);
 						EndMission (3);
 						randomMill.state.OnValueChanged -= OnSaboteur;
-						randomMill.state.OnValueChanged -= OnBreak;
 					}
 				}
 			}
@@ -294,16 +292,12 @@ public class TutorialProgression : MonoBehaviour {
 	}
 
 	public void OnSaboteur(TurbineState oldState, TurbineState newState){
-		saboteurWasFought = true;
+		saboteurWasFought = newState == null;
 	}
-
-	public void OnBreak(TurbineState oldState, TurbineState newState)
-	{
-		saboteurWasFought = false;
-	}
+		
 	public void OnFireEnd(TurbineState oldState, TurbineState newState)
 	{
-		fireWasFought = true;
+		fireWasFought = newState == null;
 	}
 
 	void NewMission(int pReq)
