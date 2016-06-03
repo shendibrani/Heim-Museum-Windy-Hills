@@ -20,6 +20,10 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 		}
 	}
 
+	public delegate void StateChange(string stateName);
+
+	public StateChange StateStart, StateEnd;
+
 	Vector3 windDirection;
 
 	HashSet<TurbineState> states;
@@ -300,6 +304,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 		}
 
         states.Add(state);
+		StateStart (state.name);
 	}
 
 	/// <summary>
@@ -322,6 +327,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 		}
 
 		deletionQueue.Add(state);
+		StateEnd (state.name);
 	}
 
 	#region Interfaces
