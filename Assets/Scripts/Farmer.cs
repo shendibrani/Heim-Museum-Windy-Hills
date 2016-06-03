@@ -28,7 +28,8 @@ public class Farmer : MonoBehaviour {
 	{
 		if (move)
 		{
-			Wave (false);
+			
+			Debug.Log ("Walking to that shit");
 			Quaternion currentRot = this.transform.rotation;
 			this.transform.LookAt (goal);
 			this.transform.rotation = Quaternion.Lerp (this.transform.rotation, currentRot,0.99f);
@@ -69,12 +70,14 @@ public class Farmer : MonoBehaviour {
 
 	public void Walk(Vector3 pGoal)
 	{
-		if (move)
+		if (!move)
 		{
+			Debug.Log ("thing");
 			goal = pGoal;
 			maxDistance = Vector3.Distance (this.transform.position, goal);
 			currentspeed = normalSpeed;
 			move = true;
+			Wave (false);
 		}
 	}
 
