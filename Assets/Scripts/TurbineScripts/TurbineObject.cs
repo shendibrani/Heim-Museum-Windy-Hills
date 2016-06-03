@@ -98,6 +98,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 		}
 
 		state = new Monitored<TurbineState> (null);
+		state.OnValueChanged += GetComponent<TurbineParticle> ().OnStateChange;
 		windDirection = windVelocity.value.normalized;
 		transform.forward = windDirection;
 		windVelocity.OnValueChanged += OnWindVelocityChanged;

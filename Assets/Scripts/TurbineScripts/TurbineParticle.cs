@@ -17,7 +17,7 @@ public class TurbineParticle : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		GetComponent<TurbineObject> ().state.OnValueChanged += OnStateChange;
+		
 	}
 	
 	// Update is called once per frame
