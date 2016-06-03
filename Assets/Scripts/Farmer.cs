@@ -28,12 +28,10 @@ public class Farmer : MonoBehaviour {
 	{
 		if (move)
 		{
-			
-			Debug.Log ("Walking to that shit");
 			Quaternion currentRot = this.transform.rotation;
 			this.transform.LookAt (goal);
 			this.transform.rotation = Quaternion.Lerp (this.transform.rotation, currentRot,0.99f);
-			this.transform.localPosition += currentspeed * this.transform.forward;
+			this.transform.localPosition += currentspeed * - this.transform.forward;
 
 			float distance = Vector3.Distance (this.transform.position, goal);
 

@@ -58,6 +58,9 @@ public class TutorialProgression : MonoBehaviour {
 	[SerializeField] GameObject startMessage;
 	[SerializeField] Text helpText;
 	[SerializeField] Image goodJob;
+	[SerializeField] Cow cow1;
+	[SerializeField] Cow cow2;
+	[SerializeField] Cow cow3;
 	Animator popup;
 
 	[SerializeField] Farmer farmer_1;
@@ -135,7 +138,7 @@ public class TutorialProgression : MonoBehaviour {
 					{
 						//farmer_1.Walk (badMill.transform.position);
 						onTimerEvent = RemoveMill;
-						BeginTimer (2);
+						BeginTimer (1);
 					}
 
 					//progression requirement
@@ -165,7 +168,9 @@ public class TutorialProgression : MonoBehaviour {
 				{
 					if (fuckedUp && !isTiming)
 					{
-						//start animation
+						cow1.Run ();
+						cow2.Run ();
+						cow3.Run ();
 						onTimerEvent = RemoveMill;
 						BeginTimer (1);
 					}

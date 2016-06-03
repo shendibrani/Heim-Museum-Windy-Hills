@@ -32,7 +32,7 @@ public class Cow : MonoBehaviour {
 			Quaternion currentRot = this.transform.rotation;
 			this.transform.LookAt (goal);
 			this.transform.rotation = Quaternion.Lerp (this.transform.rotation, currentRot,0.99f);
-			this.transform.localPosition += currentspeed * this.transform.forward;
+			this.transform.position += currentspeed * this.transform.forward;
 
 			float distance = Vector3.Distance (this.transform.position, goal);
 
@@ -67,11 +67,6 @@ public class Cow : MonoBehaviour {
 		}
 
 
-
-		if (Input.GetKey(KeyCode.Space))
-		{
-			Run ();
-		}
 		anim.SetBool ("Walk", move);
 		anim.SetBool ("Run", run);
 	}
