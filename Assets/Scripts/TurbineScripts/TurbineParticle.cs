@@ -49,11 +49,11 @@ public class TurbineParticle : MonoBehaviour {
 		if (fire) {
 			lowFire.SetActive (true);
 			fireSmoke.SetActive (true);
-			windParticle.SetActive (false);
+			//windParticle.SetActive (false);
 		} else { 
 			lowFire.SetActive (false);
 			fireSmoke.SetActive (false);
-			windParticle.SetActive (true);
+			//windParticle.SetActive (true);
 		}
 	}
 

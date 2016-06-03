@@ -57,6 +57,10 @@ public class CameraMovement : MonoBehaviour {
 	{
 		if (_move >= 1 && !_reachedGoal)
 		{
+			if (_progress == 2)
+			{
+				ZoomOut = 90;
+			}
 			_progress++;
             _reachedGoal = true;
 			tutProg.setCamera (true);
@@ -84,5 +88,12 @@ public class CameraMovement : MonoBehaviour {
 
 			Camera.main.transform.position = Vector3.Lerp (_origin + _offset, _target + _offset, (Mathf.Sin(Mathf.Lerp(-0.5f*Mathf.PI,0.5f*Mathf.PI,_move) ) + 1)*0.5f);
 		}
+	}
+
+	public void NewWaypoint (int pProg, Transform pTrans, int pZoom, bool pZoomout)
+	{
+		Waypoints [pProg].waypoint = pTrans;
+		Waypoints [pProg].zoom = pZoom;
+		Waypoints [pProg].zoomOut = pZoomout;
 	}
 }

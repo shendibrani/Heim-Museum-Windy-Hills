@@ -150,9 +150,10 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 
 	public void End (bool solved)
 	{
+		owner.RemoveState(this);
 		if(!solved && negativeEffect) Fail();
 
-		owner.RemoveState(this);
+		//owner.RemoveState(this);
 	}
 
 	public void Fail() 

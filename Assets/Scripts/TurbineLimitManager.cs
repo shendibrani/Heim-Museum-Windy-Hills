@@ -24,7 +24,7 @@ public class TurbineLimitManager : MonoBehaviour {
 
 
     [SerializeField]
-    int maxCount = 5;
+    int maxCount = 6;
 
     [SerializeField]
     Text countText;
