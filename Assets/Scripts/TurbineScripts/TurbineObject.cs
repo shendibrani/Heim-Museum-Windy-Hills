@@ -37,7 +37,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 	public bool isBroken
 	{
 		get {
-			return (state.value != null && state.value.name == TurbineStateManager.brokenState.name);
+			return (!isFine && state.value.name == TurbineStateManager.brokenState.name);
 		}
 	}
 
@@ -116,7 +116,9 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 
 	void Update()
 	{
-		state.value.Update ();
+		if (!isFine) { 
+			state.value.Update ();
+		}
         UpdateEfficiency();
 		transform.forward = Vector3.Lerp(transform.forward, windDirection, 0.5f);
         if (isCharging) IncreaseEfficiency();
@@ -257,19 +259,25 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 
 	public void OnTouch(Touch t, RaycastHit hit)
 	{
-		state.value.OnTouch (t,hit);
+		if (!isFine) {
+			state.value.OnTouch (t, hit);
+		}
 	}
 
 	public void OnClick(ClickState clickState, RaycastHit hit)
 	{
-		state.value.OnClick (clickState, hit);
+		if (!isFine) {
+			state.value.OnClick (clickState, hit);
+		}
 	}
 
 	public void OnEnterWindzone ()
 	{
         if (_debug) Debug.Log("Enter Windzone");
         isCharging = true;
-		state.value.OnEnterWindzone();
+		if (!isFine) {
+			state.value.OnEnterWindzone ();
+		}
 	}
 
 	public void OnStayWindzone(){}
@@ -278,7 +286,9 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
     {
 		if (_debug) Debug.Log("Exit Windzone");
         isCharging = false;
-		state.value.OnExitWindzone();
+		if (!isFine) {
+			state.value.OnExitWindzone ();
+		}
     }
 
 	#endregion
@@ -287,26 +297,30 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 
 	public void Police()
 	{
-		Debug.Log("Police");
-
-		state.value.OnPolice();
+		if (!isFine) {
+			state.value.OnPolice ();
+		}
 	}
 
 	public void Firemen()
 	{
-		state.value.OnFiremen();
+		if (!isFine) {
+			state.value.OnFiremen ();
+		}
 	}
 
 	public void Repair()
 	{
-		Debug.Log("Repair");
-		state.value.OnRepair();
+		if (!isFine) {
+			state.value.OnRepair ();
+		}
 	}
 
 	public void Cleanup()
 	{
-		Debug.Log("Cleanup");
-		state.value.OnCleanup();
+		if (!isFine) {
+			state.value.OnCleanup ();
+		}
 	}
 
 	#endregion
