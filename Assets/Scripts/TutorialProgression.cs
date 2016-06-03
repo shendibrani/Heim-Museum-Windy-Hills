@@ -51,7 +51,7 @@ public class TutorialProgression : MonoBehaviour {
 	bool saboteurWasFought = false;
 
 	int tutorialstep = 0;
-	int next = 1;
+	int next = 0;
 	int requiredMills = 0;
 	int currentMills = 0;
 
@@ -114,10 +114,11 @@ public class TutorialProgression : MonoBehaviour {
 				//enable clickbait
 
 				//progression requirement
-				if (Input.GetMouseButtonDown (0))
+				if (next == 0)
 				{
 					startMessage.SetActive (false);
 					OnStepTutorial ();
+					next = 1;
 				}
 			}
 		//camera is on the first farm, you are eventually told to place a windmill if waited too long
@@ -191,6 +192,7 @@ public class TutorialProgression : MonoBehaviour {
 					currentMills = 0;
 					requiredMills = 0;
 					TurbineStateManager.lowFireState.Copy (firstMill);
+					firstMill.StateEnd += OnFireEnd;
 					helpText.text = "Bluss de brand op de turbine";
 					next = 4;
 					missionEnded = false;
@@ -198,14 +200,11 @@ public class TutorialProgression : MonoBehaviour {
 				}
 				if (missionIsSetUp)
 				{
-					if (Input.GetKey(KeyCode.Space))
-					{
-						fireWasFought = true;
-					}
 					if (fireWasFought)
 					{
 						popup.SetBool("play",true);
 						EndMission (3);
+						firstMill.StateEnd -= OnFireEnd;
 					}
 				}
 			}
@@ -244,7 +243,7 @@ public class TutorialProgression : MonoBehaviour {
 					currentMills = 0;
 					requiredMills = 0;
 					next = 6;
-
+					helpText.text = "Verdedig de windmolen";
 					missionEnded = false;
 					missionIsSetUp = true;
 				}
@@ -266,20 +265,20 @@ public class TutorialProgression : MonoBehaviour {
 					currentMills = 0;
 					requiredMills = 0;
 					TurbineStateManager.saboteurState.Copy (randomMill);
+					randomMill.StateEnd += OnSaboteur;
+					randomMill.StateStart += OnBreak;
 					next = 7;
 					missionEnded = false;
 					missionIsSetUp = true;
 				}
 				if (missionIsSetUp)
 				{
-					if (Input.GetKey(KeyCode.Space))
-					{
-						saboteurWasFought = true;
-					}
 					if (saboteurWasFought && !missionEnded)
 					{
 						popup.SetBool("play",true);
 						EndMission (3);
+						randomMill.StateEnd -= OnSaboteur;
+						randomMill.StateStart -= OnBreak;
 					}
 				}
 			}
@@ -292,6 +291,17 @@ public class TutorialProgression : MonoBehaviour {
 				}
 			}
 		}
+	}
+
+	public void OnSaboteur(string name){
+		saboteurWasFought = true;
+	}
+
+	public void OnBreak(string name){
+		saboteurWasFought = false;
+	}
+	public void OnFireEnd(string name){
+		fireWasFought = true;
 	}
 
 	void NewMission(int pReq)
