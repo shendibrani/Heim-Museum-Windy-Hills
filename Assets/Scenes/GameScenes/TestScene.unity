@@ -1519,7 +1519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aabf2884414c2384aadff89e14c1b84a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseInput: 0
+  mouseInput: 1
 --- !u!114 &1818243943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1531,7 +1531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c56ac08d1afd81409fc1fc51e84bb48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  touchInput: 1
+  touchInput: 0
 --- !u!114 &1818243944
 MonoBehaviour:
   m_ObjectHideFlags: 0
