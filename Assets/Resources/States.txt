@@ -11,7 +11,7 @@
     "breaksTurbine": false,
     "dirtiesTurbine": false,
     "endOnPolice": false,
-    "endOnFiremen": false,
+    "endOnFiremen": true,
     "endOnRepair": false,
     "endOnCleanup": false
 }
