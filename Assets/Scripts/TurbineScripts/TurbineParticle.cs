@@ -83,28 +83,32 @@ public class TurbineParticle : MonoBehaviour {
 
 	public void OnStateChange(TurbineState oldState, TurbineState newState)
 	{
-		if (oldState.name == TurbineStateManager.saboteurState.name) {
-			GetComponentInChildren<Saboteur> ().EndAnimation ();
-		} else if (oldState.name == TurbineStateManager.brokenState.name) {
-			GetComponent<TurbineParticle> ().Break (false);
-		} else if (oldState.name == TurbineStateManager.lowFireState.name) {
-			GetComponent<TurbineParticle> ().LowFire (false);
-		} else if (oldState.name == TurbineStateManager.highFireState.name) {
-			GetComponent<TurbineParticle> ().HighFire (false);
-		} else if (oldState.name == TurbineStateManager.dirtyState.name) {
-			GetComponent<TurbineParticle> ().Dirty (false);
+		if (oldState != null) {
+			if (oldState.name == TurbineStateManager.saboteurState.name) {
+				GetComponentInChildren<Saboteur> ().EndAnimation ();
+			} else if (oldState.name == TurbineStateManager.brokenState.name) {
+				GetComponent<TurbineParticle> ().Break (false);
+			} else if (oldState.name == TurbineStateManager.lowFireState.name) {
+				GetComponent<TurbineParticle> ().LowFire (false);
+			} else if (oldState.name == TurbineStateManager.highFireState.name) {
+				GetComponent<TurbineParticle> ().HighFire (false);
+			} else if (oldState.name == TurbineStateManager.dirtyState.name) {
+				GetComponent<TurbineParticle> ().Dirty (false);
+			}
 		}
 
-		if (newState.name == TurbineStateManager.saboteurState.name) {
-			GetComponentInChildren<Saboteur> ().StartAnimation ();
-		} else if (newState.name == TurbineStateManager.brokenState.name) {
-			GetComponent<TurbineParticle> ().Break (true);
-		} else if (newState.name == TurbineStateManager.lowFireState.name) {
-			GetComponent<TurbineParticle> ().LowFire (true);
-		} else if (newState.name == TurbineStateManager.highFireState.name) {
-			GetComponent<TurbineParticle> ().HighFire (true);
-		} else if (newState.name == TurbineStateManager.dirtyState.name) {
-			GetComponent<TurbineParticle> ().Dirty (true);
+		if (newState != null) {
+			if (newState.name == TurbineStateManager.saboteurState.name) {
+				GetComponentInChildren<Saboteur> ().StartAnimation ();
+			} else if (newState.name == TurbineStateManager.brokenState.name) {
+				GetComponent<TurbineParticle> ().Break (true);
+			} else if (newState.name == TurbineStateManager.lowFireState.name) {
+				GetComponent<TurbineParticle> ().LowFire (true);
+			} else if (newState.name == TurbineStateManager.highFireState.name) {
+				GetComponent<TurbineParticle> ().HighFire (true);
+			} else if (newState.name == TurbineStateManager.dirtyState.name) {
+				GetComponent<TurbineParticle> ().Dirty (true);
+			}
 		}
 	}
 }
