@@ -192,7 +192,7 @@ public class TutorialProgression : MonoBehaviour {
 					currentMills = 0;
 					requiredMills = 0;
 					TurbineStateManager.lowFireState.Copy (firstMill);
-					firstMill.StateEnd += OnFireEnd;
+					firstMill.state.OnValueChanged += OnFireEnd;
 					helpText.text = "Bluss de brand op de turbine";
 					next = 4;
 					missionEnded = false;
@@ -204,7 +204,7 @@ public class TutorialProgression : MonoBehaviour {
 					{
 						popup.SetBool("play",true);
 						EndMission (3);
-						firstMill.StateEnd -= OnFireEnd;
+						firstMill.state.OnValueChanged -= OnFireEnd;
 					}
 				}
 			}
@@ -265,8 +265,8 @@ public class TutorialProgression : MonoBehaviour {
 					currentMills = 0;
 					requiredMills = 0;
 					TurbineStateManager.saboteurState.Copy (randomMill);
-					randomMill.StateEnd += OnSaboteur;
-					randomMill.StateStart += OnBreak;
+					randomMill.state.OnValueChanged += OnSaboteur;
+					randomMill.state.OnValueChanged += OnBreak;
 					next = 7;
 					missionEnded = false;
 					missionIsSetUp = true;
@@ -277,8 +277,8 @@ public class TutorialProgression : MonoBehaviour {
 					{
 						popup.SetBool("play",true);
 						EndMission (3);
-						randomMill.StateEnd -= OnSaboteur;
-						randomMill.StateStart -= OnBreak;
+						randomMill.state.OnValueChanged -= OnSaboteur;
+						randomMill.state.OnValueChanged -= OnBreak;
 					}
 				}
 			}
@@ -293,14 +293,16 @@ public class TutorialProgression : MonoBehaviour {
 		}
 	}
 
-	public void OnSaboteur(string name){
+	public void OnSaboteur(TurbineState oldState, TurbineState newState){
 		saboteurWasFought = true;
 	}
 
-	public void OnBreak(string name){
+	public void OnBreak(TurbineState oldState, TurbineState newState)
+	{
 		saboteurWasFought = false;
 	}
-	public void OnFireEnd(string name){
+	public void OnFireEnd(TurbineState oldState, TurbineState newState)
+	{
 		fireWasFought = true;
 	}
 
