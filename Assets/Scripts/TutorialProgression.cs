@@ -64,6 +64,7 @@ public class TutorialProgression : MonoBehaviour {
 	Animator popup;
 
 	[SerializeField] Farmer farmer_1;
+    [SerializeField] bool debug;
 
 	delegate void TimerEvent();
 	TimerEvent onTimerEvent;
@@ -84,8 +85,197 @@ public class TutorialProgression : MonoBehaviour {
         isComplete = true;
     }
 
-	// Update is called once per frame
-	void Update ()
+    void TutorialProgession0()
+    {
+        startMessage.SetActive (true);
+
+		//enable clickbait
+
+		//progression requirement
+		if (next == 0)
+		{
+            startMessage.SetActive(false);
+            OnStepTutorial();
+            next = 1;
+        }
+    }
+	
+    void TutorialProgession1()
+    {
+        if (!missionIsSetUp && cameraStopped && next == 1)
+        {
+            farmer_1.Wave(true);
+            NewMission(1);
+            helpText.text = "Bouw een turbine";
+            next = 2;
+
+        }
+        //enable clickbait
+        if (missionIsSetUp)
+        {
+            if (fuckedUp && !isTiming)
+            {
+                farmer_1.Walk (badMill.transform.position);
+                onTimerEvent = RemoveMill;
+                BeginTimer(1);
+            }
+
+            //progression requirement
+            if (currentMills == requiredMills && !fuckedUp && !missionEnded)
+            {
+                if (firstMill == null)
+                {
+                    firstMill = FindObjectOfType<TurbineObject>();
+                }
+                popup.SetBool("play", true);
+                EndMission(3);
+            }
+        }
+    }
+
+    void TutorialProgression2()
+    {
+        if (!missionIsSetUp && cameraStopped && next == 2)
+        {
+            popup.SetBool("play", false);
+            NewMission(2);
+            helpText.text = "Bouw twee turbines";
+            next = 3;
+
+            missionIsSetUp = true;
+        }
+        if (missionIsSetUp)
+        {
+            if (fuckedUp && !isTiming)
+            {
+                cow1.Run();
+                cow2.Run();
+                cow3.Run();
+                onTimerEvent = RemoveMill;
+                BeginTimer(1);
+            }
+
+            if (currentMills == requiredMills && !fuckedUp && !missionEnded)
+            {
+                popup.SetBool("play", true);
+                EndMission(3);
+            }
+        }
+    }
+    
+    void TutorialProgression3()
+    {
+        if (!missionIsSetUp && cameraStopped && next == 3)
+        {
+            popup.SetBool("play", false);
+            PlaceObjectOnClick.Instance.SetDirty(true);
+            currentMills = 0;
+            requiredMills = 0;
+            TurbineStateManager.lowFireState.Copy(firstMill);
+            firstMill.state.OnValueChanged += OnFireEnd;
+            helpText.text = "Bluss de brand op de turbine";
+            next = 4;
+            missionEnded = false;
+            missionIsSetUp = true;
+        }
+        if (missionIsSetUp)
+        {
+            if (fireWasFought)
+            {
+                popup.SetBool("play", true);
+                EndMission(3);
+                firstMill.state.OnValueChanged -= OnFireEnd;
+            }
+        }
+    }
+
+    void TutorialProgression4()
+    {
+        if (!missionIsSetUp && cameraStopped && next == 4)
+        {
+            popup.SetBool("play", false);
+            NewMission(3);
+            helpText.text = "Bouw driw turbines";
+            next = 5;
+            missionIsSetUp = true;
+        }
+        if (missionIsSetUp)
+        {
+            if (fuckedUp && !isTiming)
+            {
+                //start animation
+                onTimerEvent = RemoveMill;
+                BeginTimer(1);
+            }
+            if (currentMills == requiredMills && !fuckedUp && !missionEnded)
+            {
+                FindObjectOfType<Fossil_Fuel_Particle>().lessFossil = true;
+                popup.SetBool("play", true);
+                EndMission(3);
+            }
+        }
+    }
+
+    void TutorialProgression5()
+    {
+        if (!missionIsSetUp && cameraStopped && next == 5)
+        {
+            popup.SetBool("play", false);
+            PlaceObjectOnClick.Instance.SetDirty(true);
+            currentMills = 0;
+            requiredMills = 0;
+            next = 6;
+            helpText.text = "Verdedig de windmolen";
+            missionEnded = false;
+            missionIsSetUp = true;
+        }
+        if (missionIsSetUp && !missionEnded)
+        {
+            TurbineObject[] turbs = FindObjectsOfType<TurbineObject>();
+            randomMill = turbs[Random.Range(0, turbs.Length)];
+            cameraMover.NewWaypoint(6, randomMill.transform, 60, false);
+
+            EndMission();
+        }
+    }
+
+    void TutorialProgression6()
+    {
+        if (!missionIsSetUp && cameraStopped && next == 6)
+        {
+            popup.SetBool("play", false);
+            PlaceObjectOnClick.Instance.SetDirty(true);
+            currentMills = 0;
+            requiredMills = 0;
+            TurbineStateManager.saboteurState.Copy(randomMill);
+            randomMill.state.OnValueChanged += OnSaboteur;
+            next = 7;
+            missionEnded = false;
+            missionIsSetUp = true;
+        }
+        if (missionIsSetUp)
+        {
+            if (saboteurWasFought && !missionEnded)
+            {
+                popup.SetBool("play", true);
+                EndMission(3);
+                randomMill.state.OnValueChanged -= OnSaboteur;
+            }
+        }
+    }
+
+    void TutorialProgression7()
+    {
+        if (cameraStopped)
+        {
+            popup.SetBool("play", false);
+            SetComplete();
+        }
+    }
+
+
+    // Update is called once per frame
+    void Update ()
 	{
 		if (Skip)
 		{
@@ -109,201 +299,47 @@ public class TutorialProgression : MonoBehaviour {
 			//a story explanation or event shows, the whole map is in the background. Game tells you to click if wait too long
 			if (tutorialstep == 0)
 			{
-				startMessage.SetActive (true);
-
-				//enable clickbait
-
-				//progression requirement
-				if (next == 0)
-				{
-					startMessage.SetActive (false);
-					OnStepTutorial ();
-					next = 1;
-				}
+                TutorialProgession0();	
 			}
 		//camera is on the first farm, you are eventually told to place a windmill if waited too long
 			else if (tutorialstep == 1)
 			{
-				if (!missionIsSetUp && cameraStopped && next == 1)
-				{
-					farmer_1.Wave (true);
-					NewMission (1);
-					helpText.text = "Bouw een turbine";
-					next = 2;
-
-				}
-				//enable clickbait
-				if (missionIsSetUp)
-				{
-					if (fuckedUp && !isTiming)
-					{
-						//farmer_1.Walk (badMill.transform.position);
-						onTimerEvent = RemoveMill;
-						BeginTimer (1);
-					}
-
-					//progression requirement
-					if (currentMills == requiredMills && !fuckedUp && !missionEnded)
-					{
-						if (firstMill == null)
-						{
-							firstMill = FindObjectOfType<TurbineObject> ();
-						}
-						popup.SetBool("play",true);
-						EndMission (3);
-					}
-				}
+                TutorialProgession1();
 			}
 			else if (tutorialstep == 2)
 			{
-				if (!missionIsSetUp && cameraStopped && next == 2)
-				{
-					popup.SetBool("play",false);
-					NewMission (2);
-					helpText.text = "Bouw twee turbines";
-					next = 3;
-
-					missionIsSetUp = true;
-				}
-				if (missionIsSetUp)
-				{
-					if (fuckedUp && !isTiming)
-					{
-						cow1.Run ();
-						cow2.Run ();
-						cow3.Run ();
-						onTimerEvent = RemoveMill;
-						BeginTimer (1);
-					}
-
-					if (currentMills == requiredMills && !fuckedUp && !missionEnded)
-					{
-						popup.SetBool("play",true);
-						EndMission (3);
-					}
-				}
+                TutorialProgression2();
 			}
 			else if (tutorialstep == 3)
 			{
-				if (!missionIsSetUp && cameraStopped && next == 3)
-				{
-					popup.SetBool("play",false);
-					PlaceObjectOnClick.Instance.SetDirty(true);
-					currentMills = 0;
-					requiredMills = 0;
-					TurbineStateManager.lowFireState.Copy (firstMill);
-					firstMill.state.OnValueChanged += OnFireEnd;
-					helpText.text = "Bluss de brand op de turbine";
-					next = 4;
-					missionEnded = false;
-					missionIsSetUp = true;
-				}
-				if (missionIsSetUp)
-				{
-					if (fireWasFought)
-					{
-						popup.SetBool("play",true);
-						EndMission (3);
-						firstMill.state.OnValueChanged -= OnFireEnd;
-					}
-				}
+                TutorialProgression3();
 			}
 			else if (tutorialstep == 4)
 			{
-				if (!missionIsSetUp && cameraStopped && next == 4)
-				{
-					popup.SetBool("play",false);
-					NewMission (3);
-					helpText.text = "Bouw driw turbines";
-					next = 5;
-					missionIsSetUp = true;
-				}
-				if (missionIsSetUp)
-				{
-					if (fuckedUp && !isTiming)
-					{
-						//start animation
-						onTimerEvent = RemoveMill;
-						BeginTimer (1);
-					}
-					if (currentMills == requiredMills && !fuckedUp && !missionEnded)
-					{
-						FindObjectOfType<Fossil_Fuel_Particle> ().lessFossil = true;
-						popup.SetBool("play",true);
-						EndMission (3);
-					}
-				}
+                TutorialProgression4();
 			}
 			else if (tutorialstep == 5)
 			{
-				if (!missionIsSetUp && cameraStopped && next == 5)
-				{
-					popup.SetBool("play",false);
-					PlaceObjectOnClick.Instance.SetDirty(true);
-					currentMills = 0;
-					requiredMills = 0;
-					next = 6;
-					helpText.text = "Verdedig de windmolen";
-					missionEnded = false;
-					missionIsSetUp = true;
-				}
-				if (missionIsSetUp && !missionEnded)
-				{
-					TurbineObject[] turbs = FindObjectsOfType<TurbineObject> ();
-					randomMill = turbs[Random.Range(0,turbs.Length)];
-					cameraMover.NewWaypoint (6, randomMill.transform, 60, false);
-
-					EndMission ();
-				}
+                TutorialProgression5();
 			}
 			else if (tutorialstep == 6)
 			{
-				if (!missionIsSetUp && cameraStopped && next == 6)
-				{
-					popup.SetBool("play",false);
-					PlaceObjectOnClick.Instance.SetDirty(true);
-					currentMills = 0;
-					requiredMills = 0;
-					TurbineStateManager.saboteurState.Copy (randomMill);
-					randomMill.state.OnValueChanged += OnSaboteur;
-					randomMill.state.OnValueChanged += OnBreak;
-					next = 7;
-					missionEnded = false;
-					missionIsSetUp = true;
-				}
-				if (missionIsSetUp)
-				{
-					if (saboteurWasFought && !missionEnded)
-					{
-						popup.SetBool("play",true);
-						EndMission (3);
-						randomMill.state.OnValueChanged -= OnSaboteur;
-						randomMill.state.OnValueChanged -= OnBreak;
-					}
-				}
+                TutorialProgression6();
 			}
 			else if (tutorialstep == 7)
 			{
-				if (cameraStopped)
-				{
-					popup.SetBool("play",false);
-					SetComplete ();
-				}
+                TutorialProgression7();
 			}
 		}
 	}
 
 	public void OnSaboteur(TurbineState oldState, TurbineState newState){
-		saboteurWasFought = true;
+		saboteurWasFought = newState == null;
 	}
-
-	public void OnBreak(TurbineState oldState, TurbineState newState)
-	{
-		saboteurWasFought = false;
-	}
+		
 	public void OnFireEnd(TurbineState oldState, TurbineState newState)
 	{
-		fireWasFought = true;
+		fireWasFought = newState == null;
 	}
 
 	void NewMission(int pReq)
@@ -321,7 +357,6 @@ public class TutorialProgression : MonoBehaviour {
 		PlaceObjectOnClick.Instance.SetDirty(true);
 		onTimerEvent = OnStepTutorial;
 		BeginTimer (pTimer);
-
 		helpText.text = "";
 		missionEnded = true;
 		missionIsSetUp = false;
@@ -343,6 +378,13 @@ public class TutorialProgression : MonoBehaviour {
         instance = null;
     }
 
+    public void StepBackPlacement(GameObject turbineObject)
+    {
+        badMill = turbineObject;
+        fuckedUp = true;
+        PlaceObjectOnClick.Instance.SetDirty(true);
+    }
+
     public void OnStepTutorial()
     {
 		cameraMover.SetProgress();
@@ -361,14 +403,6 @@ public class TutorialProgression : MonoBehaviour {
 		currentMills++;
 		Debug.Log (currentMills);
 		Debug.Log (requiredMills);
-	}
-
-	public void Mess(GameObject pMill)
-	{
-		fuckedUp = true;
-		badMill = pMill;
-		Debug.Log ("fucked Up");
-		PlaceObjectOnClick.Instance.SetDirty(true);
 	}
 
 	public void setCamera(bool pCam)
