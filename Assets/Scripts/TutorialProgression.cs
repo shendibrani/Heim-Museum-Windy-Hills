@@ -38,7 +38,7 @@ public class TutorialProgression : MonoBehaviour {
     bool isTiming = false;
     bool isComplete = false;
 
-	bool fuckedUp = false;
+	bool messedUp = false;
 	GameObject badMill;
 	TurbineObject firstMill;
 	TurbineObject randomMill;
@@ -66,6 +66,7 @@ public class TutorialProgression : MonoBehaviour {
 	Animator popup;
 
 	[SerializeField] Farmer farmer_1;
+	[SerializeField] Transform farmerAngrySpot;
     [SerializeField] bool debug;
 
 	delegate void TimerEvent();
@@ -115,15 +116,15 @@ public class TutorialProgression : MonoBehaviour {
         //enable clickbait
         if (missionIsSetUp)
         {
-            if (fuckedUp && !isTiming)
+            if (messedUp && !isTiming)
             {
-				farmer_1.Walk (badMill.transform.position,true);
+				//farmer_1.Walk (badMill.transform.position,true);
                 onTimerEvent = RemoveMill;
-                BeginTimer(1);
+                BeginTimer(4);
             }
 
             //progression requirement
-            if (currentMills == requiredMills && !fuckedUp && !missionEnded)
+            if (currentMills == requiredMills && !messedUp && !missionEnded)
             {
                 if (firstMill == null)
                 {
@@ -148,16 +149,16 @@ public class TutorialProgression : MonoBehaviour {
         }
         if (missionIsSetUp)
         {
-            if (fuckedUp && !isTiming)
+           /* if (messedUp && !isTiming)
             {
                 cow1.Run();
                 cow2.Run();
                 cow3.Run();
                 onTimerEvent = RemoveMill;
                 BeginTimer(1);
-            }
+            }*/
 
-            if (currentMills == requiredMills && !fuckedUp && !missionEnded)
+            if (currentMills == requiredMills && !messedUp && !missionEnded)
             {
                 popup.SetBool("play", true);
                 EndMission(3);
@@ -203,13 +204,13 @@ public class TutorialProgression : MonoBehaviour {
         }
         if (missionIsSetUp)
         {
-            if (fuckedUp && !isTiming)
+            if (messedUp && !isTiming)
             {
                 //start animation
                 onTimerEvent = RemoveMill;
                 BeginTimer(1);
             }
-            if (currentMills == requiredMills && !fuckedUp && !missionEnded)
+            if (currentMills == requiredMills && !messedUp && !missionEnded)
             {
                 FindObjectOfType<Fossil_Fuel_Particle>().lessFossil = true;
                 popup.SetBool("play", true);
@@ -344,9 +345,9 @@ public class TutorialProgression : MonoBehaviour {
 		fireWasFought = newState == null;
 	}
 
-	void MessedUp1()
+	public void MessedUpFarm1()
 	{
-		farmer_1.Walk (spot);
+		farmer_1.Walk (farmerAngrySpot.position,true);
 	}
 
 	void NewMission(int pReq)
@@ -375,7 +376,7 @@ public class TutorialProgression : MonoBehaviour {
 		{
 			Object.Destroy (badMill);
 			currentMills--;
-			fuckedUp = false;
+			messedUp = false;
 			PlaceObjectOnClick.Instance.SetDirty(false);
 		}
 	}
@@ -388,7 +389,7 @@ public class TutorialProgression : MonoBehaviour {
     public void StepBackPlacement(GameObject turbineObject)
     {
         badMill = turbineObject;
-        fuckedUp = true;
+        messedUp = true;
         PlaceObjectOnClick.Instance.SetDirty(true);
     }
 

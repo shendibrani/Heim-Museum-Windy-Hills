@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Events;
 
 public class Morale : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class Morale : MonoBehaviour
 
     [SerializeField]
     bool doesRemove;
+
+	[SerializeField] UnityEvent moraleEvent;
 
 	public Monitored<float> morale {get; private set;}
 
@@ -66,6 +69,7 @@ public class Morale : MonoBehaviour
             //Object.Destroy(go);
             TutorialProgression.Instance.StepBackPlacement(go);
             //PlaceObjectOnClick.Instance.SetDirty(false);
+			moraleEvent.Invoke();
         }
     }
 }

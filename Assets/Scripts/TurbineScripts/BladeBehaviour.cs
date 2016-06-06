@@ -21,7 +21,7 @@ public class BladeBehaviour : MonoBehaviour
 	void Update ()
 	{
         currentPower += (turbine.GetPowerOutput() - currentPower) * easing;
-        Debug.Log("Power Output " + turbine.GetPowerOutput() + " Current " + currentPower); 
+       // Debug.Log("Power Output " + turbine.GetPowerOutput() + " Current " + currentPower); 
 		transform.Rotate(Vector3.up,angularVelocityPerMetreSecond*windSpeed*currentPower);
 	}
 

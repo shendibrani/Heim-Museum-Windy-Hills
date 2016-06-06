@@ -33,18 +33,17 @@ public class Farmer : MonoBehaviour {
 	{
 		if (move)
 		{
-			Quaternion currentRot = this.transform.rotation;
+			//Quaternion currentRot = this.transform.rotation;
 			/*this.transform.LookAt (goal);
 			this.transform.rotation = Quaternion.Lerp (this.transform.rotation, currentRot,0.99f);
 			this.transform.position += currentspeed *  this.transform.forward;
-
-			float distance = Vector3.Distance (this.transform.position, goal);
-
-			if (Physics.Raycast(transform.position ,transform.forward,evadeDistance,mask))
-			{
-				StopMoving (1);
-			}
 */
+			//float distance = Vector3.Distance (this.transform.position, goal);
+			if (GetComponent<NavMeshAgent>().velocity.magnitude == 0) {
+				StopMoving (1);
+				move = false;
+			}
+
 			/*else
 			{
 				goalspeed = Mathf.Lerp( minSpeed,normalSpeed,(distance / maxDistance));
@@ -87,7 +86,7 @@ public class Farmer : MonoBehaviour {
 	public void StopMoving(int pNewState)
 	{
 		move = false;
-		currentspeed = 0;
+		//currentspeed = 0;
 		anim.SetInteger ("FarmerState", pNewState);
 	}
 
