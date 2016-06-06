@@ -53,7 +53,6 @@ public class Cow : MonoBehaviour {
 					goalspeed = Mathf.Lerp( minSpeed,runSpeed,(distance / maxDistance));
 				}
 				currentspeed = Mathf.Lerp (currentspeed, goalspeed, 0.1f);
-				Debug.Log (distance);
 			}
 
 			if (run)
