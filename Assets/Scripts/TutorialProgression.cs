@@ -357,7 +357,6 @@ public class TutorialProgression : MonoBehaviour {
 		PlaceObjectOnClick.Instance.SetDirty(true);
 		onTimerEvent = OnStepTutorial;
 		BeginTimer (pTimer);
-
 		helpText.text = "";
 		missionEnded = true;
 		missionIsSetUp = false;

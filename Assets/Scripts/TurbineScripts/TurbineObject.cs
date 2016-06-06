@@ -103,6 +103,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 		transform.forward = windDirection;
 		windVelocity.OnValueChanged += OnWindVelocityChanged;
         UpdateEfficiency();
+		FindObjectOfType<Fossil_Fuel_Particle>().UpdateParticles ();
     }
 
     //draw the a line along the line calculated for the raycast below
