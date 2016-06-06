@@ -380,6 +380,13 @@ public class TutorialProgression : MonoBehaviour {
         instance = null;
     }
 
+    public void StepBackPlacement(GameObject turbineObject)
+    {
+        badMill = turbineObject;
+        fuckedUp = true;
+        PlaceObjectOnClick.Instance.SetDirty(true);
+    }
+
     public void OnStepTutorial()
     {
 		cameraMover.SetProgress();
@@ -398,14 +405,6 @@ public class TutorialProgression : MonoBehaviour {
 		currentMills++;
 		Debug.Log (currentMills);
 		Debug.Log (requiredMills);
-	}
-
-	public void Mess(GameObject pMill)
-	{
-		fuckedUp = true;
-		badMill = pMill;
-		Debug.Log ("fucked Up");
-		PlaceObjectOnClick.Instance.SetDirty(true);
 	}
 
 	public void setCamera(bool pCam)

@@ -8,6 +8,9 @@ public class Morale : MonoBehaviour
     [SerializeField]
     bool debug;
 
+    [SerializeField]
+    bool doesRemove;
+
 	public Monitored<float> morale {get; private set;}
 
     public delegate void MoraleUpdate(float value);
@@ -42,7 +45,7 @@ public class Morale : MonoBehaviour
                 {
                     morale.value -= 0.05f;
                     onMoraleUpdate(-0.05f);
-					TutorialProgression.Instance.Mess (go);
+					CheckWindmillPlacement (go);
                     if (debug) Debug.Log("Update Morale");
                 }
                 else
@@ -54,6 +57,15 @@ public class Morale : MonoBehaviour
             }
 
             morale.value = (Mathf.Max(morale, 0));
+        }
+    }
+
+    void CheckWindmillPlacement(GameObject go)
+    {
+       if (go != null && doesRemove) {
+            //Object.Destroy(go);
+            TutorialProgression.Instance.StepBackPlacement(go);
+            //PlaceObjectOnClick.Instance.SetDirty(false);
         }
     }
 }
