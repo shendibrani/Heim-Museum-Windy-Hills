@@ -392,6 +392,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 29
   debug: 1
+  doesRemove: 0
 --- !u!1001 &647286270
 Prefab:
   m_ObjectHideFlags: 0
@@ -1050,6 +1051,7 @@ MonoBehaviour:
   cow2: {fileID: 1650293888}
   cow3: {fileID: 188105213}
   farmer_1: {fileID: 1111733990}
+  debug: 0
 --- !u!114 &1306633069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1446,6 +1448,18 @@ Prefab:
     - target: {fileID: 490968, guid: b786f3e1bcc83ea4abb5f97ddf0c5e77, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19914240, guid: b786f3e1bcc83ea4abb5f97ddf0c5e77, type: 2}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19904200, guid: b786f3e1bcc83ea4abb5f97ddf0c5e77, type: 2}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 19935654, guid: b786f3e1bcc83ea4abb5f97ddf0c5e77, type: 2}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b786f3e1bcc83ea4abb5f97ddf0c5e77, type: 2}
@@ -2026,6 +2040,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 16.18
   debug: 1
+  doesRemove: 0
 --- !u!4 &2000395461 stripped
 Transform:
   m_PrefabParentObject: {fileID: 474408, guid: 91b5c72ff3c428c488dbae2ef06c1bae, type: 2}
@@ -2138,6 +2153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 60
   debug: 1
+  doesRemove: 0
 --- !u!1001 &2051463683
 Prefab:
   m_ObjectHideFlags: 0
