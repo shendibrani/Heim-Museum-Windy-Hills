@@ -5,9 +5,8 @@ using System.Diagnostics;
 
 public class FlockBehavior : MonoBehaviour
 {
-
-    
-    float DamageRadius = 27.0f;
+     
+    float DamageRadius = 15.0f;
 
     Stopwatch timer;
     
@@ -32,6 +31,8 @@ public class FlockBehavior : MonoBehaviour
             MoveToWindMill();
             WindEffect();    
         }
+
+        MoveAway();
     }
 
     bool effectApplied = false;
@@ -42,7 +43,7 @@ public class FlockBehavior : MonoBehaviour
             selectedTurbined.BreakTurbine();
             effectApplied = true;
             timer.Start();
-            transform.LookAt(selectedTurbined.transform);
+         
         }
     }
 
@@ -55,13 +56,14 @@ public class FlockBehavior : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(selectedTurbined.transform.position.x, selectedTurbined.transform.position.y + 30, selectedTurbined.transform.position.z), 1.5f);
             transform.LookAt(selectedTurbined.transform);
         }
-        if (timer.Elapsed.Seconds > 3) moveToWindmill = false;
-        MoveAway();
+        if (timer.Elapsed.Seconds > 3)
+            moveToWindmill = false;
     }
 
     void MoveAway() {
         if (!moveToWindmill && effectApplied) {
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x - 300, transform.position.y, transform.position.z), 1.5f);
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x - 300, transform.position.y + 50, transform.position.z), 1.5f);
+            transform.LookAt(new Vector3(transform.position.x - 300, transform.position.y, transform.position.z));
             if (transform.position.x < -20) Destroy(gameObject);
         }
     }
