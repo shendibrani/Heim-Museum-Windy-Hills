@@ -57,7 +57,7 @@ public class Saboteur : MonoBehaviour {
 		Anim.SetBool ("Climbing", true);
 		Anim.SetBool ("Defeated", false);
 		Anim.SetBool ("Succes", false);
-		Speed = 0.003f;
+        Speed = 0.1f / TurbineStateManager.saboteurState.timer;
 	}
 
 	public void EndAnimation()
