@@ -89,12 +89,11 @@ public class TutorialProgression : MonoBehaviour {
     {
         startMessage.SetActive (true);
 
-				//enable clickbait
+		//enable clickbait
 
-				//progression requirement
-				if (next == 0)
-
-                {
+		//progression requirement
+		if (next == 0)
+		{
             startMessage.SetActive(false);
             OnStepTutorial();
             next = 1;
@@ -116,7 +115,7 @@ public class TutorialProgression : MonoBehaviour {
         {
             if (fuckedUp && !isTiming)
             {
-                //farmer_1.Walk (badMill.transform.position);
+                farmer_1.Walk (badMill.transform.position);
                 onTimerEvent = RemoveMill;
                 BeginTimer(1);
             }
