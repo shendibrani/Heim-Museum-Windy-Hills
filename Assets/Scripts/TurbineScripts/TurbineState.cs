@@ -50,9 +50,9 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 
 	public string name;
 
-	[SerializeField] float timer, _efficiencyMultiplyer;
+	[SerializeField] public float timer, _efficiencyMultiplyer;
 
-	[SerializeField] bool negativeEffect, timed, endOnTap, endOnWind, winzoneDependent, setsOnHighFire, breaksTurbine, dirtiesTurbine;
+    [SerializeField] bool negativeEffect, timed, endOnTap, endOnWind, winzoneDependent, setsOnHighFire, breaksTurbine, dirtiesTurbine;
 
 	[SerializeField] bool endOnPolice, endOnFiremen, endOnRepair, endOnCleanup;
 
