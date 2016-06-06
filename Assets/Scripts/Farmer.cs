@@ -5,16 +5,18 @@ public class Farmer : MonoBehaviour {
 
 	[SerializeField] Animator anim;
 	[SerializeField] float minSpeed;
-	[SerializeField] float normalSpeed = 0.04f;
+	[SerializeField] float normalSpeed;
 	//[SerializeField] float runSpeed = 0.1f;
 
 	[SerializeField] float stopDist;
 
 	bool move = false;
+	bool turn = false;
 	//bool run = false;
 
 	float maxDistance;
 	Vector3 goal = Vector3.zero;
+	Transform turnTarget;
 	float currentspeed;
 	float goalspeed;
 
@@ -31,25 +33,20 @@ public class Farmer : MonoBehaviour {
 			Quaternion currentRot = this.transform.rotation;
 			this.transform.LookAt (goal);
 			this.transform.rotation = Quaternion.Lerp (this.transform.rotation, currentRot,0.99f);
-			this.transform.localPosition += currentspeed * - this.transform.forward;
+			this.transform.position += currentspeed *  this.transform.forward;
 
 			float distance = Vector3.Distance (this.transform.position, goal);
 
 			if (distance < stopDist)
 			{
 				move = false;
+				TurnAround (Camera.main.transform);
+				Wave (true);
 				currentspeed = 0;
 			}
 			else
 			{
-				//if (!run)
-				//{
-					goalspeed = Mathf.Lerp( minSpeed,normalSpeed,(distance / maxDistance));
-				//}
-				//else
-				//{
-				//	goalspeed = Mathf.Lerp( minSpeed,runSpeed,(distance / maxDistance));
-				//}
+				goalspeed = Mathf.Lerp( minSpeed,normalSpeed,(distance / maxDistance));
 				currentspeed = Mathf.Lerp (currentspeed, goalspeed, 0.1f);
 				Debug.Log (distance);
 			}
@@ -62,6 +59,18 @@ public class Farmer : MonoBehaviour {
 					move = true;
 				}
 			}*/
+		}
+		if (turn)
+		{
+			Quaternion currentRot = this.transform.rotation;
+			this.transform.LookAt (turnTarget);
+
+			if (Quaternion.Angle(currentRot,transform.rotation) < 3)
+			{
+				turn = false;
+			}
+			this.transform.rotation = Quaternion.Lerp (this.transform.rotation, currentRot,0.5f);
+			this.transform.rotation = Quaternion.Euler( new Vector3 (currentRot.x, this.transform.rotation.eulerAngles.y, currentRot.z));
 		}
 	}
 
@@ -84,10 +93,11 @@ public class Farmer : MonoBehaviour {
 		anim.SetBool ("Calling", pWave);
 	}
 
-	/*public void TurnAround(Vector3 pTarget)
+	public void TurnAround(Transform pTarget)
 	{
-		
-	}*/
+		turnTarget = pTarget;
+		turn = true;
+	}
 
 	/*public void Run()
 	{
