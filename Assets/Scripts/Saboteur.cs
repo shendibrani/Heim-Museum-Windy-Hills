@@ -63,6 +63,6 @@ public class Saboteur : MonoBehaviour {
 	public void EndAnimation()
 	{
 		Anim.SetBool ("Defeated", true);
-		Speed = -0.03f;
+		Speed = -0.1f / TurbineStateManager.saboteurState.timer;
 	}
 }

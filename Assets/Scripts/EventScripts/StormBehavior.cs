@@ -3,13 +3,20 @@ using System.Collections;
 
 public class StormBehavior : MonoBehaviour, IWindSensitive
 {
-
+    [SerializeField]
     float WindRadius = 30.0f;
+    [SerializeField]
     float DamageRadius = 15.0f;
 
+   [SerializeField]
     public float speed;
+
+
     Collider[] gottenColliders;
+
+    [SerializeField]
     public bool debug = true;
+
     // Update is called once per frame
     void Update()
     {

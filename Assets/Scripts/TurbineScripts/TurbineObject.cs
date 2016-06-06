@@ -134,9 +134,9 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 		}
 	}
 
-    public void IncreaseEfficiency()
+    public void IncreaseEfficiency(float i = 1f)
     {
-        efficencyOvercharge += overchargeIncrease;
+        efficencyOvercharge += overchargeIncrease * i;
         if (efficencyOvercharge >= maxOvercharge) {
             efficencyOvercharge = maxOvercharge;
 
