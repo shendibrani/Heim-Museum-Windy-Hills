@@ -55,6 +55,8 @@ public class TutorialProgression : MonoBehaviour {
 	int requiredMills = 0;
 	int currentMills = 0;
 
+	int subStep = 0;
+
 	[SerializeField] GameObject startMessage;
 	[SerializeField] Text helpText;
 	[SerializeField] Image goodJob;
@@ -115,7 +117,7 @@ public class TutorialProgression : MonoBehaviour {
         {
             if (fuckedUp && !isTiming)
             {
-                farmer_1.Walk (badMill.transform.position);
+				farmer_1.Walk (badMill.transform.position,true);
                 onTimerEvent = RemoveMill;
                 BeginTimer(1);
             }
@@ -340,6 +342,11 @@ public class TutorialProgression : MonoBehaviour {
 	public void OnFireEnd(TurbineState oldState, TurbineState newState)
 	{
 		fireWasFought = newState == null;
+	}
+
+	void MessedUp1()
+	{
+		farmer_1.Walk (spot);
 	}
 
 	void NewMission(int pReq)

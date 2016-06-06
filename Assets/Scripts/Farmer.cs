@@ -7,6 +7,7 @@ public class Farmer : MonoBehaviour {
 	[SerializeField] float minSpeed;
 	[SerializeField] float normalSpeed;
 	//[SerializeField] float runSpeed = 0.1f;
+	[SerializeField] float evadeDistance;
 
 	[SerializeField] float stopDist;
 
@@ -20,6 +21,8 @@ public class Farmer : MonoBehaviour {
 	float currentspeed;
 	float goalspeed;
 
+	[SerializeField] LayerMask mask;
+
 	void Start ()
 	{
 		currentspeed = 0;
@@ -31,25 +34,22 @@ public class Farmer : MonoBehaviour {
 		if (move)
 		{
 			Quaternion currentRot = this.transform.rotation;
-			this.transform.LookAt (goal);
+			/*this.transform.LookAt (goal);
 			this.transform.rotation = Quaternion.Lerp (this.transform.rotation, currentRot,0.99f);
 			this.transform.position += currentspeed *  this.transform.forward;
 
 			float distance = Vector3.Distance (this.transform.position, goal);
 
-			if (distance < stopDist)
+			if (Physics.Raycast(transform.position ,transform.forward,evadeDistance,mask))
 			{
-				move = false;
-				TurnAround (Camera.main.transform);
-				Wave (true);
-				currentspeed = 0;
+				StopMoving (1);
 			}
-			else
+*/
+			/*else
 			{
 				goalspeed = Mathf.Lerp( minSpeed,normalSpeed,(distance / maxDistance));
 				currentspeed = Mathf.Lerp (currentspeed, goalspeed, 0.1f);
-				Debug.Log (distance);
-			}
+			}*/
 
 			/*if (run)
 			{
@@ -75,22 +75,30 @@ public class Farmer : MonoBehaviour {
 	}
 
 
-	public void Walk(Vector3 pGoal)
+	public void Walk(Vector3 pGoal, bool pAngry)
 	{
-		if (!move)
-		{
-			Debug.Log ("thing");
-			goal = pGoal;
-			maxDistance = Vector3.Distance (this.transform.position, goal);
-			currentspeed = normalSpeed;
-			move = true;
-			Wave (false);
-		}
+		GetComponent<NavMeshAgent> ().destination = pGoal;
+		anim.SetInteger ("FarmerState", 0);
+		//maxDistance = Vector3.Distance (this.transform.position, goal);
+		//currentspeed = normalSpeed;
+		//move = true;
+	}
+
+	public void StopMoving(int pNewState)
+	{
+		move = false;
+		currentspeed = 0;
+		anim.SetInteger ("FarmerState", pNewState);
 	}
 
 	public void Wave(bool pWave)
 	{
-		anim.SetBool ("Calling", pWave);
+		anim.SetInteger ("FarmerState", 1);
+	}
+
+	public void Angry (bool pAngry)
+	{
+		anim.SetInteger ("FarmerState", 2);
 	}
 
 	public void TurnAround(Transform pTarget)
