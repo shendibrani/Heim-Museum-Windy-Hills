@@ -80,6 +80,7 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive, IMouseSensitiv
 	public void OnTouch(Touch t, RaycastHit hit)
 	{
 		if(t.phase == TouchPhase.Ended){
+			if(debug) Debug.Log ("[Placement] Placed " + prefab.name + " at " + hit.point + " at " + Time.time);
 			PlaceObject (hit.point.x, hit.point.z);
 		}
 	}

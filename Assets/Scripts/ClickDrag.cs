@@ -6,6 +6,8 @@ public class ClickDrag : MonoBehaviour {
 
 	Vector2 targetPos, startingPos;
 
+	[SerializeField] bool debug;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -26,6 +28,8 @@ public class ClickDrag : MonoBehaviour {
 		if (pointerEventData == null) return;
 			
 		targetPos += pointerEventData.delta/GetComponentInParent<Canvas>().scaleFactor;
+
+		if(debug) Debug.Log ("[GUI] Started dragging " + gameObject.name + " at " + Time.time);
 	}
 	public void OnDragEnd(UnityEngine.EventSystems.BaseEventData data)
 	{
@@ -33,9 +37,14 @@ public class ClickDrag : MonoBehaviour {
 
 		var pointerEventData = data as UnityEngine.EventSystems.PointerEventData;
 
+		if(debug) Debug.Log ("[GUI] Stopped dragging " + gameObject.name + " at " + Time.time);
+
 		RaycastHit hit;
 		Physics.Raycast(Camera.main.ScreenPointToRay(pointerEventData.position), out hit);
 		if(hit.collider != null && hit.collider.GetComponent<TurbineObject>() != null){
+
+			if(debug) Debug.Log ("[GUI] Callback sent from " + gameObject.name + " to " + hit.collider.gameObject.name);
+
 			switch (gameObject.name){
 			case "Police":
 				hit.collider.GetComponent<TurbineObject> ().Police();
