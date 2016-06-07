@@ -347,7 +347,7 @@ public class TutorialProgression : MonoBehaviour {
 
 	public void MessedUpFarm1()
 	{
-		farmer_1.Walk (farmerAngrySpot.position,true);
+		farmer_1.StartWalk (farmerAngrySpot);
 	}
 
 	void NewMission(int pReq)
@@ -409,8 +409,8 @@ public class TutorialProgression : MonoBehaviour {
 	public void Placed()
 	{
 		currentMills++;
-		Debug.Log (currentMills);
-		Debug.Log (requiredMills);
+		//Debug.Log (currentMills);
+		//Debug.Log (requiredMills);
 	}
 
 	public void setCamera(bool pCam)
