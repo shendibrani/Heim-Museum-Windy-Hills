@@ -37,6 +37,7 @@ public class Cutscene : MonoBehaviour {
 				Actions [step].StartEvent.Invoke ();
 				Actions [step].SetReference.Invoke ();
 				actionRunning = true;
+				timer = 0;
 			}
 			else if (actionRunning)
 			{

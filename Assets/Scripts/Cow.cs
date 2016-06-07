@@ -6,67 +6,29 @@ public class Cow : MonoBehaviour {
 	[SerializeField] Animator anim;
 	[SerializeField] Transform[] goals;
 	[SerializeField] Transform[] runGoals;
-	[SerializeField] float minSpeed;
-	float normalSpeed = 0.04f;
+	[SerializeField] float normalSpeed = 0.04f;
 	[SerializeField] float runSpeed = 0.1f;
 
-	[SerializeField] float stopDist;
+	int run = 0;
+	bool reachedGoal = false;
 
-	bool move = false;
-	bool run = false;
-
-	float maxDistance;
-	Vector3 goal = Vector3.zero;
-	float currentspeed;
-	float goalspeed;
+	NavMeshAgent agent;
 
 	void Start ()
 	{
-		currentspeed = 0;
+		agent = GetComponent<NavMeshAgent> ();
 	}
 
 	void Update ()
 	{
-		if (move || run)
-		{
-			Quaternion currentRot = this.transform.rotation;
-			this.transform.LookAt (goal);
-			this.transform.rotation = Quaternion.Lerp (this.transform.rotation, currentRot,0.99f);
-			this.transform.position += currentspeed * this.transform.forward;
+		anim.SetFloat ("Speed", agent.velocity.magnitude);
 
-			float distance = Vector3.Distance (this.transform.position, goal);
-
-			if (distance < stopDist)
-			{
-				move = false;
-				currentspeed = 0;
-			}
-			else
-			{
-				if (!run)
-				{
-					goalspeed = Mathf.Lerp( minSpeed,normalSpeed,(distance / maxDistance));
-				}
-				else
-				{
-					goalspeed = Mathf.Lerp( minSpeed,runSpeed,(distance / maxDistance));
-				}
-				currentspeed = Mathf.Lerp (currentspeed, goalspeed, 0.1f);
-			}
-
-			if (run)
-			{
-				if (distance < 9)
-				{
-					run = false;
-					move = true;
-				}
+		if (run == 2) {
+			float distance = Vector3.Distance (this.transform.position, agent.destination);
+			if (distance < 1) {
+				reachedGoal = true;
 			}
 		}
-
-
-		anim.SetBool ("Walk", move);
-		anim.SetBool ("Run", run);
 	}
 
 	public void Action()
@@ -95,31 +57,52 @@ public class Cow : MonoBehaviour {
 	}
 	void Walk()
 	{
-		if (!move && !run)
+		if (run == 0)
 		{
-			goal = goals[Random.Range (0, goals.Length)].position;
-			maxDistance = Vector3.Distance (this.transform.position, goal);
-			currentspeed = normalSpeed;
-			move = true;
+			agent.speed = normalSpeed;
+			agent.destination = goals[Random.Range (0, goals.Length)].position;
 		}
 	}
 
 	public void Run()
 	{
-		goal = runGoals [0].position;
+		agent.destination = runGoals [0].position;
 
-		float dist = Vector3.Distance (goal, this.transform.position);
+		float dist = Vector3.Distance (agent.destination, this.transform.position);
 
 		foreach (var item in runGoals)
 		{
 			if (Vector3.Distance(item.position, this.transform.position) < dist)
 			{
 				dist = Vector3.Distance (item.position,  this.transform.position);
-				goal = item.position;
+				agent.destination = item.position;
 			}
 		}
-		maxDistance = Vector3.Distance (this.transform.position, goal);
-		move = false;
-		run = true;
+		agent.speed = runSpeed;
+		run = 1;
+	}
+
+	public void stopRunning()
+	{
+		run = 0;
+		reachedGoal = false;
+		agent.speed = normalSpeed;
+	}
+
+	public void RunBack()
+	{
+		run = 2;
+		reachedGoal = false;
+		agent.destination = goals[Random.Range (0, goals.Length)].position;
+	}
+
+	public bool FinishedWalking()
+	{
+		return reachedGoal;
+	}
+
+	public void GetReference(Cutscene pScript)
+	{
+		pScript.SetBoolReference (FinishedWalking);
 	}
 }

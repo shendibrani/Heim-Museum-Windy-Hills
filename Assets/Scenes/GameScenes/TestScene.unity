@@ -78,9 +78,9 @@ NavMeshSettings:
     agentRadius: 4
     agentHeight: 6
     agentSlope: 13.6
-    agentClimb: 0.4
-    ledgeDropHeight: 0
-    maxJumpAcrossDistance: 0
+    agentClimb: 5.41
+    ledgeDropHeight: 2
+    maxJumpAcrossDistance: 10
     accuratePlacement: 0
     minRegionArea: 3
     cellSize: 1.3333334
@@ -95,7 +95,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 25066248}
   m_Layer: 0
-  m_Name: GameObject (3)
+  m_Name: Runsspot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -122,7 +122,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 185847541}
   m_Layer: 0
-  m_Name: GameObject (5)
+  m_Name: Runsspot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,7 +135,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 185847540}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 64.8, y: -6.0200005, z: 19.9}
+  m_LocalPosition: {x: 51, y: -6.0200005, z: 19.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1976112908}
@@ -144,6 +144,12 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 420114, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
   m_PrefabInternal: {fileID: 237224080}
+--- !u!114 &188105213 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11419976, guid: c484935292a2b4b468984c23a46fedd2,
+    type: 2}
+  m_PrefabInternal: {fileID: 237224080}
+  m_Script: {fileID: 11500000, guid: c04610efd0b3e2142a475a9858ac19a3, type: 3}
 --- !u!1001 &222164078
 Prefab:
   m_ObjectHideFlags: 0
@@ -201,6 +207,14 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1976112908}
     m_Modifications:
+    - target: {fileID: 11419976, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
+      propertyPath: goals.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11419976, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
+      propertyPath: runGoals.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 420114, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
       propertyPath: m_LocalPosition.x
       value: 6.999998
@@ -236,15 +250,15 @@ Prefab:
     - target: {fileID: 11419976, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
       propertyPath: goals.Array.data[0]
       value: 
-      objectReference: {fileID: 478069738}
+      objectReference: {fileID: 2087369861}
     - target: {fileID: 11419976, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
       propertyPath: goals.Array.data[1]
       value: 
-      objectReference: {fileID: 2087369861}
+      objectReference: {fileID: 1771813678}
     - target: {fileID: 11419976, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
       propertyPath: goals.Array.data[2]
       value: 
-      objectReference: {fileID: 1771813678}
+      objectReference: {fileID: 478069738}
     - target: {fileID: 11419976, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
       propertyPath: runGoals.Array.data[0]
       value: 
@@ -281,6 +295,30 @@ Prefab:
       propertyPath: m_Name
       value: Cow (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 11419976, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
+      propertyPath: normalSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11419976, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
+      propertyPath: runSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 19534498, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
+      propertyPath: m_WalkableMask
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11419976, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
+      propertyPath: goals.Array.data[3]
+      value: 
+      objectReference: {fileID: 1554941211}
+    - target: {fileID: 11419976, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
+      propertyPath: goals.Array.data[4]
+      value: 
+      objectReference: {fileID: 1849545990}
+    - target: {fileID: 11419976, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
+      propertyPath: runGoals.Array.data[3]
+      value: 
+      objectReference: {fileID: 1151707917}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
   m_IsPrefabParent: 0
@@ -390,7 +428,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 478069738}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: WalkSpot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -457,7 +495,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 19597528, guid: 1e82aee83b1ea454d8bfaf34ac4b53a0, type: 2}
       propertyPath: m_WalkableMask
-      value: 4294967295
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 19597528, guid: 1e82aee83b1ea454d8bfaf34ac4b53a0, type: 2}
       propertyPath: m_Height
@@ -522,7 +560,18 @@ MonoBehaviour:
   doesRemove: 1
   moraleEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 852124919}
+        m_MethodName: StartScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
 --- !u!1001 &647286270
@@ -795,6 +844,265 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 17
+--- !u!1 &852124917
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 852124918}
+  - 114: {fileID: 852124919}
+  m_Layer: 0
+  m_Name: AfraidCowsCutscene
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 2
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &852124918
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 852124917}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 625108144}
+  m_RootOrder: 0
+--- !u!114 &852124919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 852124917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ce14afb83113ed45aedd2138af8dee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Actions:
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1762426586}
+          m_MethodName: Run
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1650293888}
+          m_MethodName: Run
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 188105213}
+          m_MethodName: Run
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByBool: 0
+    SetReference:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByTimer: 1
+    TimeTarget: 4
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306633068}
+          m_MethodName: SpawnDust
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByBool: 0
+    SetReference:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByTimer: 1
+    TimeTarget: 0.2
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByBool: 0
+    SetReference:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306633068}
+          m_MethodName: RemoveMill
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByTimer: 1
+    TimeTarget: 3
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1762426586}
+          m_MethodName: RunBack
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1650293888}
+          m_MethodName: RunBack
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 188105213}
+          m_MethodName: RunBack
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByBool: 1
+    SetReference:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1762426586}
+          m_MethodName: GetReference
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 852124919}
+            m_ObjectArgumentAssemblyTypeName: Cutscene, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1650293888}
+          m_MethodName: GetReference
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 852124919}
+            m_ObjectArgumentAssemblyTypeName: Cutscene, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 188105213}
+          m_MethodName: GetReference
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 852124919}
+            m_ObjectArgumentAssemblyTypeName: Cutscene, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByTimer: 0
+    TimeTarget: 0
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1762426586}
+          m_MethodName: stopRunning
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1650293888}
+          m_MethodName: stopRunning
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 188105213}
+          m_MethodName: stopRunning
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByBool: 0
+    SetReference:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByTimer: 1
+    TimeTarget: 0
 --- !u!1 &853151952
 GameObject:
   m_ObjectHideFlags: 0
@@ -993,6 +1301,14 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1976112908}
     m_Modifications:
+    - target: {fileID: 11419976, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
+      propertyPath: goals.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11419976, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
+      propertyPath: runGoals.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 420114, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
       propertyPath: m_LocalPosition.x
       value: -11.6
@@ -1028,15 +1344,15 @@ Prefab:
     - target: {fileID: 11419976, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
       propertyPath: goals.Array.data[0]
       value: 
-      objectReference: {fileID: 478069738}
+      objectReference: {fileID: 2087369861}
     - target: {fileID: 11419976, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
       propertyPath: goals.Array.data[1]
       value: 
-      objectReference: {fileID: 2087369861}
+      objectReference: {fileID: 1771813678}
     - target: {fileID: 11419976, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
       propertyPath: goals.Array.data[2]
       value: 
-      objectReference: {fileID: 1771813678}
+      objectReference: {fileID: 478069738}
     - target: {fileID: 11419976, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
       propertyPath: runGoals.Array.data[0]
       value: 
@@ -1073,6 +1389,30 @@ Prefab:
       propertyPath: m_Name
       value: Cow (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 11419976, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
+      propertyPath: normalSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11419976, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
+      propertyPath: runSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 19534498, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
+      propertyPath: m_WalkableMask
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11419976, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
+      propertyPath: goals.Array.data[3]
+      value: 
+      objectReference: {fileID: 1554941211}
+    - target: {fileID: 11419976, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
+      propertyPath: goals.Array.data[4]
+      value: 
+      objectReference: {fileID: 1849545990}
+    - target: {fileID: 11419976, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
+      propertyPath: runGoals.Array.data[3]
+      value: 
+      objectReference: {fileID: 1151707917}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
   m_IsPrefabParent: 0
@@ -1624,6 +1964,33 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 616220132}
   m_Script: {fileID: 11500000, guid: eed69e7b37eed7d44bb741dda3db7c88, type: 3}
+--- !u!1 &1151707916
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1151707917}
+  m_Layer: 0
+  m_Name: Runsspot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1151707917
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1151707916}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10.5, y: -6.0200005, z: 61.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1976112908}
+  m_RootOrder: 10
 --- !u!1001 &1152584468
 Prefab:
   m_ObjectHideFlags: 0
@@ -2128,7 +2495,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1498887285}
   m_Layer: 0
-  m_Name: GameObject (4)
+  m_Name: Runsspot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2146,6 +2513,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1976112908}
   m_RootOrder: 5
+--- !u!1 &1554941210
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1554941211}
+  m_Layer: 0
+  m_Name: WalkSpot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1554941211
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1554941210}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.3, y: -6.0200005, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1976112908}
+  m_RootOrder: 11
 --- !u!1001 &1573929337
 Prefab:
   m_ObjectHideFlags: 0
@@ -2291,6 +2685,12 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 420114, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
   m_PrefabInternal: {fileID: 867111562}
+--- !u!114 &1650293888 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11419976, guid: c484935292a2b4b468984c23a46fedd2,
+    type: 2}
+  m_PrefabInternal: {fileID: 867111562}
+  m_Script: {fileID: 11500000, guid: c04610efd0b3e2142a475a9858ac19a3, type: 3}
 --- !u!114 &1655510626 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11471718, guid: 8952646635ca4a246937ea8256fde184,
@@ -2503,6 +2903,14 @@ Prefab:
     - target: {fileID: 400000, guid: 66320e935311705458c08fbedbef2e14, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.6617157
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 66320e935311705458c08fbedbef2e14, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 66320e935311705458c08fbedbef2e14, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66320e935311705458c08fbedbef2e14, type: 3}
@@ -2813,6 +3221,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 661084367}
   m_RootOrder: 0
+--- !u!114 &1762426586 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11419976, guid: c484935292a2b4b468984c23a46fedd2,
+    type: 2}
+  m_PrefabInternal: {fileID: 1893932504}
+  m_Script: {fileID: 11500000, guid: c04610efd0b3e2142a475a9858ac19a3, type: 3}
 --- !u!1 &1769647856
 GameObject:
   m_ObjectHideFlags: 0
@@ -2849,7 +3263,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1771813678}
   m_Layer: 0
-  m_Name: GameObject (2)
+  m_Name: WalkSpot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3280,6 +3694,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2000395461}
   m_RootOrder: 3
+--- !u!1 &1849545989
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1849545990}
+  m_Layer: 0
+  m_Name: WalkSpot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1849545990
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1849545989}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.1, y: -6.0200005, z: -8.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1976112908}
+  m_RootOrder: 12
 --- !u!1 &1882190958
 GameObject:
   m_ObjectHideFlags: 0
@@ -3431,15 +3872,23 @@ Prefab:
     - target: {fileID: 11419976, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
       propertyPath: goals.Array.data[0]
       value: 
-      objectReference: {fileID: 478069738}
+      objectReference: {fileID: 2087369861}
     - target: {fileID: 11419976, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
       propertyPath: goals.Array.data[1]
       value: 
-      objectReference: {fileID: 2087369861}
+      objectReference: {fileID: 1771813678}
     - target: {fileID: 11419976, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
       propertyPath: goals.Array.data[2]
       value: 
-      objectReference: {fileID: 1771813678}
+      objectReference: {fileID: 478069738}
+    - target: {fileID: 11419976, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
+      propertyPath: goals.Array.data[3]
+      value: 
+      objectReference: {fileID: 1554941211}
+    - target: {fileID: 11419976, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
+      propertyPath: goals.Array.data[4]
+      value: 
+      objectReference: {fileID: 1849545990}
     - target: {fileID: 11419976, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
       propertyPath: runGoals.Array.data[0]
       value: 
@@ -3452,22 +3901,10 @@ Prefab:
       propertyPath: runGoals.Array.data[2]
       value: 
       objectReference: {fileID: 185847541}
-    - target: {fileID: 478900, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 478900, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 478900, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 478900, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 11419976, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
+      propertyPath: runGoals.Array.data[3]
+      value: 
+      objectReference: {fileID: 1151707917}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
   m_IsPrefabParent: 0
@@ -3512,6 +3949,9 @@ Transform:
   - {fileID: 478069738}
   - {fileID: 1650293887}
   - {fileID: 188105212}
+  - {fileID: 1151707917}
+  - {fileID: 1554941211}
+  - {fileID: 1849545990}
   m_Father: {fileID: 0}
   m_RootOrder: 2
 --- !u!1 &2000395458 stripped
@@ -3904,7 +4344,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2087369861}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: WalkSpot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
