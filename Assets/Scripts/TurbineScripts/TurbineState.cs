@@ -50,9 +50,9 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 
 	public string name;
 
-	[SerializeField] float timer, _efficiencyMultiplyer;
+	[SerializeField] public float timer, _efficiencyMultiplyer;
 
-	[SerializeField] bool negativeEffect, timed, endOnTap, endOnWind, winzoneDependent, setsOnHighFire, breaksTurbine, dirtiesTurbine;
+    [SerializeField] bool negativeEffect, timed, endOnTap, endOnWind, winzoneDependent, setsOnHighFire, breaksTurbine, dirtiesTurbine;
 
 	[SerializeField] bool endOnPolice, endOnFiremen, endOnRepair, endOnCleanup;
 
@@ -151,8 +151,13 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 	public void End (bool solved)
 	{
 		owner.state.value = null;
-		if(!solved && negativeEffect) Fail();
-		//owner.RemoveState(this);
+
+		if (!solved && negativeEffect) {
+			Debug.Log ("[State] State " + name + " failed at " + Time.time);
+			Fail ();
+		} else {
+			Debug.Log ("[State] State " + name + " ended  with " + timer + "seconds to spare at " + Time.time);
+		}
 	}
 
 	public void Fail() 
@@ -198,6 +203,8 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 		ts.endOnRepair = this.endOnRepair;
 
 		ts.SetOwner(pOwner);
+
+		Debug.Log ("[State] State " + name + " started at " + Time.time);
 
 		return ts;
 	}

@@ -80,6 +80,7 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive, IMouseSensitiv
 	public void OnTouch(Touch t, RaycastHit hit)
 	{
 		if(t.phase == TouchPhase.Ended){
+			if(debug) Debug.Log ("[Placement] Placed " + prefab.name + " at " + hit.point + " at " + Time.time);
 			PlaceObject (hit.point.x, hit.point.z);
 		}
 	}
@@ -131,7 +132,7 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive, IMouseSensitiv
 			GameObject instance = (GameObject)GameObject.Instantiate (prefab, snapPoint, Quaternion.identity); 
 	        if (OnObjectPlaced != null) OnObjectPlaced (instance);
 
-			TutorialProgression.Instance.Placed();
+			TutorialProgression.Instance.Placed(instance.GetComponent<TurbineObject>());
             return true;
 		}
 		return false;

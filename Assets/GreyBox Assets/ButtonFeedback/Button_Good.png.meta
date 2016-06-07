@@ -1,0 +1,200 @@
+fileFormatVersion: 2
+guid: 71ef027d61a38934397b298a5d6ea704
+timeCreated: 1465296046
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Button_Good_0
+    21300002: Button_Good_1
+    21300004: Button_Good_2
+    21300006: Button_Good_3
+    21300008: Button_Good_4
+    21300010: Button_Good_5
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Button_Good_0
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 233
+        width: 74
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -26, y: 37}
+        - {x: -37, y: 26}
+        - {x: -37, y: -36}
+        - {x: -35, y: -37}
+        - {x: 32, y: -37}
+        - {x: 37, y: -25}
+        - {x: 37, y: 31}
+        - {x: 29, y: 37}
+      - - {x: -17, y: -25}
+        - {x: 17, y: 25}
+        - {x: 30, y: 6}
+        - {x: 7, y: -29}
+    - name: Button_Good_1
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 228
+        width: 82
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 22, y: 41}
+        - {x: -29, y: 41}
+        - {x: -41, y: 38}
+        - {x: -41, y: -36}
+        - {x: -19, y: -41}
+        - {x: 23, y: -41}
+        - {x: 41, y: -25}
+        - {x: 41, y: 20}
+        - {x: 29, y: 40}
+      - - {x: -34, y: 12}
+        - {x: 9, y: 34}
+        - {x: 30, y: 19}
+        - {x: 28, y: -22}
+    - name: Button_Good_2
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 120
+        width: 92
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -38, y: 46}
+        - {x: -46, y: 32}
+        - {x: -46, y: -27}
+        - {x: -22, y: -46}
+        - {x: 28, y: -46}
+        - {x: 46, y: -25}
+        - {x: 46, y: 38}
+        - {x: 29, y: 46}
+      - - {x: -36, y: -16}
+        - {x: -23, y: 34}
+        - {x: 36, y: 16}
+        - {x: 7, y: -41}
+    - name: Button_Good_3
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 115
+        width: 102
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -47, y: 50.5}
+        - {x: -51, y: 46.5}
+        - {x: -51, y: -46.5}
+        - {x: -50, y: -50.5}
+        - {x: 36, y: -50.5}
+        - {x: 51, y: -44.5}
+        - {x: 51, y: 40.5}
+        - {x: 32, y: 50.5}
+      - - {x: -42, y: -16.5}
+        - {x: -37, y: 27.5}
+        - {x: 45, y: 10.5}
+        - {x: 14, y: -43.5}
+    - name: Button_Good_4
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 17
+        width: 92
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -38, y: 46}
+        - {x: -46, y: 32}
+        - {x: -46, y: -27}
+        - {x: -22, y: -46}
+        - {x: 28, y: -46}
+        - {x: 46, y: -25}
+        - {x: 46, y: 38}
+        - {x: 29, y: 46}
+      - - {x: -36, y: -16}
+        - {x: -23, y: 34}
+        - {x: 36, y: 16}
+        - {x: 7, y: -41}
+    - name: Button_Good_5
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 22
+        width: 82
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -41, y: 41}
+        - {x: -41, y: -41}
+        - {x: 27, y: -41}
+        - {x: 41, y: -31}
+        - {x: 41, y: 26}
+        - {x: 35, y: 41}
+      - - {x: -9, y: -34}
+        - {x: -34, y: 12}
+        - {x: 9, y: 34}
+        - {x: 34, y: -12}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

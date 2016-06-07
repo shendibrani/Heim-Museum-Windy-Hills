@@ -3,8 +3,11 @@ using System.Collections;
 
 public class WindBoostEffect : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+
+    [SerializeField]
+    float overchargePercentage = 0.5f;
+    // Use this for initialization
+    void Start () {
 	
 	}
 	
@@ -15,7 +18,7 @@ public class WindBoostEffect : MonoBehaviour {
 
     void OnTriggerStay(Collider col) {
         if (col.GetComponent<TurbineObject>()) {
-            col.GetComponent<TurbineObject>().IncreaseEfficiency();
+            col.GetComponent<TurbineObject>().IncreaseEfficiency(overchargePercentage);
             Debug.Log("Increasing efficiency by stormcloud");
         }
 
