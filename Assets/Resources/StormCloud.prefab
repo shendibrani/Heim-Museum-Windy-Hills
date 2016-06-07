@@ -13,6 +13,7 @@ GameObject:
   - 12: {fileID: 1201810}
   - 65: {fileID: 6538698}
   - 114: {fileID: 11473966}
+  - 114: {fileID: 11478722}
   m_Layer: 0
   m_Name: StormCloud
   m_TagString: Untagged
@@ -649,6 +650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7555285c8146980419294817d4ed8fe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  overchargePercentage: 0.5
 --- !u!114 &11473966
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -660,8 +662,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d79dbd0b4ff04c4aaf9257fdea00f2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WindRadius: 30
+  DamageRadius: 15
   speed: 0
   debug: 0
+--- !u!114 &11478722
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab7b4cd4d82cc6244b034dc6485c188c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  indicator: {fileID: 159022, guid: 098c3308800a6f04abc5794ea1c24d5b, type: 2}
 --- !u!135 &13541216
 SphereCollider:
   m_ObjectHideFlags: 1
