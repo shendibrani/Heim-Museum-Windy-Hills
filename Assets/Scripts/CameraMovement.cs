@@ -42,8 +42,8 @@ public class CameraMovement : MonoBehaviour {
 	public void StartMovement(Transform pTarget)
 	{
 		_size = Camera.main.GetComponent<Camera> ().orthographicSize;
-		_origin = Camera.main.transform.position +  _offset;
-		_target = pTarget.position + _offset;
+		_origin = Camera.main.transform.position;
+		_target = pTarget.position;
 
 		if (zoomOutSize == 0)
 		{
@@ -80,7 +80,7 @@ public class CameraMovement : MonoBehaviour {
 
 				Camera.main.GetComponent<Camera> ().orthographicSize = Mathf.Lerp (_size, zoomOutSize, (Mathf.Sin(Mathf.Lerp(-0.5f*Mathf.PI,1.5f*Mathf.PI,_move) ) + 1)*0.5f );
 
-				Camera.main.transform.position = Vector3.Lerp (_origin, _target, (Mathf.Sin(Mathf.Lerp(-0.5f*Mathf.PI,0.5f*Mathf.PI,_move) ) + 1)*0.5f);
+				Camera.main.transform.position = Vector3.Lerp (_origin, _target + _offset, (Mathf.Sin(Mathf.Lerp(-0.5f*Mathf.PI,0.5f*Mathf.PI,_move) ) + 1)*0.5f);
 			}
 
 			if (_move < 1 && !zoomOut)
@@ -89,7 +89,7 @@ public class CameraMovement : MonoBehaviour {
 
 				Camera.main.GetComponent<Camera> ().orthographicSize = Mathf.Lerp (_size,_targetZoom, (Mathf.Sin(Mathf.Lerp(-0.5f*Mathf.PI,0.5f*Mathf.PI,_move) ) + 1)*0.5f );
 
-				Camera.main.transform.position = Vector3.Lerp (_origin, _target, (Mathf.Sin(Mathf.Lerp(-0.5f*Mathf.PI,0.5f*Mathf.PI,_move) ) + 1)*0.5f);
+				Camera.main.transform.position = Vector3.Lerp (_origin, _target + _offset, (Mathf.Sin(Mathf.Lerp(-0.5f*Mathf.PI,0.5f*Mathf.PI,_move) ) + 1)*0.5f);
 			}
 		}
 	}

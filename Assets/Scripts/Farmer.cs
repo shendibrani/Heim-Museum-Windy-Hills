@@ -82,6 +82,12 @@ public class Farmer : MonoBehaviour {
 	public void Free(bool pFree)
 	{
 		freeWill = pFree;
+		if (freeWill) {
+			turn = false;
+			agent.speed = 7;
+		} else {
+			agent.speed = 30;
+		}
 	}
 
 	public void TurnAround(Transform pTarget)

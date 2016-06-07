@@ -56,8 +56,10 @@ public class TutorialProgression : MonoBehaviour {
 		popup = goodJob.GetComponent<Animator> ();
 
 		PlaceObjectOnClick.Instance.SetDirty(true);
-
-		scene.StartScene ();
+		if (!Skip)
+		{
+			scene.StartScene ();
+		}
 	}
 	
     public void SetComplete()
@@ -202,19 +204,21 @@ public class TutorialProgression : MonoBehaviour {
 
 	public void StartFire()
 	{
+		popup.SetBool("play", false);
 		TurbineStateManager.lowFireState.Copy(firstMill);
 		firstMill.state.OnValueChanged += OnFireEnd;
 	}
 
 	public void StartSaboteur()
 	{
+		popup.SetBool("play", false);
 		TurbineStateManager.saboteurState.Copy(randomMill);
 		randomMill.state.OnValueChanged += OnSaboteur;
 	}
 
 	public void TargetFirst()
 	{
-		extraTarget.position = firstMill.transform.position;
+		extraTarget.position = firstMill.transform.position + new Vector3 (0, 0, - 4);
 	}
 	public void TargetSpecial()
 	{
