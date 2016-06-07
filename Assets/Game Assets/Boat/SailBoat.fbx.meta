@@ -1,0 +1,132 @@
+fileFormatVersion: 2
+guid: b81ab405d5940104da6143a26dbae8cd
+timeCreated: 1465207968
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: back
+    100002: Boat
+    100004: bottommast
+    100006: bottomring
+    100008: fok
+    100010: FrontSail
+    100012: imagePlane1
+    100014: mainmastr
+    100016: MainSail
+    100018: rudder
+    100020: //RootNode
+    100022: topmast
+    100024: wingleft
+    100026: wingright
+    400000: back
+    400002: Boat
+    400004: bottommast
+    400006: bottomring
+    400008: fok
+    400010: FrontSail
+    400012: imagePlane1
+    400014: mainmastr
+    400016: MainSail
+    400018: rudder
+    400020: //RootNode
+    400022: topmast
+    400024: wingleft
+    400026: wingright
+    2300000: Boat
+    2300002: bottommast
+    2300004: bottomring
+    2300006: fok
+    2300008: FrontSail
+    2300010: mainmastr
+    2300012: MainSail
+    2300014: rudder
+    2300016: topmast
+    2300018: wingleft
+    2300020: wingright
+    3300000: Boat
+    3300002: bottommast
+    3300004: bottomring
+    3300006: fok
+    3300008: FrontSail
+    3300010: mainmastr
+    3300012: MainSail
+    3300014: rudder
+    3300016: topmast
+    3300018: wingleft
+    3300020: wingright
+    4300000: Boat
+    4300002: mainmastr
+    4300004: bottomring
+    4300006: bottommast
+    4300008: topmast
+    4300010: MainSail
+    4300012: FrontSail
+    4300014: fok
+    4300016: rudder
+    4300018: wingleft
+    4300020: wingright
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
