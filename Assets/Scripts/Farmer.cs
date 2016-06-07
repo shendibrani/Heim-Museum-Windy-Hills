@@ -4,44 +4,50 @@ using System.Collections;
 public class Farmer : MonoBehaviour {
 
 	[SerializeField] Animator anim;
-	[SerializeField] float minSpeed;
-	[SerializeField] float normalSpeed;
+//	[SerializeField] float minSpeed;
+//	[SerializeField] float normalSpeed;
 	//[SerializeField] float runSpeed = 0.1f;
-	[SerializeField] float evadeDistance;
+//	[SerializeField] float evadeDistance;
 
-	[SerializeField] float stopDist;
+//	[SerializeField] float stopDist;
 
 	bool move = false;
 	bool turn = false;
 	//bool run = false;
 
+	bool isFinished = true;
+
 	float maxDistance;
-	Vector3 goal = Vector3.zero;
 	Transform turnTarget;
 	float currentspeed;
 	float goalspeed;
+	NavMeshAgent agent;
 
-	[SerializeField] LayerMask mask;
+
 
 	void Start ()
 	{
 		currentspeed = 0;
 		anim.SetInteger ("Type", 0);
+		agent = GetComponent<NavMeshAgent> ();
 	}
 
 	void Update ()
 	{
-		if (move)
+		anim.SetFloat ("Speed", agent.velocity.magnitude);
+
+		if (!isFinished)
 		{
 			//Quaternion currentRot = this.transform.rotation;
 			/*this.transform.LookAt (goal);
 			this.transform.rotation = Quaternion.Lerp (this.transform.rotation, currentRot,0.99f);
 			this.transform.position += currentspeed *  this.transform.forward;
 */
-			//float distance = Vector3.Distance (this.transform.position, goal);
-			if (GetComponent<NavMeshAgent>().velocity.magnitude == 0) {
-				StopMoving (1);
-				move = false;
+			float distance = Vector3.Distance (this.transform.position, agent.destination);
+			if (distance < 0.1f)
+			{
+				isFinished = true;
+				Debug.Log ("tralala");
 			}
 
 			/*else
@@ -59,6 +65,7 @@ public class Farmer : MonoBehaviour {
 				}
 			}*/
 		}
+
 		if (turn)
 		{
 			Quaternion currentRot = this.transform.rotation;
@@ -74,20 +81,14 @@ public class Farmer : MonoBehaviour {
 	}
 
 
-	public void Walk(Vector3 pGoal, bool pAngry)
+	public void StartWalk(Transform pGoal)
 	{
-		GetComponent<NavMeshAgent> ().destination = pGoal;
-		anim.SetInteger ("FarmerState", 0);
+		agent.ResetPath ();
+		agent.SetDestination(pGoal.position);
+		isFinished = false;
 		//maxDistance = Vector3.Distance (this.transform.position, goal);
 		//currentspeed = normalSpeed;
 		//move = true;
-	}
-
-	public void StopMoving(int pNewState)
-	{
-		move = false;
-		//currentspeed = 0;
-		anim.SetInteger ("FarmerState", pNewState);
 	}
 
 	public void Wave(bool pWave)
@@ -104,6 +105,16 @@ public class Farmer : MonoBehaviour {
 	{
 		turnTarget = pTarget;
 		turn = true;
+	}
+
+	public bool FinishedWalking()
+	{
+		return isFinished;
+	}
+
+	public void GetReference(Cutscene pScript)
+	{
+		pScript.SetBoolReference (FinishedWalking);
 	}
 
 	/*public void Run()

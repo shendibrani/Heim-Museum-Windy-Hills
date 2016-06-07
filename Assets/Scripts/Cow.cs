@@ -39,7 +39,6 @@ public class Cow : MonoBehaviour {
 			if (distance < stopDist)
 			{
 				move = false;
-				Debug.Log ("moving end!");
 				currentspeed = 0;
 			}
 			else
@@ -93,7 +92,6 @@ public class Cow : MonoBehaviour {
 		{
 			anim.SetBool ("Eating", true);
 		}
-		Debug.Log ("Eat");
 	}
 	void Walk()
 	{
@@ -103,7 +101,6 @@ public class Cow : MonoBehaviour {
 			maxDistance = Vector3.Distance (this.transform.position, goal);
 			currentspeed = normalSpeed;
 			move = true;
-			Debug.Log ("moving start!");
 		}
 	}
 
