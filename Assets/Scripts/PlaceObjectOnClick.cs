@@ -132,7 +132,7 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive, IMouseSensitiv
 			GameObject instance = (GameObject)GameObject.Instantiate (prefab, snapPoint, Quaternion.identity); 
 	        if (OnObjectPlaced != null) OnObjectPlaced (instance);
 
-			TutorialProgression.Instance.Placed();
+			TutorialProgression.Instance.Placed(instance.GetComponent<TurbineObject>());
             return true;
 		}
 		return false;

@@ -4,16 +4,11 @@ using System.Collections;
 public class Farmer : MonoBehaviour {
 
 	[SerializeField] Animator anim;
-//	[SerializeField] float minSpeed;
-//	[SerializeField] float normalSpeed;
-	//[SerializeField] float runSpeed = 0.1f;
-//	[SerializeField] float evadeDistance;
-
-//	[SerializeField] float stopDist;
+	[SerializeField] Transform[] points;
 
 	bool move = false;
 	bool turn = false;
-	//bool run = false;
+	bool freeWill = true;
 
 	bool isFinished = true;
 
@@ -23,13 +18,12 @@ public class Farmer : MonoBehaviour {
 	float goalspeed;
 	NavMeshAgent agent;
 
-
-
 	void Start ()
 	{
 		currentspeed = 0;
 		anim.SetInteger ("Type", 0);
 		agent = GetComponent<NavMeshAgent> ();
+		WalkRandom ();
 	}
 
 	void Update ()
@@ -38,32 +32,11 @@ public class Farmer : MonoBehaviour {
 
 		if (!isFinished)
 		{
-			//Quaternion currentRot = this.transform.rotation;
-			/*this.transform.LookAt (goal);
-			this.transform.rotation = Quaternion.Lerp (this.transform.rotation, currentRot,0.99f);
-			this.transform.position += currentspeed *  this.transform.forward;
-*/
 			float distance = Vector3.Distance (this.transform.position, agent.destination);
 			if (distance < 0.1f)
 			{
 				isFinished = true;
-				Debug.Log ("tralala");
 			}
-
-			/*else
-			{
-				goalspeed = Mathf.Lerp( minSpeed,normalSpeed,(distance / maxDistance));
-				currentspeed = Mathf.Lerp (currentspeed, goalspeed, 0.1f);
-			}*/
-
-			/*if (run)
-			{
-				if (distance < 9)
-				{
-					run = false;
-					move = true;
-				}
-			}*/
 		}
 
 		if (turn)
@@ -75,20 +48,25 @@ public class Farmer : MonoBehaviour {
 			{
 				turn = false;
 			}
-			this.transform.rotation = Quaternion.Lerp (this.transform.rotation, currentRot,0.5f);
+			this.transform.rotation = Quaternion.Lerp (this.transform.rotation, currentRot,0.95f);
 			this.transform.rotation = Quaternion.Euler( new Vector3 (currentRot.x, this.transform.rotation.eulerAngles.y, currentRot.z));
 		}
 	}
 
+	public void WalkRandom()
+	{
+		if (freeWill)
+		{
+			int i = Random.Range (0, points.Length);
+			StartWalk (points [i]);
+		}
+	}
 
 	public void StartWalk(Transform pGoal)
 	{
 		agent.ResetPath ();
 		agent.SetDestination(pGoal.position);
 		isFinished = false;
-		//maxDistance = Vector3.Distance (this.transform.position, goal);
-		//currentspeed = normalSpeed;
-		//move = true;
 	}
 
 	public void Wave(bool pWave)
@@ -99,6 +77,11 @@ public class Farmer : MonoBehaviour {
 	public void Angry (bool pAngry)
 	{
 		anim.SetInteger ("FarmerState", 2);
+	}
+
+	public void Free(bool pFree)
+	{
+		freeWill = pFree;
 	}
 
 	public void TurnAround(Transform pTarget)
@@ -116,23 +99,4 @@ public class Farmer : MonoBehaviour {
 	{
 		pScript.SetBoolReference (FinishedWalking);
 	}
-
-	/*public void Run()
-	{
-		goal = runGoals [0].position;
-
-		float dist = Vector3.Distance (goal, this.transform.position);
-
-		foreach (var item in runGoals)
-		{
-			if (Vector3.Distance(item.position, this.transform.position) < dist)
-			{
-				dist = Vector3.Distance (item.position,  this.transform.position);
-				goal = item.position;
-			}
-		}
-		maxDistance = Vector3.Distance (this.transform.position, goal);
-		move = false;
-		run = true;
-	}*/
 }

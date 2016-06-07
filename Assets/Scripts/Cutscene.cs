@@ -27,7 +27,6 @@ public class Cutscene : MonoBehaviour {
 	}
 
 	[SerializeField] actions[] Actions;
-	[SerializeField] bool doesInterrupt;
 
 	void Update ()
 	{
@@ -35,7 +34,7 @@ public class Cutscene : MonoBehaviour {
 		{
 			if (!actionRunning)
 			{
-				Actions [step].StartEvent.Invoke();
+				Actions [step].StartEvent.Invoke ();
 				Actions [step].SetReference.Invoke ();
 				actionRunning = true;
 			}
@@ -72,20 +71,12 @@ public class Cutscene : MonoBehaviour {
 
 	public void StartScene()
 	{
-		if (doesInterrupt)
-		{
-			PlaceObjectOnClick.Instance.SetDirty(true);
-		}
 		sceneRunning = true;
 		step = 0;
 	}
 
-	public void EndScene()
+	void EndScene()
 	{
-		if (doesInterrupt)
-		{
-			PlaceObjectOnClick.Instance.SetDirty(false);
-		}
 		sceneRunning = false;
 	}
 

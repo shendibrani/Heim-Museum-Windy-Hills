@@ -282,10 +282,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 452110}
   - 136: {fileID: 13689454}
-  - 114: {fileID: 11474758}
   - 114: {fileID: 11461216}
   - 114: {fileID: 11434324}
   - 54: {fileID: 5452502}
+  - 95: {fileID: 9515400}
   m_Layer: 0
   m_Name: Windmill
   m_TagString: Untagged
@@ -2068,6 +2068,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 50, y: 50, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &9515400
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 121002}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ee53032c145a5b94592ea14b0d6f00f3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!95 &9587236
 Animator:
   serializedVersion: 3
@@ -2268,6 +2285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   angularVelocityPerMetreSecond: 10
   turbine: {fileID: 11434324}
+  easing: 0.1
 --- !u!114 &11434324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2527,19 +2545,6 @@ MonoBehaviour:
   highFire: {fileID: 179518}
   fireSmoke: {fileID: 195930}
   dirtParticles: {fileID: 111676}
---- !u!114 &11474758
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 121002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1500cd075c8ef4946be0eb2a5bcf696f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menuParent: {fileID: 148978}
-  rotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &11478432
 MonoBehaviour:
   m_ObjectHideFlags: 1
