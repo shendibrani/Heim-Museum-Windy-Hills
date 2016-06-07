@@ -89,6 +89,8 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
     Image powerHUD;
 	[SerializeField]
 	WindParticleControll windParticle;
+	[SerializeField]
+	Image warning;
 
     // Use this for initialization
     void Start()
@@ -120,6 +122,9 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 	{
 		if (!isFine) { 
 			state.value.Update ();
+			warning.enabled = true;
+		} else {
+			warning.enabled = false;
 		}
         UpdateEfficiency();
 		transform.forward = Vector3.Lerp(transform.forward, windDirection, 0.5f);
