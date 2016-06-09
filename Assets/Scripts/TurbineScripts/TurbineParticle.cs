@@ -11,6 +11,8 @@ public class TurbineParticle : MonoBehaviour {
 
 	[SerializeField] GameObject dirtParticles;
 
+	[SerializeField] GameObject SparkleParticles1;
+	[SerializeField] GameObject SparkleParticles2;
     float timer;
 
     bool smoke;
@@ -81,34 +83,48 @@ public class TurbineParticle : MonoBehaviour {
 		}
 	}
 
+	public void Sparkles(bool pSpark)
+	{
+		if (pSpark)
+		{
+			SparkleParticles1.GetComponent<ParticleSystem> ().Play ();
+			SparkleParticles2.GetComponent<ParticleSystem> ().Play ();
+		}
+	}
+
 	public void OnStateChange(TurbineState oldState, TurbineState newState)
 	{
 		if (oldState != null) {
 			if (oldState.name == TurbineStateManager.saboteurState.name) {
 				GetComponentInChildren<Saboteur> ().EndAnimation ();
 			} else if (oldState.name == TurbineStateManager.brokenState.name) {
-				GetComponent<TurbineParticle> ().Break (false);
+				Break (false);
 			} else if (oldState.name == TurbineStateManager.lowFireState.name) {
-				GetComponent<TurbineParticle> ().LowFire (false);
+				LowFire (false);
 			} else if (oldState.name == TurbineStateManager.highFireState.name) {
-				GetComponent<TurbineParticle> ().HighFire (false);
+				HighFire (false);
 			} else if (oldState.name == TurbineStateManager.dirtyState.name) {
-				GetComponent<TurbineParticle> ().Dirty (false);
+				Dirty (false);
 			}
 		}
 
-		if (newState != null) {
+		if (newState != null)
+		{
 			if (newState.name == TurbineStateManager.saboteurState.name) {
 				GetComponentInChildren<Saboteur> ().StartAnimation ();
 			} else if (newState.name == TurbineStateManager.brokenState.name) {
-				GetComponent<TurbineParticle> ().Break (true);
+				Break (true);
 			} else if (newState.name == TurbineStateManager.lowFireState.name) {
-				GetComponent<TurbineParticle> ().LowFire (true);
+				LowFire (true);
 			} else if (newState.name == TurbineStateManager.highFireState.name) {
-				GetComponent<TurbineParticle> ().HighFire (true);
+				HighFire (true);
 			} else if (newState.name == TurbineStateManager.dirtyState.name) {
-				GetComponent<TurbineParticle> ().Dirty (true);
+				Dirty (true);
 			}
+		}
+		else
+		{
+			Sparkles (true);
 		}
 	}
 }
