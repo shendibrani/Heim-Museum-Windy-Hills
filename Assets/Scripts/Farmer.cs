@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class Farmer : MonoBehaviour, ITouchSensitive {
+public class Farmer : MonoBehaviour, ITouchSensitive,IMouseSensitive {
 
 	[SerializeField] Animator anim;
 	[SerializeField] Transform[] points;
@@ -13,6 +13,10 @@ public class Farmer : MonoBehaviour, ITouchSensitive {
 	*/
 	[SerializeField] Image emotionImage;
 	[SerializeField] Image Background;
+
+	[SerializeField] bool debug;
+
+	[SerializeField] Cutscene touch;
 
 	bool move = false;
 	bool turn = false;
@@ -42,7 +46,11 @@ public class Farmer : MonoBehaviour, ITouchSensitive {
 		if (!isFinished)
 		{
 			float distance = Vector3.Distance (this.transform.position, agent.destination);
-			if (distance < 0.4f)
+			if (debug)
+			{
+				Debug.Log (distance);
+			}
+			if (distance < 0.6f)
 			{
 				StopWalk ();
 			}
@@ -77,7 +85,6 @@ public class Farmer : MonoBehaviour, ITouchSensitive {
 		agent.Resume ();
 		isFinished = false;
 	}
-
 	public void StopWalk()
 	{
 		agent.Stop ();
@@ -135,9 +142,18 @@ public class Farmer : MonoBehaviour, ITouchSensitive {
 
 	public void OnTouch(Touch t, RaycastHit hit)
 	{
-		Debug.Log ("ouch");
-		StopWalk ();
-		Emotion (0);
+		if (freeWill)
+		{
+			touch.StartScene ();
+		}
+	}
+
+	public void OnClick(ClickState state, RaycastHit hit)
+	{
+		if (state == ClickState.Down && freeWill)
+		{
+			touch.StartScene ();
+		}
 	}
 
 	public bool FinishedWalking()
