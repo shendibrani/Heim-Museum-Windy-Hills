@@ -2699,7 +2699,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 471842, guid: 971552e04ef740541a917c3f829e892d, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 471842, guid: 971552e04ef740541a917c3f829e892d, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2736,6 +2736,18 @@ Prefab:
     - target: {fileID: 10845580, guid: 971552e04ef740541a917c3f829e892d, type: 2}
       propertyPath: m_Lightmapping
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 10845580, guid: 971552e04ef740541a917c3f829e892d, type: 2}
+      propertyPath: m_Intensity
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 10845580, guid: 971552e04ef740541a917c3f829e892d, type: 2}
+      propertyPath: m_Cookie
+      value: 
+      objectReference: {fileID: 2800000, guid: 5757fd54dc4c5f746a42fe17f5c50d5f, type: 3}
+    - target: {fileID: 10845580, guid: 971552e04ef740541a917c3f829e892d, type: 2}
+      propertyPath: m_CookieSize
+      value: 263.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 971552e04ef740541a917c3f829e892d, type: 2}
@@ -3606,7 +3618,7 @@ MonoBehaviour:
   scene: {fileID: 2047895968}
   helpText: {fileID: 1655510626}
   goodJob: {fileID: 1975925704}
-  Skip: 1
+  Skip: 0
   DestroyDust: {fileID: 108238, guid: fe07efdee4253b84b9c875dab4889ff6, type: 2}
   extraTarget: {fileID: 694204639}
 --- !u!114 &1306633069
@@ -6195,6 +6207,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1976112908}
   m_RootOrder: 2
+--- !u!1 &2113924465 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 184314, guid: 971552e04ef740541a917c3f829e892d, type: 2}
+  m_PrefabInternal: {fileID: 947750139}
+--- !u!95 &2113924466
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2113924465}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2ed8f5601ff3951499300923c8f645d3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &2140101136
 GameObject:
   m_ObjectHideFlags: 0
