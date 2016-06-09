@@ -612,6 +612,7 @@ GameObject:
   - 4: {fileID: 406204}
   - 114: {fileID: 11475208}
   - 195: {fileID: 19597528}
+  - 136: {fileID: 13632228}
   m_Layer: 0
   m_Name: Farmer
   m_TagString: Untagged
@@ -1517,6 +1518,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 9507318}
+  points: []
+--- !u!136 &13632228
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179766}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 3.54
+  m_Height: 7.56
+  m_Direction: 1
+  m_Center: {x: 0, y: 3.69, z: 0}
 --- !u!137 &13719090
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

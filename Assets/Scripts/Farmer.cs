@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Farmer : MonoBehaviour {
+public class Farmer : MonoBehaviour, ITouchSensitive {
 
 	[SerializeField] Animator anim;
 	[SerializeField] Transform[] points;
@@ -58,25 +58,40 @@ public class Farmer : MonoBehaviour {
 		if (freeWill)
 		{
 			int i = Random.Range (0, points.Length);
+			Wave (false);
 			StartWalk (points [i]);
 		}
 	}
 
 	public void StartWalk(Transform pGoal)
 	{
-		agent.ResetPath ();
 		agent.SetDestination(pGoal.position);
 		isFinished = false;
 	}
 
+	public void StopWalk()
+	{
+		agent.SetDestination(this.transform.position);
+		isFinished = true;
+	}
+
 	public void Wave(bool pWave)
 	{
-		anim.SetInteger ("FarmerState", 1);
+		if (pWave) {
+			anim.SetInteger ("FarmerState", 1);
+		} else {
+			anim.SetInteger ("FarmerState", 0);
+		}
 	}
 
 	public void Angry (bool pAngry)
 	{
-		anim.SetInteger ("FarmerState", 2);
+		if (pAngry) {
+			anim.SetInteger ("FarmerState", 2);
+		} else {
+			anim.SetInteger ("FarmerState", 0);
+		}
+
 	}
 
 	public void Free(bool pFree)
@@ -94,6 +109,13 @@ public class Farmer : MonoBehaviour {
 	{
 		turnTarget = pTarget;
 		turn = true;
+	}
+
+	public void OnTouch(Touch t, RaycastHit hit)
+	{
+		Debug.Log ("ouch");
+		StopWalk ();
+		Wave (true);
 	}
 
 	public bool FinishedWalking()

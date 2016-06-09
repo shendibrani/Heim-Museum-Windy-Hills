@@ -226,4 +226,8 @@ public class TutorialProgression : MonoBehaviour {
 		randomMill = turbs[Random.Range(0, turbs.Length)];
 		extraTarget.position = randomMill.transform.position;
 	}
+	public void TargetBad()
+	{
+		extraTarget.position = badMill.transform.position;
+	}
 }
