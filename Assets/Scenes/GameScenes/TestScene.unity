@@ -2682,29 +2682,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1306633067}
   m_RootOrder: 2
---- !u!1 &876771340 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 155926, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
-  m_PrefabInternal: {fileID: 1893932504}
---- !u!114 &876771343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 876771340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2313d5ebc6b52b14586251dd3481e07b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  range: 0
-  debug: 0
-  doesRemove: 0
-  moraleEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
 --- !u!4 &898446445 stripped
 Transform:
   m_PrefabParentObject: {fileID: 406204, guid: 1e82aee83b1ea454d8bfaf34ac4b53a0, type: 2}
