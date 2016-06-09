@@ -224,7 +224,7 @@ public class TutorialProgression : MonoBehaviour {
 	{
 		TurbineObject[] turbs = FindObjectsOfType<TurbineObject>();
 		randomMill = turbs[Random.Range(0, turbs.Length)];
-		extraTarget.position = randomMill.transform.position;
+		extraTarget.position = randomMill.transform.position + new Vector3 (0, 0, - 4);;
 	}
 	public void TargetBad()
 	{
