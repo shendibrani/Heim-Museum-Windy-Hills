@@ -35,10 +35,25 @@ public class ScoreManager : MonoBehaviour {
         }
     }
 
+    public float MaximumCityPower
+    {
+        get
+        {
+            return maximumCityPower;
+        }
+
+        set
+        {
+            maximumCityPower = value;
+        }
+    }
+
     public static Monitored<float> totalScore = new Monitored<float>(0);
 
     [SerializeField]
-    float startCityPower = 10f;
+    float startCityPower = 5f;
+    [SerializeField]
+    float maximumCityPower = 11f;
     float cityPower;
 
     int newTurbineCount;

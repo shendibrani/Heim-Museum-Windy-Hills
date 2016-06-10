@@ -68,7 +68,7 @@ public class ScorePushBar : MonoBehaviour
             if (greenPowerIncome == 0) _powerFillBar.fillAmount = 0;
             else
             {
-                _powerFillBar.fillAmount =  greenPowerIncome / (ScoreManager.Instance.CityPower * 2);
+                _powerFillBar.fillAmount =  greenPowerIncome / ScoreManager.instance.MaximumCityPower;
             }
         }
     }

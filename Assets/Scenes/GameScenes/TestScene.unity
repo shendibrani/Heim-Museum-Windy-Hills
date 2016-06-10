@@ -3252,6 +3252,10 @@ Prefab:
       propertyPath: m_FillAmount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11407370, guid: 8952646635ca4a246937ea8256fde184, type: 2}
+      propertyPath: startCityPower
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8952646635ca4a246937ea8256fde184, type: 2}
   m_IsPrefabParent: 0
