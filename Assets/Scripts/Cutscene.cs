@@ -72,8 +72,16 @@ public class Cutscene : MonoBehaviour {
 
 	public void StartScene()
 	{
-		sceneRunning = true;
-		step = 0;
+		if (!sceneRunning)
+		{
+			sceneRunning = true;
+			step = 0;
+		}
+		else
+		{
+			actionRunning = false;
+			step = 0;
+		}
 	}
 
 	void EndScene()

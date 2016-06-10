@@ -66,9 +66,7 @@ public class Morale : MonoBehaviour
     void CheckWindmillPlacement(GameObject go)
     {
        if (go != null && doesRemove) {
-            //Object.Destroy(go);
             TutorialProgression.Instance.StepBackPlacement(go);
-            //PlaceObjectOnClick.Instance.SetDirty(false);
 			moraleEvent.Invoke();
         }
     }

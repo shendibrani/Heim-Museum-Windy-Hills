@@ -285,6 +285,11 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 		if (!isFine) {
 			state.value.OnEnterWindzone ();
 		}
+		else
+		{
+			GetComponent<TurbineParticle> ().Sparkles (true);
+		}
+
 	}
 
 	public void OnStayWindzone(){}

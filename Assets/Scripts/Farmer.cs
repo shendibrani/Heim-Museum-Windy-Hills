@@ -1,10 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
-public class Farmer : MonoBehaviour {
+public class Farmer : MonoBehaviour, ITouchSensitive,IMouseSensitive {
 
 	[SerializeField] Animator anim;
 	[SerializeField] Transform[] points;
+	/*
+	[SerializeField] Sprite Happy;
+	[SerializeField] Sprite Angry;
+	[SerializeField] Sprite Afraid;
+	*/
+	[SerializeField] Image emotionImage;
+	[SerializeField] Image Background;
+
+	[SerializeField] bool debug;
+
+	[SerializeField] Cutscene touch;
 
 	bool move = false;
 	bool turn = false;
@@ -24,6 +36,7 @@ public class Farmer : MonoBehaviour {
 		anim.SetInteger ("Type", 0);
 		agent = GetComponent<NavMeshAgent> ();
 		WalkRandom ();
+		Emotion (0);
 	}
 
 	void Update ()
@@ -33,9 +46,13 @@ public class Farmer : MonoBehaviour {
 		if (!isFinished)
 		{
 			float distance = Vector3.Distance (this.transform.position, agent.destination);
-			if (distance < 0.1f)
+			if (debug)
 			{
-				isFinished = true;
+				Debug.Log (distance);
+			}
+			if (distance < 0.6f)
+			{
+				StopWalk ();
 			}
 		}
 
@@ -64,19 +81,46 @@ public class Farmer : MonoBehaviour {
 
 	public void StartWalk(Transform pGoal)
 	{
-		agent.ResetPath ();
 		agent.SetDestination(pGoal.position);
+		agent.Resume ();
 		isFinished = false;
 	}
-
-	public void Wave(bool pWave)
+	public void StopWalk()
 	{
-		anim.SetInteger ("FarmerState", 1);
+		agent.Stop ();
+		isFinished = true;
 	}
 
-	public void Angry (bool pAngry)
+	public void Emotion(int pEmo)
 	{
-		anim.SetInteger ("FarmerState", 2);
+		if (pEmo == 0)
+		{
+			//emotionImage.sprite = null;
+			emotionImage.color = new Color(0,0,0,0);
+			Background.enabled = false;
+			anim.SetInteger ("FarmerState", 0);
+		}
+		else if (pEmo == 3)
+		{
+			Background.enabled = true;
+			//emotionImage.sprite = Happy;
+			emotionImage.color = Color.green;
+			anim.SetInteger ("FarmerState", 0);
+		}
+		else if (pEmo == 2)
+		{
+			Background.enabled = true;
+			//emotionImage.sprite = Angry;
+			emotionImage.color = Color.red;
+			anim.SetInteger ("FarmerState", 2);
+		}
+		else if (pEmo == 1)
+		{
+			Background.enabled = true;
+			//emotionImage.sprite = Afraid;
+			emotionImage.color = Color.blue;
+			anim.SetInteger ("FarmerState", 1);
+		}
 	}
 
 	public void Free(bool pFree)
@@ -94,6 +138,22 @@ public class Farmer : MonoBehaviour {
 	{
 		turnTarget = pTarget;
 		turn = true;
+	}
+
+	public void OnTouch(Touch t, RaycastHit hit)
+	{
+		if (freeWill)
+		{
+			touch.StartScene ();
+		}
+	}
+
+	public void OnClick(ClickState state, RaycastHit hit)
+	{
+		if (state == ClickState.Down && freeWill)
+		{
+			touch.StartScene ();
+		}
 	}
 
 	public bool FinishedWalking()

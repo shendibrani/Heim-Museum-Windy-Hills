@@ -61,6 +61,8 @@ public class ScoreManager : MonoBehaviour {
 
     [SerializeField]
     Text scoreText;
+	[SerializeField]
+	Image timerFill;
 
     [SerializeField]
     bool debug;
@@ -154,6 +156,7 @@ public class ScoreManager : MonoBehaviour {
     void EnergyProgression()
     {
         energyProgressionTimer += Time.deltaTime;
+		timerFill.fillAmount = energyProgressionTimer / energyProgressionTimerTarget;
         if (energyProgressionTimer >= energyProgressionTimerTarget)
         {
             float value = currentPower *= currentMorale;
