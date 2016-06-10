@@ -63,6 +63,9 @@ public class ScoreManager : MonoBehaviour {
     Text scoreText;
 	[SerializeField]
 	Image timerFill;
+	[SerializeField] Image lightBulb;
+	[SerializeField] Sprite bulbOn;
+	[SerializeField] Sprite bulbOff;
 
     [SerializeField]
     bool debug;
@@ -111,6 +114,7 @@ public class ScoreManager : MonoBehaviour {
             if (currentPower > cityPower)
             {
                 if (debug) Debug.Log("Current Power > City Power");
+				lightBulb.sprite = bulbOn;
                 hasPositiveTimer = true;
                 hasNegativeTimer = false;
                 hasCheckedCity = true;
@@ -118,6 +122,7 @@ public class ScoreManager : MonoBehaviour {
             if (currentPower < cityPower)
             {
                 if (debug) Debug.Log("Current Power < City Power");
+				lightBulb.sprite = bulbOff;
                 hasNegativeTimer = true;
                 hasPositiveTimer = false;
                 hasCheckedCity = true; 
@@ -127,10 +132,12 @@ public class ScoreManager : MonoBehaviour {
         else if (hasCheckedCity)
         {
             cityCheckTimer += Time.deltaTime;
+			timerFill.fillAmount = cityCheckTimer / cityCheckTimerTarget;
             if (cityCheckTimer >= cityCheckTimerTarget)
             {
                 if (hasPositiveTimer)
                 {
+					
                     hasCheckedCity = false;
                     if (currentPower > cityPower)
                     {
@@ -141,6 +148,7 @@ public class ScoreManager : MonoBehaviour {
                 }
                 if (hasNegativeTimer)
                 {
+					
                     hasCheckedCity = false;
                     if (currentPower < cityPower)
                     {
@@ -156,7 +164,7 @@ public class ScoreManager : MonoBehaviour {
     void EnergyProgression()
     {
         energyProgressionTimer += Time.deltaTime;
-		timerFill.fillAmount = energyProgressionTimer / energyProgressionTimerTarget;
+
         if (energyProgressionTimer >= energyProgressionTimerTarget)
         {
             float value = currentPower *= currentMorale;

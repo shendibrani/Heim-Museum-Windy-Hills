@@ -150,13 +150,14 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 
 	public void End (bool solved)
 	{
-		owner.state.value = null;
+		
 
 		if (!solved && negativeEffect) {
 			Debug.Log ("[State] State " + name + " failed at " + Time.time);
 			Fail ();
 		} else {
 			Debug.Log ("[State] State " + name + " ended  with " + timer + "seconds to spare at " + Time.time);
+			owner.state.value = null;
 		}
 	}
 

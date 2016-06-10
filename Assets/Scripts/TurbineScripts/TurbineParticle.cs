@@ -122,7 +122,7 @@ public class TurbineParticle : MonoBehaviour {
 				Dirty (true);
 			}
 		}
-		else
+		if(newState == null && oldState != null)
 		{
 			Sparkles (true);
 		}
