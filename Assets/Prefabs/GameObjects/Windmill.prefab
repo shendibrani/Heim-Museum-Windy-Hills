@@ -286,6 +286,7 @@ GameObject:
   - 114: {fileID: 11434324}
   - 54: {fileID: 5452502}
   - 95: {fileID: 9515400}
+  - 208: {fileID: 20810708}
   m_Layer: 0
   m_Name: Windmill
   m_TagString: Untagged
@@ -14961,6 +14962,21 @@ ParticleSystemRenderer:
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
+--- !u!208 &20810708
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 121002}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.9, y: 1.975, z: 1.91}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1.91, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!222 &22227468
 CanvasRenderer:
   m_ObjectHideFlags: 1

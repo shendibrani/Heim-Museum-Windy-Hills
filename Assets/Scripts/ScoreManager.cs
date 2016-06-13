@@ -81,6 +81,7 @@ public class ScoreManager : MonoBehaviour {
 	[SerializeField] Image lightBulb;
 	[SerializeField] Sprite bulbOn;
 	[SerializeField] Sprite bulbOff;
+	[SerializeField] RectTransform GoalBar;
 
     [SerializeField]
     bool debug;
@@ -172,6 +173,7 @@ public class ScoreManager : MonoBehaviour {
                         newTurbineCount -= 1;
                     }
                 }
+				GoalBar.localPosition = new Vector3(0,Mathf.Lerp(-380,187,cityPower/maximumCityPower),0);
             }
         }
     }
