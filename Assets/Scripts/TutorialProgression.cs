@@ -67,6 +67,7 @@ public class TutorialProgression : MonoBehaviour {
 	[SerializeField] bool Skip;
 	[SerializeField] GameObject DestroyDust;
 	[SerializeField] Transform extraTarget;
+	[SerializeField] GameObject birds;
 
     
 
@@ -233,6 +234,12 @@ public class TutorialProgression : MonoBehaviour {
 		popup.SetBool("play", false);
 		TurbineStateManager.saboteurState.Copy(randomMill);
 		randomMill.state.OnValueChanged += OnSaboteur;
+	}
+
+	public void SpawnBirds()
+	{
+		TargetBad ();
+		Instantiate (birds, extraTarget.position, Quaternion.identity);
 	}
 
 	public void TargetFirst()

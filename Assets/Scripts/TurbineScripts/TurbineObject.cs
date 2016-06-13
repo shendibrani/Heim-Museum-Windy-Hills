@@ -269,6 +269,8 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 		if (!isFine) {
 			state.value.OnTouch (t, hit);
 		}
+
+		ConsumeUIState ();
 	}
 
 	public void OnClick(ClickState clickState, RaycastHit hit)
@@ -276,6 +278,27 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 		if (!isFine) {
 			state.value.OnClick (clickState, hit);
 		}
+
+		ConsumeUIState ();
+	}
+
+	void ConsumeUIState ()
+	{
+		switch (UICallbacksSystem.currentState) {
+		case UIState.Police:
+			Police ();
+			break;
+		case UIState.Firemen:
+			Firemen ();
+			break;
+		case UIState.Repair:
+			Repair ();
+			break;
+		case UIState.Cleanup:
+			Cleanup ();
+			break;
+		}
+		UICallbacksSystem.currentState = UIState.None;
 	}
 
 	public void OnEnterWindzone ()
