@@ -5,6 +5,8 @@ using UnityEngine.UI;
 [RequireComponent(typeof(CameraMovement))]
 public class TutorialProgression : MonoBehaviour {
 
+     
+
     static TutorialProgression instance;
     public static TutorialProgression Instance
     {
@@ -28,7 +30,20 @@ public class TutorialProgression : MonoBehaviour {
         }
     }
 
-	GameObject badMill;
+    public bool ProgressPause
+    {
+        get
+        {
+            return progressPause;
+        }
+
+        set
+        {
+            progressPause = value;
+        }
+    }
+
+    GameObject badMill;
 	TurbineObject firstMill;
 	TurbineObject randomMill;
 
@@ -43,6 +58,8 @@ public class TutorialProgression : MonoBehaviour {
 
 	Animator popup;
 
+    bool progressPause = false;
+
     [SerializeField] bool debug;
 	[SerializeField] Cutscene scene;
 	[SerializeField] Text helpText;
@@ -50,6 +67,8 @@ public class TutorialProgression : MonoBehaviour {
 	[SerializeField] bool Skip;
 	[SerializeField] GameObject DestroyDust;
 	[SerializeField] Transform extraTarget;
+
+    
 
     void Start()
 	{
@@ -230,4 +249,18 @@ public class TutorialProgression : MonoBehaviour {
 	{
 		extraTarget.position = badMill.transform.position;
 	}
+    /// <summary>
+    /// Resume the game progression (timer/waves)
+    /// </summary>
+    public void ResumeProgression()
+    {
+        progressPause = false;
+    }
+    /// <summary>
+    /// Pause the game progression (timer/waves)
+    /// </summary>
+    public void PauseProgression()
+    {
+        progressPause = true;
+    }
 }
