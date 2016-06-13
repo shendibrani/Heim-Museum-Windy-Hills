@@ -99,12 +99,10 @@ public class ScoreManager : MonoBehaviour
     void Update()
     {
         ResetPower();
-        CityProgression();
-        EnergyProgression();
-        if (newTurbineCount == newTurbineTarget)
+        if (!TutorialProgression.Instance.ProgressPause)
         {
-            newTurbineCount = 0;
-            TurbineLimitManager.Instance.IncreaseMax();
+            CityProgression();
+            EnergyProgression();
         }
         scoreText.text = Mathf.Floor(totalScore.value).ToString();
     }
