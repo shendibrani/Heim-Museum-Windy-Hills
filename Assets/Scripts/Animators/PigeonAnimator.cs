@@ -5,12 +5,16 @@ public class PigeonAnimator : MonoBehaviour {
 
 	Animator _anim;
 	Vector3 _goal;
+	[SerializeField] bool fleeing = false;
 
 	// Use this for initialization
 	void Start ()
 	{
 		_anim = GetComponent<Animator> ();
 		RandomVal ();
+		if (fleeing) {
+			Flap ();
+		}
 	}
 
 	void Update()
@@ -28,7 +32,10 @@ public class PigeonAnimator : MonoBehaviour {
 
 		else
 		{
-			_anim.SetBool ("Flap", false);
+			if (!fleeing)
+			{
+				_anim.SetBool ("Flap", false);
+			}
 		}
 		RandomVal ();
 	}

@@ -2,7 +2,8 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class ScoreManager : MonoBehaviour {
+public class ScoreManager : MonoBehaviour
+{
 
     public static ScoreManager instance;
     public static ScoreManager Instance
@@ -71,37 +72,40 @@ public class ScoreManager : MonoBehaviour {
     float cityCheckTimerTarget = 10f;
     float cityCheckTimer = 0f;
     bool hasCheckedCity;
-    bool hasPositiveTimer;
-    bool hasNegativeTimer;
+    bool hasPositivePower;
+    bool hasNegativePower;
 
     [SerializeField]
     Text scoreText;
-	[SerializeField]
-	Image timerFill;
-	[SerializeField] Image lightBulb;
-	[SerializeField] Sprite bulbOn;
-	[SerializeField] Sprite bulbOff;
+    [SerializeField]
+    Image timerFill;
+    [SerializeField]
+    Image lightBulb;
+    [SerializeField]
+    Sprite bulbOn;
+    [SerializeField]
+    Sprite bulbOff;
 
     [SerializeField]
     bool debug;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         cityPower = startCityPower;
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         ResetPower();
-        CityProgression();
-        EnergyProgression();
-        if (newTurbineCount == newTurbineTarget)
+        if (!TutorialProgression.Instance.ProgressPause)
         {
-            newTurbineCount = 0;
-            TurbineLimitManager.Instance.IncreaseMax();
+            CityProgression();
+            EnergyProgression();
         }
         scoreText.text = Mathf.Floor(totalScore.value).ToString();
-	}
+    }
 
     void OnDestroy()
     {
@@ -124,55 +128,40 @@ public class ScoreManager : MonoBehaviour {
 
     void CityProgression()
     {
-        if (!hasCheckedCity)
+        cityCheckTimer += Time.deltaTime;
+        timerFill.fillAmount = cityCheckTimer / cityCheckTimerTarget;
+
+        if (currentPower >= cityPower)
         {
-            if (currentPower > cityPower)
+            if (debug) Debug.Log("Current Power > City Power");
+            lightBulb.sprite = bulbOn;
+            hasPositivePower = true;
+            hasNegativePower = false;
+
+        }
+        if (currentPower < cityPower)
+        {
+            if (debug) Debug.Log("Current Power < City Power");
+            lightBulb.sprite = bulbOff;
+            hasPositivePower = false;
+            hasNegativePower = true;
+        }
+
+        if (cityCheckTimer >= cityCheckTimerTarget)
+        {
+            if (hasPositivePower)
             {
-                if (debug) Debug.Log("Current Power > City Power");
-				lightBulb.sprite = bulbOn;
-                hasPositiveTimer = true;
-                hasNegativeTimer = false;
-                hasCheckedCity = true;
+                    if (debug) Debug.Log("Increase City Power");
+                    cityPower += 1;
+                    //newTurbineCount += 1;
             }
-            if (currentPower < cityPower)
+            if (hasNegativePower)
             {
-                if (debug) Debug.Log("Current Power < City Power");
-				lightBulb.sprite = bulbOff;
-                hasNegativeTimer = true;
-                hasPositiveTimer = false;
-                hasCheckedCity = true; 
+                    if (debug) Debug.Log("Decrease City Power");
+                    cityPower -= 1;
+                    //newTurbineCount -= 1;
             }
             cityCheckTimer = 0;
-        }
-        else if (hasCheckedCity)
-        {
-            cityCheckTimer += Time.deltaTime;
-			timerFill.fillAmount = cityCheckTimer / cityCheckTimerTarget;
-            if (cityCheckTimer >= cityCheckTimerTarget)
-            {
-                if (hasPositiveTimer)
-                {
-					
-                    hasCheckedCity = false;
-                    if (currentPower > cityPower)
-                    {
-                        if (debug) Debug.Log("Increase City Power");
-                        cityPower += 1;
-                        newTurbineCount += 1;
-                    }
-                }
-                if (hasNegativeTimer)
-                {
-					
-                    hasCheckedCity = false;
-                    if (currentPower < cityPower)
-                    {
-                        if (debug) Debug.Log("Decrease City Power");
-                        cityPower -= 1;
-                        newTurbineCount -= 1;
-                    }
-                }
-            }
         }
     }
 

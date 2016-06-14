@@ -20,7 +20,7 @@ public class Cow : MonoBehaviour , ITouchSensitive,IMouseSensitive {
 	[SerializeField] Cutscene touch;
 
 
-	int run = 0;
+	bool run = false;
 	bool reachedGoal = false;
 
 	NavMeshAgent agent;
@@ -35,11 +35,12 @@ public class Cow : MonoBehaviour , ITouchSensitive,IMouseSensitive {
 	{
 		anim.SetFloat ("Speed", agent.velocity.magnitude);
 
-		if (run == 2) {
-			float distance = Vector3.Distance (this.transform.position, agent.destination);
-			if (distance < 1) {
-				reachedGoal = true;
-			}
+		float distance = Vector3.Distance (this.transform.position, agent.destination);
+		if (distance < 1)
+		{
+			reachedGoal = true;
+			agent.Stop ();
+			run = false;
 		}
 	}
 
@@ -69,10 +70,11 @@ public class Cow : MonoBehaviour , ITouchSensitive,IMouseSensitive {
 	}
 	void Walk()
 	{
-		if (run == 0)
+		if (run == false)
 		{
 			agent.speed = normalSpeed;
 			agent.destination = goals[Random.Range (0, goals.Length)].position;
+			agent.Resume ();
 		}
 	}
 
@@ -97,14 +99,16 @@ public class Cow : MonoBehaviour , ITouchSensitive,IMouseSensitive {
 	{
 		agent.destination = pGoal.position;
 		agent.speed = runSpeed;
-		run = 1;
+		agent.Resume ();
+		run = true;
 	}
 
 	public void stopRunning()
 	{
-		run = 0;
+		run = false;
 		reachedGoal = false;
 		agent.speed = normalSpeed;
+		agent.Stop ();
 	}
 
 	public void Emotion(int pEmo)

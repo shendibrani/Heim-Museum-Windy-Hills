@@ -17,7 +17,8 @@ public class EventHandler : MonoBehaviour {
 	[SerializeField] FireEvent fireEvent;
 	[SerializeField] SaboteurEvent saboteurEvent;
 	[SerializeField] FlockEvent flockEvent;
-	#endregion
+    [SerializeField] BoatEvent boatEvent;
+    #endregion
     
     #region EventFlags
     bool waveStarted;
@@ -34,6 +35,7 @@ public class EventHandler : MonoBehaviour {
         
         eventsList = new List<EventClass>();
 
+        eventsList.Add(boatEvent);
 		eventsList.Add(stormEvent);
 		eventsList.Add(fireEvent);
 		eventsList.Add(saboteurEvent);
@@ -46,7 +48,7 @@ public class EventHandler : MonoBehaviour {
     // Update is called once per frame
     bool initializeWaves = false;
     void Update () {
-		if (TutorialProgression.Instance.IsComplete && !initializeWaves && TurbineObject.all.Count > 0){
+		if (TutorialProgression.Instance.IsComplete && !initializeWaves){
         	StartWaves();
             initializeWaves = true;
 		}
