@@ -17,6 +17,22 @@ public abstract class EventClass
 }
 
 [System.Serializable]
+public class BoatEvent : EventClass {
+
+
+
+    public BoatEvent() {}
+    
+    public override void EventStart() {
+        Vector3 SpawnPos = new Vector3(414, 8, 136);
+        GameObject instance = (GameObject)GameObject.Instantiate(Resources.Load("Boat"), SpawnPos, Quaternion.identity);
+    }
+
+    public override void EventEnd() {}
+
+}
+
+[System.Serializable]
 public class StormCloudEvent : EventClass {
 
 	[SerializeField] float speed;
@@ -65,8 +81,7 @@ public class FireEvent : EventClass
 [System.Serializable]
 public class SaboteurEvent : EventClass
 {
-   
-
+  
     public string Name
     {
         get
