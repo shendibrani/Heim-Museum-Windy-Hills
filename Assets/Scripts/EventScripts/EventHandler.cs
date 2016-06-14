@@ -132,7 +132,7 @@ public class EventHandler : MonoBehaviour {
 	/// <param name="difficulty">The highest difficulty allowed.</param>
 	EventClass GetRandomEventUnderDifficulty (int difficulty)
 	{
-		List<EventClass> viable = eventsList.FindAll(x => x.difficulty < difficulty);
+		List<EventClass> viable = eventsList.FindAll(x => x.difficulty < difficulty  && x.difficulty != 0);
 
 		if(viable.Count == 0) return null;
 
