@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class Boat : MonoBehaviour {
+public class Boat : MonoBehaviour, IWindSensitive {
 
 	//[SerializeField] Transform dest;
     public List<Transform> Destinations;
@@ -32,5 +32,30 @@ public class Boat : MonoBehaviour {
             arrived = true;
             Destroy(gameObject);
         }
+
+        if (windAffected)
+        {
+            boatAgent.speed *= 1.009f;
+        }
+        else {
+           boatAgent.speed = Mathf.Lerp(boatAgent.speed, 4f, 0.05f);
+        }
+    }
+
+    bool windAffected;
+    public void OnExitWindzone() {
+        windAffected = false;
+    }
+
+    public void OnStayWindzone()
+    {
+        windAffected = true;
+        Debug.Log("Boat: OnStayWindzone");
+    }
+
+    public void OnEnterWindzone()
+    {
+        Debug.Log("Boat: OnEnterWindzone");
+
     }
 }

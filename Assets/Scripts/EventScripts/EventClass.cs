@@ -24,6 +24,7 @@ public class BoatEvent : EventClass {
     public BoatEvent() {}
     
     public override void EventStart() {
+
         Vector3 SpawnPos = new Vector3(414, 8, 136);
         GameObject instance = (GameObject)GameObject.Instantiate(Resources.Load("Boat"), SpawnPos, Quaternion.identity);
     }
