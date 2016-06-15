@@ -4,8 +4,8 @@ using System.Diagnostics;
 using System.Reflection;
 
 public class EventHandler : MonoBehaviour {
-    
-	private Stopwatch WaveTimer;
+    static public List<GameObject> AllBoats;
+    private Stopwatch WaveTimer;
 	[SerializeField] int secondToSpawn;
 	[SerializeField] int waveNumber;
 	[SerializeField] int waveMaxTime = 10;
@@ -31,6 +31,7 @@ public class EventHandler : MonoBehaviour {
     // Use this for initialization
     void Start () 
 	{
+        AllBoats = new List<GameObject>();
         WaveTimer = new Stopwatch();
         
         eventsList = new List<EventClass>();
