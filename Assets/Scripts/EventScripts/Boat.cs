@@ -9,6 +9,14 @@ public class Boat : MonoBehaviour, IWindSensitive {
     NavMeshAgent boatAgent;
     Transform StartNode;
     Transform EndNode;
+	bool windAffected;
+	bool isBroken = false;
+	bool arrived;
+
+	[SerializeField] float maxSpeed = 8f;
+	[SerializeField] GameObject Sail1;
+	[SerializeField] GameObject Sail2;
+	[SerializeField] GameObject Sail3;
 
     void Start() {
         boatAgent = GetComponent<NavMeshAgent>();
@@ -26,24 +34,39 @@ public class Boat : MonoBehaviour, IWindSensitive {
 
     }
 
-    bool arrived;
-    void Update() {
-        if (Vector3.Distance(transform.position, boatAgent.destination) < 2f) {
+   
+    void Update()
+	{
+        if (Vector3.Distance(transform.position, boatAgent.destination) < 2f)
+		{
             arrived = true;
             Destroy(gameObject);
         }
 
-        if (windAffected)
+		if (windAffected && !isBroken)
         {
-            boatAgent.speed *= 1.009f;
+			/* if (boatAgent.speed >= maxSpeed) {
+				
+			}
+			else*/
+			{
+				boatAgent.speed = Mathf.Lerp(boatAgent.speed, maxSpeed, 0.05f);
+			}
+
         }
-        else {
+		else if (!windAffected)
+		{
            boatAgent.speed = Mathf.Lerp(boatAgent.speed, 4f, 0.05f);
         }
+		if (Input.GetKey(KeyCode.Space))
+		{
+			Break ();
+		}
     }
 
-    bool windAffected;
-    public void OnExitWindzone() {
+  
+    public void OnExitWindzone()
+	{
         windAffected = false;
     }
 
@@ -58,4 +81,19 @@ public class Boat : MonoBehaviour, IWindSensitive {
         Debug.Log("Boat: OnEnterWindzone");
 
     }
+
+	void Break()
+	{
+		Debug.Log ("did");
+		isBroken = true;
+		GameObject sailP = new GameObject ();
+		sailP.transform.Rotate (0, 35, 0);
+		Sail1.transform.parent = sailP.transform;
+		Sail1.GetComponent<Sail> ().SetFree ();
+		Sail2.transform.parent = sailP.transform;
+		Sail2.GetComponent<Sail> ().SetFree ();
+		Sail3.transform.parent = sailP.transform;
+		Sail3.GetComponent<Sail> ().SetFree ();
+		boatAgent.Stop ();
+	}
 }

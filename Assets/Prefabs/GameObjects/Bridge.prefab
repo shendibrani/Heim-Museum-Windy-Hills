@@ -9,6 +9,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 422888}
   - 95: {fileID: 9571848}
+  - 114: {fileID: 11411106}
+  - 135: {fileID: 13561650}
   m_Layer: 0
   m_Name: Bridge
   m_TagString: Untagged
@@ -26,6 +28,7 @@ GameObject:
   - 4: {fileID: 460410}
   - 33: {fileID: 3311800}
   - 23: {fileID: 2371748}
+  - 208: {fileID: 20851294}
   m_Layer: 0
   m_Name: BridgeTop_1
   m_TagString: Untagged
@@ -60,6 +63,7 @@ GameObject:
   - 4: {fileID: 473800}
   - 33: {fileID: 3329882}
   - 23: {fileID: 2338464}
+  - 208: {fileID: 20814244}
   m_Layer: 0
   m_Name: BridgeTop_2
   m_TagString: Untagged
@@ -103,7 +107,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 114214}
   m_LocalRotation: {x: 0, y: -0.45065844, z: 0, w: 0.8926965}
-  m_LocalPosition: {x: 128.28, y: 9.01, z: 247.36}
+  m_LocalPosition: {x: 121.39, y: 9.01, z: 252.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 473800}
@@ -297,6 +301,59 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11411106
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 114214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94345a2084a6ff640923b13325a92101, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!135 &13561650
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 114214}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 15
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &20814244
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 173922}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 3.3620002, y: 0.77800006, z: 2.884}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -3.3220003, y: 0.33900002, z: 0}
+  m_TimeToStationary: 0.5
+--- !u!208 &20851294
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134664}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 3.3620002, y: 0.77800006, z: 2.884}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -3.3220003, y: 0.33900002, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
