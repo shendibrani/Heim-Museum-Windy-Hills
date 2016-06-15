@@ -9,8 +9,9 @@ public static class TurbineStateManager {
 	public static TurbineState saboteurState {get; private set;}
 	public static TurbineState brokenState {get; private set;}
 	public static TurbineState dirtyState {get; private set;}
+    public static TurbineState occupiedState { get; private set; }
 
-	public static bool Initialize()
+    public static bool Initialize()
 	{
 		string JSONAggregate = Resources.Load<TextAsset>("States").text;
 		string[] objects = JSONAggregate.Split('#');
@@ -20,14 +21,16 @@ public static class TurbineStateManager {
 		saboteurState = JsonUtility.FromJson<TurbineState>(objects[2]);
 		brokenState = JsonUtility.FromJson<TurbineState>(objects[3]);
 		dirtyState = JsonUtility.FromJson<TurbineState>(objects[4]);
+        occupiedState = JsonUtility.FromJson<TurbineState>(objects[5]);
 
-		Debug.Log(lowFireState.name);
+        Debug.Log(lowFireState.name);
 		Debug.Log(highFireState.name);
 		Debug.Log(saboteurState.name);
 		Debug.Log(brokenState.name);
 		Debug.Log(dirtyState.name);
+        Debug.Log(occupiedState.name);
 
-		return true;
+        return true;
 	}
 
 	public static void CreateTemplate ()
@@ -52,7 +55,7 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 
 	[SerializeField] public float timer, _efficiencyMultiplyer;
 
-    [SerializeField] bool negativeEffect, timed, endOnTap, endOnWind, winzoneDependent, setsOnHighFire, breaksTurbine, dirtiesTurbine;
+    [SerializeField] bool negativeEffect, timed, endOnTap, endOnWind, winzoneDependent, setsOnHighFire, breaksTurbine, dirtiesTurbine, setsOccupied;
 
 	[SerializeField] bool endOnPolice, endOnFiremen, endOnRepair, endOnCleanup;
 
@@ -174,6 +177,11 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 		if(dirtiesTurbine){
 			TurbineStateManager.dirtyState.Copy(owner);
 		}
+
+        if (setsOccupied)
+        {
+            TurbineStateManager.occupiedState.Copy(owner);
+        }
 	}
 
 	/// <summary>
@@ -197,6 +205,7 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 		ts.setsOnHighFire = this.setsOnHighFire;
 		ts.breaksTurbine = this.breaksTurbine;
 		ts.dirtiesTurbine = this.dirtiesTurbine;
+        ts.setsOccupied = this.setsOccupied;
 
 		ts.endOnCleanup = this.endOnCleanup;
 		ts.endOnFiremen = this.endOnFiremen;
