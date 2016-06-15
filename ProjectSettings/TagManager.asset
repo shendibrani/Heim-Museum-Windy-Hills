@@ -6,6 +6,7 @@ TagManager:
   tags:
   - DestroyerOfClouds
   - EventFollowUI
+  - Boat
   layers:
   - Default
   - TransparentFX
