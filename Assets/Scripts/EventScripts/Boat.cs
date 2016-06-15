@@ -58,7 +58,7 @@ public class Boat : MonoBehaviour, IWindSensitive {
 		{
            boatAgent.speed = Mathf.Lerp(boatAgent.speed, 4f, 0.05f);
         }
-		if (Input.GetKey(KeyCode.Space))
+		if (Input.GetKeyDown(KeyCode.Space))
 		{
 			Break ();
 		}
@@ -73,18 +73,17 @@ public class Boat : MonoBehaviour, IWindSensitive {
     public void OnStayWindzone()
     {
         windAffected = true;
-        Debug.Log("Boat: OnStayWindzone");
+       // Debug.Log("Boat: OnStayWindzone");
     }
 
     public void OnEnterWindzone()
     {
-        Debug.Log("Boat: OnEnterWindzone");
+        //Debug.Log("Boat: OnEnterWindzone");
 
     }
 
 	void Break()
 	{
-		Debug.Log ("did");
 		isBroken = true;
 		GameObject sailP = new GameObject ();
 		sailP.transform.Rotate (0, 35, 0);
@@ -94,6 +93,14 @@ public class Boat : MonoBehaviour, IWindSensitive {
 		Sail2.GetComponent<Sail> ().SetFree ();
 		Sail3.transform.parent = sailP.transform;
 		Sail3.GetComponent<Sail> ().SetFree ();
+		RaycastHit hit;
+		if (Physics.Raycast(this.transform.position + new Vector3 (0,5,0),sailP.transform.forward,out hit))
+		{
+			if (hit.collider.gameObject.GetComponent<TurbineObject>() != null) {
+				Sail1.GetComponent<Sail> ().goal = hit.collider.gameObject.GetComponent<TurbineObject> ();
+			}
+		}
+		Debug.Log (hit.collider.gameObject);
 		boatAgent.Stop ();
 	}
 }
