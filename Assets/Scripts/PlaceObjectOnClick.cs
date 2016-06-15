@@ -215,8 +215,8 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive, IMouseSensitiv
                 if (GetComponent<TerrainCollider>().terrainData.GetSteepness(point.x / size.x, point.y / size.z) > 0)
                 {
                     if (debug) Debug.Log("Not flat");
-                    //OnObjectPlaced(null);
-                    //return false;
+                    OnObjectPlaced(null);
+                    return false;
                 }
                 if (debug) Debug.Log("Flat");
             }
