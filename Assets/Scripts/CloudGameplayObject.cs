@@ -104,7 +104,12 @@ public class CloudGameplayObject : MonoBehaviour, ITouchSensitive, IMouseSensiti
 
         if (windParticles != null)
         {
-            windParticles.SetActive(cloudSelect);
+			if (cloudSelect) {
+				windParticles.GetComponent<ParticleSystem> ().Play ();
+			} else {
+				windParticles.GetComponent<ParticleSystem> ().Stop ();
+			}
+           // windParticles.SetActive(cloudSelect);
         }
         OnCloudSelect(false, hitTarget);
     }

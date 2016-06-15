@@ -58,7 +58,6 @@ public class Boat : MonoBehaviour, IWindSensitive {
 				else if (step == 1)
 				{
 					step = 2;
-					//animation and color
 				}
 				else if (step == 2)
 				{
@@ -67,6 +66,7 @@ public class Boat : MonoBehaviour, IWindSensitive {
 				}
 
 				stepTimer = 0;
+				GetComponent<Animator> ().SetInteger ("State", step);
 			}
 			else
 			{
@@ -74,11 +74,25 @@ public class Boat : MonoBehaviour, IWindSensitive {
 			}
 			boatAgent.speed = Mathf.Lerp(boatAgent.speed, maxSpeed, 0.05f);
         }
-		else if (!windAffected)
+		else if (!windAffected && !isBroken)
 		{
-		stepTimer = 0;
-           boatAgent.speed = Mathf.Lerp(boatAgent.speed, 4f, 0.05f);
+			stepTimer = 0;
+            boatAgent.speed = Mathf.Lerp(boatAgent.speed, 4f, 0.05f);
         }
+		if (isBroken)
+		{
+			if (stepTimer > 3)
+			{
+				if (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+				{
+					Destroy (this.gameObject);
+				}
+			}
+			else
+			{
+				stepTimer += Time.deltaTime;
+			}
+		}
     }
 
   
@@ -110,7 +124,6 @@ public class Boat : MonoBehaviour, IWindSensitive {
 		Sail2.transform.parent = sailP.transform;
 		Sail3.transform.parent = sailP.transform;
 
-
 		sailP.AddComponent<Sail> ();
 
 		RaycastHit hit;
@@ -121,6 +134,7 @@ public class Boat : MonoBehaviour, IWindSensitive {
 				sailP.GetComponent<Sail> ().goal = hit.collider.gameObject.GetComponent<TurbineObject> ();
 			}
 		}
+		GetComponent<Animator> ().SetInteger ("State", 3);
 		boatAgent.Stop ();
 	}
 }

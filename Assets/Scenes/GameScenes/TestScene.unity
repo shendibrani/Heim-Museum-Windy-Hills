@@ -1802,7 +1802,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 422888, guid: a827e09b92217e341a851c934a7df17a, type: 2}
       propertyPath: m_RootOrder
-      value: 25
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 114214, guid: a827e09b92217e341a851c934a7df17a, type: 2}
       propertyPath: m_Name
@@ -2303,7 +2303,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 422888, guid: a827e09b92217e341a851c934a7df17a, type: 2}
       propertyPath: m_RootOrder
-      value: 23
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 114214, guid: a827e09b92217e341a851c934a7df17a, type: 2}
       propertyPath: m_Name
@@ -2349,7 +2349,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 422888, guid: a827e09b92217e341a851c934a7df17a, type: 2}
       propertyPath: m_RootOrder
-      value: 26
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 114214, guid: a827e09b92217e341a851c934a7df17a, type: 2}
       propertyPath: m_Name
@@ -2395,7 +2395,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 422888, guid: a827e09b92217e341a851c934a7df17a, type: 2}
       propertyPath: m_RootOrder
-      value: 24
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 114214, guid: a827e09b92217e341a851c934a7df17a, type: 2}
       propertyPath: m_Name
@@ -5005,7 +5005,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 176238, guid: 8966a8af3dc7a3649b948bb4d07bcd22, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 19803376, guid: 8966a8af3dc7a3649b948bb4d07bcd22, type: 2}
       propertyPath: InitialModule.startLifetime.scalar
@@ -5066,6 +5066,10 @@ Prefab:
     - target: {fileID: 19803376, guid: 8966a8af3dc7a3649b948bb4d07bcd22, type: 2}
       propertyPath: moveWithTransform
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19803376, guid: 8966a8af3dc7a3649b948bb4d07bcd22, type: 2}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8966a8af3dc7a3649b948bb4d07bcd22, type: 2}
@@ -6855,7 +6859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad34ddf040ee8254693765e818e7d354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 1
+  debug: 0
   prefab: {fileID: 121002, guid: 881fe816b2662d04eb423cbd6da0aba5, type: 2}
   displayPrefab: {fileID: 104494, guid: ec9d6b0172482b8499b9930d5d91acd8, type: 2}
   tileSize: 15

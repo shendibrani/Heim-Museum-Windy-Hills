@@ -17,21 +17,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &102490
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 412886}
-  m_Layer: 0
-  m_Name: back
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &106572
 GameObject:
   m_ObjectHideFlags: 1
@@ -161,6 +146,7 @@ GameObject:
   - 114: {fileID: 11461378}
   - 65: {fileID: 6567860}
   - 54: {fileID: 5474338}
+  - 95: {fileID: 9516884}
   m_Layer: 0
   m_Name: Boat
   m_TagString: Untagged
@@ -247,19 +233,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 486678}
-  m_RootOrder: 10
---- !u!4 &412886
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 102490}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -8.138955, y: 3.2930062, z: -100.1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 486678}
-  m_RootOrder: 0
+  m_RootOrder: 9
 --- !u!4 &419052
 Transform:
   m_ObjectHideFlags: 1
@@ -271,15 +245,15 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 486678}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!4 &444306
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 167594}
-  m_LocalRotation: {x: 0, y: -0.46615374, z: 0, w: 0.8847038}
-  m_LocalPosition: {x: 278.19858, y: 12.52, z: 177.24744}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 486678}
@@ -296,7 +270,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 486678}
-  m_RootOrder: 9
+  m_RootOrder: 8
 --- !u!4 &464214
 Transform:
   m_ObjectHideFlags: 1
@@ -308,7 +282,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 486678}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!4 &466216
 Transform:
   m_ObjectHideFlags: 1
@@ -320,7 +294,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 486678}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!4 &468456
 Transform:
   m_ObjectHideFlags: 1
@@ -332,7 +306,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 486678}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!4 &481250
 Transform:
   m_ObjectHideFlags: 1
@@ -344,7 +318,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 486678}
-  m_RootOrder: 11
+  m_RootOrder: 10
 --- !u!4 &486678
 Transform:
   m_ObjectHideFlags: 1
@@ -355,7 +329,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.565951, y: 0.565951, z: 0.565951}
   m_Children:
-  - {fileID: 412886}
   - {fileID: 419052}
   - {fileID: 490428}
   - {fileID: 466216}
@@ -380,7 +353,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 486678}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!4 &490428
 Transform:
   m_ObjectHideFlags: 1
@@ -392,7 +365,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 486678}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!4 &494252
 Transform:
   m_ObjectHideFlags: 1
@@ -404,7 +377,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 486678}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!4 &495952
 Transform:
   m_ObjectHideFlags: 1
@@ -416,7 +389,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 486678}
-  m_RootOrder: 8
+  m_RootOrder: 7
 --- !u!23 &2311404
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -807,6 +780,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 12.9, y: 104.9, z: 13.12}
   m_Center: {x: 0, y: 0, z: 1.26}
+--- !u!95 &9516884
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 167594}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b4a5dfa6639af684ca4ca5674896b771, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11461378
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -820,7 +810,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Destinations: []
   StartPositions: []
-  breakTime: 1
+  breakTime: 1.5
   maxSpeed: 16
   Sail1: {fileID: 158620}
   Sail2: {fileID: 176600}
