@@ -781,7 +781,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b0d906e347f26774baa4b96081b13b8b, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.853
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1303,19 +1303,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 480488, guid: ac4ed31612e5e484ea66538042154c32, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 34.4
+      value: 35.3
       objectReference: {fileID: 0}
     - target: {fileID: 480488, guid: ac4ed31612e5e484ea66538042154c32, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 328.7
+      value: 326.3
       objectReference: {fileID: 0}
     - target: {fileID: 447668, guid: ac4ed31612e5e484ea66538042154c32, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 67.1
+      value: 79.8
       objectReference: {fileID: 0}
     - target: {fileID: 447668, guid: ac4ed31612e5e484ea66538042154c32, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 42.3
+      value: 8.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 447668, guid: ac4ed31612e5e484ea66538042154c32, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 387.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ac4ed31612e5e484ea66538042154c32, type: 2}
