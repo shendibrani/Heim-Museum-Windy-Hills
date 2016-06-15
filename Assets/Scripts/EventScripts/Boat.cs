@@ -13,6 +13,10 @@ public class Boat : MonoBehaviour, IWindSensitive {
 	bool isBroken = false;
 	bool arrived;
 
+	int step = 0;
+	float stepTimer = 0;
+	[SerializeField] float breakTime = 1;
+
 	[SerializeField] float maxSpeed = 8f;
 	[SerializeField] GameObject Sail1;
 	[SerializeField] GameObject Sail2;
@@ -45,23 +49,36 @@ public class Boat : MonoBehaviour, IWindSensitive {
 
 		if (windAffected && !isBroken)
         {
-			/* if (boatAgent.speed >= maxSpeed) {
-				
-			}
-			else*/
+			if (stepTimer >= breakTime)
 			{
-				boatAgent.speed = Mathf.Lerp(boatAgent.speed, maxSpeed, 0.05f);
-			}
+				if (step == 0)
+				{
+					step = 1;
+				}
+				else if (step == 1)
+				{
+					step = 2;
+					//animation and color
+				}
+				else if (step == 2)
+				{
+					Break ();
+					step = 0;
+				}
 
+				stepTimer = 0;
+			}
+			else
+			{
+				stepTimer += Time.deltaTime;
+			}
+			boatAgent.speed = Mathf.Lerp(boatAgent.speed, maxSpeed, 0.05f);
         }
 		else if (!windAffected)
 		{
+		stepTimer = 0;
            boatAgent.speed = Mathf.Lerp(boatAgent.speed, 4f, 0.05f);
         }
-		if (Input.GetKeyDown(KeyCode.Space))
-		{
-			Break ();
-		}
     }
 
   
@@ -86,21 +103,24 @@ public class Boat : MonoBehaviour, IWindSensitive {
 	{
 		isBroken = true;
 		GameObject sailP = new GameObject ();
+		sailP.transform.position = this.transform.position;
 		sailP.transform.Rotate (0, 35, 0);
+
 		Sail1.transform.parent = sailP.transform;
-		Sail1.GetComponent<Sail> ().SetFree ();
 		Sail2.transform.parent = sailP.transform;
-		Sail2.GetComponent<Sail> ().SetFree ();
 		Sail3.transform.parent = sailP.transform;
-		Sail3.GetComponent<Sail> ().SetFree ();
+
+
+		sailP.AddComponent<Sail> ();
+
 		RaycastHit hit;
 		if (Physics.Raycast(this.transform.position + new Vector3 (0,5,0),sailP.transform.forward,out hit))
 		{
-			if (hit.collider.gameObject.GetComponent<TurbineObject>() != null) {
-				Sail1.GetComponent<Sail> ().goal = hit.collider.gameObject.GetComponent<TurbineObject> ();
+			if (hit.collider.gameObject.GetComponent<TurbineObject>() != null)
+			{
+				sailP.GetComponent<Sail> ().goal = hit.collider.gameObject.GetComponent<TurbineObject> ();
 			}
 		}
-		Debug.Log (hit.collider.gameObject);
 		boatAgent.Stop ();
 	}
 }

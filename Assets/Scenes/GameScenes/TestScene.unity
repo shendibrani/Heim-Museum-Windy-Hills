@@ -230,6 +230,10 @@ Prefab:
       propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 106942, guid: 8b9b46e4031e41847bfa8a37fca17b58, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8b9b46e4031e41847bfa8a37fca17b58, type: 2}
   m_IsPrefabParent: 0
@@ -1440,6 +1444,18 @@ GameObject:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 66320e935311705458c08fbedbef2e14, type: 3}
   m_PrefabInternal: {fileID: 1698763653}
+--- !u!64 &625108147
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 625108143}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_Mesh: {fileID: 4300000, guid: 66320e935311705458c08fbedbef2e14, type: 3}
 --- !u!114 &625108148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1451,8 +1467,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2313d5ebc6b52b14586251dd3481e07b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  usesCollider: 0
-  range: 29
+  usesCollider: 1
+  range: 0
   debug: 1
   doesRemove: 1
   moraleEvent:
@@ -4372,8 +4388,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2313d5ebc6b52b14586251dd3481e07b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  usesCollider: 0
-  range: 16.98
+  usesCollider: 1
+  range: 0
   debug: 1
   doesRemove: 0
   moraleEvent:
@@ -4381,6 +4397,18 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!64 &1460975725
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1460975720}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_Mesh: {fileID: 4300000, guid: ead60da992dec1f44b6c3eb9cccc3c1e, type: 3}
 --- !u!1 &1498887284
 GameObject:
   m_ObjectHideFlags: 0
@@ -4584,7 +4612,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 138174, guid: 91b5c72ff3c428c488dbae2ef06c1bae, type: 2}
       propertyPath: m_Layer
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 138174, guid: 91b5c72ff3c428c488dbae2ef06c1bae, type: 2}
       propertyPath: m_StaticEditorFlags
@@ -5069,6 +5097,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 66320e935311705458c08fbedbef2e14, type: 3}
       propertyPath: m_NavMeshLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 66320e935311705458c08fbedbef2e14, type: 3}
+      propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
@@ -6675,8 +6707,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2313d5ebc6b52b14586251dd3481e07b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  usesCollider: 0
-  range: 16.18
+  usesCollider: 1
+  range: 0
   debug: 1
   doesRemove: 1
   moraleEvent:
@@ -6710,6 +6742,18 @@ MonoBehaviour:
 Transform:
   m_PrefabParentObject: {fileID: 474408, guid: 91b5c72ff3c428c488dbae2ef06c1bae, type: 2}
   m_PrefabInternal: {fileID: 1573929337}
+--- !u!64 &2000395463
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2000395458}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_Mesh: {fileID: 4300000, guid: 4b020626cad97574e8b2974148b36b89, type: 3}
 --- !u!4 &2009813680 stripped
 Transform:
   m_PrefabParentObject: {fileID: 420114, guid: c484935292a2b4b468984c23a46fedd2, type: 2}

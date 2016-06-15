@@ -14,7 +14,7 @@ public class BridgeSystem : MonoBehaviour
 
     void OnTriggerStay(Collider col)
 	{
-        if (col.gameObject.tag == "Boat")
+		if (col.gameObject.GetComponent<Boat>() != null)
         {
 			animation.SetBool ("Open", true);
         }
@@ -22,7 +22,7 @@ public class BridgeSystem : MonoBehaviour
 
     void OnTriggerExit(Collider col)
     {
-        if (col.gameObject.tag == "Boat")
+		if (col.gameObject.GetComponent<Boat>() != null)
         {
 			animation.SetBool ("Open", false);
         }
