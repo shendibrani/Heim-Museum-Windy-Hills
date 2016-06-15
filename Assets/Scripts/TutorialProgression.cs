@@ -184,6 +184,11 @@ public class TutorialProgression : MonoBehaviour {
         messedUp = true;
     }
 
+	public void SaveBadMill(GameObject turbineObject)
+	{
+		badMill = turbineObject;
+	}
+
 	public void Placed(TurbineObject pMill)
 	{
 		if (firstMill == null)
