@@ -1,16 +1,37 @@
 fileFormatVersion: 2
-guid: 281b4f45c09af5341b2067c1345566d3
-timeCreated: 1465994882
+guid: 79250fadaddec9740b9ec8d2d5b485f0
+timeCreated: 1465992333
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Fossil_Fuel_Factory
-    9500000: //RootNode
+    100000: Corner
+    100002: Cross
+    100004: Deadend
+    100006: //RootNode
+    100008: Straight
+    100010: Tsplit
+    400000: Corner
+    400002: Cross
+    400004: Deadend
+    400006: //RootNode
+    400008: Straight
+    400010: Tsplit
+    2300000: Corner
+    2300002: Cross
+    2300004: Deadend
+    2300006: Straight
+    2300008: Tsplit
+    3300000: Corner
+    3300002: Cross
+    3300004: Deadend
+    3300006: Straight
+    3300008: Tsplit
+    4300000: Straight
+    4300002: Corner
+    4300004: Tsplit
+    4300006: Cross
+    4300008: Deadend
   materials:
     importMaterials: 1
     materialName: 0
@@ -35,7 +56,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 100
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -69,7 +90,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
