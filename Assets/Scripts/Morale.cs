@@ -4,6 +4,8 @@ using UnityEngine.Events;
 
 public class Morale : MonoBehaviour
 {
+    [SerializeField]
+    bool usesCollider;
 	[SerializeField] float range;
 
     [SerializeField]
@@ -36,19 +38,16 @@ public class Morale : MonoBehaviour
     }
 
     void OnObjectPlaced(GameObject go)
-    {       
-        if (go)
+    {
+        if (go && !usesCollider)
         {
-            //morale.value = 1;
-            //foreach (TurbineObject t in FindObjectsOfType<TurbineObject>())
-            //{
             if (go.GetComponentInChildren<TurbineObject>() != null)
             {
                 if (Vector3.Distance(transform.position, go.transform.position) < range)
                 {
                     morale.value -= 0.05f;
                     onMoraleUpdate(-0.05f);
-					CheckWindmillPlacement (go);
+                    CheckWindmillPlacement(go);
                     if (debug) Debug.Log("Update Morale");
                 }
                 else
@@ -58,9 +57,23 @@ public class Morale : MonoBehaviour
                     if (debug) Debug.Log("Update Morale");
                 }
             }
-
-            morale.value = (Mathf.Max(morale, 0));
         }
+        if (go && usesCollider)
+        {
+            if (GetComponent<Collider>().bounds.Contains(go.transform.position)) {
+                morale.value -= 0.05f;
+                onMoraleUpdate(-0.05f);
+                CheckWindmillPlacement(go);
+                if (debug) Debug.Log("Update Morale");
+            }
+            else
+            {
+                morale.value += 0.05f;
+                onMoraleUpdate(0.05f);
+                if (debug) Debug.Log("Update Morale");
+            }
+        }
+        morale.value = (Mathf.Max(morale, 0));
     }
 
     void CheckWindmillPlacement(GameObject go)
