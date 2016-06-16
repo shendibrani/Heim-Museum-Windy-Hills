@@ -26,8 +26,11 @@ public class EventHandler : MonoBehaviour {
     #endregion
 
     public bool debug;
-    private List<EventClass> eventsList, currentWave;
-  
+    private List<EventClass> eventsList, currentWave, completedEvents;
+
+	public delegate void EventBegins(EventClass e);
+	public EventBegins OnEventBegin;
+
     // Use this for initialization
     void Start () 
 	{
@@ -35,6 +38,7 @@ public class EventHandler : MonoBehaviour {
         WaveTimer = new Stopwatch();
         
         eventsList = new List<EventClass>();
+        completedEvents = new List<EventClass>();
 
         eventsList.Add(boatEvent);
 		eventsList.Add(stormEvent);
@@ -43,6 +47,8 @@ public class EventHandler : MonoBehaviour {
 		eventsList.Add(flockEvent);
 
 		currentWave = GenerateWave(waveDifficulty);
+
+        OnEventBegin += CheckCompletion;
 	}
 
     bool initializedEvent = false;
@@ -146,6 +152,10 @@ public class EventHandler : MonoBehaviour {
         {
             UnityEngine.Debug.Log("<color=red>Initializing event: </color>" + currentWave[0].name);
             currentWave[0].EventStart();
+            if (!completedEvents.Contains(currentWave[0]))
+            {
+                OnEventBegin(currentWave[0]);
+            }
             currentWave.RemoveAt(0);
             initializedEvent = true;
         }
@@ -158,6 +168,11 @@ public class EventHandler : MonoBehaviour {
         {
             initializedEvent = false;
         }
+    }
+
+    public void CheckCompletion(EventClass e)
+    {
+        completedEvents.Add(e);
     }
 
     /*public static void ClearLog()

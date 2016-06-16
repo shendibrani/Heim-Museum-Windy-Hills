@@ -5,7 +5,7 @@ using System.Collections;
 public abstract class EventClass 
 {   
 	public int difficulty;
-    public string name;
+    public EventNames name;
 
     abstract public void EventStart();
     abstract public void EventEnd();
@@ -16,12 +16,25 @@ public abstract class EventClass
 	}
 }
 
+public enum EventNames
+{
+     Boat, StormCloud, Fire, Saboteur, Flock
+}
+
 [System.Serializable]
 public class BoatEvent : EventClass {
 
+    public EventNames Name
+    {
+        get
+        {
+            return name;
+        }
+    }
 
-
-    public BoatEvent() {}
+    public BoatEvent() {
+        name = EventNames.Boat;
+    }
     
     public override void EventStart() {
 
@@ -38,7 +51,7 @@ public class StormCloudEvent : EventClass {
 
 	[SerializeField] float speed;
 
-    public string Name
+    public EventNames Name
     {
         get
         {
@@ -46,7 +59,9 @@ public class StormCloudEvent : EventClass {
         }
     }
 
-    public StormCloudEvent(){}
+    public StormCloudEvent(){
+        name = EventNames.StormCloud;
+    }
 
 	public override void EventStart()
 	{
@@ -61,13 +76,16 @@ public class StormCloudEvent : EventClass {
 [System.Serializable]
 public class FireEvent : EventClass
 {
-    public string Name
+    public EventNames Name
     {
         get
         {
             return name;
         }
 
+    }
+    public FireEvent(){
+        name = EventNames.Fire;
     }
 
     public override void EventStart ()
@@ -83,12 +101,17 @@ public class FireEvent : EventClass
 public class SaboteurEvent : EventClass
 {
   
-    public string Name
+    public EventNames Name
     {
         get
         {
             return name;
         }
+    }
+
+    public SaboteurEvent()
+    {
+        name = EventNames.Saboteur;
     }
 
     public override void EventStart ()
@@ -104,12 +127,16 @@ public class SaboteurEvent : EventClass
 public class FlockEvent : EventClass
 {
 
-    public string Name
+    public EventNames Name
     {
         get
         {
             return name;
         }
+    }
+    public FlockEvent()
+    {
+        name = EventNames.Flock;
     }
 
     public override void EventStart ()
