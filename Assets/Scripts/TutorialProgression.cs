@@ -305,6 +305,19 @@ public class TutorialProgression : MonoBehaviour {
 		pScript.SetBoolReference (HasPoliceClick);
 	}
 
+	public bool HasRepairClick()
+	{
+		if (UICallbacksSystem.currentState == UIState.Repair)
+		{
+			return true;
+		}
+		return false;
+	}
+	public void GetRepairClickReference(Cutscene pScript)
+	{
+		pScript.SetBoolReference (HasRepairClick);
+	}
+
 	//Start Events
 	public void StartFire(bool high)
 	{
@@ -402,6 +415,10 @@ public class TutorialProgression : MonoBehaviour {
 		{
 			pSave = true;
 		}
+		if (TapTargetID == 3 && !(UICallbacksSystem.currentState == UIState.Repair))
+		{
+			pSave = true;
+		}
 		TapFinger.gameObject.SetActive (pSave);
 	}
 	public void SetTargetID(int pID)
@@ -410,6 +427,8 @@ public class TutorialProgression : MonoBehaviour {
 		// 0 = empty
 		// 1 = Fire;
 		// 2 = police
+		//3 = repair
+		//4 = clean
 	}
 	public void EndTapFinger()
 	{
