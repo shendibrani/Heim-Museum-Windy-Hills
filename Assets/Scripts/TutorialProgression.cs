@@ -332,7 +332,19 @@ public class TutorialProgression : MonoBehaviour {
 		extraTarget.position = badMill.transform.position;
 	}
 
-
+    public void CheckEventStart(EventClass e)
+    {
+        switch (e.name)
+        {
+            case EventNames.Fire:
+                {
+                    SetMill(e.usedTurbine);
+                    HighFireTutorial.StartScene();
+                    break;
+                }
+        }
+        
+    }
 	void OnDestroy()
 	{
 		instance = null;
