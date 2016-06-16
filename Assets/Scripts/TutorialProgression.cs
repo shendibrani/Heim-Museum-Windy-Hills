@@ -243,6 +243,27 @@ public class TutorialProgression : MonoBehaviour {
 		randomMill.state.OnValueChanged += OnSaboteur;
 	}
 
+    public void StartFlock()
+    {
+        popup.SetBool("play", false);
+        FlockEvent e = new FlockEvent();
+        e.EventStart();
+    }
+
+    public void StartStormCloud()
+    {
+        popup.SetBool("play", false);
+        StormCloudEvent e = new StormCloudEvent();
+        e.EventStart();
+    }
+
+    public void StartBoatEvent()
+    {
+        popup.SetBool("play", false);
+        BoatEvent e = new BoatEvent();
+        e.EventStart();
+    }
+
 	public void SpawnBirds()
 	{
 		TargetBad ();
