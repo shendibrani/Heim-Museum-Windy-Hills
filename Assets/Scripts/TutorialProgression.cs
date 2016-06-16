@@ -275,11 +275,32 @@ public class TutorialProgression : MonoBehaviour {
 		TurbineStateManager.saboteurState.Copy(savedMill);
 		savedMill.state.OnValueChanged += OnSaboteurEnd;
 	}
-	//Missing : Start Storm
-	//Missing Birds
 
-	// Called by statechanges. Change Bools of cleared goals
-	public void OnSaboteurEnd(TurbineState oldState, TurbineState newState)
+    public void StartFlock()
+    {
+        popup.SetBool("play", false);
+        FlockEvent e = new FlockEvent();
+        e.EventStart();
+    }
+
+    public void StartStormCloud()
+    {
+        popup.SetBool("play", false);
+        StormCloudEvent e = new StormCloudEvent();
+        e.EventStart();
+    }
+
+    public void StartBoatEvent()
+    {
+        popup.SetBool("play", false);
+        BoatEvent e = new BoatEvent();
+        e.EventStart();
+    }
+    //Missing : Start Storm
+    //Missing Birds
+
+    // Called by statechanges. Change Bools of cleared goals
+    public void OnSaboteurEnd(TurbineState oldState, TurbineState newState)
 	{
 		saboteurWasFought = newState == null;
 	}
