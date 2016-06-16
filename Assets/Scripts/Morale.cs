@@ -1,9 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Events;
+using System.Collections.Generic;
 
 public class Morale : MonoBehaviour
 {
+    static List<Morale> _all;
+
+    public static List<Morale> all
+    {
+        get
+        {
+            if (_all == null)
+            {
+                _all = new List<Morale>(FindObjectsOfType<Morale>());
+            }
+            return _all;
+        }
+    }
+
     [SerializeField]
     bool usesCollider;
 	[SerializeField] float range;
@@ -18,14 +33,14 @@ public class Morale : MonoBehaviour
 
 	public Monitored<float> morale {get; private set;}
 
-    public delegate void MoraleUpdate(float value);
-    public MoraleUpdate onMoraleUpdate;
+    /*public delegate void MoraleUpdate(float value);
+    public MoraleUpdate onMoraleUpdate;*/
 
     void Start()
 	{
         morale = new Monitored<float>(1f);
 		FindObjectOfType<PlaceObjectOnClick>().OnObjectPlaced += OnObjectPlaced;
-        onMoraleUpdate = ScoreManager.Instance.MoraleUpdate;
+        //onMoraleUpdate = ScoreManager.Instance.MoraleUpdate;
 	}
 
     void OnDrawGizmos()
@@ -45,15 +60,17 @@ public class Morale : MonoBehaviour
             {
                 if (Vector3.Distance(transform.position, go.transform.position) < range)
                 {
-                    morale.value -= 0.05f;
-                    onMoraleUpdate(-0.05f);
+                    morale.value -= 0.1f;
+                    ScoreManager.Instance.MoraleUpdate(-0.1f);
+                    //onMoraleUpdate(-0.1f);
                     CheckWindmillPlacement(go);
                     if (debug) Debug.Log("Update Morale");
                 }
                 else
                 {
-                    morale.value += 0.05f;
-                    onMoraleUpdate(0.05f);
+                    morale.value += 0.1f;
+                    ScoreManager.Instance.MoraleUpdate(0.1f);
+                    //onMoraleUpdate(0.1f);
                     if (debug) Debug.Log("Update Morale");
                 }
             }
@@ -61,15 +78,17 @@ public class Morale : MonoBehaviour
         if (go && usesCollider)
         {
             if (GetComponent<Collider>().bounds.Contains(go.transform.position)) {
-                morale.value -= 0.05f;
-                onMoraleUpdate(-0.05f);
+                morale.value -= 0.1f;
+                ScoreManager.Instance.MoraleUpdate(-0.1f);
+                //onMoraleUpdate(-1f);
                 CheckWindmillPlacement(go);
                 if (debug) Debug.Log("Update Morale");
             }
             else
             {
-                morale.value += 0.05f;
-                onMoraleUpdate(0.05f);
+                morale.value += 0.1f;
+                ScoreManager.Instance.MoraleUpdate(0.1f);
+                //onMoraleUpdate(0.05f);
                 if (debug) Debug.Log("Update Morale");
             }
         }

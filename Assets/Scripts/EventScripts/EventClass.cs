@@ -6,13 +6,16 @@ public abstract class EventClass
 {   
 	public int difficulty;
     public EventNames name;
+    public TurbineObject usedTurbine;
 
     abstract public void EventStart();
     abstract public void EventEnd();
 
 	protected TurbineObject GetRandomTurbine()
 	{
-		return TurbineObject.all[RNG.Next(0,TurbineObject.all.Count)];
+        usedTurbine = TurbineObject.all[RNG.Next(0, TurbineObject.all.Count)];
+
+        return usedTurbine;
 	}
 }
 
