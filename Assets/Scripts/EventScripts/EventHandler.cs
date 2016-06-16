@@ -56,7 +56,7 @@ public class EventHandler : MonoBehaviour {
     // Update is called once per frame
     bool initializeWaves = false;
     void Update () {
-		if (TutorialProgression.Instance.IsComplete && !initializeWaves){
+		if (!TutorialProgression.Instance.ProgressPause && !initializeWaves){
         	StartWaves();
             initializeWaves = true;
 		}

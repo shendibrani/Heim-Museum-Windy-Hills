@@ -47,7 +47,7 @@ public class BoatEvent : EventClass {
         GameObject instance = (GameObject)GameObject.Instantiate(Resources.Load("Boat"), SpawnPos, Quaternion.identity);
     }
 
-    public override void FakeEventStart() { }
+    public override void FakeEventStart() { EventStart(); }
     public override void EventEnd() {}
 
 }
@@ -75,7 +75,7 @@ public class StormCloudEvent : EventClass {
 		GameObject instance = (GameObject) GameObject.Instantiate(Resources.Load("StormCloud"), stormSpawnPos, Quaternion.identity);
 		instance.GetComponent<StormBehavior>().speed = speed;
 	}
-    public override void FakeEventStart() { }
+    public override void FakeEventStart() { EventStart(); }
     public override void EventEnd() {}
 }
 
@@ -150,7 +150,7 @@ public class FlockEvent : EventClass
         Vector3 stormSpawnPos = new Vector3(UnityEngine.Random.Range(500.0f, 700.0f), 60.0f, UnityEngine.Random.Range(50.0f, 300.0f));
         GameObject instance = (GameObject)GameObject.Instantiate(Resources.Load("PigeonEventMovement"), stormSpawnPos, Quaternion.identity);
     }
-    public override void FakeEventStart() { }
+    public override void FakeEventStart() { EventStart(); }
     public override void EventEnd ()
 	{
 

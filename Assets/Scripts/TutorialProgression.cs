@@ -425,17 +425,17 @@ public class TutorialProgression : MonoBehaviour {
                 }
             case EventNames.Boat: {
                     //SetMill(e.usedTurbine);
-                    boatTutorial.StartScene();
+                    //boatTutorial.StartScene();
                     break;
                 }
             case EventNames.Flock:
                 {
-                    flockTutorial.StartScene();
+                    //flockTutorial.StartScene();
                     break;
                 }
             case EventNames.StormCloud:
                 {
-                    stormCloudTutorial.StartScene();
+                    //stormCloudTutorial.StartScene();
                     break;
                 }
         }
