@@ -76,6 +76,8 @@ public class Boat : MonoBehaviour, IWindSensitive {
         }
 		else if (!windAffected && !isBroken)
 		{
+			step = 0;
+			GetComponent<Animator> ().SetInteger ("State", step);
 			stepTimer = 0;
             boatAgent.speed = Mathf.Lerp(boatAgent.speed, 4f, 0.05f);
         }
