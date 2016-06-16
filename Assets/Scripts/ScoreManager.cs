@@ -23,44 +23,19 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    public float CityPower
-    {
-        get
-        {
-            return cityPower;
-        }
-
-        set
-        {
-            cityPower = value;
-        }
-    }
-
-    public float MaximumCityPower
-    {
-        get
-        {
-            return maximumCityPower;
-        }
-
-        set
-        {
-            maximumCityPower = value;
-        }
-    }
+    
 
     public static Monitored<float> totalScore = new Monitored<float>(0);
 
     [SerializeField]
-    float startCityPower = 5f;
-    [SerializeField]
-    float maximumCityPower = 11f;
-    float cityPower;
+    float startingTargetPower = 1f;
+    float targetPower;
 
-    int newTurbineCount;
-    [SerializeField]
-    int newTurbineTarget = 3;
     float currentMorale = 1f;
+    float moraleChange;
+
+    float fillTarget;
+    float fillValue;
 
     float currentPower;
 
@@ -68,15 +43,11 @@ public class ScoreManager : MonoBehaviour
     float energyProgressionTimerTarget = 10f;
     float energyProgressionTimer = 0f;
 
-    [SerializeField]
-    float cityCheckTimerTarget = 10f;
-    float cityCheckTimer = 0f;
-    bool hasCheckedCity;
-    bool hasPositivePower;
-    bool hasNegativePower;
 
     [SerializeField]
     Text scoreText;
+    [SerializeField]
+    Text multiplierText;
     [SerializeField]
     Image timerFill;
     [SerializeField]
@@ -92,7 +63,7 @@ public class ScoreManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        cityPower = startCityPower;
+        targetPower = startingTargetPower;
     }
 
     // Update is called once per frame
@@ -101,8 +72,9 @@ public class ScoreManager : MonoBehaviour
         ResetPower();
         if (!TutorialProgression.Instance.ProgressPause)
         {
-            CityProgression();
-            EnergyProgression();
+            TargetProgression();
+            ScoreProgression();
+            UIUpdate();
         }
         scoreText.text = Mathf.Floor(totalScore.value).ToString();
     }
@@ -112,9 +84,19 @@ public class ScoreManager : MonoBehaviour
         instance = null;
     }
 
+    void UIUpdate()
+    {
+        float currentFill = currentPower - (targetPower - 1);
+        if (debug) Debug.Log("Current Power: " + currentPower + " Target Power: " + targetPower + " Current Fill:" + currentFill + " Morale: " + currentMorale);
+        //fillValue = Mathf.Lerp(fillValue, currentFill, 0.2f);
+
+        timerFill.fillAmount = currentFill;
+        multiplierText.text = "x" + Mathf.Floor(currentMorale).ToString();
+    }
+
     public void MoraleUpdate(float value)
     {
-        currentMorale += value;
+        moraleChange += value;
     }
 
     void ResetPower()
@@ -126,52 +108,22 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    void CityProgression()
+    void TargetProgression()
     {
-        cityCheckTimer += Time.deltaTime;
-        timerFill.fillAmount = cityCheckTimer / cityCheckTimerTarget;
-
-        if (currentPower >= cityPower)
+        if (currentPower >= targetPower)
         {
-            if (debug) Debug.Log("Current Power > City Power");
-            lightBulb.sprite = bulbOn;
-            hasPositivePower = true;
-            hasNegativePower = false;
-
-        }
-        if (currentPower < cityPower)
-        {
-            if (debug) Debug.Log("Current Power < City Power");
-            lightBulb.sprite = bulbOff;
-            hasPositivePower = false;
-            hasNegativePower = true;
-        }
-
-        if (cityCheckTimer >= cityCheckTimerTarget)
-        {
-            if (hasPositivePower)
-            {
-                    if (debug) Debug.Log("Increase City Power");
-                    cityPower += 1;
-                    //newTurbineCount += 1;
-            }
-            if (hasNegativePower)
-            {
-                    if (debug) Debug.Log("Decrease City Power");
-                    cityPower -= 1;
-                    //newTurbineCount -= 1;
-            }
-            cityCheckTimer = 0;
+            targetPower += 1f;
+            MoraleUpdate(0.1f);
         }
     }
 
-    void EnergyProgression()
+    void ScoreProgression()
     {
         energyProgressionTimer += Time.deltaTime;
 
         if (energyProgressionTimer >= energyProgressionTimerTarget)
         {
-            float value = currentPower *= currentMorale;
+            float value = currentPower * currentMorale;
             totalScore.value += value;
             energyProgressionTimer = 0f;
         }
