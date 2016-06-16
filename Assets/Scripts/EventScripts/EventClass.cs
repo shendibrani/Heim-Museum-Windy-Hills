@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 [System.Serializable]
 public abstract class EventClass 
@@ -9,6 +10,7 @@ public abstract class EventClass
     public TurbineObject usedTurbine;
 
     abstract public void EventStart();
+    abstract public void FakeEventStart();
     abstract public void EventEnd();
 
 	protected TurbineObject GetRandomTurbine()
@@ -45,6 +47,7 @@ public class BoatEvent : EventClass {
         GameObject instance = (GameObject)GameObject.Instantiate(Resources.Load("Boat"), SpawnPos, Quaternion.identity);
     }
 
+    public override void FakeEventStart() { }
     public override void EventEnd() {}
 
 }
@@ -68,12 +71,12 @@ public class StormCloudEvent : EventClass {
 
 	public override void EventStart()
 	{
-		Vector3 stormSpawnPos = new Vector3(Random.Range(600, 700), 60, Random.Range(140, 420));
+		Vector3 stormSpawnPos = new Vector3(UnityEngine.Random.Range(600, 700), 60, UnityEngine.Random.Range(140, 420));
 		GameObject instance = (GameObject) GameObject.Instantiate(Resources.Load("StormCloud"), stormSpawnPos, Quaternion.identity);
 		instance.GetComponent<StormBehavior>().speed = speed;
 	}
-
-	public override void EventEnd() {}
+    public override void FakeEventStart() { }
+    public override void EventEnd() {}
 }
 
 [System.Serializable]
@@ -95,8 +98,8 @@ public class FireEvent : EventClass
 	{
 		TurbineStateManager.lowFireState.Copy(GetRandomTurbine());
 	}
-
-	public override void EventEnd ()
+    public override void FakeEventStart() { GetRandomTurbine(); }
+    public override void EventEnd ()
 	{}
 }
 
@@ -121,8 +124,8 @@ public class SaboteurEvent : EventClass
 	{
 		TurbineStateManager.saboteurState.Copy(GetRandomTurbine());
 	}
-
-	public override void EventEnd ()
+    public override void FakeEventStart() { }
+    public override void EventEnd ()
 	{}
 }
 
@@ -147,8 +150,8 @@ public class FlockEvent : EventClass
         Vector3 stormSpawnPos = new Vector3(UnityEngine.Random.Range(500.0f, 700.0f), 60.0f, UnityEngine.Random.Range(50.0f, 300.0f));
         GameObject instance = (GameObject)GameObject.Instantiate(Resources.Load("PigeonEventMovement"), stormSpawnPos, Quaternion.identity);
     }
-
-	public override void EventEnd ()
+    public override void FakeEventStart() { }
+    public override void EventEnd ()
 	{
 
     }
