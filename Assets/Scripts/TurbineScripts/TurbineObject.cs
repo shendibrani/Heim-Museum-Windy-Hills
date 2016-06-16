@@ -148,6 +148,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 
 
             BreakTurbine();
+            TutorialProgression.Instance.CheckBrokenWindmill(this);
 			//TurbineStateManager.brokenState.Copy(this);
         }
         //efficencyOvercharge += (overchargeIncrease + overchargeDecrease);

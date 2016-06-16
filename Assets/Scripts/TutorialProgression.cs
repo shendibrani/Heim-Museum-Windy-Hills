@@ -54,6 +54,8 @@ public class TutorialProgression : MonoBehaviour {
 	bool hasPlacedMills = false;
 	bool isComplete = false;
 
+    bool brokenTutorialCompleted = false;
+
 	int requiredMills = 0;
 	int currentMills = 0;
 
@@ -82,6 +84,8 @@ public class TutorialProgression : MonoBehaviour {
     Cutscene flockTutorial;
     [SerializeField]
     Cutscene boatTutorial;
+    [SerializeField]
+    Cutscene brokenTutorial;
 
     void Start()
 	{
@@ -171,6 +175,16 @@ public class TutorialProgression : MonoBehaviour {
 	{
 		progressPause = !doesProgress;
 	}
+
+    public void CheckBrokenWindmill(TurbineObject to)
+    {
+        if (!brokenTutorialCompleted)
+        {
+            brokenTutorialCompleted = true;
+            SetMill(to);
+            brokenTutorial.StartScene();
+        }
+    }
 
 	//for Removing Mills
 	public void SpawnDust()
