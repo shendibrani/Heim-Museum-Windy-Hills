@@ -5,7 +5,7 @@ public class BridgeSystem : MonoBehaviour
 {
 
     Animator animation;
-	public bool a;
+	public bool open;
 
     void Start()
     {
@@ -14,16 +14,16 @@ public class BridgeSystem : MonoBehaviour
 
 	void Update()
 	{
-		animation.SetBool ("Open", a);
+		animation.SetBool ("Open", open);
 	}
 
     void OnTriggerStay(Collider col)
 	{
 		if (col.gameObject.GetComponent<Boat>() != null)
         {
-			col.gameObject.GetComponent<Boat> ().b = this;
+			col.gameObject.GetComponent<Boat> ().bridge = this;
 			animation.SetBool ("Open", true);
-			a = true;
+			open = true;
         }
     }
 
@@ -32,8 +32,8 @@ public class BridgeSystem : MonoBehaviour
 		if (col.gameObject.GetComponent<Boat>() != null)
         {
 			animation.SetBool ("Open", false);
-			col.gameObject.GetComponent<Boat> ().b = null;
-			a = false;
+			col.gameObject.GetComponent<Boat> ().bridge = null;
+			open = false;
         }
     }
 }

@@ -13,7 +13,7 @@ public class Boat : MonoBehaviour, IWindSensitive {
 	bool isBroken = false;
 	bool arrived;
 
-	public BridgeSystem b;
+	public BridgeSystem bridge;
 
 	int step = 0;
 	float stepTimer = 0;
@@ -89,8 +89,8 @@ public class Boat : MonoBehaviour, IWindSensitive {
 			{
 				if (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
 				{
-					if (b!= null) {
-						b.a = false;
+					if (bridge!= null) {
+						bridge.open = false;
 					}
 
 					Destroy (this.gameObject);
