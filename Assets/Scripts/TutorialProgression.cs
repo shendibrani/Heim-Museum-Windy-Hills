@@ -123,6 +123,7 @@ public class TutorialProgression : MonoBehaviour {
 
 	public void PlaceMillMission(int pReq)
 	{
+		progressPause = true;
 		PlaceObjectOnClick.Instance.SetDirty(false);
 		popup.SetBool("play", false);
 		requiredMills = pReq;
@@ -132,6 +133,7 @@ public class TutorialProgression : MonoBehaviour {
 
 	public void EndMission()
 	{
+		progressPause = false;
 		PlaceObjectOnClick.Instance.SetDirty(true);
 	}
 
@@ -261,18 +263,4 @@ public class TutorialProgression : MonoBehaviour {
 	{
 		extraTarget.position = badMill.transform.position;
 	}
-    /// <summary>
-    /// Resume the game progression (timer/waves)
-    /// </summary>
-    public void ResumeProgression()
-    {
-        progressPause = false;
-    }
-    /// <summary>
-    /// Pause the game progression (timer/waves)
-    /// </summary>
-    public void PauseProgression()
-    {
-        progressPause = true;
-    }
 }
