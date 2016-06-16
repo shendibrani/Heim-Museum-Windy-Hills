@@ -256,11 +256,20 @@ public class TutorialProgression : MonoBehaviour {
 	}
 
 	//Start Events
-	public void StartFire()
+	public void StartFire(bool high)
 	{
-		TurbineStateManager.lowFireState.Copy(savedMill);
-		savedMill.state.OnValueChanged += OnFireEnd;
+		if (!high) 
+		{
+			TurbineStateManager.lowFireState.Copy(savedMill);
+			savedMill.state.OnValueChanged += OnFireEnd;
+		}
+		else
+		{
+			TurbineStateManager.highFireState.Copy(savedMill);
+			savedMill.state.OnValueChanged += OnFireEnd;
+		}
 	}
+
 	public void StartSaboteur()
 	{
 		TurbineStateManager.saboteurState.Copy(savedMill);
@@ -287,6 +296,10 @@ public class TutorialProgression : MonoBehaviour {
 		dirtyWasfought = newState == null;
 	}
 
+	public void SetMill(TurbineObject pMill)
+	{
+		savedMill = pMill;
+	}
 	public void TargetCurrentMill()
 	{
 		extraTarget.position = savedMill.transform.position;
