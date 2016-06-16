@@ -22,7 +22,8 @@ public class Boat : MonoBehaviour, IWindSensitive {
 	[SerializeField] GameObject Sail2;
 	[SerializeField] GameObject Sail3;
 
-    void Start() {
+    void Start()
+	{
         boatAgent = GetComponent<NavMeshAgent>();
         StartPositions.Add(GameObject.Find("StartPos1").transform);
         StartPositions.Add(GameObject.Find("StartPos2").transform);
@@ -35,7 +36,6 @@ public class Boat : MonoBehaviour, IWindSensitive {
         boatAgent.Warp(StartNode.transform.position);
         transform.position = StartNode.transform.position;
         boatAgent.SetDestination(EndNode.transform.position);
-
     }
 
    
