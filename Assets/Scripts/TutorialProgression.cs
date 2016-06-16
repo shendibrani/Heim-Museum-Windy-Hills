@@ -5,8 +5,6 @@ using UnityEngine.UI;
 [RequireComponent(typeof(CameraMovement))]
 public class TutorialProgression : MonoBehaviour {
 
-     
-
     static TutorialProgression instance;
     public static TutorialProgression Instance
     {
@@ -45,6 +43,7 @@ public class TutorialProgression : MonoBehaviour {
 
     GameObject badMill;
 	TurbineObject savedMill;
+	int TapTargetID = 0;
 
 	bool dirtyWasfought = false;
 	bool fireWasFought = false;
@@ -69,6 +68,7 @@ public class TutorialProgression : MonoBehaviour {
 	[SerializeField] bool Skip;
 	[SerializeField] GameObject DestroyDust;
 	[SerializeField] Transform extraTarget;
+	[SerializeField] RectTransform TapFinger;
 	[SerializeField] GameObject birds;
 
 	[SerializeField] Animator[] buttons;
@@ -265,6 +265,19 @@ public class TutorialProgression : MonoBehaviour {
 		pScript.SetBoolReference (HasCleanedMill);
 	}
 
+	public bool HasFireClick()
+	{
+		if (UICallbacksSystem.currentState == UIState.Firemen)
+		{
+			return true;
+		}
+		return false;
+	}
+	public void GetFireClickReference(Cutscene pScript)
+	{
+		pScript.SetBoolReference (HasFireClick);
+	}
+
 	//Start Events
 	public void StartFire(bool high)
 	{
@@ -338,6 +351,37 @@ public class TutorialProgression : MonoBehaviour {
 	public void TargetBad()
 	{
 		extraTarget.position = badMill.transform.position;
+	}
+	public void TargetWithTapFinger(GameObject pRectTransform)
+	{
+		if (pRectTransform.GetComponent<RectTransform> () != null) {
+			TapFinger.position = pRectTransform.GetComponent<RectTransform> ().position;
+		}
+		else
+		{
+			TapFinger.localPosition = Vector2.zero;
+		}
+
+		bool pSave = false;
+		if (TapTargetID == 0)
+		{
+			pSave = true;
+		}
+		if (TapTargetID == 1 && !(UICallbacksSystem.currentState == UIState.Firemen))
+		{
+			pSave = true;
+		}
+		TapFinger.gameObject.SetActive (pSave);
+	}
+	public void SetTargetID(int pID)
+	{
+		TapTargetID = pID;
+		// 0 = empty
+		// 1 = Fire;
+	}
+	public void EndTapFinger()
+	{
+		TapFinger.gameObject.SetActive (false);
 	}
 
     public void PopulateReplayEvents()

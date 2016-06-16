@@ -3,7 +3,7 @@ using System.Collections;
 
 public class UICallbacksSystem : MonoBehaviour
 {
-    public static UIState currentState;
+	public static UIState currentState;
 
     [SerializeField]
     Highlightable police, firemen, repair, cleanup;
