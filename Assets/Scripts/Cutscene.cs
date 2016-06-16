@@ -27,6 +27,7 @@ public class Cutscene : MonoBehaviour {
 	}
 
 	[SerializeField] actions[] Actions;
+	[SerializeField] actions OnEnd;
 
 	void Update ()
 	{
@@ -84,8 +85,9 @@ public class Cutscene : MonoBehaviour {
 		}
 	}
 
-	void EndScene()
+	public void EndScene()
 	{
+		OnEnd.StartEvent.Invoke ();
 		sceneRunning = false;
 	}
 

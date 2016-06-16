@@ -278,6 +278,19 @@ public class TutorialProgression : MonoBehaviour {
 		pScript.SetBoolReference (HasFireClick);
 	}
 
+	public bool HasPoliceClick()
+	{
+		if (UICallbacksSystem.currentState == UIState.Police)
+		{
+			return true;
+		}
+		return false;
+	}
+	public void GetPoliceClickReference(Cutscene pScript)
+	{
+		pScript.SetBoolReference (HasPoliceClick);
+	}
+
 	//Start Events
 	public void StartFire(bool high)
 	{
@@ -371,6 +384,10 @@ public class TutorialProgression : MonoBehaviour {
 		{
 			pSave = true;
 		}
+		if (TapTargetID == 2 && !(UICallbacksSystem.currentState == UIState.Police))
+		{
+			pSave = true;
+		}
 		TapFinger.gameObject.SetActive (pSave);
 	}
 	public void SetTargetID(int pID)
@@ -378,6 +395,7 @@ public class TutorialProgression : MonoBehaviour {
 		TapTargetID = pID;
 		// 0 = empty
 		// 1 = Fire;
+		// 2 = police
 	}
 	public void EndTapFinger()
 	{
