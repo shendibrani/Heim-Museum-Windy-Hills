@@ -5763,7 +5763,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11437980, guid: 34adc7efaf3c2234aa9af07f9ee9fe72, type: 2}
       propertyPath: Actions.Array.data[2].StartEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 468740, guid: 34adc7efaf3c2234aa9af07f9ee9fe72, type: 2}
       propertyPath: m_LocalPosition.x
@@ -6009,6 +6009,10 @@ Prefab:
       propertyPath: Actions.Array.data[0].StartEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 11437980, guid: 34adc7efaf3c2234aa9af07f9ee9fe72, type: 2}
+      propertyPath: Actions.Array.data[2].StartEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 34adc7efaf3c2234aa9af07f9ee9fe72, type: 2}
   m_IsPrefabParent: 0
@@ -6136,6 +6140,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1282071416}
   m_RootOrder: 2
+--- !u!114 &1168404134 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11437980, guid: 34adc7efaf3c2234aa9af07f9ee9fe72,
+    type: 2}
+  m_PrefabInternal: {fileID: 1114461126}
+  m_Script: {fileID: 11500000, guid: 5ce14afb83113ed45aedd2138af8dee7, type: 3}
 --- !u!1 &1178189604
 GameObject:
   m_ObjectHideFlags: 0
@@ -6493,6 +6503,7 @@ MonoBehaviour:
   - {fileID: 1313911526}
   - {fileID: 1725669080}
   - {fileID: 1612706441}
+  HighFireTutorial: {fileID: 1168404134}
 --- !u!114 &1306633069
 MonoBehaviour:
   m_ObjectHideFlags: 0

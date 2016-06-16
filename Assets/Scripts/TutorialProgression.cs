@@ -73,6 +73,7 @@ public class TutorialProgression : MonoBehaviour {
 
 	[SerializeField] Animator[] buttons;
 
+	[SerializeField] Cutscene HighFireTutorial;
 
     void Start()
 	{
@@ -331,16 +332,6 @@ public class TutorialProgression : MonoBehaviour {
 		extraTarget.position = badMill.transform.position;
 	}
 
-    public void CheckEventStart(EventClass e)
-    {
-        switch (e.name)
-        {
-            case EventNames.Fire:
-                //call highfire
-                break;
-
-        }
-    }
 
 	void OnDestroy()
 	{
