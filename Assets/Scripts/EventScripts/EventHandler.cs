@@ -79,7 +79,7 @@ public class EventHandler : MonoBehaviour {
 
     void UpdateWaves() 
 	{
-        if (!TutorialProgression.Instance.ProgressPause)
+        if (!TutorialProgression.Instance.ProgressPause && TurbineObject.all.Count > 0)
         {
             if (waveStarted)// if wave system was started
             {
