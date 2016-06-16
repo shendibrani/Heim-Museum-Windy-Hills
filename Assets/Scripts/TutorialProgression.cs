@@ -44,11 +44,13 @@ public class TutorialProgression : MonoBehaviour {
     }
 
     GameObject badMill;
-	TurbineObject firstMill;
-	TurbineObject randomMill;
+	TurbineObject savedMill;
 
+	bool dirtyWasfought = false;
 	bool fireWasFought = false;
 	bool saboteurWasFought = false;
+	bool brokenWasFixed = false;
+
 	bool messedUp = false;
 	bool hasPlacedMills = false;
 	bool isComplete = false;
@@ -69,7 +71,7 @@ public class TutorialProgression : MonoBehaviour {
 	[SerializeField] Transform extraTarget;
 	[SerializeField] GameObject birds;
 
-    
+	[SerializeField] Animator[] buttons;
 
     void Start()
 	{
@@ -89,6 +91,7 @@ public class TutorialProgression : MonoBehaviour {
 
     void Update ()
 	{
+		
 		if (Skip)
 		{
 			PlaceObjectOnClick.Instance.SetDirty (false);
@@ -104,54 +107,62 @@ public class TutorialProgression : MonoBehaviour {
 		}
 		if (fireWasFought)
 		{
-			firstMill.state.OnValueChanged -= OnFireEnd;
+			savedMill.state.OnValueChanged -= OnFireEnd;
 		}
 		if (saboteurWasFought)
 		{
-			randomMill.state.OnValueChanged -= OnSaboteur;
+			savedMill.state.OnValueChanged -= OnSaboteurEnd;
+		}
+		if (brokenWasFixed)
+		{
+			savedMill.state.OnValueChanged -= OnBrokenEnd;
+		}
+		if (dirtyWasfought)
+		{
+			savedMill.state.OnValueChanged -= OnDirtEnd;
+		}
+
+		if (popup.GetBool("play") && popup.GetCurrentAnimatorStateInfo(0).IsTag("Anim") && popup.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+		{
+			popup.SetBool ("play", false);
 		}
 	}
 
-	public void OnSaboteur(TurbineState oldState, TurbineState newState){
-		saboteurWasFought = newState == null;
-	}
-		
-	public void OnFireEnd(TurbineState oldState, TurbineState newState)
+	//For Tutorial Progression
+	public void Placed()
 	{
-		fireWasFought = newState == null;
+		currentMills++;
+	}
+	public void StepBackPlacement(GameObject turbineObject)
+	{
+		badMill = turbineObject;
+		messedUp = true;
+	}
+	public void SaveBadMill(GameObject turbineObject)
+	{
+		badMill = turbineObject;
 	}
 
-	public void PlaceMillMission(int pReq)
+	public void RequirePlacing(int pReq)
 	{
 		progressPause = true;
 		PlaceObjectOnClick.Instance.SetDirty(false);
-		popup.SetBool("play", false);
 		requiredMills = pReq;
 		currentMills = 0;
 		hasPlacedMills = false;
 	}
 
-	public void EndMission()
+	public void CanPlaceMills(bool canPlace)
 	{
-		progressPause = false;
-		PlaceObjectOnClick.Instance.SetDirty(true);
+		PlaceObjectOnClick.Instance.SetDirty(!canPlace);
 	}
 
-	public void pauseMission()
+	public void DoesProgress(bool doesProgress)
 	{
-		PlaceObjectOnClick.Instance.SetDirty(true);
+		progressPause = !doesProgress;
 	}
 
-	public void ResumeMission()
-	{
-		PlaceObjectOnClick.Instance.SetDirty (false);
-	}
-
-	public void Description (string pDescription)
-	{
-		helpText.text = pDescription;
-	}
-
+	//for Removing Mills
 	public void SpawnDust()
 	{
 		if (badMill != null)
@@ -159,7 +170,6 @@ public class TutorialProgression : MonoBehaviour {
 			Instantiate (DestroyDust,badMill.transform.position + new Vector3(0,16,0),Quaternion.identity);
 		}
 	}
-
 	public void RemoveMill()
 	{
 		if (badMill != null)
@@ -170,36 +180,32 @@ public class TutorialProgression : MonoBehaviour {
 		}
 	}
 
+	// For Additional Feedback
+	public void SpawnBirds()
+	{
+		TargetBad ();
+		Instantiate (birds, extraTarget.position, Quaternion.identity);
+	}
+	public void Description (string pDescription)
+	{
+		helpText.text = pDescription;
+	}
+
+	//For Regular Feedback
 	public void Animation()
 	{
+		//Will Contain calls to the rating probably?
 		popup.SetBool ("play", true);
 	}
 
-    void OnDestroy()
-    {
-        instance = null;
-    }
-
-    public void StepBackPlacement(GameObject turbineObject)
-    {
-        badMill = turbineObject;
-        messedUp = true;
-    }
-
-	public void SaveBadMill(GameObject turbineObject)
+	public void ActivateButton (int pnumber)
 	{
-		badMill = turbineObject;
+		buttons [pnumber].SetBool ("Active", true);
 	}
 
-	public void Placed(TurbineObject pMill)
-	{
-		if (firstMill == null)
-		{
-			firstMill = pMill;
-		}
-		currentMills++;
-	}
+	//Cutscene backcall Reference sets
 
+	//placing Mills
 	public bool IsFinishedPlacing()
 	{
 		return hasPlacedMills;
@@ -209,7 +215,7 @@ public class TutorialProgression : MonoBehaviour {
 		pScript.SetBoolReference (IsFinishedPlacing);
 	}
 
-
+	//Fire State
 	public bool HasFoughtFire()
 	{
 		return fireWasFought;
@@ -219,7 +225,7 @@ public class TutorialProgression : MonoBehaviour {
 		pScript.SetBoolReference (HasFoughtFire);
 	}
 
-
+	//SaboteurState
 	public bool HasFoughtSaboteur()
 	{
 		return saboteurWasFought;
@@ -229,38 +235,70 @@ public class TutorialProgression : MonoBehaviour {
 		pScript.SetBoolReference (HasFoughtSaboteur);
 	}
 
+	//DirtyState
+	public bool HasCleanedMill()
+	{
+		return dirtyWasfought;
+	}
+	public void GetCleanReference(Cutscene pScript)
+	{
+		pScript.SetBoolReference (HasCleanedMill);
+	}
+
+	//BrokenState
+	public bool HasRepairedMill()
+	{
+		return brokenWasFixed;
+	}
+	public void GetRepairReference(Cutscene pScript)
+	{
+		pScript.SetBoolReference (HasCleanedMill);
+	}
+
+	//Start Events
 	public void StartFire()
 	{
-		popup.SetBool("play", false);
-		TurbineStateManager.lowFireState.Copy(firstMill);
-		firstMill.state.OnValueChanged += OnFireEnd;
+		TurbineStateManager.lowFireState.Copy(savedMill);
+		savedMill.state.OnValueChanged += OnFireEnd;
 	}
-
 	public void StartSaboteur()
 	{
-		popup.SetBool("play", false);
-		TurbineStateManager.saboteurState.Copy(randomMill);
-		randomMill.state.OnValueChanged += OnSaboteur;
+		TurbineStateManager.saboteurState.Copy(savedMill);
+		savedMill.state.OnValueChanged += OnSaboteurEnd;
+	}
+	//Missing : Start Storm
+	//Missing Birds
+
+	// Called by statechanges. Change Bools of cleared goals
+	public void OnSaboteurEnd(TurbineState oldState, TurbineState newState)
+	{
+		saboteurWasFought = newState == null;
+	}
+	public void OnFireEnd(TurbineState oldState, TurbineState newState)
+	{
+		fireWasFought = newState == null;
+	}
+	public void OnBrokenEnd(TurbineState oldState, TurbineState newState)
+	{
+		brokenWasFixed = newState == null;
+	}
+	public void OnDirtEnd(TurbineState oldState, TurbineState newState)
+	{
+		dirtyWasfought = newState == null;
 	}
 
-	public void SpawnBirds()
+	public void TargetCurrentMill()
 	{
-		TargetBad ();
-		Instantiate (birds, extraTarget.position, Quaternion.identity);
-	}
-
-	public void TargetFirst()
-	{
-		extraTarget.position = firstMill.transform.position + new Vector3 (0, 0, - 4);
-	}
-	public void TargetSpecial()
-	{
-		TurbineObject[] turbs = FindObjectsOfType<TurbineObject>();
-		randomMill = turbs[Random.Range(0, turbs.Length)];
-		extraTarget.position = randomMill.transform.position + new Vector3 (0, 0, - 4);;
+		extraTarget.position = savedMill.transform.position;
 	}
 	public void TargetBad()
 	{
 		extraTarget.position = badMill.transform.position;
+	}
+
+
+	void OnDestroy()
+	{
+		instance = null;
 	}
 }
