@@ -66,6 +66,11 @@ public class FlockBehavior : MonoBehaviour
         }
     }
 
+    public void SetTargetTurbine(TurbineObject to)
+    {
+        selectedTurbine = to;
+    }
+
     public void OnEnterWindzone()
     {
     }
