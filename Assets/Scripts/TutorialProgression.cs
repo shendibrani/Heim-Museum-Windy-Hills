@@ -73,6 +73,8 @@ public class TutorialProgression : MonoBehaviour {
 
 	[SerializeField] Animator[] buttons;
 
+	[SerializeField] Cutscene HighFireTutorial;
+
     void Start()
 	{
 		popup = goodJob.GetComponent<Animator> ();
