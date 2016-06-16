@@ -182,6 +182,7 @@ public class TutorialProgression : MonoBehaviour {
         {
             brokenTutorialCompleted = true;
             SetMill(to);
+            savedMill.state.OnValueChanged += OnBrokenEnd;
             brokenTutorial.StartScene();
         }
     }
@@ -276,7 +277,7 @@ public class TutorialProgression : MonoBehaviour {
 	}
 	public void GetRepairReference(Cutscene pScript)
 	{
-		pScript.SetBoolReference (HasCleanedMill);
+		pScript.SetBoolReference (HasRepairedMill);
 	}
 
 	public bool HasFireClick()
@@ -458,17 +459,17 @@ public class TutorialProgression : MonoBehaviour {
                 }
             case EventNames.Boat: {
                     //SetMill(e.usedTurbine);
-                    //boatTutorial.StartScene();
+                    boatTutorial.StartScene();
                     break;
                 }
             case EventNames.Flock:
                 {
-                    //flockTutorial.StartScene();
+                    flockTutorial.StartScene();
                     break;
                 }
             case EventNames.StormCloud:
                 {
-                    //stormCloudTutorial.StartScene();
+                    stormCloudTutorial.StartScene();
                     break;
                 }
         }
