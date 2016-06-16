@@ -72,6 +72,11 @@ public class EventHandler : MonoBehaviour {
         secondToSpawn = Random.Range(0, waveMaxTime);
     }
 
+    void InjectWave(List<EventClass> eList)
+    {
+        //restart a wave and set eList as the current wave
+    }
+
     void UpdateWaves() 
 	{
         if (!TutorialProgression.Instance.ProgressPause)

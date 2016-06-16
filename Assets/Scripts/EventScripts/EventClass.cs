@@ -124,7 +124,7 @@ public class SaboteurEvent : EventClass
 	{
 		TurbineStateManager.saboteurState.Copy(GetRandomTurbine());
 	}
-    public override void FakeEventStart() { }
+    public override void FakeEventStart() { GetRandomTurbine(); }
     public override void EventEnd ()
 	{}
 }

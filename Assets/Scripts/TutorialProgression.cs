@@ -74,6 +74,14 @@ public class TutorialProgression : MonoBehaviour {
 	[SerializeField] Animator[] buttons;
 
 	[SerializeField] Cutscene HighFireTutorial;
+    [SerializeField]
+    Cutscene SaboteurTutorial;
+    [SerializeField]
+    Cutscene stormCloudTutorial;
+    [SerializeField]
+    Cutscene flockTutorial;
+    [SerializeField]
+    Cutscene boatTutorial;
 
     void Start()
 	{
@@ -332,6 +340,11 @@ public class TutorialProgression : MonoBehaviour {
 		extraTarget.position = badMill.transform.position;
 	}
 
+    public void PopulateReplayEvents()
+    {
+        // create a wave from already completed events to populate next wave
+    }
+
     public void CheckEventStart(EventClass e)
     {
         switch (e.name)
@@ -342,9 +355,31 @@ public class TutorialProgression : MonoBehaviour {
                     HighFireTutorial.StartScene();
                     break;
                 }
+            case EventNames.Saboteur:
+                {
+                    SetMill(e.usedTurbine);
+                    SaboteurTutorial.StartScene();
+                    break;
+                }
+            case EventNames.Boat: {
+                    //SetMill(e.usedTurbine);
+                    boatTutorial.StartScene();
+                    break;
+                }
+            case EventNames.Flock:
+                {
+                    flockTutorial.StartScene();
+                    break;
+                }
+            case EventNames.StormCloud:
+                {
+                    stormCloudTutorial.StartScene();
+                    break;
+                }
         }
         
     }
+
 	void OnDestroy()
 	{
 		instance = null;
