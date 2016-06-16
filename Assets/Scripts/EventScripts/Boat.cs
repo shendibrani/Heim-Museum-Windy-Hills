@@ -13,6 +13,8 @@ public class Boat : MonoBehaviour, IWindSensitive {
 	bool isBroken = false;
 	bool arrived;
 
+	public BridgeSystem b;
+
 	int step = 0;
 	float stepTimer = 0;
 	[SerializeField] float breakTime = 1;
@@ -62,7 +64,7 @@ public class Boat : MonoBehaviour, IWindSensitive {
 				else if (step == 2)
 				{
 					Break ();
-					step = 0;
+					step = 3;
 				}
 
 				stepTimer = 0;
@@ -74,7 +76,7 @@ public class Boat : MonoBehaviour, IWindSensitive {
 			}
 			boatAgent.speed = Mathf.Lerp(boatAgent.speed, maxSpeed, 0.05f);
         }
-		else if (!windAffected && !isBroken)
+		if (!windAffected && !isBroken)
 		{
 			step = 0;
 			GetComponent<Animator> ().SetInteger ("State", step);
@@ -87,7 +89,12 @@ public class Boat : MonoBehaviour, IWindSensitive {
 			{
 				if (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
 				{
+					if (b!= null) {
+						b.a = false;
+					}
+
 					Destroy (this.gameObject);
+
 				}
 			}
 			else
