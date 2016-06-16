@@ -49,6 +49,7 @@ public class EventHandler : MonoBehaviour {
 		currentWave = GenerateWave(waveDifficulty);
 
         OnEventBegin += CheckCompletion;
+        OnEventBegin += TutorialProgression.Instance.CheckEventStart;
 	}
 
     bool initializedEvent = false;
