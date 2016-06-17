@@ -50,6 +50,9 @@ public class WarningSignManager : MonoBehaviour {
 		{
 			if (newState.name == TurbineStateManager.saboteurState.name) {
 				OnPolice ();
+			}
+			else if (newState.name == TurbineStateManager.occupiedState.name){
+				OnPolice ();
 			} else if (newState.name == TurbineStateManager.brokenState.name) {
 				OnRepair ();
 			} else if (newState.name == TurbineStateManager.lowFireState.name) {

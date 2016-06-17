@@ -4058,7 +4058,7 @@ GameObject:
   - 224: {fileID: 508168117}
   - 222: {fileID: 508168119}
   - 114: {fileID: 508168118}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: TapFingerOff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5115,7 +5115,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 651676837}
   - 95: {fileID: 651676838}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: TapFinger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9443,7 +9443,7 @@ GameObject:
   - 224: {fileID: 1205252653}
   - 222: {fileID: 1205252655}
   - 114: {fileID: 1205252654}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: ShadowOff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10091,8 +10091,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   secondToSpawn: 0
   waveNumber: 0
-  waveMaxTime: 10
-  waveCooldownTime: 5
+  waveMaxTime: 5
+  waveCooldownTime: 2
   waveDifficulty: 5
   stormEvent:
     difficulty: 20
@@ -10100,15 +10100,15 @@ MonoBehaviour:
     usedTurbine: {fileID: 0}
     speed: 1
   fireEvent:
-    difficulty: 2
+    difficulty: 20
     name: 2
     usedTurbine: {fileID: 0}
   saboteurEvent:
-    difficulty: 20
+    difficulty: 2
     name: 3
     usedTurbine: {fileID: 0}
   flockEvent:
-    difficulty: 20
+    difficulty: 100
     name: 4
     usedTurbine: {fileID: 0}
   boatEvent:
@@ -13094,6 +13094,10 @@ Prefab:
       propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 66320e935311705458c08fbedbef2e14, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dc659278d74309440b5b2dc4f59a236b, type: 2}
     m_RemovedComponents:
     - {fileID: 9500000, guid: 66320e935311705458c08fbedbef2e14, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 66320e935311705458c08fbedbef2e14, type: 3}
@@ -14248,7 +14252,7 @@ GameObject:
   - 224: {fileID: 1779150830}
   - 222: {fileID: 1779150832}
   - 114: {fileID: 1779150831}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: ShadowOn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14456,7 +14460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c56ac08d1afd81409fc1fc51e84bb48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 0
+  debug: 1
   touchInput: 0
 --- !u!114 &1818243944
 MonoBehaviour:
@@ -16814,7 +16818,7 @@ GameObject:
   - 224: {fileID: 2085856885}
   - 222: {fileID: 2085856887}
   - 114: {fileID: 2085856886}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: TapFingerOn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
