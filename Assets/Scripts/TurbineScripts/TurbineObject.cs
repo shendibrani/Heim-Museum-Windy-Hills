@@ -142,26 +142,29 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 
     public void IncreaseEfficiency(float i = 1f)
     {
+		if (state.value == null){
         efficencyOvercharge += overchargeIncrease * i;
         if (efficencyOvercharge >= maxOvercharge) {
             efficencyOvercharge = maxOvercharge;
 
 
             BreakTurbine();
+           
 			//TurbineStateManager.brokenState.Copy(this);
         }
         //efficencyOvercharge += (overchargeIncrease + overchargeDecrease);
-    }
+		}}
 
     public void BreakTurbine()
     {
         if (isBroken) return;
         TurbineStateManager.brokenState.Copy(this);
+		TutorialProgression.Instance.CheckBrokenWindmill(this);
     }
 
     public void UpdateEfficiency()
     {
-        if (isBroken) { efficencyOvercharge = 0; }
+		if (isBroken) { efficencyOvercharge = 0; }
         currentEfficency = GetEfficiency();
         UpdateHUDOverlay();
     }
@@ -298,7 +301,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 			Cleanup ();
 			break;
 		}
-		UICallbacksSystem.currentState = UIState.None;
+		//UICallbacksSystem.currentState = UIState.None;
 	}
 
 	public void OnEnterWindzone ()

@@ -54,6 +54,8 @@ public class TutorialProgression : MonoBehaviour {
 	bool hasPlacedMills = false;
 	bool isComplete = false;
 
+    bool brokenTutorialCompleted = false;
+
 	int requiredMills = 0;
 	int currentMills = 0;
 
@@ -82,6 +84,8 @@ public class TutorialProgression : MonoBehaviour {
     Cutscene flockTutorial;
     [SerializeField]
     Cutscene boatTutorial;
+    [SerializeField]
+    Cutscene brokenTutorial;
 
     void Start()
 	{
@@ -171,6 +175,17 @@ public class TutorialProgression : MonoBehaviour {
 	{
 		progressPause = !doesProgress;
 	}
+
+    public void CheckBrokenWindmill(TurbineObject to)
+    {
+        if (!brokenTutorialCompleted)
+        {
+            brokenTutorialCompleted = true;
+            SetMill(to);
+            savedMill.state.OnValueChanged += OnBrokenEnd;
+            brokenTutorial.StartScene();
+        }
+    }
 
 	//for Removing Mills
 	public void SpawnDust()
@@ -262,7 +277,7 @@ public class TutorialProgression : MonoBehaviour {
 	}
 	public void GetRepairReference(Cutscene pScript)
 	{
-		pScript.SetBoolReference (HasCleanedMill);
+		pScript.SetBoolReference (HasRepairedMill);
 	}
 
 	public bool HasFireClick()
@@ -444,17 +459,17 @@ public class TutorialProgression : MonoBehaviour {
                 }
             case EventNames.Boat: {
                     //SetMill(e.usedTurbine);
-                    //boatTutorial.StartScene();
+                    boatTutorial.StartScene();
                     break;
                 }
             case EventNames.Flock:
                 {
-                    //flockTutorial.StartScene();
+                    flockTutorial.StartScene();
                     break;
                 }
             case EventNames.StormCloud:
                 {
-                    //stormCloudTutorial.StartScene();
+                    stormCloudTutorial.StartScene();
                     break;
                 }
         }

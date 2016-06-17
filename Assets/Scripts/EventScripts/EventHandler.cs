@@ -157,20 +157,19 @@ public class EventHandler : MonoBehaviour {
 
     void InitializeEvent() 
 	{
-        if (WaveTimer.Elapsed.Seconds == secondToSpawn && !initializedEvent)
-        {
-            UnityEngine.Debug.Log("<color=red>Initializing event: </color>" + currentWave[0].name);
-            if (!completedEvents.Contains(currentWave[0]))
-            {
-                currentWave[0].FakeEventStart();
-                OnEventBegin(currentWave[0]);
-            }
-            else {
-            currentWave[0].EventStart();
-            }
-            currentWave.RemoveAt(0);
-            initializedEvent = true;
-        }
+		if (WaveTimer.Elapsed.Seconds == secondToSpawn && !initializedEvent) {
+			if (currentWave [0].usedTurbine == null || currentWave [0].usedTurbine.state.value == null) {
+				UnityEngine.Debug.Log ("<color=red>Initializing event: </color>" + currentWave [0].name);
+				if (!completedEvents.Contains (currentWave [0])) {
+					currentWave [0].FakeEventStart ();
+					OnEventBegin (currentWave [0]);
+				} else {
+					currentWave [0].EventStart ();
+				}
+				currentWave.RemoveAt (0);
+				initializedEvent = true;
+			}
+		}
 
         if (currentWave.Count == 0) {
 			currentWave = GenerateWave(waveDifficulty);

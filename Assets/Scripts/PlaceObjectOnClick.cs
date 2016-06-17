@@ -66,6 +66,7 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive, IMouseSensitiv
 
         if (EventSystem.current.IsPointerOverGameObject())
         {
+			
             Debug.Log("Clicked on the UI");
             hitTestUI = false;
         }
@@ -127,7 +128,7 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive, IMouseSensitiv
     bool DisplayObject(float hx, float hz)
     {
         if (debug) Debug.Log("Checking Temporary");
-        if (!FindObjectOfType<TurbineLimitManager>().isCap && !dirtyFlag && TestUICast(hx, hz))
+        if (!dirtyFlag && TestUICast(hx, hz))
         {
             if (debug) Debug.Log("Building points array");
             Vector2[] points = new Vector2[5];
@@ -197,7 +198,7 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive, IMouseSensitiv
 
     bool PlaceObject(float hx, float hz)
     {
-        if (!FindObjectOfType<TurbineLimitManager>().isCap && !dirtyFlag && TestUICast(hx, hz))
+        if (!dirtyFlag && TestUICast(hx, hz))
         {
             if (debug) Debug.Log("Building points array");
             Vector2[] points = new Vector2[5];
