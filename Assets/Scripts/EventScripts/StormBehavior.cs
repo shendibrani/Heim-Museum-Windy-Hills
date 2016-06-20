@@ -36,7 +36,7 @@ public class StormBehavior : MonoBehaviour, IWindSensitive
     {
         if (col.GetComponent<TurbineObject>())
         {
-            col.GetComponent<TurbineObject>().BreakTurbine();
+            col.GetComponent<TurbineObject>().IncreaseEfficiency();
         }
     }
 
