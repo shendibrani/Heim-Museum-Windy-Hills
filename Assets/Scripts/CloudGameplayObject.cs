@@ -114,7 +114,7 @@ public class CloudGameplayObject : MonoBehaviour, ITouchSensitive, IMouseSensiti
         OnCloudSelect(false, hitTarget);
     }
 
-    public void OnTouch(Touch t, RaycastHit hit)
+    public void OnTouch(Touch t, RaycastHit hit, Ray ray)
     {
         //IncreaseEfficiency();
         if (t.phase == TouchPhase.Ended)
@@ -127,7 +127,7 @@ public class CloudGameplayObject : MonoBehaviour, ITouchSensitive, IMouseSensiti
         }
     }
 
-    public void OnClick(ClickState state, RaycastHit hit)
+    public void OnClick(ClickState state, RaycastHit hit, Ray ray)
     {
         if (state == ClickState.Pressed) OnCloudSelect(true, hit);
         if (state == ClickState.Down) OnCloudSelect(true, hit);

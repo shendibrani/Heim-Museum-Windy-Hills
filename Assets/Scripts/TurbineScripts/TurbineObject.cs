@@ -267,19 +267,19 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 
 	#region Interfaces
 
-	public void OnTouch(Touch t, RaycastHit hit)
+	public void OnTouch(Touch t, RaycastHit hit, Ray ray)
 	{
 		if (!isFine) {
-			state.value.OnTouch (t, hit);
+			state.value.OnTouch (t, hit, ray);
 		}
 
 		ConsumeUIState ();
 	}
 
-	public void OnClick(ClickState clickState, RaycastHit hit)
+	public void OnClick(ClickState clickState, RaycastHit hit, Ray ray)
 	{
 		if (!isFine) {
-			state.value.OnClick (clickState, hit);
+			state.value.OnClick (clickState, hit, ray);
 		}
 
 		ConsumeUIState ();
