@@ -181,7 +181,7 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive, IMouseSensitiv
                 Vector3 snapPoint = new Vector3(points[4].x, GetComponent<TerrainCollider>().terrainData.GetHeight((int)points[4].x, (int)points[4].y), points[4].y);
                 if (debug) Debug.Log("Instantiating");
                 GameObject instance = (GameObject)GameObject.Instantiate(displayPrefab, snapPoint, Quaternion.identity);
-                if (OnObjectPlaced != null) OnObjectPlaced(instance);
+                //if (OnObjectPlaced != null) OnObjectPlaced(instance);
                 temporaryMill = instance;
             }
 
