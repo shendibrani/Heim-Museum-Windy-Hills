@@ -33,7 +33,14 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive, IMouseSensitiv
 
     float timer;
 
-    bool dirtyFlag = true;
+	bool dirtyFlag = true;
+
+	public bool DirtyFlag {
+		get {
+			return dirtyFlag;
+		}
+	}
+
     bool touchPressed;
 
     GameObject temporaryMill;
