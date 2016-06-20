@@ -55,7 +55,7 @@ public class CloudGameplayObject : MonoBehaviour, ITouchSensitive, IMouseSensiti
         tmpList = new HashSet<IWindSensitive>();
         if (cloudSelect)
         {
-
+			TutorialProgression.Instance.CloudWasTapped = true;
             CloudMove();
             RaycastHit[] hits;
             hits = Physics.SphereCastAll(cloudObject.transform.position, radius, TurbineObject.windVelocity);

@@ -15,19 +15,6 @@ public class TutorialProgression : MonoBehaviour {
         }
     }
 
-    public bool IsComplete
-    {
-        get
-        {
-            return isComplete;
-        }
-
-        private set
-        {
-            isComplete = value;
-        }
-    }
-
     public bool ProgressPause
     {
         get
@@ -49,22 +36,33 @@ public class TutorialProgression : MonoBehaviour {
 	bool fireWasFought = false;
 	bool saboteurWasFought = false;
 	bool brokenWasFixed = false;
+	bool cloudWasTapped = false;
+
+	public bool CloudWasTapped {
+		get {
+			return cloudWasTapped;
+		}
+		set{ cloudWasTapped = value;}
+	}
 
 	bool messedUp = false;
 	bool hasPlacedMills = false;
 	bool isComplete = false;
 
     bool brokenTutorialCompleted = false;
+	bool build1 = false;
 
 	int requiredMills = 0;
 	int currentMills = 0;
+
+	int MillStep = 0;
+	[SerializeField] Cutscene[] PlaceMills;
 
 	Animator popup;
 
     bool progressPause = false;
 
     [SerializeField] bool debug;
-	[SerializeField] Cutscene scene;
 	[SerializeField] Text helpText;
 	[SerializeField] Image goodJob;
 	[SerializeField] bool Skip;
@@ -87,31 +85,24 @@ public class TutorialProgression : MonoBehaviour {
     [SerializeField]
     Cutscene brokenTutorial;
 
+	[SerializeField] Cutscene FirstCutscene;
+
     void Start()
 	{
 		popup = goodJob.GetComponent<Animator> ();
 
-		PlaceObjectOnClick.Instance.SetDirty(true);
-		if (!Skip)
-		{
-			scene.StartScene ();
+
+		if (!Skip) {
+			FirstCutscene.StartScene ();	
+			PlaceObjectOnClick.Instance.SetDirty(true);
+		} else {
+			PlaceObjectOnClick.Instance.SetDirty (false);
 		}
+
 	}
-	
-    public void SetComplete()
-    {
-        isComplete = true;
-    }
 
     void Update ()
 	{
-		
-		if (Skip)
-		{
-			PlaceObjectOnClick.Instance.SetDirty (false);
-			SetComplete ();
-		}
-
 		if (!hasPlacedMills)
 		{
 			if (currentMills == requiredMills && !messedUp)
@@ -145,10 +136,12 @@ public class TutorialProgression : MonoBehaviour {
 	//For Tutorial Progression
 	public void Placed()
 	{
+		TurbineLimitManager.Instance.ChangeAvailable (-1);
 		currentMills++;
 	}
 	public void StepBackPlacement(GameObject turbineObject)
 	{
+		TurbineLimitManager.Instance.ChangeAvailable (1);
 		badMill = turbineObject;
 		messedUp = true;
 	}
@@ -186,6 +179,17 @@ public class TutorialProgression : MonoBehaviour {
             brokenTutorial.StartScene();
         }
     }
+
+	//start windmil placing scene
+	public void PlacingMills()
+	{
+		Debug.Log (TurbineLimitManager.Instance.availableCount);
+		if (TurbineLimitManager.Instance.availableCount > 0 && PlaceMills.Length > MillStep && PlaceObjectOnClick.Instance.DirtyFlag)
+		{
+			PlaceMills [MillStep].StartScene ();
+			MillStep++;
+		}
+	}
 
 	//for Removing Mills
 	public void SpawnDust()
@@ -226,6 +230,11 @@ public class TutorialProgression : MonoBehaviour {
 	public void ActivateButton (int pnumber)
 	{
 		buttons [pnumber].SetBool ("Active", true);
+	}
+
+	public void AddMill()
+	{
+		TurbineLimitManager.Instance.ChangeAvailable (1);
 	}
 
 	//Cutscene backcall Reference sets
@@ -319,6 +328,28 @@ public class TutorialProgression : MonoBehaviour {
 		pScript.SetBoolReference (HasRepairClick);
 	}
 
+	public bool HasBuildClick()
+	{
+		return build1;
+	}
+	public void GetBuildClickReference(Cutscene pScript)
+	{
+		pScript.SetBoolReference (HasBuildClick);
+	}
+	public void SetHasBuildBool()
+	{
+		build1 = true;
+	}
+
+	public bool HasClickedCloud()
+	{
+		return cloudWasTapped;
+	}
+	public void GetCloudClickReference(Cutscene pScript)
+	{
+		pScript.SetBoolReference (HasClickedCloud);
+	}
+
 	//Start Events
 	public void StartFire(bool high)
 	{
@@ -360,8 +391,6 @@ public class TutorialProgression : MonoBehaviour {
         BoatEvent e = new BoatEvent();
         e.EventStart();
     }
-    //Missing : Start Storm
-    //Missing Birds
 
     // Called by statechanges. Change Bools of cleared goals
     public void OnSaboteurEnd(TurbineState oldState, TurbineState newState)
@@ -398,9 +427,9 @@ public class TutorialProgression : MonoBehaviour {
 		if (pRectTransform.GetComponent<RectTransform> () != null) {
 			TapFinger.position = pRectTransform.GetComponent<RectTransform> ().position;
 		}
-		else
+		else if (pRectTransform.GetComponent<Transform> () != null)
 		{
-			TapFinger.localPosition = Vector2.zero;
+			TapFinger.position = Camera.main.WorldToScreenPoint (pRectTransform.transform.position);
 		}
 
 		bool pSave = false;
@@ -422,6 +451,8 @@ public class TutorialProgression : MonoBehaviour {
 		}
 		TapFinger.gameObject.SetActive (pSave);
 	}
+
+
 	public void SetTargetID(int pID)
 	{
 		TapTargetID = pID;
@@ -430,6 +461,7 @@ public class TutorialProgression : MonoBehaviour {
 		// 2 = police
 		//3 = repair
 		//4 = clean
+		// 5 = Mill
 	}
 	public void EndTapFinger()
 	{

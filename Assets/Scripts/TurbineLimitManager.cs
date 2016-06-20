@@ -26,6 +26,8 @@ public class TurbineLimitManager : MonoBehaviour {
     [SerializeField]
     int maxCount = 6;
 
+	public int availableCount = 1;
+
     [SerializeField]
     Text countText;
 
@@ -49,19 +51,21 @@ public class TurbineLimitManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		ChangeAvailable (0);
         //FindObjectOfType<PlaceObjectOnClick>().OnObjectPlaced += checkCount;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (countText != null) countText.text = (maxCount - currentCount).ToString();
-        if (maxText != null && debug) maxText.text = (maxCount - currentCount).ToString();
+		
+        //if (maxText != null && debug) maxText.text = (maxCount - currentCount).ToString();
         checkCount(); 
 	
 	}
-    public void IncreaseMax()
+	public void ChangeAvailable(int pCount = 1)
     {
-        maxCount += 1;
+		availableCount += pCount;
+		if (countText != null) countText.text = availableCount.ToString();
     }
     public void checkCount()
     {
