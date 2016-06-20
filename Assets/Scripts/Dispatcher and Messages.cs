@@ -20,7 +20,10 @@ public class Dispatcher<T> where T: Message
 
     public static void Dispatch(T instance)
     {
-        Callback(instance);
+        if (Callback != null)
+        {
+            Callback(instance);
+        }
     }
 
     public static void Subscribe(DispatcherCallback d)
@@ -32,6 +35,11 @@ public class Dispatcher<T> where T: Message
     {
         Callback -= d;
     }
+
+	public static void ClearSubscriptionList()
+	{
+		Callback = null;
+	}
 }
 
 public class FiremenMessage : Message
