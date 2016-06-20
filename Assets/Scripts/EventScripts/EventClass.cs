@@ -90,17 +90,23 @@ public class FireEvent : EventClass
         }
 
     }
+
     public FireEvent(){
         name = EventNames.Fire;
     }
 
     public override void EventStart ()
 	{
-		TurbineStateManager.lowFireState.Copy(GetRandomTurbine());
-	}
+        TurbineObject turbine = GetRandomTurbine();
+        TurbineStateManager.lowFireState.Copy(turbine);
+        GameObject fireStation = GameObject.Find("FireStation");
+        Vector3 SpawnPos = fireStation.transform.position;
+        GameObject instance = (GameObject)GameObject.Instantiate(Resources.Load("Fireman"), SpawnPos, Quaternion.identity);
+
+    }
+
     public override void FakeEventStart() { GetRandomTurbine(); }
-    public override void EventEnd ()
-	{}
+    public override void EventEnd (){}
 }
 
 [System.Serializable]

@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Reflection;
 
 public class EventHandler : MonoBehaviour {
-    static public List<GameObject> AllBoats;
+    
     private Stopwatch WaveTimer;
 	[SerializeField] int secondToSpawn;
 	[SerializeField] int waveNumber;
@@ -34,7 +34,7 @@ public class EventHandler : MonoBehaviour {
     // Use this for initialization
     void Start () 
 	{
-        AllBoats = new List<GameObject>();
+        
         WaveTimer = new Stopwatch();
         
         eventsList = new List<EventClass>();
@@ -88,7 +88,7 @@ public class EventHandler : MonoBehaviour {
 
                 if (WaveTimer.Elapsed.Seconds >= waveMaxTime && !waveEnded) // if Wave Time has ended, reset clock.
                 {
-                    // if (debug) ClearLog();
+                 // if (debug) ClearLog();
                     waveEnded = true;
                     waveStarted = false;
                     WaveTimer.Reset();
