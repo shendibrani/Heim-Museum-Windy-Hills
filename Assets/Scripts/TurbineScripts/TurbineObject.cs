@@ -336,6 +336,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 	public void Police()
 	{
 		if (!isFine) {
+			Dispatcher<PoliceMessage>.Dispatch(new PoliceMessage(gameObject));
 			state.value.OnPolice ();
 		}
 	}
@@ -343,6 +344,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 	public void Firemen()
 	{
 		if (!isFine) {
+			Dispatcher<FiremenMessage>.Dispatch(new FiremenMessage(gameObject));
 			state.value.OnFiremen ();
 		}
 	}
@@ -350,6 +352,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 	public void Repair()
 	{
 		if (!isFine) {
+			Dispatcher<RepairMessage>.Dispatch(new RepairMessage(gameObject));
 			state.value.OnRepair ();
 		}
 	}
@@ -357,6 +360,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 	public void Cleanup()
 	{
 		if (!isFine) {
+			Dispatcher<CleanupMessage>.Dispatch(new CleanupMessage(gameObject));
 			state.value.OnCleanup ();
 		}
 	}

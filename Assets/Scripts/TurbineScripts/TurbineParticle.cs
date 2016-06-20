@@ -95,9 +95,7 @@ public class TurbineParticle : MonoBehaviour {
 	public void OnStateChange(TurbineState oldState, TurbineState newState)
 	{
 		if (oldState != null) {
-			if (oldState.name == TurbineStateManager.saboteurState.name) {
-				GetComponentInChildren<Saboteur> ().EndAnimation ();
-			} else if (oldState.name == TurbineStateManager.brokenState.name) {
+			if (oldState.name == TurbineStateManager.brokenState.name) {
 				Break (false);
 			} else if (oldState.name == TurbineStateManager.lowFireState.name) {
 				LowFire (false);
@@ -105,7 +103,10 @@ public class TurbineParticle : MonoBehaviour {
 				HighFire (false);
 			} else if (oldState.name == TurbineStateManager.dirtyState.name) {
 				Dirty (false);
-			}
+			} else if (oldState.name == TurbineStateManager.occupiedState.name)
+            {
+                GetComponentInChildren<Saboteur>().EndAnimation();
+            }
 		}
 
 		if (newState != null)
@@ -125,6 +126,10 @@ public class TurbineParticle : MonoBehaviour {
 		if(newState == null && oldState != null)
 		{
 			Sparkles (true);
-		}
+            if (oldState.name == TurbineStateManager.saboteurState.name)
+            {
+                GetComponentInChildren<Saboteur>().EndAnimation();
+            }
+        }
 	}
 }
