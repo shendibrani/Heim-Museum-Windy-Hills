@@ -74,10 +74,10 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive, IMouseSensitiv
         return hitTestUI;
     }
 
-    public void OnClick(ClickState state, RaycastHit hit)
+    public void OnClick(ClickState state, RaycastHit hit, Ray ray)
     {
         if (state == ClickState.Pressed) { PointHold(hit.point.x, hit.point.z);
-            DisplayObject(hit.point.x, hit.point.z);
+            DisplayObject(hit.point.x, hit.point.z, ray);
         }
         if (state == ClickState.Down) { }
         if (state == ClickState.Up)
@@ -85,25 +85,25 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive, IMouseSensitiv
             ReleaseHold();
             GameObject.Destroy(temporaryMill);
             temporaryMill = null;
-            PlaceObject(hit.point.x, hit.point.z);
+            PlaceObject(hit.point.x, hit.point.z, ray);
         }
     }
 
-    public void OnTouch(Touch t, RaycastHit hit)
+    public void OnTouch(Touch t, RaycastHit hit, Ray ray)
     {
         if (t.phase == TouchPhase.Began)
         {
         }
         if (t.phase == TouchPhase.Moved || t.phase == TouchPhase.Stationary)
         {
-            DisplayObject(hit.point.x, hit.point.z);
+            DisplayObject(hit.point.x, hit.point.z, ray);
         }
         if (t.phase == TouchPhase.Ended)
         {
             if (debug) Debug.Log("[Placement] Placed " + prefab.name + " at " + hit.point + " at " + Time.time);
             GameObject.Destroy(temporaryMill);
             temporaryMill = null;
-            PlaceObject(hit.point.x, hit.point.z);
+            PlaceObject(hit.point.x, hit.point.z, ray);
         }
     }
 
@@ -125,7 +125,18 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive, IMouseSensitiv
         return true;
     }
 
-    bool DisplayObject(float hx, float hz)
+    Collider ConfirmBlockingCast(Ray ray)
+    {
+        RaycastHit hit;
+        Physics.Raycast(ray, out hit);
+        if (hit.collider != null)
+        {
+            return hit.collider;
+        }
+        return null;
+    }
+
+    bool DisplayObject(float hx, float hz, Ray ray)
     {
         if (debug) Debug.Log("Checking Temporary");
         if (!dirtyFlag && TestUICast(hx, hz))
@@ -153,6 +164,11 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive, IMouseSensitiv
                         safe = false;
                         //OnObjectPlaced(null);
                         //return false;
+                    }
+                    if (ConfirmBlockingCast(ray) != this.GetComponent<Collider>())
+                    {
+                        if (debug) Debug.Log("Placement obscured");
+                        safe = false;
                     }
                     if (debug) Debug.Log("Flat");
                 }
@@ -196,9 +212,9 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive, IMouseSensitiv
         return false;
     }
 
-    bool PlaceObject(float hx, float hz)
+    bool PlaceObject(float hx, float hz, Ray ray)
     {
-        if (!dirtyFlag && TestUICast(hx, hz))
+        if (!dirtyFlag && TestUICast(hx, hz) && ConfirmBlockingCast(ray))
         {
             if (debug) Debug.Log("Building points array");
             Vector2[] points = new Vector2[5];
@@ -219,7 +235,13 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive, IMouseSensitiv
                     OnObjectPlaced(null);
                     return false;
                 }
-                if (debug) Debug.Log("Flat");
+                else if (ConfirmBlockingCast(ray) != this.GetComponent<Collider>())
+                {
+                    if (debug) Debug.Log("Placement obscured");
+                    OnObjectPlaced(null);
+                    return false;
+                }
+                else if (debug) Debug.Log("Flat");
             }
 
             //Snap to grid size according to _snapValue
