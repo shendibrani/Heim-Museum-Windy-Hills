@@ -140,7 +140,7 @@ public class Farmer : MonoBehaviour, ITouchSensitive,IMouseSensitive {
 		turn = true;
 	}
 
-	public void OnTouch(Touch t, RaycastHit hit)
+	public void OnTouch(Touch t, RaycastHit hit, Ray ray)
 	{
 		if (freeWill)
 		{
@@ -148,7 +148,7 @@ public class Farmer : MonoBehaviour, ITouchSensitive,IMouseSensitive {
 		}
 	}
 
-	public void OnClick(ClickState state, RaycastHit hit)
+	public void OnClick(ClickState state, RaycastHit hit, Ray ray)
 	{
 		if (state == ClickState.Down && freeWill)
 		{

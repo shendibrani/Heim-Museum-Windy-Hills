@@ -3,12 +3,12 @@ using UnityEngine;
 
 public interface ITouchSensitive
 {
-	void OnTouch(Touch t, RaycastHit hit);
+	void OnTouch(Touch t, RaycastHit hit, Ray ray);
 }
 
 public interface IMouseSensitive
 {
-	void OnClick(ClickState state, RaycastHit hit);
+	void OnClick(ClickState state, RaycastHit hit, Ray ray);
 }
 
 public interface IWindSensitive

@@ -99,14 +99,14 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 		}
 	}
 
-	public void OnClick (ClickState state, RaycastHit hit)
+	public void OnClick (ClickState state, RaycastHit hit, Ray ray)
 	{
 		if(endOnTap){
 			if(state == ClickState.Down) End(true);
 		}
 	}
 
-	public void OnTouch(Touch t, RaycastHit hit)
+	public void OnTouch(Touch t, RaycastHit hit, Ray ray)
 	{
 		if(endOnTap){
 			if(t.phase == TouchPhase.Ended) End(true);

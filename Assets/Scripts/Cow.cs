@@ -139,12 +139,12 @@ public class Cow : MonoBehaviour , ITouchSensitive,IMouseSensitive {
 		}
 	}
 		
-	public void OnTouch(Touch t, RaycastHit hit)
+	public void OnTouch(Touch t, RaycastHit hit, Ray ray)
 	{
 		touch.StartScene ();
 	}
 
-	public void OnClick(ClickState state, RaycastHit hit)
+	public void OnClick(ClickState state, RaycastHit hit, Ray ray)
 	{
 		touch.StartScene ();
 	}
