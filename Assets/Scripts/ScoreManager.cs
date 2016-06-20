@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -22,10 +24,10 @@ public class ScoreManager : MonoBehaviour
             return instance;
         }
     }
-
-    
-
+		
     public static Monitored<float> totalScore = new Monitored<float>(0);
+
+	public UnityEvent ScoreTargetIncrease;
 
     [SerializeField]
     float startingTargetPower = 1f;
@@ -42,7 +44,6 @@ public class ScoreManager : MonoBehaviour
     [SerializeField]
     float energyProgressionTimerTarget = 10f;
     float energyProgressionTimer = 0f;
-
 
     [SerializeField]
     Text scoreText;
@@ -64,12 +65,16 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         targetPower = startingTargetPower;
+		scoreQueue = new Queue<MoraleChangeMessage> ();
+
+		Dispatcher<MoraleChangeMessage>.Subscribe (AddMessageToQueue);
     }
 
     // Update is called once per frame
     void Update()
     {
         ResetPower();
+		ProcessScoreChangeQueue ();
         if (!TutorialProgression.Instance.ProgressPause)
         {
             TargetProgression();
@@ -114,6 +119,7 @@ public class ScoreManager : MonoBehaviour
         {
             targetPower += 1f;
             MoraleUpdate(0.1f);
+			ScoreTargetIncrease.Invoke();
         }
     }
 
@@ -133,4 +139,35 @@ public class ScoreManager : MonoBehaviour
     {
         totalScore.value = value;
     }
+
+	#region Message Queue and Processing
+
+	Queue<MoraleChangeMessage> scoreQueue;
+
+	void ProcessScoreChangeQueue()
+	{
+		if (scoreQueue.Count > 0) {
+			foreach (MoraleChangeMessage stm in scoreQueue) {
+				currentMorale += stm.scoreChange;
+			}
+			scoreQueue.Clear ();
+		}
+	}
+
+	void AddMessageToQueue(MoraleChangeMessage stm)
+	{
+		scoreQueue.Enqueue (stm);
+	}
+
+	#endregion
+}
+
+public class MoraleChangeMessage : Message
+{
+	public readonly float scoreChange;
+
+	public MoraleChangeMessage(GameObject sender, float valueChange):base(sender)
+	{
+		scoreChange = valueChange;
+	}
 }
