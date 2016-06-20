@@ -8,7 +8,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 414986}
-  - 136: {fileID: 13603834}
   - 54: {fileID: 5430276}
   - 95: {fileID: 9507164}
   - 208: {fileID: 20808098}
@@ -2758,19 +2757,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!136 &13603834
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104494}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 15
-  m_Height: 40
-  m_Direction: 1
-  m_Center: {x: 0, y: 14, z: 0}
 --- !u!137 &13778522
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

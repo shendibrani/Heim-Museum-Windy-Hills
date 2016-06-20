@@ -77,7 +77,8 @@ public class Morale : MonoBehaviour
         }
         if (go && usesCollider)
         {
-            if (GetComponent<Collider>().bounds.Contains(go.transform.position)) {
+			if (GetComponent<Collider>().bounds.Contains(go.transform.position) && go.GetComponent<Collider>() != null)
+			{
                 morale.value -= 0.1f;
                 ScoreManager.Instance.MoraleUpdate(-0.1f);
                 //onMoraleUpdate(-1f);
