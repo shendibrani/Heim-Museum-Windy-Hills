@@ -36,6 +36,14 @@ public class TutorialProgression : MonoBehaviour {
 	bool fireWasFought = false;
 	bool saboteurWasFought = false;
 	bool brokenWasFixed = false;
+	bool cloudWasTapped = false;
+
+	public bool CloudWasTapped {
+		get {
+			return cloudWasTapped;
+		}
+		set{ cloudWasTapped = value;}
+	}
 
 	bool messedUp = false;
 	bool hasPlacedMills = false;
@@ -83,18 +91,18 @@ public class TutorialProgression : MonoBehaviour {
 	{
 		popup = goodJob.GetComponent<Animator> ();
 
-		PlaceObjectOnClick.Instance.SetDirty(true);
-		FirstCutscene.StartScene ();
+
+		if (!Skip) {
+			FirstCutscene.StartScene ();	
+			PlaceObjectOnClick.Instance.SetDirty(true);
+		} else {
+			PlaceObjectOnClick.Instance.SetDirty (false);
+		}
+
 	}
 
     void Update ()
 	{
-		
-		if (Skip)
-		{
-			PlaceObjectOnClick.Instance.SetDirty (false);
-		}
-
 		if (!hasPlacedMills)
 		{
 			if (currentMills == requiredMills && !messedUp)
@@ -176,7 +184,7 @@ public class TutorialProgression : MonoBehaviour {
 	public void PlacingMills()
 	{
 		Debug.Log (TurbineLimitManager.Instance.availableCount);
-		if (TurbineLimitManager.Instance.availableCount > 0 && PlaceMills.Length > MillStep)
+		if (TurbineLimitManager.Instance.availableCount > 0 && PlaceMills.Length > MillStep && PlaceObjectOnClick.Instance.DirtyFlag)
 		{
 			PlaceMills [MillStep].StartScene ();
 			MillStep++;
@@ -333,6 +341,15 @@ public class TutorialProgression : MonoBehaviour {
 		build1 = true;
 	}
 
+	public bool HasClickedCloud()
+	{
+		return cloudWasTapped;
+	}
+	public void GetCloudClickReference(Cutscene pScript)
+	{
+		pScript.SetBoolReference (HasClickedCloud);
+	}
+
 	//Start Events
 	public void StartFire(bool high)
 	{
@@ -410,9 +427,9 @@ public class TutorialProgression : MonoBehaviour {
 		if (pRectTransform.GetComponent<RectTransform> () != null) {
 			TapFinger.position = pRectTransform.GetComponent<RectTransform> ().position;
 		}
-		else
+		else if (pRectTransform.GetComponent<Transform> () != null)
 		{
-			TapFinger.localPosition = Vector2.zero;
+			TapFinger.position = Camera.main.WorldToScreenPoint (pRectTransform.transform.position);
 		}
 
 		bool pSave = false;
@@ -434,6 +451,8 @@ public class TutorialProgression : MonoBehaviour {
 		}
 		TapFinger.gameObject.SetActive (pSave);
 	}
+
+
 	public void SetTargetID(int pID)
 	{
 		TapTargetID = pID;
