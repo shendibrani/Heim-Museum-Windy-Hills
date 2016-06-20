@@ -35,6 +35,11 @@ public class Dispatcher<T> where T: Message
     {
         Callback -= d;
     }
+
+	public static void ClearSubscriptionList()
+	{
+		Callback = null;
+	}
 }
 
 public class FiremenMessage : Message
