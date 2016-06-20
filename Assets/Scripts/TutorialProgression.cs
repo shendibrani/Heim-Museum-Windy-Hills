@@ -36,6 +36,14 @@ public class TutorialProgression : MonoBehaviour {
 	bool fireWasFought = false;
 	bool saboteurWasFought = false;
 	bool brokenWasFixed = false;
+	bool cloudWasTapped = false;
+
+	public bool CloudWasTapped {
+		get {
+			return cloudWasTapped;
+		}
+		set{ cloudWasTapped = value;}
+	}
 
 	bool messedUp = false;
 	bool hasPlacedMills = false;
@@ -176,7 +184,7 @@ public class TutorialProgression : MonoBehaviour {
 	public void PlacingMills()
 	{
 		Debug.Log (TurbineLimitManager.Instance.availableCount);
-		if (TurbineLimitManager.Instance.availableCount > 0 && PlaceMills.Length > MillStep)
+		if (TurbineLimitManager.Instance.availableCount > 0 && PlaceMills.Length > MillStep && PlaceObjectOnClick.Instance.DirtyFlag)
 		{
 			PlaceMills [MillStep].StartScene ();
 			MillStep++;
@@ -331,6 +339,15 @@ public class TutorialProgression : MonoBehaviour {
 	public void SetHasBuildBool()
 	{
 		build1 = true;
+	}
+
+	public bool HasClickedCloud()
+	{
+		return cloudWasTapped;
+	}
+	public void GetCloudClickReference(Cutscene pScript)
+	{
+		pScript.SetBoolReference (HasClickedCloud);
 	}
 
 	//Start Events

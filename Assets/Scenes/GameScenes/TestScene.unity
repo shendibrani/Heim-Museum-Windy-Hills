@@ -6497,49 +6497,21 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-    IsEndedByBool: 0
+    IsEndedByBool: 1
     SetReference:
       m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-    IsEndedByTimer: 0
-    TimeTarget: 0
-  - StartEvent:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-    IsEndedByBool: 0
-    SetReference:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-    IsEndedByTimer: 0
-    TimeTarget: 0
-  - StartEvent:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-    IsEndedByBool: 0
-    SetReference:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-    IsEndedByTimer: 0
-    TimeTarget: 0
-  - StartEvent:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-    IsEndedByBool: 0
-    SetReference:
-      m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 1306633068}
+          m_MethodName: GetCloudClickReference
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 403987698}
+            m_ObjectArgumentAssemblyTypeName: Cutscene, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
     IsEndedByTimer: 0
@@ -6547,7 +6519,29 @@ MonoBehaviour:
   OnEnd:
     StartEvent:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 1306633068}
+          m_MethodName: EndTapFinger
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306633068}
+          m_MethodName: DoesProgress
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
     IsEndedByBool: 0
@@ -6556,7 +6550,7 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-    IsEndedByTimer: 0
+    IsEndedByTimer: 1
     TimeTarget: 0
 --- !u!1 &411438688 stripped
 GameObject:
@@ -8800,6 +8794,10 @@ Prefab:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 11437980, guid: 34adc7efaf3c2234aa9af07f9ee9fe72, type: 2}
+      propertyPath: Actions.Array.data[4].StartEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11437980, guid: 34adc7efaf3c2234aa9af07f9ee9fe72, type: 2}
       propertyPath: Actions.Array.data[0].SetReference.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -8882,7 +8880,7 @@ Prefab:
     - target: {fileID: 11437980, guid: 34adc7efaf3c2234aa9af07f9ee9fe72, type: 2}
       propertyPath: Actions.Array.data[4].StartEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1306633068}
+      objectReference: {fileID: 403987698}
     - target: {fileID: 143684, guid: 34adc7efaf3c2234aa9af07f9ee9fe72, type: 2}
       propertyPath: m_Name
       value: PlaceMillCutscene1
@@ -8965,15 +8963,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11437980, guid: 34adc7efaf3c2234aa9af07f9ee9fe72, type: 2}
       propertyPath: Actions.Array.data[4].StartEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: DoesProgress
+      value: StartScene
       objectReference: {fileID: 0}
     - target: {fileID: 11437980, guid: 34adc7efaf3c2234aa9af07f9ee9fe72, type: 2}
       propertyPath: Actions.Array.data[4].StartEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11437980, guid: 34adc7efaf3c2234aa9af07f9ee9fe72, type: 2}
       propertyPath: Actions.Array.data[4].StartEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11437980, guid: 34adc7efaf3c2234aa9af07f9ee9fe72, type: 2}
       propertyPath: Actions.Array.data[2].StartEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
@@ -9090,6 +9088,18 @@ Prefab:
     - target: {fileID: 11437980, guid: 34adc7efaf3c2234aa9af07f9ee9fe72, type: 2}
       propertyPath: Actions.Array.data[2].StartEvent.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 11437980, guid: 34adc7efaf3c2234aa9af07f9ee9fe72, type: 2}
+      propertyPath: Actions.Array.data[4].StartEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 11437980, guid: 34adc7efaf3c2234aa9af07f9ee9fe72, type: 2}
+      propertyPath: Actions.Array.data[4].StartEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11437980, guid: 34adc7efaf3c2234aa9af07f9ee9fe72, type: 2}
+      propertyPath: Actions.Array.data[3].IsEndedByTimer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 34adc7efaf3c2234aa9af07f9ee9fe72, type: 2}
@@ -10243,7 +10253,7 @@ MonoBehaviour:
           m_MethodName: TargetWithTapFinger
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 694204638}
+            m_ObjectArgument: {fileID: 1245512009}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
@@ -12484,7 +12494,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11437980, guid: 34adc7efaf3c2234aa9af07f9ee9fe72, type: 2}
       propertyPath: Actions.Array.data[1].StartEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 34adc7efaf3c2234aa9af07f9ee9fe72, type: 2}
@@ -18429,6 +18439,33 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1136812955}
+--- !u!1 &1148526554
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 24863563}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1148526555}
+  m_Layer: 0
+  m_Name: Missing Prefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1148526555
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 24863563}
+  m_GameObject: {fileID: 1148526554}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 31
 --- !u!1 &1148741553
 GameObject:
   m_ObjectHideFlags: 0
