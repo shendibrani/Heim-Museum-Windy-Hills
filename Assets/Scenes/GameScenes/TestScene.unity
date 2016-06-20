@@ -21133,9 +21133,9 @@ MonoBehaviour:
   - {fileID: 1612706441}
   HighFireTutorial: {fileID: 1168404134}
   SaboteurTutorial: {fileID: 2044828727}
-  stormCloudTutorial: {fileID: 1196737483}
-  flockTutorial: {fileID: 377999521}
-  boatTutorial: {fileID: 1603374016}
+  stormCloudTutorial: {fileID: 0}
+  flockTutorial: {fileID: 0}
+  boatTutorial: {fileID: 0}
   brokenTutorial: {fileID: 1554758180}
   FirstCutscene: {fileID: 1996135370}
 --- !u!114 &1306633069
