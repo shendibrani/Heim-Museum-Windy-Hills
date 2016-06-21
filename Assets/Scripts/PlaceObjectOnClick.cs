@@ -259,6 +259,7 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive, IMouseSensitiv
             if (OnObjectPlaced != null) OnObjectPlaced(instance);
 
             TutorialProgression.Instance.Placed();
+			TutorialProgression.Instance.SetMill(instance.GetComponent<TurbineObject>());
             return true;
         }
         return false;

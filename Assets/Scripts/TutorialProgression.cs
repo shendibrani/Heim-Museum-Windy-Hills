@@ -51,6 +51,7 @@ public class TutorialProgression : MonoBehaviour {
 
     bool brokenTutorialCompleted = false;
 	bool build1 = false;
+	bool scoreWasIncreased = false;
 
 	int requiredMills = 0;
 	int currentMills = 0;
@@ -98,6 +99,7 @@ public class TutorialProgression : MonoBehaviour {
 		} else {
 			PlaceObjectOnClick.Instance.SetDirty (false);
 		}
+		FindObjectOfType<ScoreManager> ().ScoreTargetIncrease.AddListener (SetIncreasedScore);
 
 	}
 
@@ -348,6 +350,20 @@ public class TutorialProgression : MonoBehaviour {
 	public void GetCloudClickReference(Cutscene pScript)
 	{
 		pScript.SetBoolReference (HasClickedCloud);
+	}
+
+	public bool HasIncreasedScore()
+	{
+		return scoreWasIncreased;
+	}
+	public void GetScoreIncreaseReference(Cutscene pScript)
+	{
+		pScript.SetBoolReference (HasIncreasedScore);
+	}
+	void SetIncreasedScore()
+	{
+		FindObjectOfType<ScoreManager> ().ScoreTargetIncrease.RemoveListener (SetIncreasedScore);
+		scoreWasIncreased = true;
 	}
 
 	//Start Events

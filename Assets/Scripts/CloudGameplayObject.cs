@@ -55,7 +55,7 @@ public class CloudGameplayObject : MonoBehaviour, ITouchSensitive, IMouseSensiti
         tmpList = new HashSet<IWindSensitive>();
         if (cloudSelect)
         {
-			TutorialProgression.Instance.CloudWasTapped = true;
+			
             CloudMove();
             RaycastHit[] hits;
             hits = Physics.SphereCastAll(cloudObject.transform.position, radius, TurbineObject.windVelocity);
@@ -116,6 +116,8 @@ public class CloudGameplayObject : MonoBehaviour, ITouchSensitive, IMouseSensiti
 
     public void OnTouch(Touch t, RaycastHit hit, Ray ray)
     {
+		TutorialProgression.Instance.CloudWasTapped = true;
+		FindObjectOfType<UICallbacksSystem> ().Clear ();
         //IncreaseEfficiency();
         if (t.phase == TouchPhase.Ended)
         {
@@ -129,6 +131,8 @@ public class CloudGameplayObject : MonoBehaviour, ITouchSensitive, IMouseSensiti
 
     public void OnClick(ClickState state, RaycastHit hit, Ray ray)
     {
+		TutorialProgression.Instance.CloudWasTapped = true;
+		FindObjectOfType<UICallbacksSystem> ().Clear ();
         if (state == ClickState.Pressed) OnCloudSelect(true, hit);
         if (state == ClickState.Down) OnCloudSelect(true, hit);
         if (state == ClickState.Up) OnCloudSelect(false, hit);
