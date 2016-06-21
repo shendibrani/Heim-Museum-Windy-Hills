@@ -69,7 +69,7 @@ public class TutorialProgression : MonoBehaviour {
 	[SerializeField] bool Skip;
 	[SerializeField] GameObject DestroyDust;
 	[SerializeField] Transform extraTarget;
-	[SerializeField] RectTransform TapFinger;
+	public RectTransform TapFinger;
 	[SerializeField] GameObject birds;
 
 	[SerializeField] Animator[] buttons;
@@ -478,10 +478,6 @@ public class TutorialProgression : MonoBehaviour {
 		//3 = repair
 		//4 = clean
 		// 5 = Mill
-	}
-	public void EndTapFinger()
-	{
-		TapFinger.gameObject.SetActive (false);
 	}
 
     public void PopulateReplayEvents()
