@@ -69,15 +69,18 @@ public class FeedbackGrade : GradingParameters
 	public override bool OnePointGrade ()
 	{
 		//One point condition
+		return false;
 	}
 
 	public override bool TwoPointGrade ()
 	{
 		//Two point condition
+		return false;
 	}
 
 	public override bool ThreePointGrade ()
 	{
 		//Three point condition
+		return false;
 	}
 }

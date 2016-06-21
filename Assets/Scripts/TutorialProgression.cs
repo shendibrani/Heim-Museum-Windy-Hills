@@ -176,7 +176,10 @@ public class TutorialProgression : MonoBehaviour {
         if (!brokenTutorialCompleted)
         {
             brokenTutorialCompleted = true;
-            SetMill(to);
+			if (to != null)
+			{
+				SetMill(to);
+			}
             savedMill.state.OnValueChanged += OnBrokenEnd;
             brokenTutorial.StartScene();
         }
@@ -429,6 +432,7 @@ public class TutorialProgression : MonoBehaviour {
 	public void SetMill(TurbineObject pMill)
 	{
 		savedMill = pMill;
+		Debug.Log (pMill);
 	}
 	public void TargetCurrentMill()
 	{
@@ -438,47 +442,7 @@ public class TutorialProgression : MonoBehaviour {
 	{
 		extraTarget.position = badMill.transform.position;
 	}
-	public void TargetWithTapFinger(GameObject pRectTransform)
-	{
-		if (pRectTransform.GetComponent<RectTransform> () != null) {
-			TapFinger.position = pRectTransform.GetComponent<RectTransform> ().position;
-		}
-		else if (pRectTransform.GetComponent<Transform> () != null)
-		{
-			TapFinger.position = Camera.main.WorldToScreenPoint (pRectTransform.transform.position);
-		}
 
-		bool pSave = false;
-		if (TapTargetID == 0)
-		{
-			pSave = true;
-		}
-		if (TapTargetID == 1 && !(UICallbacksSystem.currentState == UIState.Firemen))
-		{
-			pSave = true;
-		}
-		if (TapTargetID == 2 && !(UICallbacksSystem.currentState == UIState.Police))
-		{
-			pSave = true;
-		}
-		if (TapTargetID == 3 && !(UICallbacksSystem.currentState == UIState.Repair))
-		{
-			pSave = true;
-		}
-		TapFinger.gameObject.SetActive (pSave);
-	}
-
-
-	public void SetTargetID(int pID)
-	{
-		TapTargetID = pID;
-		// 0 = empty
-		// 1 = Fire;
-		// 2 = police
-		//3 = repair
-		//4 = clean
-		// 5 = Mill
-	}
 
     public void PopulateReplayEvents()
     {
