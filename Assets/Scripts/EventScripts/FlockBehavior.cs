@@ -15,6 +15,7 @@ public class FlockBehavior : MonoBehaviour
     // Update is called once per frame
     void Start()
     {
+        Speed = 0.2f;
         timer = new Stopwatch();
         if (TurbineObject.all.Count > 0)
         {
