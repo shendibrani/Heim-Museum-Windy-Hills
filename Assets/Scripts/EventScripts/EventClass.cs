@@ -102,7 +102,7 @@ public class FireEvent : EventClass
         GameObject fireStation = GameObject.Find("FireStation");
         Vector3 SpawnPos = fireStation.transform.position;
         GameObject instance = (GameObject)GameObject.Instantiate(Resources.Load("Fireman"), SpawnPos, Quaternion.identity);
-
+        instance.GetComponent<Firemen>().SetTargetTurbine(turbine);
     }
 
     public override void FakeEventStart() { GetRandomTurbine(); }
