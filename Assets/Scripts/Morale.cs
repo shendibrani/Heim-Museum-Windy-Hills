@@ -31,7 +31,7 @@ public class Morale : MonoBehaviour
 
 	[SerializeField] UnityEvent moraleEvent;
 
-	public Monitored<float> morale {get; private set;}
+	public float morale {get; private set;}
 
     /*public delegate void MoraleUpdate(float value);
     public MoraleUpdate onMoraleUpdate;*/
@@ -60,16 +60,16 @@ public class Morale : MonoBehaviour
             {
                 if (Vector3.Distance(transform.position, go.transform.position) < range)
                 {
-                    morale.value -= 0.1f;
-                    ScoreManager.Instance.MoraleUpdate(-0.1f);
+                    morale -= 0.1f;
+					Dispatcher<MoraleChangeMessage>.Dispatch(new MoraleChangeMessage(gameObject, -0.1f));
                     //onMoraleUpdate(-0.1f);
                     CheckWindmillPlacement(go);
                     if (debug) Debug.Log("Update Morale");
                 }
                 else
                 {
-                    morale.value += 0.1f;
-                    ScoreManager.Instance.MoraleUpdate(0.1f);
+                    morale += 0.1f;
+					Dispatcher<MoraleChangeMessage>.Dispatch(new MoraleChangeMessage(gameObject, 0.1f));
                     //onMoraleUpdate(0.1f);
                     if (debug) Debug.Log("Update Morale");
                 }
@@ -79,21 +79,21 @@ public class Morale : MonoBehaviour
         {
 			if (GetComponent<Collider>().bounds.Contains(go.transform.position) && go.GetComponent<Collider>() != null)
 			{
-                morale.value -= 0.1f;
-                ScoreManager.Instance.MoraleUpdate(-0.1f);
+                morale -= 0.1f;
+                Dispatcher<MoraleChangeMessage>.Dispatch(new MoraleChangeMessage(gameObject, -0.1f));
                 //onMoraleUpdate(-1f);
                 CheckWindmillPlacement(go);
                 if (debug) Debug.Log("Update Morale");
             }
             else
             {
-                morale.value += 0.1f;
-                ScoreManager.Instance.MoraleUpdate(0.1f);
+                morale += 0.1f;
+                Dispatcher<MoraleChangeMessage>.Dispatch(new MoraleChangeMessage(gameObject, 0.1f));
                 //onMoraleUpdate(0.05f);
                 if (debug) Debug.Log("Update Morale");
             }
         }
-        morale.value = (Mathf.Max(morale, 0));
+        morale = (Mathf.Max(morale, 0));
     }
 
     void CheckWindmillPlacement(GameObject go)

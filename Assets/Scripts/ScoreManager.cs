@@ -34,7 +34,6 @@ public class ScoreManager : MonoBehaviour
     float targetPower;
 
     float currentMorale = 1f;
-    float moraleChange;
 
     float fillTarget;
     float fillValue;
@@ -91,17 +90,12 @@ public class ScoreManager : MonoBehaviour
 
     void UIUpdate()
     {
-        float currentFill = currentPower - (targetPower - 1);
+        float currentFill = currentPower - (targetPower);
         if (debug) Debug.Log("Current Power: " + currentPower + " Target Power: " + targetPower + " Current Fill:" + currentFill + " Morale: " + currentMorale);
         //fillValue = Mathf.Lerp(fillValue, currentFill, 0.2f);
 
         timerFill.fillAmount = currentFill;
         multiplierText.text = "x" + Mathf.Floor(currentMorale).ToString();
-    }
-
-    public void MoraleUpdate(float value)
-    {
-        moraleChange += value;
     }
 
     void ResetPower()
@@ -118,8 +112,9 @@ public class ScoreManager : MonoBehaviour
         if (currentPower >= targetPower)
         {
             targetPower += 1f;
-            MoraleUpdate(0.1f);
-			ScoreTargetIncrease.Invoke();
+			Dispatcher<MoraleChangeMessage>.Dispatch (new MoraleChangeMessage (gameObject, 0.1f));
+			ProcessScoreChangeQueue ();
+            ScoreTargetIncrease.Invoke();
         }
     }
 
