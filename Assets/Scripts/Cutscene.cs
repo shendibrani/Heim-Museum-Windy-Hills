@@ -10,7 +10,9 @@ public class Cutscene : MonoBehaviour {
 	bool actionRunning = false;
 
 	bool end = false;
-	float timer;
+	public float timer { get; private set; }
+
+	GradingParameters gp;
 
 	public delegate bool CheckForEnd();
 	CheckForEnd onCheckForEnd;
