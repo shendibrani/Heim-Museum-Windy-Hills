@@ -345,7 +345,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 	{
 		if (!isFine) {
 			Dispatcher<FiremenMessage>.Dispatch(new FiremenMessage(gameObject));
-			state.value.OnFiremen ();
+		//	state.value.OnFiremen ();
 		}
 	}
 

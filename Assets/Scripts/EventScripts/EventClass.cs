@@ -105,7 +105,15 @@ public class FireEvent : EventClass
         instance.GetComponent<Firemen>().SetTargetTurbine(turbine);
     }
 
-    public override void FakeEventStart() { GetRandomTurbine(); }
+    public override void FakeEventStart()
+    {
+        TurbineObject turbine = GetRandomTurbine();
+        TurbineStateManager.lowFireState.Copy(turbine);
+        GameObject fireStation = GameObject.Find("FireStation");
+        Vector3 SpawnPos = fireStation.transform.position;
+        GameObject instance = (GameObject)GameObject.Instantiate(Resources.Load("Fireman"), SpawnPos, Quaternion.identity);
+        instance.GetComponent<Firemen>().SetTargetTurbine(turbine);
+    }
     public override void EventEnd (){}
 }
 
@@ -128,9 +136,22 @@ public class SaboteurEvent : EventClass
 
     public override void EventStart ()
 	{
-		TurbineStateManager.saboteurState.Copy(GetRandomTurbine());
-	}
-    public override void FakeEventStart() { GetRandomTurbine(); }
+        TurbineObject turbine = GetRandomTurbine();
+        TurbineStateManager.lowFireState.Copy(turbine);
+        GameObject policeStation = GameObject.Find("PoliceStation");
+        Vector3 SpawnPos = policeStation.transform.position;
+        GameObject instance = (GameObject)GameObject.Instantiate(Resources.Load("Policeman"), SpawnPos, Quaternion.identity);
+        instance.GetComponent<Policemen>().SetTargetTurbine(turbine);
+    }
+
+    public override void FakeEventStart() {
+        TurbineObject turbine = GetRandomTurbine();
+        TurbineStateManager.lowFireState.Copy(turbine);
+        GameObject policeStation = GameObject.Find("PoliceStation");
+        Vector3 SpawnPos = policeStation.transform.position;
+        GameObject instance = (GameObject)GameObject.Instantiate(Resources.Load("Policeman"), SpawnPos, Quaternion.identity);
+        instance.GetComponent<Policemen>().SetTargetTurbine(turbine);
+    }
     public override void EventEnd ()
 	{}
 }

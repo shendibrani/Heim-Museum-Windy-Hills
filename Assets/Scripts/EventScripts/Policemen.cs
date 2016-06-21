@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Diagnostics;
 
-public class Firemen : MonoBehaviour {
+public class Policemen : MonoBehaviour {
 
     Stopwatch timer;
     TurbineObject targetTurbine;
@@ -10,17 +10,18 @@ public class Firemen : MonoBehaviour {
     NavMeshAgent agent;
 
     //Use this for initialization
-	void Start () {
+    void Start()
+    {
         timer = new Stopwatch();
         agent = GetComponent<NavMeshAgent>();
         agent.speed = 10.0f;
-        station = GameObject.Find("FireStation");
-        Dispatcher<FiremenMessage>.Subscribe(SendFireman);
+        station = GameObject.Find("PoliceStation");
+        Dispatcher<FiremenMessage>.Subscribe(SendPoliceman);
     }
-    
+
     bool arrived = false;
     bool extinguished;
-    void Update ()
+    void Update()
     {
         if (targetTurbine != null)
         {
@@ -48,22 +49,22 @@ public class Firemen : MonoBehaviour {
         }
     }
 
-    public void SendFireman(FiremenMessage fm)
+    public void SendPoliceman(FiremenMessage fm)
     {
         if (fm.Sender.GetComponent<TurbineObject>() == targetTurbine && !extinguished)
         {
             agent.SetDestination(targetTurbine.transform.position);
         }
-       
+
     }
 
     public void SetTargetTurbine(TurbineObject to)
     {
         targetTurbine = to;
     }
-    
+
     void OnDestroy()
     {
-        Dispatcher<FiremenMessage>.Unsubscribe(SendFireman);
+        Dispatcher<FiremenMessage>.Unsubscribe(SendPoliceman);
     }
 }
