@@ -5,33 +5,29 @@ using System.Diagnostics;
 public class Firemen : MonoBehaviour {
 
     Stopwatch timer;
-    TurbineObject selectedTurbine;
+    TurbineObject targetTurbine;
     GameObject station;
     NavMeshAgent agent;
 
-    // Use this for initialization
+    //Use this for initialization
 	void Start () {
         timer = new Stopwatch();
         agent = GetComponent<NavMeshAgent>();
         agent.speed = 10.0f;
         station = GameObject.Find("FireStation");
         Dispatcher<FiremenMessage>.Subscribe(SendFireman);
-       
-	}
-
-   
+    }
+    
     bool arrived = false;
     bool extinguished;
-	// Update is called once per frame
-	void Update ()
+    void Update ()
     {
-
-        if (selectedTurbine != null)
+        if (targetTurbine != null)
         {
-            float distanceToTurbine = Vector3.Distance(selectedTurbine.transform.position, transform.position);
+            float distanceToTurbine = Vector3.Distance(targetTurbine.transform.position, transform.position);
             float distanceToStation = Vector3.Distance(transform.position, station.transform.position);
             UnityEngine.Debug.Log("Distance to turbine: " + distanceToTurbine);
-           
+
             if (distanceToTurbine < 8.0f && !arrived)
             {
                 timer.Start();
@@ -43,23 +39,31 @@ public class Firemen : MonoBehaviour {
             {
                 timer.Stop();
                 timer.Reset();
-                agent.SetDestination(GameObject.Find("FireStation").transform.position);
+                agent.SetDestination(station.transform.position);
                 extinguished = true;
+                targetTurbine.state.value.OnFiremen();
             }
 
             if (arrived && extinguished && distanceToStation < 5.0f) Destroy(gameObject);
-
         }
-
     }
 
     public void SendFireman(FiremenMessage fm)
     {
-        agent.SetDestination(fm.Sender.transform.position);
-        selectedTurbine = fm.Sender.GetComponent<TurbineObject>();
+        if (fm.Sender.GetComponent<TurbineObject>() == targetTurbine && !extinguished)
+        {
+            agent.SetDestination(targetTurbine.transform.position);
+        }
+       
+    }
+
+    public void SetTargetTurbine(TurbineObject to)
+    {
+        targetTurbine = to;
     }
     
-    void OnDestroy() {
+    void OnDestroy()
+    {
         Dispatcher<FiremenMessage>.Unsubscribe(SendFireman);
     }
 }
