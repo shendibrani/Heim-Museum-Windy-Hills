@@ -18,6 +18,9 @@ public class CameraMovement : MonoBehaviour {
 	bool zoomOut = false;
 	float zoomOutSize = 0;
 
+	bool tracking = false;
+	Transform trackTarget;
+
     [System.Serializable]
 	public struct CameraPosition
     {
@@ -28,7 +31,6 @@ public class CameraMovement : MonoBehaviour {
 	{
 		_offset = Camera.main.transform.position - StartTransform.position;
     }
-
 
 	public void SetTargetZoom (float pZoom)
 	{
@@ -57,8 +59,6 @@ public class CameraMovement : MonoBehaviour {
 		_move = 0;
 		_reachedGoal = false;
 	}
-
-
 
 	void Update ()
 	{
@@ -92,6 +92,29 @@ public class CameraMovement : MonoBehaviour {
 				Camera.main.transform.position = Vector3.Lerp (_origin, _target + _offset, (Mathf.Sin(Mathf.Lerp(-0.5f*Mathf.PI,0.5f*Mathf.PI,_move) ) + 1)*0.5f);
 			}
 		}
+
+		if (tracking)
+		{
+			Track ();
+		}
+	}
+
+	public void StartTracking (Transform pAim)
+	{
+		trackTarget = pAim.transform;
+		tracking = true;
+	}
+
+	void Track()
+	{
+		_origin = Camera.main.transform.position;
+		_target = trackTarget.transform.position;
+		Camera.main.transform.position = Vector3.Lerp (_origin, _target + _offset,0.1f);
+	}
+
+	public void StopTracking()
+	{
+		tracking = false;
 	}
 
 	public bool FinishedMoving()
