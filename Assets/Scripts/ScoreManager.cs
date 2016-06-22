@@ -90,7 +90,7 @@ public class ScoreManager : MonoBehaviour
 
     void UIUpdate()
     {
-        float currentFill = currentPower - (targetPower);
+        float currentFill = 1 - (targetPower - currentPower);
         if (debug) Debug.Log("Current Power: " + currentPower + " Target Power: " + targetPower + " Current Fill:" + currentFill + " Morale: " + currentMorale);
         //fillValue = Mathf.Lerp(fillValue, currentFill, 0.2f);
 
@@ -132,7 +132,7 @@ public class ScoreManager : MonoBehaviour
 
     public void EventScore(float value)
     {
-        totalScore.value = value;
+        totalScore.value += value;
     }
 
 	#region Message Queue and Processing
@@ -141,10 +141,19 @@ public class ScoreManager : MonoBehaviour
 
 	void ProcessScoreChangeQueue()
 	{
+        float change = 0;
 		if (scoreQueue.Count > 0) {
 			foreach (MoraleChangeMessage stm in scoreQueue) {
-				currentMorale += stm.scoreChange;
+                if (stm.scoreChange > 0)
+                {
+                    change = stm.scoreChange;
+                }
+                else {
+                    change = stm.scoreChange;
+                    break;
+                }
 			}
+            currentMorale += change;
 			scoreQueue.Clear ();
 		}
 	}

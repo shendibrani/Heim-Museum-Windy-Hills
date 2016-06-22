@@ -6,7 +6,7 @@ public class Firemen : MonoBehaviour {
 
     Stopwatch timer;
     TurbineObject targetTurbine;
-    GameObject station;
+    FireDepartment station;
     NavMeshAgent agent;
 
     //Use this for initialization
@@ -14,7 +14,7 @@ public class Firemen : MonoBehaviour {
         timer = new Stopwatch();
         agent = GetComponent<NavMeshAgent>();
         agent.speed = 10.0f;
-        station = GameObject.Find("FireStation");
+        station = FindObjectOfType<FireDepartment>();
         Dispatcher<FiremenMessage>.Subscribe(SendFireman);
     }
     
