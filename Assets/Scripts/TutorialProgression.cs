@@ -382,6 +382,7 @@ public class TutorialProgression : MonoBehaviour {
 			TurbineStateManager.highFireState.Copy(savedMill);
 			savedMill.state.OnValueChanged += OnFireEnd;
 		}
+		fireWasFought = true;
 	}
 
 	public void StartSaboteur()
