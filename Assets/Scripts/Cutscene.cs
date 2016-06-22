@@ -90,8 +90,11 @@ public class Cutscene : MonoBehaviour {
 
 	public void EndScene()
 	{
-		OnEnd.StartEvent.Invoke ();
-		sceneRunning = false;
+		if (sceneRunning)
+		{
+			OnEnd.StartEvent.Invoke ();
+			sceneRunning = false;
+		}
 	}
 
 	public void SetBoolReference(CheckForEnd pCheckForEnd)

@@ -476,6 +476,15 @@ public class TutorialProgression : MonoBehaviour {
 	{
 		extraTarget.position = badMill.transform.position;
 	}
+	public void TargetCloud(){
+	
+		extraTarget.transform.position = FindObjectOfType<StormBehavior> ().gameObject.transform.position;
+		extraTarget.transform.parent = FindObjectOfType<StormBehavior> ().gameObject.transform;
+	}
+	public void ReleaseCloud(){
+
+		extraTarget.transform.parent = null;
+	}
 
 
     public void PopulateReplayEvents()
