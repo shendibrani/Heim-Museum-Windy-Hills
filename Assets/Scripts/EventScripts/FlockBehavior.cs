@@ -21,6 +21,8 @@ public class FlockBehavior : MonoBehaviour
         {
             randomed = Random.Range(0, TurbineObject.all.Count);
             selectedTurbine = TurbineObject.all[randomed];
+            this.transform.position = new Vector3(transform.position.x, transform.position.y, selectedTurbine.transform.position.z);
+            transform.LookAt(selectedTurbine.transform);
         }
     }
 
@@ -53,9 +55,9 @@ public class FlockBehavior : MonoBehaviour
     {
         if (moveToWindmill && !effectApplied) { 
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(selectedTurbine.transform.position.x, selectedTurbine.transform.position.y + 30, selectedTurbine.transform.position.z), Speed);
-            transform.LookAt(selectedTurbine.transform);
+            
         }
-        if (timer.Elapsed.Seconds > 3)
+        if (timer.Elapsed.Seconds > 2)
             moveToWindmill = false;
     }
 
