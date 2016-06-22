@@ -105,6 +105,8 @@ public class TutorialProgression : MonoBehaviour {
     [SerializeField]
     Cutscene brokenTutorial;
 
+	[SerializeField] Animator PlusMill;
+
 	[SerializeField] Cutscene FirstCutscene;
 
     void Start()
@@ -151,6 +153,10 @@ public class TutorialProgression : MonoBehaviour {
 		if (popup.GetBool("play") && popup.GetCurrentAnimatorStateInfo(0).IsTag("Anim") && popup.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
 		{
 			popup.SetBool ("play", false);
+		}
+		if (PlusMill.GetBool("Active") && PlusMill.GetCurrentAnimatorStateInfo(0).IsTag("Anim") && PlusMill.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+		{
+			PlusMill.SetBool ("Active", false);
 		}
 	}
 
@@ -261,6 +267,7 @@ public class TutorialProgression : MonoBehaviour {
 	public void AddMill()
 	{
 		TurbineLimitManager.Instance.ChangeAvailable (1);
+		PlusMill.SetBool ("Active", true);
 	}
 
 	//Cutscene backcall Reference sets

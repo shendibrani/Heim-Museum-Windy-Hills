@@ -57,6 +57,8 @@ public class ScoreManager : MonoBehaviour
     [SerializeField]
     Sprite bulbOff;
 
+	[SerializeField] Animator LevelUp;
+
     [SerializeField]
     bool debug;
 
