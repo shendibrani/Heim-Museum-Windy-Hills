@@ -16,7 +16,7 @@ public class Policemen : MonoBehaviour {
         agent = GetComponent<NavMeshAgent>();
         agent.speed = 10.0f;
         station = FindObjectOfType<PoliceDepartment>();
-        Dispatcher<FiremenMessage>.Subscribe(SendPoliceman);
+        //Dispatcher<FiremenMessage>.Subscribe(SendPoliceman);
     }
 
     bool arrived = false;

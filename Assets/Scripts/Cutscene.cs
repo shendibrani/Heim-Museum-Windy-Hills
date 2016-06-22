@@ -12,6 +12,8 @@ public class Cutscene : MonoBehaviour {
 	bool end = false;
 	public float timer { get; private set; }
 
+	[SerializeField] bool debug = false;
+
 	GradingParameters gp;
 
 	public delegate bool CheckForEnd();
@@ -69,7 +71,7 @@ public class Cutscene : MonoBehaviour {
 				else
 				{
 					EndScene ();
-					Debug.Log (this.gameObject.name + "Cutscene ended");
+					if (debug) Debug.Log (this.gameObject.name + "Cutscene ended");
 				}
 			}
 		}
@@ -78,7 +80,7 @@ public class Cutscene : MonoBehaviour {
 	public void StartScene()
 	{
 		if (sceneRunning) {
-			Debug.Log (this.gameObject.name + "Reset");
+			if (debug) Debug.Log (this.gameObject.name + "Reset");
 		}
 		sceneRunning = true;
 		actionRunning = false;

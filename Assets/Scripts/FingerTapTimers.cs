@@ -3,6 +3,8 @@ using System.Collections;
 
 public class FingerTapTimers : MonoBehaviour {
 
+	[SerializeField] bool debug = false;
+
 	bool sceneRunning = false;
 
 	int subStep = 0;
@@ -26,7 +28,7 @@ public class FingerTapTimers : MonoBehaviour {
 				if (timer < activationTime)
 				{
 					timer += Time.deltaTime;
-					//Debug.Log (timer);
+					if (debug)  Debug.Log (timer);
 				}
 				else
 				{
@@ -39,7 +41,7 @@ public class FingerTapTimers : MonoBehaviour {
 
 	public void StartScene(GameObject pAim)
 	{
-		Debug.Log (this.gameObject.name + "Started");
+		if (debug) Debug.Log (this.gameObject.name + "Started");
 		Aim = pAim;
 		subStep = 0;
 		timer = 0;
@@ -48,9 +50,8 @@ public class FingerTapTimers : MonoBehaviour {
 
 	public void EndScene()
 	{
-		Debug.Log (this.gameObject.name + "Ended");
+		if (debug) Debug.Log (this.gameObject.name + "Ended");
 		GetComponent<Animator> ().SetBool ("Active",false);
-		subStep = 0;
 		sceneRunning = false;
 	}
 
