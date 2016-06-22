@@ -112,7 +112,7 @@
     "endOnCleanup": false
 }#
 {
-    "name": "Tutorial Low Fire",
+    "name": "Low Fire",
     "timer": 5.0,
     "_efficiencyMultiplyer": 1.0,
     "negativeEffect": false,

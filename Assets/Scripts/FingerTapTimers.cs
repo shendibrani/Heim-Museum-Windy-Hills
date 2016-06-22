@@ -7,7 +7,6 @@ public class FingerTapTimers : MonoBehaviour {
 
 	int subStep = 0;
 
-	bool end = false;
 	float timer;
 
 	public int activationTime;
@@ -27,10 +26,12 @@ public class FingerTapTimers : MonoBehaviour {
 				if (timer < activationTime)
 				{
 					timer += Time.deltaTime;
+					//Debug.Log (timer);
 				}
 				else
 				{
 					Target (Aim);
+					subStep = 2;
 				}
 			}
 		}
@@ -38,20 +39,18 @@ public class FingerTapTimers : MonoBehaviour {
 
 	public void StartScene(GameObject pAim)
 	{
+		Debug.Log (this.gameObject.name + "Started");
 		Aim = pAim;
-		if (!sceneRunning)
-		{
-			sceneRunning = true;
-		}
-		else
-		{
-			subStep = 0;
-		}
+		subStep = 0;
+		timer = 0;
+		sceneRunning = true;
 	}
 
 	public void EndScene()
 	{
-		EndTapFinger ();
+		Debug.Log (this.gameObject.name + "Ended");
+		GetComponent<Animator> ().SetBool ("Active",false);
+		subStep = 0;
 		sceneRunning = false;
 	}
 
@@ -66,10 +65,5 @@ public class FingerTapTimers : MonoBehaviour {
 			transform.position = Camera.main.WorldToScreenPoint (pRectTransform.transform.position);
 		}
 		GetComponent<Animator> ().SetBool ("Active", true);
-	}
-
-	void EndTapFinger()
-	{
-		GetComponent<Animator> ().SetBool ("Active",false);
 	}
 }

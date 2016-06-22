@@ -61,6 +61,7 @@ public class Cutscene : MonoBehaviour {
 			{
 				actionRunning = false;
 				end = false;
+
 				if (step + 1 < Actions.Length)
 				{
 					step ++;
@@ -68,6 +69,7 @@ public class Cutscene : MonoBehaviour {
 				else
 				{
 					EndScene ();
+					Debug.Log (this.gameObject.name + "Cutscene ended");
 				}
 			}
 		}
@@ -75,16 +77,13 @@ public class Cutscene : MonoBehaviour {
 
 	public void StartScene()
 	{
-		if (!sceneRunning)
-		{
-			sceneRunning = true;
-			step = 0;
+		if (sceneRunning) {
+			Debug.Log (this.gameObject.name + "Reset");
 		}
-		else
-		{
-			actionRunning = false;
-			step = 0;
-		}
+		sceneRunning = true;
+		actionRunning = false;
+		end = false;
+		step = 0;
 	}
 
 	public void EndScene()

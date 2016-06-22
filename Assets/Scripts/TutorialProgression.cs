@@ -45,6 +45,16 @@ public class TutorialProgression : MonoBehaviour {
 		set{ cloudWasTapped = value;}
 	}
 
+	bool enteredWindzone = false;
+
+	public bool EnteredWindzone {
+		get {
+			return enteredWindzone;
+		}
+		set{ enteredWindzone= value;}
+	}
+
+
 	bool messedUp = false;
 	bool hasPlacedMills = false;
 	bool isComplete = false;
@@ -369,12 +379,34 @@ public class TutorialProgression : MonoBehaviour {
 		scoreWasIncreased = true;
 	}
 
+	public bool HasWindzonedMill()
+	{
+		return enteredWindzone;
+	}
+	public void GetWindzoneReference(Cutscene pScript)
+	{
+		pScript.SetBoolReference (HasWindzonedMill);
+	}
+	public void WasWindZoned(TurbineWindZoneMessage erge)
+	{
+		if (erge.state == WindZoneState.Enter)
+		{
+			enteredWindzone = true;
+			Dispatcher<TurbineWindZoneMessage>.Unsubscribe (WasWindZoned);
+		}
+	}
+	public void EmptyWindzoned()
+	{
+		enteredWindzone = false;
+		Dispatcher<TurbineWindZoneMessage>.Subscribe (WasWindZoned);
+	}
+
 	//Start Events
 	public void StartFire(bool high)
 	{
 		if (!high) 
 		{
-			TurbineStateManager.lowFireState.Copy(savedMill);
+			TurbineStateManager.tutorialLowFireState.Copy (savedMill);
 			savedMill.state.OnValueChanged += OnFireEnd;
 		}
 		else
@@ -382,7 +414,7 @@ public class TutorialProgression : MonoBehaviour {
 			TurbineStateManager.highFireState.Copy(savedMill);
 			savedMill.state.OnValueChanged += OnFireEnd;
 		}
-		fireWasFought = true;
+		fireWasFought = false;
 	}
 
 	public void StartSaboteur()
@@ -420,6 +452,7 @@ public class TutorialProgression : MonoBehaviour {
 	public void OnFireEnd(TurbineState oldState, TurbineState newState)
 	{
 		fireWasFought = newState == null;
+		Debug.Log (fireWasFought);
 	}
 	public void OnBrokenEnd(TurbineState oldState, TurbineState newState)
 	{
