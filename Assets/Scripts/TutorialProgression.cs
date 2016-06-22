@@ -54,6 +54,15 @@ public class TutorialProgression : MonoBehaviour {
 		set{ enteredWindzone= value;}
 	}
 
+	bool canStartPlacing = false;
+
+	public bool CanStartPlacing {
+		get {
+			return canStartPlacing;
+		}
+		set{ canStartPlacing= value;}
+	}
+
 
 	bool messedUp = false;
 	bool hasPlacedMills = false;
@@ -198,11 +207,13 @@ public class TutorialProgression : MonoBehaviour {
 	//start windmil placing scene
 	public void PlacingMills()
 	{
-		Debug.Log (TurbineLimitManager.Instance.availableCount);
 		if (TurbineLimitManager.Instance.availableCount > 0 && PlaceMills.Length > MillStep && PlaceObjectOnClick.Instance.DirtyFlag)
 		{
-			PlaceMills [MillStep].StartScene ();
-			MillStep++;
+			if (canStartPlacing)
+			{
+				PlaceMills [MillStep].StartScene ();
+				MillStep++;
+			}
 		}
 	}
 
@@ -476,12 +487,23 @@ public class TutorialProgression : MonoBehaviour {
 	{
 		extraTarget.position = badMill.transform.position;
 	}
+
 	public void TargetCloud(){
 	
 		extraTarget.transform.position = FindObjectOfType<StormBehavior> ().gameObject.transform.position;
 		extraTarget.transform.parent = FindObjectOfType<StormBehavior> ().gameObject.transform;
 	}
 	public void ReleaseCloud(){
+
+		extraTarget.transform.parent = null;
+	}
+
+	public void TargetBoat(){
+
+		extraTarget.transform.position = FindObjectOfType<Boat> ().gameObject.transform.position;
+		extraTarget.transform.parent = FindObjectOfType<Boat> ().gameObject.transform;
+	}
+	public void ReleaseBoat(){
 
 		extraTarget.transform.parent = null;
 	}
