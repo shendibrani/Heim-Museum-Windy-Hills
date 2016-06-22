@@ -6,7 +6,7 @@ public class Policemen : MonoBehaviour {
 
     Stopwatch timer;
     TurbineObject targetTurbine;
-    GameObject station;
+    PoliceDepartment station;
     NavMeshAgent agent;
 
     //Use this for initialization
@@ -15,7 +15,7 @@ public class Policemen : MonoBehaviour {
         timer = new Stopwatch();
         agent = GetComponent<NavMeshAgent>();
         agent.speed = 10.0f;
-        station = GameObject.Find("PoliceStation");
+        station = FindObjectOfType<PoliceDepartment>();
         Dispatcher<FiremenMessage>.Subscribe(SendPoliceman);
     }
 
