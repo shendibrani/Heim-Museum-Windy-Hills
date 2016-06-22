@@ -129,6 +129,11 @@ public class CloudGameplayObject : MonoBehaviour, ITouchSensitive, IMouseSensiti
         }
     }
 
+    public void ResetCloud()
+    {
+        cloudObject.transform.localPosition = new Vector3(0, cloudObject.transform.localPosition.y, cloudObject.transform.localPosition.z);
+    }
+
     public void OnClick(ClickState state, RaycastHit hit, Ray ray)
     {
 		TutorialProgression.Instance.CloudWasTapped = true;

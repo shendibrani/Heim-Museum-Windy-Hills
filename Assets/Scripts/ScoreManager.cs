@@ -74,12 +74,12 @@ public class ScoreManager : MonoBehaviour
     {
         ResetPower();
 		ProcessScoreChangeQueue ();
-        if (!TutorialProgression.Instance.ProgressPause)
-        {
+        //if (!TutorialProgression.Instance.ProgressPause)
+       // {
             TargetProgression();
             ScoreProgression();
             UIUpdate();
-        }
+        //}
         scoreText.text = Mathf.Floor(totalScore.value).ToString();
     }
 
