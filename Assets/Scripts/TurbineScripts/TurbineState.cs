@@ -9,7 +9,8 @@ public static class TurbineStateManager {
 	public static TurbineState saboteurState {get; private set;}
 	public static TurbineState brokenState {get; private set;}
 	public static TurbineState dirtyState {get; private set;}
-    public static TurbineState occupiedState { get; private set; }
+	public static TurbineState occupiedState { get; private set; }
+    public static TurbineState tutorialLowFireState { get; private set; }
 
     public static bool Initialize()
 	{
@@ -22,6 +23,7 @@ public static class TurbineStateManager {
 		brokenState = JsonUtility.FromJson<TurbineState>(objects[3]);
 		dirtyState = JsonUtility.FromJson<TurbineState>(objects[4]);
         occupiedState = JsonUtility.FromJson<TurbineState>(objects[5]);
+		tutorialLowFireState = JsonUtility.FromJson<TurbineState>(objects[6]);
 
         Debug.Log(lowFireState.name);
 		Debug.Log(highFireState.name);
@@ -29,6 +31,7 @@ public static class TurbineStateManager {
 		Debug.Log(brokenState.name);
 		Debug.Log(dirtyState.name);
         Debug.Log(occupiedState.name);
+		Debug.Log (tutorialLowFireState.name);
 
         return true;
 	}
