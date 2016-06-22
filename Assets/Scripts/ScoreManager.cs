@@ -7,25 +7,25 @@ using UnityEngine.Events;
 public class ScoreManager : MonoBehaviour
 {
 
-    public static ScoreManager instance;
+	private static ScoreManager _instance;
     public static ScoreManager Instance
     {
         get
         {
-            if (instance == null)
+            if (_instance == null)
             {
                 if (FindObjectsOfType<ScoreManager>().Length > 1)
                 {
                     Debug.LogError("Multiple instances of ScoreManager detected");
                 }
-                instance = FindObjectOfType<ScoreManager>();
+                _instance = FindObjectOfType<ScoreManager>();
                 Debug.Log("Score Manager Set");
             }
-            return instance;
+            return _instance;
         }
     }
 		
-    public static Monitored<float> totalScore = new Monitored<float>(0);
+	public Monitored<float> totalScore { get; private set; }
 
 	public UnityEvent ScoreTargetIncrease;
 
@@ -65,6 +65,7 @@ public class ScoreManager : MonoBehaviour
     {
         targetPower = startingTargetPower;
 		scoreQueue = new Queue<MoraleChangeMessage> ();
+		totalScore = new Monitored<float>(0);
 
 		Dispatcher<MoraleChangeMessage>.Subscribe (AddMessageToQueue);
     }
@@ -85,7 +86,7 @@ public class ScoreManager : MonoBehaviour
 
     void OnDestroy()
     {
-        instance = null;
+        _instance = null;
     }
 
     void UIUpdate()

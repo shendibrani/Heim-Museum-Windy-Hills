@@ -306,6 +306,8 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 
 	public void OnEnterWindzone ()
 	{
+		Dispatcher<TurbineWindZoneMessage>.Dispatch(new TurbineWindZoneMessage(gameObject, WindZoneState.Enter));
+
         if (_debug) Debug.Log("Enter Windzone");
         isCharging = true;
 		if (!isFine) {
@@ -322,6 +324,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 
     public void OnExitWindzone ()
     {
+		Dispatcher<TurbineWindZoneMessage>.Dispatch(new TurbineWindZoneMessage(gameObject, WindZoneState.Exit));
 		if (_debug) Debug.Log("Exit Windzone");
         isCharging = false;
 		if (!isFine) {
@@ -367,3 +370,15 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 
 	#endregion
 }
+
+public class TurbineWindZoneMessage : Message
+{
+	public readonly WindZoneState state;
+
+	public TurbineWindZoneMessage (GameObject sender, WindZoneState state) : base (sender)
+	{
+		this.state = state;
+	}
+}
+
+public enum WindZoneState { Enter, Exit }

@@ -110,4 +110,22 @@
     "endOnFiremen": false,
     "endOnRepair": false,
     "endOnCleanup": false
+}#
+{
+    "name": "Tutorial Low Fire",
+    "timer": 5.0,
+    "_efficiencyMultiplyer": 1.0,
+    "negativeEffect": false,
+    "timed": false,
+    "endOnTap": false,
+    "endOnWind": true,
+    "winzoneDependent": false,
+    "setsOnHighFire": false,
+    "breaksTurbine": false,
+    "dirtiesTurbine": false,
+	"setsOccupied": false,
+    "endOnPolice": false,
+    "endOnFiremen": false,
+    "endOnRepair": false,
+    "endOnCleanup": false
 }
