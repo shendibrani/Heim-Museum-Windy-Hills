@@ -19,7 +19,7 @@ public class TouchManager : MonoBehaviour
                     {
                         foreach (ITouchSensitive ts in hit.collider.GetComponents<ITouchSensitive>())
                         {
-                            if (debug) Debug.Log("[Touch] [TouchInterfaceCallback] Touch sent to " + hit.collider.gameObject.name);
+                            if (debug) Debug.Log("[TouchInterfaceCallback] Touch sent to " + hit.collider.gameObject.name);
                             ts.OnTouch(t, hit, Camera.main.ScreenPointToRay(t.position));
                         }
                     }
