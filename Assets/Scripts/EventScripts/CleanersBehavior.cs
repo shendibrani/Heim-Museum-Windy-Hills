@@ -5,7 +5,7 @@ using System.Diagnostics;
 public class CleanersBehavior : MonoBehaviour {
     Stopwatch timer;
     TurbineObject targetTurbine;
-    PoliceDepartment station;
+    CleanersDepartment station;
     NavMeshAgent agent;
 
     void Start()
@@ -13,7 +13,7 @@ public class CleanersBehavior : MonoBehaviour {
         timer = new Stopwatch();
         agent = GetComponent<NavMeshAgent>();
         agent.speed = 10.0f;
-        station = FindObjectOfType<PoliceDepartment>();
+        station = FindObjectOfType<CleanersDepartment>();
         Dispatcher<CleanupMessage>.Subscribe(SendCleaner);
     }
 
