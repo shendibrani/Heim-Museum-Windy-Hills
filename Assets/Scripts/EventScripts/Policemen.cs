@@ -9,14 +9,13 @@ public class Policemen : MonoBehaviour {
     PoliceDepartment station;
     NavMeshAgent agent;
 
-    //Use this for initialization
     void Start()
     {
         timer = new Stopwatch();
         agent = GetComponent<NavMeshAgent>();
         agent.speed = 10.0f;
         station = FindObjectOfType<PoliceDepartment>();
-        //Dispatcher<FiremenMessage>.Subscribe(SendPoliceman);
+        Dispatcher<FiremenMessage>.Subscribe(SendPoliceman);
     }
 
     bool arrived = false;
@@ -42,7 +41,7 @@ public class Policemen : MonoBehaviour {
                 timer.Reset();
                 agent.SetDestination(station.transform.position);
                 extinguished = true;
-                targetTurbine.state.value.OnFiremen();
+                targetTurbine.state.value.OnPolice();
             }
 
             if (arrived && extinguished && distanceToStation < 5.0f) Destroy(gameObject);

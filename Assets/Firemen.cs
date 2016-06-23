@@ -15,7 +15,7 @@ public class Firemen : MonoBehaviour {
         agent = GetComponent<NavMeshAgent>();
         agent.speed = 10.0f;
         station = FindObjectOfType<FireDepartment>();
-        //Dispatcher<FiremenMessage>.Subscribe(SendFireman);
+        Dispatcher<FiremenMessage>.Subscribe(SendFireman);
     }
     
     bool arrived = false;
@@ -25,7 +25,7 @@ public class Firemen : MonoBehaviour {
         if (targetTurbine != null)
         {
             float distanceToTurbine = Vector3.Distance(targetTurbine.transform.position, transform.position);
-            float distanceToStation = Vector3.Distance(transform.position, station.transform.position);
+            float distanceToStation = Vector2.Distance(new Vector2(transform.position.x, transform.position.z), new Vector2(station.transform.position.x, station.transform.position.z));
             UnityEngine.Debug.Log("Distance to turbine: " + distanceToTurbine);
 
             if (distanceToTurbine < 8.0f && !arrived)
@@ -44,7 +44,7 @@ public class Firemen : MonoBehaviour {
                 targetTurbine.state.value.OnFiremen();
             }
 
-            if (arrived && extinguished && distanceToStation < 5.0f) Destroy(gameObject);
+            if (arrived && extinguished && distanceToStation < 10.0f) Destroy(gameObject);
         }
     }
 
