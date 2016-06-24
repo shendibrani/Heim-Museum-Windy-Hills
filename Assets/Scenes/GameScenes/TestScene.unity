@@ -12487,6 +12487,10 @@ Prefab:
       propertyPath: ScoreTargetIncrease.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: TriggerAnimation
       objectReference: {fileID: 0}
+    - target: {fileID: 11438214, guid: adfe806611edbd149b5f747d586cb6ab, type: 2}
+      propertyPath: multiplierText
+      value: 
+      objectReference: {fileID: 701460846}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: adfe806611edbd149b5f747d586cb6ab, type: 2}
   m_IsPrefabParent: 0
@@ -12680,6 +12684,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a827e09b92217e341a851c934a7df17a, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &701460846 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11400770, guid: adfe806611edbd149b5f747d586cb6ab,
+    type: 2}
+  m_PrefabInternal: {fileID: 682044587}
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &710012410
 GameObject:
   m_ObjectHideFlags: 0
