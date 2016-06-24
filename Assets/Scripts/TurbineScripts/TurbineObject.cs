@@ -356,7 +356,8 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 	{
 		if (!isFine) {
 			Dispatcher<RepairMessage>.Dispatch(new RepairMessage(gameObject));
-			//state.value.OnRepair ();
+			state.value.OnRepair ();
+
 		}
 	}
 
