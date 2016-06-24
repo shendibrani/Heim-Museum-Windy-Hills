@@ -112,7 +112,7 @@ public class TutorialProgression : MonoBehaviour {
     void Start()
 	{
 		popup = goodJob.GetComponent<Animator> ();
-
+		progressPause = false;
 
 		if (!Skip) {
 			FirstCutscene.StartScene ();	
@@ -484,11 +484,11 @@ public class TutorialProgression : MonoBehaviour {
 	public void SetMill(TurbineObject pMill)
 	{
 		savedMill = pMill;
-		Debug.Log (pMill);
+		if(debug) Debug.Log (pMill);
 	}
 	public void TargetCurrentMill()
 	{
-		extraTarget.position = savedMill.transform.position;
+		extraTarget.position = savedMill.transform.position + new Vector3 (0, 28, 0);
 	}
 	public void TargetBad()
 	{
