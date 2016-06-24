@@ -60,9 +60,9 @@ public class EventHandler : MonoBehaviour {
         UnityEngine.Debug.Log("wave system started: " + initializeWaves);
         if (!TutorialProgression.Instance.ProgressPause && !initializeWaves){
             UnityEngine.Debug.Log("Event spawn");
-            StartWaves();
-           
+            StartWaves();   
 		}
+
         UpdateWaves();
     }
 

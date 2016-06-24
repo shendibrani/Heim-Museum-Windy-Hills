@@ -19,11 +19,11 @@ public class RepairsDepartment : MonoBehaviour {
 	}
 
     void SpawnRepairMan(RepairMessage rm) {
-        if (!spawned)
-        {
+       
             GameObject instance = (GameObject)GameObject.Instantiate(Resources.Load("Repairman"), transform.position, Quaternion.identity);
-            spawned = true;
-        }
+            instance.GetComponent<RepairmanBehavior>().SetTargetTurbine(rm.Sender.GetComponent<TurbineObject>());
+        
+
 
     }
     

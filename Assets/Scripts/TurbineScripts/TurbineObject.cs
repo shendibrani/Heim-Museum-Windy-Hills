@@ -269,20 +269,28 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 
 	public void OnTouch(Touch t, RaycastHit hit, Ray ray)
 	{
-		if (!isFine) {
-			state.value.OnTouch (t, hit, ray);
-		}
+        if (t.phase == TouchPhase.Ended)
+        {
+            if (!isFine)
+            {
+                state.value.OnTouch(t, hit, ray);
+            }
 
-		ConsumeUIState ();
+            ConsumeUIState();
+        }
 	}
 
 	public void OnClick(ClickState clickState, RaycastHit hit, Ray ray)
 	{
-		if (!isFine) {
-			state.value.OnClick (clickState, hit, ray);
-		}
+        if (clickState == ClickState.Down)
+        {
+            if (!isFine)
+            {
+                state.value.OnClick(clickState, hit, ray);
+            }
 
-		ConsumeUIState ();
+            ConsumeUIState();
+        }
 	}
 
 	void ConsumeUIState ()
@@ -356,7 +364,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 	{
 		if (!isFine) {
 			Dispatcher<RepairMessage>.Dispatch(new RepairMessage(gameObject));
-			state.value.OnRepair ();
+			//state.value.OnRepair ();
 
 		}
 	}

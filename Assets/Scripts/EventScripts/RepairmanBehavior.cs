@@ -6,7 +6,7 @@ public class RepairmanBehavior : MonoBehaviour
 {
 
     Stopwatch timer;
-    TurbineObject targetTurbine;
+    public TurbineObject targetTurbine;
     RepairsDepartment station;
     NavMeshAgent agent;
 
@@ -42,7 +42,7 @@ public class RepairmanBehavior : MonoBehaviour
                 timer.Reset();
                 agent.SetDestination(station.transform.position);
                 extinguished = true;
-                targetTurbine.state.value.OnPolice();
+                targetTurbine.state.value.OnCleanup();
             }
 
             if (arrived && extinguished && distanceToStation < 5.0f) Destroy(gameObject);
