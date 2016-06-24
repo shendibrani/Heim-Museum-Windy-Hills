@@ -13,8 +13,8 @@ NavMeshAreas:
     cost: 2
   - name: Swim
     cost: 1
-  - name: 
-    cost: 1
+  - name: Road
+    cost: 0
   - name: 
     cost: 1
   - name: 
