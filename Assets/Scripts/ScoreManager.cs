@@ -50,12 +50,6 @@ public class ScoreManager : MonoBehaviour
     Text multiplierText;
     [SerializeField]
     Image timerFill;
-    [SerializeField]
-    Image lightBulb;
-    [SerializeField]
-    Sprite bulbOn;
-    [SerializeField]
-    Sprite bulbOff;
 
 	[SerializeField] Animator LevelUp;
 
