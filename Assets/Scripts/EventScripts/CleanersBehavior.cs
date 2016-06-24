@@ -2,21 +2,19 @@
 using System.Collections;
 using System.Diagnostics;
 
-public class Policemen : MonoBehaviour {
-
+public class CleanersBehavior : MonoBehaviour {
     Stopwatch timer;
     TurbineObject targetTurbine;
-    PoliceDepartment station;
+    CleanersDepartment station;
     NavMeshAgent agent;
 
-    //Use this for initialization
     void Start()
     {
         timer = new Stopwatch();
         agent = GetComponent<NavMeshAgent>();
         agent.speed = 10.0f;
-        station = FindObjectOfType<PoliceDepartment>();
-        //Dispatcher<FiremenMessage>.Subscribe(SendPoliceman);
+        station = FindObjectOfType<CleanersDepartment>();
+        Dispatcher<CleanupMessage>.Subscribe(SendCleaner);
     }
 
     bool arrived = false;
@@ -33,7 +31,7 @@ public class Policemen : MonoBehaviour {
             {
                 timer.Start();
                 arrived = true;
-                UnityEngine.Debug.Log("Fireman moved to the turbine");
+                UnityEngine.Debug.Log("Cleaner moved to the turbine");
             }
 
             if (timer.Elapsed.Seconds > 2.0f)
@@ -42,14 +40,14 @@ public class Policemen : MonoBehaviour {
                 timer.Reset();
                 agent.SetDestination(station.transform.position);
                 extinguished = true;
-                targetTurbine.state.value.OnFiremen();
+                targetTurbine.state.value.OnCleanup();
             }
 
             if (arrived && extinguished && distanceToStation < 5.0f) Destroy(gameObject);
         }
     }
 
-    public void SendPoliceman(FiremenMessage fm)
+    public void SendCleaner(CleanupMessage fm)
     {
         if (fm.Sender.GetComponent<TurbineObject>() == targetTurbine && !extinguished)
         {
@@ -65,6 +63,6 @@ public class Policemen : MonoBehaviour {
 
     void OnDestroy()
     {
-        Dispatcher<FiremenMessage>.Unsubscribe(SendPoliceman);
+        Dispatcher<CleanupMessage>.Unsubscribe(SendCleaner);
     }
 }

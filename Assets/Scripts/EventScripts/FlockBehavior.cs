@@ -45,7 +45,7 @@ public class FlockBehavior : MonoBehaviour
             TurbineStateManager.dirtyState.Copy(selectedTurbine);
             effectApplied = true;
             timer.Start();
-         
+            
         }
     }
 
@@ -58,7 +58,15 @@ public class FlockBehavior : MonoBehaviour
             
         }
         if (timer.Elapsed.Seconds > 2)
+        {
             moveToWindmill = false;
+            timer.Stop();
+            timer.Reset();
+
+            Vector3 SpawnPos = FindObjectOfType<CleanersDepartment>().transform.position;
+            GameObject instance = (GameObject)GameObject.Instantiate(Resources.Load("Cleanerman"), SpawnPos, Quaternion.identity);
+            instance.GetComponent<CleanersBehavior>().SetTargetTurbine(selectedTurbine);
+        }
     }
 
     void MoveAway() {

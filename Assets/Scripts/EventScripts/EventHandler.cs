@@ -34,7 +34,6 @@ public class EventHandler : MonoBehaviour {
     // Use this for initialization
     void Start () 
 	{
-        
         WaveTimer = new Stopwatch();
         
         eventsList = new List<EventClass>();
