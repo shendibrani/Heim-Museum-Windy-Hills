@@ -55,22 +55,27 @@ public class EventHandler : MonoBehaviour {
     // Update is called once per frame
     bool initializeWaves = false;
     void Update () {
-		if (!TutorialProgression.Instance.ProgressPause && !initializeWaves){
-        	StartWaves();
-            initializeWaves = true;
+
+        UnityEngine.Debug.Log("ProgressPause flag: " + TutorialProgression.Instance.ProgressPause);
+        UnityEngine.Debug.Log("wave system started: " + initializeWaves);
+        if (!TutorialProgression.Instance.ProgressPause && !initializeWaves){
+            UnityEngine.Debug.Log("Event spawn");
+            StartWaves();
+           
 		}
         UpdateWaves();
     }
 
     void StartWaves() 
 	{
-		if (TurbineObject.all.Count > 0) {
+		if (TurbineObject.all.Count > 0 && !initializeWaves ) {
 			if (debug)
 				UnityEngine.Debug.Log ("<color=red>Wave with difficulty " + GetWaveDifficulty (currentWave) + " Started!</color>");
 			WaveTimer.Start ();
 			waveEnded = false;
 			waveStarted = true;
-			secondToSpawn = Random.Range (0, waveMaxTime);
+            initializeWaves = true;
+            secondToSpawn = Random.Range (0, waveMaxTime);
 		}
     }
 
@@ -81,7 +86,7 @@ public class EventHandler : MonoBehaviour {
 
     void UpdateWaves() 
 	{
-        if (!TutorialProgression.Instance.ProgressPause && TurbineObject.all.Count > 0)
+        if (TurbineObject.all.Count > 0)
         {
             if (waveStarted)// if wave system was started
             {
