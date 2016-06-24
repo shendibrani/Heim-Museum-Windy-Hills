@@ -60,8 +60,11 @@ public class TutorialProgression : MonoBehaviour {
 		get {
 			return canStartPlacing;
 		}
-		set{ canStartPlacing= value;}
+		set{ canStartPlacing= value;
+			setMillButton (value);
+		}
 	}
+
 
 
 	bool messedUp = false;
@@ -90,6 +93,9 @@ public class TutorialProgression : MonoBehaviour {
 	[SerializeField] Transform extraTarget;
 	public RectTransform TapFinger;
 	[SerializeField] GameObject birds;
+
+	[SerializeField] Image MillButtonActive;
+	[SerializeField] Image MillButtonInactive;
 
 	[SerializeField] Animator[] buttons;
 
@@ -250,6 +256,12 @@ public class TutorialProgression : MonoBehaviour {
 	public void Description (string pDescription)
 	{
 		helpText.text = pDescription;
+	}
+
+	void setMillButton(bool pActive)
+	{
+		MillButtonActive.enabled = pActive;
+		MillButtonInactive.enabled = !pActive;
 	}
 
 	//For Regular Feedback
