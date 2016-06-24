@@ -64,11 +64,14 @@ public class EventHandler : MonoBehaviour {
 
     void StartWaves() 
 	{
-		if (debug)UnityEngine.Debug.Log("<color=red>Wave with difficulty "+ GetWaveDifficulty(currentWave) +" Started!</color>");
-        WaveTimer.Start();
-        waveEnded = false;
-        waveStarted = true;
-        secondToSpawn = Random.Range(0, waveMaxTime);
+		if (TurbineObject.all.Count > 0) {
+			if (debug)
+				UnityEngine.Debug.Log ("<color=red>Wave with difficulty " + GetWaveDifficulty (currentWave) + " Started!</color>");
+			WaveTimer.Start ();
+			waveEnded = false;
+			waveStarted = true;
+			secondToSpawn = Random.Range (0, waveMaxTime);
+		}
     }
 
     void InjectWave(List<EventClass> eList)

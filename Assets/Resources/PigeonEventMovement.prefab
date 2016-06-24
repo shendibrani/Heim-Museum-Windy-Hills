@@ -2443,6 +2443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 273a8b4b89672494f95f1df2f31e7a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fleeing: 0
 --- !u!114 &11406032
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2512,7 +2513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e5f1fed9028474fa7695879592c986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 0
+  Speed: 1
   debug: 0
 --- !u!114 &11422074
 MonoBehaviour:
@@ -2525,6 +2526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 273a8b4b89672494f95f1df2f31e7a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fleeing: 0
 --- !u!114 &11422590
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2536,6 +2538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 273a8b4b89672494f95f1df2f31e7a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fleeing: 0
 --- !u!114 &11423402
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2558,6 +2561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 273a8b4b89672494f95f1df2f31e7a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fleeing: 0
 --- !u!114 &11425378
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2625,6 +2629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 273a8b4b89672494f95f1df2f31e7a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fleeing: 0
 --- !u!114 &11434974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2636,6 +2641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 273a8b4b89672494f95f1df2f31e7a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fleeing: 0
 --- !u!114 &11440500
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2697,6 +2703,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 273a8b4b89672494f95f1df2f31e7a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fleeing: 0
 --- !u!114 &11444530
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2824,6 +2831,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 273a8b4b89672494f95f1df2f31e7a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fleeing: 0
 --- !u!114 &11473034
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2880,6 +2888,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 273a8b4b89672494f95f1df2f31e7a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fleeing: 0
 --- !u!137 &13700788
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

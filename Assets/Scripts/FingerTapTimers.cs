@@ -63,7 +63,14 @@ public class FingerTapTimers : MonoBehaviour {
 		}
 		else if (pRectTransform.GetComponent<Transform> () != null)
 		{
-			transform.position = Camera.main.WorldToScreenPoint (pRectTransform.transform.position);
+			if (pRectTransform.GetComponent<TurbineObject>() != null)
+			{
+				transform.position = Camera.main.WorldToScreenPoint (pRectTransform.transform.position);
+			}
+			else
+			{
+				transform.position = Camera.main.WorldToScreenPoint (pRectTransform.transform.position);
+			}
 		}
 		GetComponent<Animator> ().SetBool ("Active", true);
 	}
