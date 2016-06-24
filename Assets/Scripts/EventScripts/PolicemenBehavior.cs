@@ -15,7 +15,7 @@ public class PolicemenBehavior : MonoBehaviour {
         agent = GetComponent<NavMeshAgent>();
         agent.speed = 10.0f;
         station = FindObjectOfType<PoliceDepartment>();
-        Dispatcher<FiremenMessage>.Subscribe(SendPoliceman);
+        Dispatcher<PoliceMessage>.Subscribe(SendPoliceman);
     }
 
     bool arrived = false;
@@ -48,7 +48,7 @@ public class PolicemenBehavior : MonoBehaviour {
         }
     }
 
-    public void SendPoliceman(FiremenMessage fm)
+    public void SendPoliceman(PoliceMessage fm)
     {
         if (fm.Sender.GetComponent<TurbineObject>() == targetTurbine && !extinguished)
         {
@@ -64,6 +64,6 @@ public class PolicemenBehavior : MonoBehaviour {
 
     void OnDestroy()
     {
-        Dispatcher<FiremenMessage>.Unsubscribe(SendPoliceman);
+        Dispatcher<PoliceMessage>.Unsubscribe(SendPoliceman);
     }
 }
