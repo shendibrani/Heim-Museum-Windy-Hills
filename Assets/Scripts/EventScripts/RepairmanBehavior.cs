@@ -9,6 +9,7 @@ public class RepairmanBehavior : MonoBehaviour
     public TurbineObject targetTurbine;
     RepairsDepartment station;
     NavMeshAgent agent;
+    public bool busy;
 
     void Start()
     {
@@ -34,6 +35,7 @@ public class RepairmanBehavior : MonoBehaviour
                 timer.Start();
                 arrived = true;
                 UnityEngine.Debug.Log("Fireman moved to the turbine");
+                busy = true;
             }
 
             if (timer.Elapsed.Seconds > 0.1f)
@@ -42,10 +44,16 @@ public class RepairmanBehavior : MonoBehaviour
                 timer.Reset();
                 agent.SetDestination(station.transform.position);
                 extinguished = true;
-                targetTurbine.state.value.OnCleanup();
+                targetTurbine.state.value.OnRepair();
             }
 
-            if (arrived && extinguished && distanceToStation < 5.0f) Destroy(gameObject);
+            if (arrived && extinguished && distanceToStation < 5.0f)
+            {
+                arrived = false;
+                extinguished = false;
+                busy = false;
+                targetTurbine = null;
+            }
         }
     }
 
