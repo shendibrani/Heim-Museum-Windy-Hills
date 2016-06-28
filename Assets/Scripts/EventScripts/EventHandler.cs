@@ -58,12 +58,16 @@ public class EventHandler : MonoBehaviour {
 
         UnityEngine.Debug.Log("ProgressPause flag: " + TutorialProgression.Instance.ProgressPause);
         UnityEngine.Debug.Log("wave system started: " + initializeWaves);
-        if (!TutorialProgression.Instance.ProgressPause && !initializeWaves){
-            UnityEngine.Debug.Log("Event spawn");
-            StartWaves();   
+        if (!TutorialProgression.Instance.ProgressPause){
+			if (!initializeWaves)
+			{
+				UnityEngine.Debug.Log("Event spawn");
+				StartWaves();
+			}
+			UpdateWaves();
 		}
 
-        UpdateWaves();
+        
     }
 
     void StartWaves() 
@@ -164,8 +168,8 @@ public class EventHandler : MonoBehaviour {
 
     void InitializeEvent() 
 	{
-		if (WaveTimer.Elapsed.Seconds == secondToSpawn && !initializedEvent) {
-			if (currentWave [0].usedTurbine == null || currentWave [0].usedTurbine.state.value == null) {
+		if (WaveTimer.Elapsed.Seconds == secondToSpawn && !initializedEvent  && currentWave.Count > 0) {
+			if (currentWave[0].usedTurbine == null || currentWave [0].usedTurbine.state.value == null) {
 				UnityEngine.Debug.Log ("<color=red>Initializing event: </color>" + currentWave [0].name);
 				if (!completedEvents.Contains (currentWave [0])) {
 					currentWave [0].FakeEventStart ();
