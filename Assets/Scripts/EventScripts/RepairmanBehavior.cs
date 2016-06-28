@@ -36,15 +36,17 @@ public class RepairmanBehavior : MonoBehaviour
                 arrived = true;
                 UnityEngine.Debug.Log("Fireman moved to the turbine");
                 busy = true;
+				targetTurbine.state.value.OnRepair();
             }
 
             if (timer.Elapsed.Seconds > 0.1f)
             {
-                timer.Stop();
+				
+				timer.Stop();
                 timer.Reset();
                 agent.SetDestination(station.transform.position);
                 extinguished = true;
-                targetTurbine.state.value.OnRepair();
+                
             }
 
             if (arrived && extinguished && distanceToStation < 5.0f)
