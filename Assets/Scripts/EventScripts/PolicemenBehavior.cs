@@ -35,7 +35,7 @@ public class PolicemenBehavior : MonoBehaviour {
                 UnityEngine.Debug.Log("Fireman moved to the turbine");
             }
 
-            if (timer.Elapsed.Seconds > 2.0f)
+            if (timer.Elapsed.Seconds > 0.1f)
             {
                 timer.Stop();
                 timer.Reset();
