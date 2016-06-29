@@ -4,8 +4,8 @@ using System.Collections;
 public class WindBoostEffect : MonoBehaviour {
 
 
-    [SerializeField]
-    float overchargePercentage = 0.5f;
+   
+    float overchargePercentage = 0.8f;
     // Use this for initialization
     void Start () {
 	

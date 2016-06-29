@@ -11,7 +11,6 @@ public class StormBehavior : MonoBehaviour, IWindSensitive
    [SerializeField]
     public float speed;
 
-
     Collider[] gottenColliders;
 
     [SerializeField]
@@ -20,7 +19,6 @@ public class StormBehavior : MonoBehaviour, IWindSensitive
     // Update is called once per frame
     void Update()
     {
-
         Move();
         if (EnteredWindzone) transform.Translate(speed, 0, speed);
         DestroyCloud();
@@ -30,14 +28,6 @@ public class StormBehavior : MonoBehaviour, IWindSensitive
     void Move()
     {
         transform.Translate(-speed, 0, 0);
-    }
-
-    void OnTriggerEnter(Collider col)
-    {
-        if (col.GetComponent<TurbineObject>())
-        {
-            col.GetComponent<TurbineObject>().IncreaseEfficiency();
-        }
     }
 
     private void DestroyCloud()
