@@ -57,7 +57,8 @@ public class FlockBehavior : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(selectedTurbine.transform.position.x, selectedTurbine.transform.position.y + 30, selectedTurbine.transform.position.z), Speed);
             
         }
-        if (timer.Elapsed.Seconds > 2)
+
+        if (timer.IsRunning)
         {
             moveToWindmill = false;
             timer.Stop();
@@ -72,7 +73,7 @@ public class FlockBehavior : MonoBehaviour
     void MoveAway() {
         if (!moveToWindmill && effectApplied) {
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x - 300, transform.position.y + 50, transform.position.z), Speed);
-            transform.LookAt(new Vector3(transform.position.x - 300, transform.position.y, transform.position.z));
+        //    transform.LookAt(new Vector3(transform.position.x - 300, transform.position.y, transform.position.z));
             if (transform.position.x < -20) Destroy(gameObject);
         }
     }
