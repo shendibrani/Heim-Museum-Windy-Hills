@@ -56,6 +56,7 @@ public class EventHandler : MonoBehaviour {
     bool initializeWaves = false;
     void Update () {
 
+		UnityEngine.Debug.Log("Progress Paused " + TutorialProgression.Instance.ProgressPause);
         if (!TutorialProgression.Instance.ProgressPause){
 			if (!initializeWaves)
 			{
