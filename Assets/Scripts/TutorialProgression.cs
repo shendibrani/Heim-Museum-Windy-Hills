@@ -185,8 +185,8 @@ public class TutorialProgression : MonoBehaviour {
 
 	public void RequirePlacing(int pReq)
 	{
-		progressPause = true;
-		PlaceObjectOnClick.Instance.SetDirty(false);
+		//progressPause = true;
+		//PlaceObjectOnClick.Instance.SetDirty(false);
 		requiredMills = pReq;
 		currentMills = 0;
 		hasPlacedMills = false;
