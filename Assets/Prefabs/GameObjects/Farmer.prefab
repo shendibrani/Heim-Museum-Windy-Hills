@@ -1724,6 +1724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ce14afb83113ed45aedd2138af8dee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 0
   Actions:
   - StartEvent:
       m_PersistentCalls:
@@ -1840,6 +1841,20 @@ MonoBehaviour:
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
     IsEndedByTimer: 1
+    TimeTarget: 0
+  OnEnd:
+    StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByBool: 0
+    SetReference:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByTimer: 0
     TimeTarget: 0
 --- !u!114 &11488992
 MonoBehaviour:
@@ -2001,7 +2016,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 6.4
   m_BaseOffset: 0
-  m_WalkableMask: 1
+  m_WalkableMask: 17
   m_ObstacleAvoidanceType: 2
 --- !u!222 &22245840
 CanvasRenderer:
