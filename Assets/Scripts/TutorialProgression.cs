@@ -402,15 +402,15 @@ public class TutorialProgression : MonoBehaviour {
 	{
 		pScript.SetBoolReference (CarHasStarted);
 	}
-	public void CarWasSend(TurbineWindZoneMessage erge)
+	public void CarWasSend(TurbineClickMessage somethingsomethign)
 	{
 		CarStarted = true;
-		Dispatcher<TurbineWindZoneMessage>.Unsubscribe (CarWasSend);
+		Dispatcher<TurbineClickMessage>.Unsubscribe (CarWasSend);
 	}
 	public void EmptyCar()
 	{
 		CarStarted = false;
-		Dispatcher<TurbineWindZoneMessage>.Subscribe (CarWasSend);
+		Dispatcher<TurbineClickMessage>.Subscribe (CarWasSend);
 	}
 
 	public bool HasIncreasedScore()
