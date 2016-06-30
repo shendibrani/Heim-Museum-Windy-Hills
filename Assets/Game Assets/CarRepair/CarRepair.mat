@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: city
+  m_Name: CarRepair
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP
   m_LightmapFlags: 5
@@ -19,14 +19,14 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 66bbae169107a4e419eef5dcf89ceab6, type: 3}
+          m_Texture: {fileID: 2800000, guid: e9adadadc158b064e8f9e3953d4ac250, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _BumpMap
         second:
-          m_Texture: {fileID: 2800000, guid: 5d91ec69f09b0314ab85adf7103a235f, type: 3}
+          m_Texture: {fileID: 2800000, guid: 48ac5d250bf51c346a3f2004a78a1a05, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -75,7 +75,7 @@ Material:
         first:
           name: _MetallicGlossMap
         second:
-          m_Texture: {fileID: 2800000, guid: 0f8548b33c8f5504ab8aba9680c8f947, type: 3}
+          m_Texture: {fileID: 2800000, guid: 782715ba644130c4089f9648f3d9a75c, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -102,7 +102,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: 1
+        second: 0.5
       data:
         first:
           name: _BumpScale
