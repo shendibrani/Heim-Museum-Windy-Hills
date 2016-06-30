@@ -9,6 +9,8 @@ public class FiremenBehavior : MonoBehaviour {
     FireDepartment station;
     NavMeshAgent agent;
 
+	[SerializeField] bool debug = false;
+
     //Use this for initialization
 	void Start () {
         timer = new Stopwatch();
@@ -26,13 +28,13 @@ public class FiremenBehavior : MonoBehaviour {
         {
             float distanceToTurbine = Vector3.Distance(targetTurbine.transform.position, transform.position);
             float distanceToStation = Vector2.Distance(new Vector2(transform.position.x, transform.position.z), new Vector2(station.transform.position.x, station.transform.position.z));
-            UnityEngine.Debug.Log("Distance to turbine: " + distanceToTurbine);
+            if (debug)  UnityEngine.Debug.Log("Distance to turbine: " + distanceToTurbine);
 
             if (distanceToTurbine < 8.0f && !arrived)
             {
                 timer.Start();
                 arrived = true;
-                UnityEngine.Debug.Log("Fireman moved to the turbine");
+                if (debug)  UnityEngine.Debug.Log("Fireman moved to the turbine");
             }
 
             if (timer.Elapsed.Seconds > 0.1f)

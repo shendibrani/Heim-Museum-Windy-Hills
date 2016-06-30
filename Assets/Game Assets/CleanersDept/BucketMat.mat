@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Bridge_Mat
+  m_Name: BucketMat
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP
   m_LightmapFlags: 5
@@ -19,14 +19,14 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 4a33f9f45ef45b84ebd22684fb0cd14a, type: 3}
+          m_Texture: {fileID: 2800000, guid: 2c749b9288d3e1142b247ba7d65a5b1f, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _BumpMap
         second:
-          m_Texture: {fileID: 2800000, guid: d4d89f45d4e9636498b63cf0ff77e216, type: 3}
+          m_Texture: {fileID: 2800000, guid: 71e5b4988e91d3b488e420e545d88eb1, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -75,7 +75,7 @@ Material:
         first:
           name: _MetallicGlossMap
         second:
-          m_Texture: {fileID: 2800000, guid: 0e964037df0ac6b40b66adfd5087617f, type: 3}
+          m_Texture: {fileID: 2800000, guid: d575efc32883f9c489008f45db0c7e84, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
