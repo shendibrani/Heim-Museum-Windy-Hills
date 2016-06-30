@@ -11,6 +11,7 @@ public static class TurbineStateManager {
 	public static TurbineState dirtyState {get; private set;}
 	public static TurbineState occupiedState { get; private set; }
     public static TurbineState tutorialLowFireState { get; private set; }
+	public static TurbineState turbineCooldownState { get; private set; }
 
     public static bool Initialize()
 	{
@@ -24,6 +25,7 @@ public static class TurbineStateManager {
 		dirtyState = JsonUtility.FromJson<TurbineState>(objects[4]);
         occupiedState = JsonUtility.FromJson<TurbineState>(objects[5]);
 		tutorialLowFireState = JsonUtility.FromJson<TurbineState>(objects[6]);
+		turbineCooldownState = JsonUtility.FromJson<TurbineState>(objects[7]);
 
         Debug.Log(lowFireState.name);
 		Debug.Log(highFireState.name);
@@ -32,6 +34,7 @@ public static class TurbineStateManager {
 		Debug.Log(dirtyState.name);
         Debug.Log(occupiedState.name);
 		Debug.Log (tutorialLowFireState.name);
+		Debug.Log(turbineCooldownState.name);
 
         return true;
 	}
@@ -121,7 +124,7 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 		if(endOnWind) End(true);
 	}
 
-	public void OnStayWindzone () {}
+	public void OnStayWindzone () { if (endOnWind) End(true); }
 
 	public void OnExitWindzone ()
 	{
