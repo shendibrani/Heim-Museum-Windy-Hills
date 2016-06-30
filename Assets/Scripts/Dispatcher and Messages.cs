@@ -66,3 +66,8 @@ public class DirtMessage : Message
 {
 	public DirtMessage(GameObject sender) : base(sender) { }
 }
+
+public class TurbineClickMessage : Message
+{
+	public TurbineClickMessage(GameObject sender) : base(sender) { }
+}
