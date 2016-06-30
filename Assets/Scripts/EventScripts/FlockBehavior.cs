@@ -43,7 +43,8 @@ public class FlockBehavior : MonoBehaviour
         float distance = Vector3.Distance(new Vector3(selectedTurbine.transform.position.x, 30, transform.position.z), this.transform.position);
         if (distance < DamageRadius && effectApplied == false) {
             TurbineStateManager.dirtyState.Copy(selectedTurbine);
-            effectApplied = true;
+			Dispatcher<DirtMessage>.Dispatch(new DirtMessage(gameObject));
+			effectApplied = true;
             timer.Start();
             
         }

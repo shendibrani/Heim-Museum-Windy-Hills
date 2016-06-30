@@ -156,8 +156,7 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 
 	public void End (bool solved)
 	{
-		
-
+	
 		if (!solved && negativeEffect) {
 			Debug.Log ("[State] State " + name + " failed at " + Time.time);
 			Fail ();
@@ -170,7 +169,7 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 	public void Fail() 
 	{
 		if(setsOnHighFire){
-			TurbineStateManager.highFireState.Copy(owner);
+			TurbineStateManager.highFireState.Copy(owner, true);
 		}
 
 		if(breaksTurbine){
@@ -183,42 +182,52 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 
         if (setsOccupied)
         {
-            TurbineStateManager.occupiedState.Copy(owner);
+            TurbineStateManager.occupiedState.Copy(owner, true);
         }
 	}
 
 	/// <summary>
 	/// Returns a copy of this instance, with the specificed owner.
+	/// forceThrough forces state, ignoring pause and other states.
 	/// </summary>
 	/// <param name="pOwner">The owner of the new instance.</param>
-	public TurbineState Copy(TurbineObject pOwner)
+	public TurbineState Copy(TurbineObject pOwner, bool forceThrough = false)
 	{
-		TurbineState ts = new TurbineState();
+		if (!forceThrough && TutorialProgression.Instance.ProgressPause)
+		{
+			return null;
+		}
+		else if (!forceThrough && pOwner.state != null)
+		{
+			return null;
+		}
+		else {
+			TurbineState ts = new TurbineState();
 
-		ts.name = this.name;
+			ts.name = this.name;
 
-		ts.timer = this.timer;
-		ts._efficiencyMultiplyer = this._efficiencyMultiplyer;
+			ts.timer = this.timer;
+			ts._efficiencyMultiplyer = this._efficiencyMultiplyer;
 
-		ts.negativeEffect = this.negativeEffect;
-		ts.timed = this.timed;
-		ts.endOnTap = this.endOnTap;
-		ts.endOnWind = this.endOnWind;
-		ts.winzoneDependent = this.winzoneDependent;
-		ts.setsOnHighFire = this.setsOnHighFire;
-		ts.breaksTurbine = this.breaksTurbine;
-		ts.dirtiesTurbine = this.dirtiesTurbine;
-        ts.setsOccupied = this.setsOccupied;
+			ts.negativeEffect = this.negativeEffect;
+			ts.timed = this.timed;
+			ts.endOnTap = this.endOnTap;
+			ts.endOnWind = this.endOnWind;
+			ts.winzoneDependent = this.winzoneDependent;
+			ts.setsOnHighFire = this.setsOnHighFire;
+			ts.breaksTurbine = this.breaksTurbine;
+			ts.dirtiesTurbine = this.dirtiesTurbine;
+			ts.setsOccupied = this.setsOccupied;
 
-		ts.endOnCleanup = this.endOnCleanup;
-		ts.endOnFiremen = this.endOnFiremen;
-		ts.endOnPolice = this.endOnPolice;
-		ts.endOnRepair = this.endOnRepair;
+			ts.endOnCleanup = this.endOnCleanup;
+			ts.endOnFiremen = this.endOnFiremen;
+			ts.endOnPolice = this.endOnPolice;
+			ts.endOnRepair = this.endOnRepair;
 
-		ts.SetOwner(pOwner);
+			ts.SetOwner(pOwner);
 
-		Debug.Log ("[State] State " + name + " started at " + Time.time);
-
-		return ts;
+			Debug.Log("[State] State " + name + " started at " + Time.time);
+			return ts;
+		}
 	}
 }

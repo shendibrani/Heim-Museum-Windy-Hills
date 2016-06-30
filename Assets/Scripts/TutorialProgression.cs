@@ -436,7 +436,7 @@ public class TutorialProgression : MonoBehaviour {
 	{
 		if (!high) 
 		{
-			TurbineStateManager.tutorialLowFireState.Copy (savedMill);
+			TurbineStateManager.tutorialLowFireState.Copy (savedMill, true);
 			savedMill.state.OnValueChanged += OnFireEnd;
 		}
 		else
