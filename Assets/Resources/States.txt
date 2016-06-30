@@ -14,7 +14,8 @@
     "endOnPolice": false,
     "endOnFiremen": true,
     "endOnRepair": false,
-    "endOnCleanup": false
+    "endOnCleanup": false,
+"isCooldown": true,	
 }
 #
 {
@@ -33,7 +34,8 @@
     "endOnPolice": false,
     "endOnFiremen": true,
     "endOnRepair": false,
-    "endOnCleanup": false
+    "endOnCleanup": false,
+"isCooldown": true,	
 }
 #
 {
@@ -52,7 +54,8 @@
     "endOnPolice": true,
     "endOnFiremen": false,
     "endOnRepair": false,
-    "endOnCleanup": false
+    "endOnCleanup": false,
+"isCooldown": true,	
 }
 #
 {
@@ -71,7 +74,8 @@
     "endOnPolice": false,
     "endOnFiremen": false,
     "endOnRepair": true,
-    "endOnCleanup": false
+    "endOnCleanup": false,
+"isCooldown": true,	
 }
 #
 {
@@ -90,7 +94,8 @@
     "endOnPolice": false,
     "endOnFiremen": false,
     "endOnRepair": false,
-    "endOnCleanup": true
+    "endOnCleanup": true,
+"isCooldown": true,	
 }
 #
 {
@@ -105,15 +110,16 @@
     "setsOnHighFire": false,
     "breaksTurbine": false,
     "dirtiesTurbine": false,
-	"setsOccupied": false,
+    "setsOccupied": false,
     "endOnPolice": true,
     "endOnFiremen": false,
     "endOnRepair": false,
-    "endOnCleanup": false
+    "endOnCleanup": false,
+"isCooldown": true,	
 }
 #
 {
-    "comment": "tutorial low fire"
+"comment:": "used for tutorial",
     "name": "Low Fire",
     "timer": 5.0,
     "_efficiencyMultiplyer": 1.0,
@@ -125,28 +131,30 @@
     "setsOnHighFire": false,
     "breaksTurbine": false,
     "dirtiesTurbine": false,
-	"setsOccupied": false,
+    "setsOccupied": false,
     "endOnPolice": false,
     "endOnFiremen": false,
     "endOnRepair": false,
-    "endOnCleanup": false
+    "endOnCleanup": false,
+"isCooldown": true,	
 }
 #
 {
     "name": "Turbine Cooldown",
     "timer": 5.0,
     "_efficiencyMultiplyer": 1.0,
-    "negativeEffect": false,
-    "timed": false,
+    "negativeEffect": true,
+    "timed": true,
     "endOnTap": false,
     "endOnWind": false
     "winzoneDependent": false,
     "setsOnHighFire": false,
     "breaksTurbine": false,
     "dirtiesTurbine": false,
-	"setsOccupied": false,
+    "setsOccupied": false,
     "endOnPolice": false,
     "endOnFiremen": false,
     "endOnRepair": false,
-    "endOnCleanup": false
+    "endOnCleanup": false,
+    "isCooldown": true,	
 }

@@ -110,6 +110,8 @@ public class TutorialProgression : MonoBehaviour {
     Cutscene stormCloudTutorial;
     [SerializeField]
     Cutscene flockTutorial;
+	[SerializeField]
+	Cutscene dirtyTutorial;
     [SerializeField]
     Cutscene boatTutorial;
     [SerializeField]
@@ -214,6 +216,14 @@ public class TutorialProgression : MonoBehaviour {
             brokenTutorial.StartScene();
         }
     }
+
+	public void CheckDirtyWindmill(DirtMessage dm)
+	{
+		Dispatcher<DirtMessage>.Unsubscribe(CheckDirtyWindmill);
+		SetMill(dm.Sender.GetComponent<TurbineObject>());
+		savedMill.state.OnValueChanged += OnDirtEnd;
+		dirtyTutorial.StartScene();
+	}
 
 	//start windmil placing scene
 	public void PlacingMills()
@@ -576,7 +586,8 @@ public class TutorialProgression : MonoBehaviour {
                 }
             case EventNames.Flock:
                 {
-                    flockTutorial.StartScene();
+					Dispatcher<DirtMessage>.Subscribe(CheckDirtyWindmill);
+                    //flockTutorial.StartScene();
                     break;
                 }
             case EventNames.StormCloud:

@@ -63,7 +63,7 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 
     [SerializeField] bool negativeEffect, timed, endOnTap, endOnWind, winzoneDependent, setsOnHighFire, breaksTurbine, dirtiesTurbine, setsOccupied;
 
-	[SerializeField] bool endOnPolice, endOnFiremen, endOnRepair, endOnCleanup;
+	[SerializeField] bool endOnPolice, endOnFiremen, endOnRepair, endOnCleanup, isCooldown;
 
 	#endregion
 
@@ -165,7 +165,8 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 			Fail ();
 		} else {
 			Debug.Log ("[State] State " + name + " ended  with " + timer + "seconds to spare at " + Time.time);
-			owner.state.value = null;
+			TurbineStateManager.turbineCooldownState.Copy(owner, true);
+			//owner.state.value = null;
 		}
 	}
 
@@ -187,6 +188,10 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
         {
             TurbineStateManager.occupiedState.Copy(owner, true);
         }
+		if (isCooldown)
+		{
+			owner.state.value = null;
+		}
 	}
 
 	/// <summary>
@@ -229,6 +234,7 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 			ts.endOnFiremen = this.endOnFiremen;
 			ts.endOnPolice = this.endOnPolice;
 			ts.endOnRepair = this.endOnRepair;
+			ts.isCooldown = this.isCooldown;
 
 			ts.SetOwner(pOwner);
 
