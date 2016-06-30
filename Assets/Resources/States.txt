@@ -113,7 +113,7 @@
 }
 #
 {
-    "comment": "tutorial low fire"
+    "comment": "tutorial low fire",
     "name": "Low Fire",
     "timer": 5.0,
     "_efficiencyMultiplyer": 1.0,

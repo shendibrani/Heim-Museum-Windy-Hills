@@ -7946,6 +7946,317 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300004, guid: 79250fadaddec9740b9ec8d2d5b485f0, type: 3}
+--- !u!1 &395114224
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 163290, guid: 560c9d7e6e1ec7e48bb906c1afb14fdd, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 395114225}
+  - 114: {fileID: 395114226}
+  m_Layer: 0
+  m_Name: BrokenStateTutorial1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &395114225
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 403026, guid: 560c9d7e6e1ec7e48bb906c1afb14fdd, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 395114224}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1791439861}
+  m_Father: {fileID: 1531197989}
+  m_RootOrder: 3
+--- !u!114 &395114226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11451366, guid: 560c9d7e6e1ec7e48bb906c1afb14fdd,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 395114224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ce14afb83113ed45aedd2138af8dee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug: 0
+  Actions:
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: SetTargetZoom
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 40
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: SetZoomOutSize
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306633068}
+          m_MethodName: TargetCurrentMill
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: StartMovement
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 694204639}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306633068}
+          m_MethodName: set_ProgressPause
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 1306633068}
+          m_MethodName: set_CanStartPlacing
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByBool: 1
+    SetReference:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: GetReference
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 395114226}
+            m_ObjectArgumentAssemblyTypeName: Cutscene, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByTimer: 0
+    TimeTarget: 0
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByBool: 0
+    SetReference:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByTimer: 1
+    TimeTarget: 2
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: SetZoomOutSize
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 70
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: StartMovement
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 247392119}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByBool: 1
+    SetReference:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: GetReference
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 395114226}
+            m_ObjectArgumentAssemblyTypeName: Cutscene, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByTimer: 0
+    TimeTarget: 0
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306633068}
+          m_MethodName: ActivateButton
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 3
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 651676839}
+          m_MethodName: StartScene
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1612706435}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByBool: 1
+    SetReference:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306633068}
+          m_MethodName: GetFireClickReference
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 395114226}
+            m_ObjectArgumentAssemblyTypeName: Cutscene, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByTimer: 0
+    TimeTarget: 0
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: SetZoomOutSize
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: SetTargetZoom
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 110
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: StartMovement
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 2140101137}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByBool: 1
+    SetReference:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: GetReference
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 395114226}
+            m_ObjectArgumentAssemblyTypeName: Cutscene, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByTimer: 0
+    TimeTarget: 0
+  OnEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1791439862}
+        m_MethodName: StartScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &396995605
 GameObject:
   m_ObjectHideFlags: 0
@@ -8712,327 +9023,6 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: 79250fadaddec9740b9ec8d2d5b485f0, type: 3}
---- !u!1 &439958725
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 163290, guid: 560c9d7e6e1ec7e48bb906c1afb14fdd, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 439958726}
-  - 114: {fileID: 439958727}
-  m_Layer: 0
-  m_Name: VillainTutorial
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &439958726
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 403026, guid: 560c9d7e6e1ec7e48bb906c1afb14fdd, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 439958725}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1531197989}
-  m_RootOrder: 2
---- !u!114 &439958727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11451366, guid: 560c9d7e6e1ec7e48bb906c1afb14fdd,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 439958725}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ce14afb83113ed45aedd2138af8dee7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debug: 0
-  Actions:
-  - StartEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1306633069}
-          m_MethodName: SetTargetZoom
-          m_Mode: 4
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 40
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1306633069}
-          m_MethodName: SetZoomOutSize
-          m_Mode: 4
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1306633068}
-          m_MethodName: TargetCurrentMill
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1306633069}
-          m_MethodName: StartMovement
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 694204639}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1306633068}
-          m_MethodName: DoesProgress
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1306633068}
-          m_MethodName: set_CanStartPlacing
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-    IsEndedByBool: 1
-    SetReference:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1306633069}
-          m_MethodName: GetReference
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 439958727}
-            m_ObjectArgumentAssemblyTypeName: Cutscene, Assembly-CSharp
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-    IsEndedByTimer: 0
-    TimeTarget: 0
-  - StartEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1306633068}
-          m_MethodName: StartSaboteur
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 1
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-        - m_Target: {fileID: 1306633068}
-          m_MethodName: ActivateButton
-          m_Mode: 3
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-        - m_Target: {fileID: 651676839}
-          m_MethodName: StartScene
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 44953292}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-    IsEndedByBool: 1
-    SetReference:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1306633068}
-          m_MethodName: GetPoliceClickReference
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 439958727}
-            m_ObjectArgumentAssemblyTypeName: Cutscene, Assembly-CSharp
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-    IsEndedByTimer: 0
-    TimeTarget: 0
-  - StartEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 651676839}
-          m_MethodName: EndScene
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 651676839}
-          m_MethodName: StartScene
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 694204638}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-    IsEndedByBool: 1
-    SetReference:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1306633068}
-          m_MethodName: GetSaboteurReference
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 439958727}
-            m_ObjectArgumentAssemblyTypeName: Cutscene, Assembly-CSharp
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-    IsEndedByTimer: 0
-    TimeTarget: 0
-  - StartEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1306633068}
-          m_MethodName: Animation
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 651676839}
-          m_MethodName: EndScene
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-    IsEndedByBool: 0
-    SetReference:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-    IsEndedByTimer: 1
-    TimeTarget: 3
-  - StartEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1306633069}
-          m_MethodName: SetTargetZoom
-          m_Mode: 4
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 110
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1306633069}
-          m_MethodName: StartMovement
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 2140101137}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-    IsEndedByBool: 1
-    SetReference:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1306633069}
-          m_MethodName: GetReference
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 439958727}
-            m_ObjectArgumentAssemblyTypeName: Cutscene, Assembly-CSharp
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-    IsEndedByTimer: 0
-    TimeTarget: 0
-  OnEnd:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
 --- !u!1 &440769609
 GameObject:
   m_ObjectHideFlags: 0
@@ -13741,340 +13731,6 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: 79250fadaddec9740b9ec8d2d5b485f0, type: 3}
---- !u!1 &627387276
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 163290, guid: 560c9d7e6e1ec7e48bb906c1afb14fdd, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 627387277}
-  - 114: {fileID: 627387278}
-  m_Layer: 0
-  m_Name: BrokenStateTutorial
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &627387277
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 403026, guid: 560c9d7e6e1ec7e48bb906c1afb14fdd, type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 627387276}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1531197989}
-  m_RootOrder: 4
---- !u!114 &627387278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11451366, guid: 560c9d7e6e1ec7e48bb906c1afb14fdd,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 627387276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ce14afb83113ed45aedd2138af8dee7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debug: 0
-  Actions:
-  - StartEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1306633069}
-          m_MethodName: SetTargetZoom
-          m_Mode: 4
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 40
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1306633069}
-          m_MethodName: SetZoomOutSize
-          m_Mode: 4
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1306633068}
-          m_MethodName: TargetCurrentMill
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1306633069}
-          m_MethodName: StartMovement
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 694204639}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1306633068}
-          m_MethodName: set_ProgressPause
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-        - m_Target: {fileID: 1306633068}
-          m_MethodName: set_CanStartPlacing
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-    IsEndedByBool: 1
-    SetReference:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1306633069}
-          m_MethodName: GetReference
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 627387278}
-            m_ObjectArgumentAssemblyTypeName: Cutscene, Assembly-CSharp
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-    IsEndedByTimer: 0
-    TimeTarget: 0
-  - StartEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1306633068}
-          m_MethodName: ActivateButton
-          m_Mode: 3
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 3
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-        - m_Target: {fileID: 651676839}
-          m_MethodName: StartScene
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 1612706435}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-    IsEndedByBool: 1
-    SetReference:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1306633068}
-          m_MethodName: GetRepairClickReference
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 627387278}
-            m_ObjectArgumentAssemblyTypeName: Cutscene, Assembly-CSharp
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-    IsEndedByTimer: 0
-    TimeTarget: 0
-  - StartEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 651676839}
-          m_MethodName: EndScene
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 651676839}
-          m_MethodName: StartScene
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 694204638}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-    IsEndedByBool: 1
-    SetReference:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1306633068}
-          m_MethodName: GetRepairReference
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 627387278}
-            m_ObjectArgumentAssemblyTypeName: Cutscene, Assembly-CSharp
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-    IsEndedByTimer: 0
-    TimeTarget: 0
-  - StartEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1306633068}
-          m_MethodName: Animation
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 651676839}
-          m_MethodName: EndScene
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-    IsEndedByBool: 0
-    SetReference:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-    IsEndedByTimer: 1
-    TimeTarget: 3
-  - StartEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1306633069}
-          m_MethodName: SetTargetZoom
-          m_Mode: 4
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 110
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1306633069}
-          m_MethodName: StartMovement
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 2140101137}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-    IsEndedByBool: 1
-    SetReference:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1306633069}
-          m_MethodName: GetReference
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 627387278}
-            m_ObjectArgumentAssemblyTypeName: Cutscene, Assembly-CSharp
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-    IsEndedByTimer: 0
-    TimeTarget: 0
-  - StartEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1306633068}
-          m_MethodName: DoesProgress
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-    IsEndedByBool: 0
-    SetReference:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-    IsEndedByTimer: 1
-    TimeTarget: 0
-  OnEnd:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
 --- !u!1 &627532958
 GameObject:
   m_ObjectHideFlags: 0
@@ -24292,9 +23948,9 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 1306633068}
-          m_MethodName: DoesProgress
-          m_Mode: 6
+        - m_Target: {fileID: 1934145294}
+          m_MethodName: ResetCloud
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -24334,17 +23990,6 @@ MonoBehaviour:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 1
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1934145294}
-          m_MethodName: ResetCloud
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
@@ -25692,7 +25337,7 @@ MonoBehaviour:
   waveCooldownTime: 2
   waveDifficulty: 8
   stormEvent:
-    difficulty: 9
+    difficulty: 2
     name: 1
     usedTurbine: {fileID: 0}
     speed: 1
@@ -25701,7 +25346,7 @@ MonoBehaviour:
     name: 2
     usedTurbine: {fileID: 0}
   saboteurEvent:
-    difficulty: 9
+    difficulty: 2
     name: 3
     usedTurbine: {fileID: 0}
   flockEvent:
@@ -25773,11 +25418,11 @@ MonoBehaviour:
   - {fileID: 1725669080}
   - {fileID: 1612706441}
   HighFireTutorial: {fileID: 1168404134}
-  SaboteurTutorial: {fileID: 439958727}
+  SaboteurTutorial: {fileID: 1662263195}
   stormCloudTutorial: {fileID: 1395749725}
   flockTutorial: {fileID: 1405669484}
   boatTutorial: {fileID: 1592887464}
-  brokenTutorial: {fileID: 627387278}
+  brokenTutorial: {fileID: 395114226}
   PlusMill: {fileID: 65709096}
   FirstCutscene: {fileID: 1996135370}
 --- !u!114 &1306633069
@@ -26520,6 +26165,248 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300008, guid: 79250fadaddec9740b9ec8d2d5b485f0, type: 3}
+--- !u!1 &1366742485
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 163290, guid: 560c9d7e6e1ec7e48bb906c1afb14fdd, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1366742486}
+  - 114: {fileID: 1366742487}
+  m_Layer: 0
+  m_Name: VillainTutorial2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1366742486
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 403026, guid: 560c9d7e6e1ec7e48bb906c1afb14fdd, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1366742485}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1662263194}
+  m_RootOrder: 0
+--- !u!114 &1366742487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11451366, guid: 560c9d7e6e1ec7e48bb906c1afb14fdd,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1366742485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ce14afb83113ed45aedd2138af8dee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug: 0
+  Actions:
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByBool: 0
+    SetReference:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByTimer: 1
+    TimeTarget: 0
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 651676839}
+          m_MethodName: EndScene
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306633068}
+          m_MethodName: EmptyCar
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306633068}
+          m_MethodName: TargetCurrentMill
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 651676839}
+          m_MethodName: StartScene
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 694204638}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByBool: 1
+    SetReference:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306633068}
+          m_MethodName: GetCarStartReference
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1366742487}
+            m_ObjectArgumentAssemblyTypeName: Cutscene, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByTimer: 0
+    TimeTarget: 0
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 651676839}
+          m_MethodName: EndScene
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306633068}
+          m_MethodName: Animation
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByBool: 0
+    SetReference:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByTimer: 1
+    TimeTarget: 3
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: SetTargetZoom
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 110
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: StartMovement
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 2140101137}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByBool: 1
+    SetReference:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: GetReference
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1366742487}
+            m_ObjectArgumentAssemblyTypeName: Cutscene, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByTimer: 0
+    TimeTarget: 0
+  OnEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 651676839}
+        m_MethodName: EndScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1306633068}
+        m_MethodName: set_CanStartPlacing
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1306633068}
+        m_MethodName: set_ProgressPause
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &1371465041
 GameObject:
   m_ObjectHideFlags: 0
@@ -27139,7 +27026,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1531197989}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!114 &1405669484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27155,18 +27042,7 @@ MonoBehaviour:
   Actions:
   - StartEvent:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1306633068}
-          m_MethodName: ActivateButton
-          m_Mode: 3
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 2
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
     IsEndedByBool: 0
@@ -28222,9 +28098,10 @@ Transform:
   m_Children:
   - {fileID: 1114461127}
   - {fileID: 1226472934}
-  - {fileID: 439958726}
   - {fileID: 1405669483}
-  - {fileID: 627387277}
+  - {fileID: 395114225}
+  - {fileID: 1662263194}
+  - {fileID: 1551163337}
   m_Father: {fileID: 1306633067}
   m_RootOrder: 7
 --- !u!1 &1541683238
@@ -28509,6 +28386,317 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: 79250fadaddec9740b9ec8d2d5b485f0, type: 3}
+--- !u!1 &1551163336
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 163290, guid: 560c9d7e6e1ec7e48bb906c1afb14fdd, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1551163337}
+  - 114: {fileID: 1551163338}
+  m_Layer: 0
+  m_Name: DirtyStateTutorial1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1551163337
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 403026, guid: 560c9d7e6e1ec7e48bb906c1afb14fdd, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1551163336}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1966206291}
+  m_Father: {fileID: 1531197989}
+  m_RootOrder: 5
+--- !u!114 &1551163338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11451366, guid: 560c9d7e6e1ec7e48bb906c1afb14fdd,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1551163336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ce14afb83113ed45aedd2138af8dee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug: 0
+  Actions:
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: SetTargetZoom
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 40
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: SetZoomOutSize
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306633068}
+          m_MethodName: TargetCurrentMill
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: StartMovement
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 694204639}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306633068}
+          m_MethodName: set_ProgressPause
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 1306633068}
+          m_MethodName: set_CanStartPlacing
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByBool: 1
+    SetReference:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: GetReference
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1551163338}
+            m_ObjectArgumentAssemblyTypeName: Cutscene, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByTimer: 0
+    TimeTarget: 0
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByBool: 0
+    SetReference:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByTimer: 1
+    TimeTarget: 2
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: SetZoomOutSize
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 70
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: StartMovement
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 767462838}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByBool: 1
+    SetReference:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: GetReference
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1551163338}
+            m_ObjectArgumentAssemblyTypeName: Cutscene, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByTimer: 0
+    TimeTarget: 0
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306633068}
+          m_MethodName: ActivateButton
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 2
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 651676839}
+          m_MethodName: StartScene
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1812784414}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByBool: 1
+    SetReference:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306633068}
+          m_MethodName: GetFireClickReference
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1551163338}
+            m_ObjectArgumentAssemblyTypeName: Cutscene, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByTimer: 0
+    TimeTarget: 0
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: SetZoomOutSize
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: SetTargetZoom
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 110
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: StartMovement
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 2140101137}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByBool: 1
+    SetReference:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: GetReference
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1551163338}
+            m_ObjectArgumentAssemblyTypeName: Cutscene, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByTimer: 0
+    TimeTarget: 0
+  OnEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1966206292}
+        m_MethodName: StartScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &1552958114 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100010, guid: 79250fadaddec9740b9ec8d2d5b485f0, type: 3}
@@ -30106,6 +30294,328 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 682044587}
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+--- !u!1 &1662263193
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 163290, guid: 560c9d7e6e1ec7e48bb906c1afb14fdd, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1662263194}
+  - 114: {fileID: 1662263195}
+  m_Layer: 0
+  m_Name: VillainTutorial1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1662263194
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 403026, guid: 560c9d7e6e1ec7e48bb906c1afb14fdd, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1662263193}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1366742486}
+  m_Father: {fileID: 1531197989}
+  m_RootOrder: 4
+--- !u!114 &1662263195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11451366, guid: 560c9d7e6e1ec7e48bb906c1afb14fdd,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1662263193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ce14afb83113ed45aedd2138af8dee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug: 0
+  Actions:
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: SetTargetZoom
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 40
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: SetZoomOutSize
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306633068}
+          m_MethodName: TargetCurrentMill
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: StartMovement
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 694204639}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306633068}
+          m_MethodName: set_ProgressPause
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 1306633068}
+          m_MethodName: set_CanStartPlacing
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByBool: 1
+    SetReference:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: GetReference
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1662263195}
+            m_ObjectArgumentAssemblyTypeName: Cutscene, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByTimer: 0
+    TimeTarget: 0
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306633068}
+          m_MethodName: StartSaboteur
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByBool: 0
+    SetReference:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByTimer: 1
+    TimeTarget: 2
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: SetZoomOutSize
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 70
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: StartMovement
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 784294697}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByBool: 1
+    SetReference:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: GetReference
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1662263195}
+            m_ObjectArgumentAssemblyTypeName: Cutscene, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByTimer: 0
+    TimeTarget: 0
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306633068}
+          m_MethodName: ActivateButton
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 651676839}
+          m_MethodName: StartScene
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 44953292}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByBool: 1
+    SetReference:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306633068}
+          m_MethodName: GetFireClickReference
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1662263195}
+            m_ObjectArgumentAssemblyTypeName: Cutscene, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByTimer: 0
+    TimeTarget: 0
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: SetZoomOutSize
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: SetTargetZoom
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 110
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: StartMovement
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 2140101137}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByBool: 1
+    SetReference:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: GetReference
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1662263195}
+            m_ObjectArgumentAssemblyTypeName: Cutscene, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByTimer: 0
+    TimeTarget: 0
+  OnEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1366742487}
+        m_MethodName: StartScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &1671554785
 GameObject:
   m_ObjectHideFlags: 0
@@ -33439,6 +33949,248 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: 79250fadaddec9740b9ec8d2d5b485f0, type: 3}
+--- !u!1 &1791439860
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 163290, guid: 560c9d7e6e1ec7e48bb906c1afb14fdd, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1791439861}
+  - 114: {fileID: 1791439862}
+  m_Layer: 0
+  m_Name: BrokenStateTutorial2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1791439861
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 403026, guid: 560c9d7e6e1ec7e48bb906c1afb14fdd, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1791439860}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 395114225}
+  m_RootOrder: 0
+--- !u!114 &1791439862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11451366, guid: 560c9d7e6e1ec7e48bb906c1afb14fdd,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1791439860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ce14afb83113ed45aedd2138af8dee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug: 0
+  Actions:
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByBool: 0
+    SetReference:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByTimer: 1
+    TimeTarget: 0
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 651676839}
+          m_MethodName: EndScene
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306633068}
+          m_MethodName: EmptyCar
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306633068}
+          m_MethodName: TargetCurrentMill
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 651676839}
+          m_MethodName: StartScene
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 694204638}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByBool: 1
+    SetReference:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306633068}
+          m_MethodName: GetCarStartReference
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1791439862}
+            m_ObjectArgumentAssemblyTypeName: Cutscene, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByTimer: 0
+    TimeTarget: 0
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 651676839}
+          m_MethodName: EndScene
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306633068}
+          m_MethodName: Animation
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByBool: 0
+    SetReference:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByTimer: 1
+    TimeTarget: 3
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: SetTargetZoom
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 110
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: StartMovement
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 2140101137}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByBool: 1
+    SetReference:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: GetReference
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1791439862}
+            m_ObjectArgumentAssemblyTypeName: Cutscene, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByTimer: 0
+    TimeTarget: 0
+  OnEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 651676839}
+        m_MethodName: EndScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1306633068}
+        m_MethodName: set_CanStartPlacing
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1306633068}
+        m_MethodName: set_ProgressPause
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &1795601993
 GameObject:
   m_ObjectHideFlags: 0
@@ -33709,6 +34461,10 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: 79250fadaddec9740b9ec8d2d5b485f0, type: 3}
+--- !u!1 &1812784414 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 184536, guid: adfe806611edbd149b5f747d586cb6ab, type: 2}
+  m_PrefabInternal: {fileID: 682044587}
 --- !u!1 &1818243936
 GameObject:
   m_ObjectHideFlags: 0
@@ -36740,6 +37496,248 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: 79250fadaddec9740b9ec8d2d5b485f0, type: 3}
+--- !u!1 &1966206290
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 163290, guid: 560c9d7e6e1ec7e48bb906c1afb14fdd, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1966206291}
+  - 114: {fileID: 1966206292}
+  m_Layer: 0
+  m_Name: DirtyStateTutorial2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1966206291
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 403026, guid: 560c9d7e6e1ec7e48bb906c1afb14fdd, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1966206290}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1551163337}
+  m_RootOrder: 0
+--- !u!114 &1966206292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11451366, guid: 560c9d7e6e1ec7e48bb906c1afb14fdd,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1966206290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ce14afb83113ed45aedd2138af8dee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug: 0
+  Actions:
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByBool: 0
+    SetReference:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByTimer: 1
+    TimeTarget: 0
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 651676839}
+          m_MethodName: EndScene
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306633068}
+          m_MethodName: EmptyCar
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306633068}
+          m_MethodName: TargetCurrentMill
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 651676839}
+          m_MethodName: StartScene
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 694204638}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByBool: 1
+    SetReference:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306633068}
+          m_MethodName: GetCarStartReference
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1966206292}
+            m_ObjectArgumentAssemblyTypeName: Cutscene, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByTimer: 0
+    TimeTarget: 0
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 651676839}
+          m_MethodName: EndScene
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306633068}
+          m_MethodName: Animation
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByBool: 0
+    SetReference:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByTimer: 1
+    TimeTarget: 3
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: SetTargetZoom
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 110
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: StartMovement
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 2140101137}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByBool: 1
+    SetReference:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1306633069}
+          m_MethodName: GetReference
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1966206292}
+            m_ObjectArgumentAssemblyTypeName: Cutscene, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    IsEndedByTimer: 0
+    TimeTarget: 0
+  OnEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 651676839}
+        m_MethodName: EndScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1306633068}
+        m_MethodName: set_CanStartPlacing
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1306633068}
+        m_MethodName: set_ProgressPause
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &1970043302 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100010, guid: 30860a96a99c7394dbefd4367200c2d8, type: 3}
