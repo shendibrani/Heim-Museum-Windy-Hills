@@ -42,8 +42,14 @@ public class FlockBehavior : MonoBehaviour
     {
         float distance = Vector3.Distance(new Vector3(selectedTurbine.transform.position.x, 30, transform.position.z), this.transform.position);
         if (distance < DamageRadius && effectApplied == false) {
-            TurbineStateManager.dirtyState.Copy(selectedTurbine);
-			Dispatcher<DirtMessage>.Dispatch(new DirtMessage(gameObject));
+			if (TurbineStateManager.dirtyState.Copy(selectedTurbine) != null)
+			{
+				Dispatcher<DirtMessage>.Dispatch(new DirtMessage(selectedTurbine.gameObject));
+
+				Vector3 SpawnPos = FindObjectOfType<CleanersDepartment>().transform.position;
+				GameObject instance = (GameObject)GameObject.Instantiate(Resources.Load("Cleanerman"), SpawnPos, Quaternion.identity);
+				instance.GetComponent<CleanersBehavior>().SetTargetTurbine(selectedTurbine);
+			}
 			effectApplied = true;
             timer.Start();
             
@@ -65,9 +71,6 @@ public class FlockBehavior : MonoBehaviour
             timer.Stop();
             timer.Reset();
 
-            Vector3 SpawnPos = FindObjectOfType<CleanersDepartment>().transform.position;
-            GameObject instance = (GameObject)GameObject.Instantiate(Resources.Load("Cleanerman"), SpawnPos, Quaternion.identity);
-            instance.GetComponent<CleanersBehavior>().SetTargetTurbine(selectedTurbine);
         }
     }
 
