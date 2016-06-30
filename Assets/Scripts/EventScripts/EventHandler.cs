@@ -168,7 +168,7 @@ public class EventHandler : MonoBehaviour {
     void InitializeEvent() 
 	{
 		if (WaveTimer.Elapsed.Seconds == secondToSpawn && !initializedEvent  && currentWave.Count > 0) {
-			if (currentWave[0].usedTurbine == null || currentWave [0].usedTurbine.state.value.name == null) {
+			if (currentWave[0].usedTurbine == null || currentWave [0].usedTurbine.state.value == null) {
 				UnityEngine.Debug.Log ("<color=red>Initializing event: </color>" + currentWave [0].name);
 				if (!completedEvents.Contains (currentWave [0])) {
 					currentWave [0].FakeEventStart ();

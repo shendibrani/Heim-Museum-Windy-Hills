@@ -110,8 +110,10 @@
     "endOnFiremen": false,
     "endOnRepair": false,
     "endOnCleanup": false
-}#
+}
+#
 {
+    "comment": "tutorial low fire"
     "name": "Low Fire",
     "timer": 5.0,
     "_efficiencyMultiplyer": 1.0,
@@ -119,6 +121,25 @@
     "timed": false,
     "endOnTap": false,
     "endOnWind": true,
+    "winzoneDependent": false,
+    "setsOnHighFire": false,
+    "breaksTurbine": false,
+    "dirtiesTurbine": false,
+	"setsOccupied": false,
+    "endOnPolice": false,
+    "endOnFiremen": false,
+    "endOnRepair": false,
+    "endOnCleanup": false
+}
+#
+{
+    "name": "Turbine Cooldown",
+    "timer": 5.0,
+    "_efficiencyMultiplyer": 1.0,
+    "negativeEffect": false,
+    "timed": false,
+    "endOnTap": false,
+    "endOnWind": false
     "winzoneDependent": false,
     "setsOnHighFire": false,
     "breaksTurbine": false,
