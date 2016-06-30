@@ -158,8 +158,11 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
     public void BreakTurbine()
     {
         if (isBroken) return;
-        TurbineStateManager.brokenState.Copy(this);
-		TutorialProgression.Instance.CheckBrokenWindmill(this);
+
+		if (TurbineStateManager.brokenState.Copy(this) != null)
+		{
+			TutorialProgression.Instance.CheckBrokenWindmill(this);
+		}
     }
 
     public void UpdateEfficiency()
