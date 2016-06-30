@@ -45,6 +45,10 @@ public class TutorialProgression : MonoBehaviour {
 		set{ cloudWasTapped = value;}
 	}
 
+	bool CarStarted;
+
+
+
 	bool enteredWindzone = false;
 
 	public bool EnteredWindzone {
@@ -195,11 +199,6 @@ public class TutorialProgression : MonoBehaviour {
 	public void CanPlaceMills(bool canPlace)
 	{
 		PlaceObjectOnClick.Instance.SetDirty(!canPlace);
-	}
-
-	public void DoesProgress(bool doesProgress)
-	{
-		progressPause = !doesProgress;
 	}
 
     public void CheckBrokenWindmill(TurbineObject to)
@@ -395,6 +394,25 @@ public class TutorialProgression : MonoBehaviour {
 		pScript.SetBoolReference (HasClickedCloud);
 	}
 
+	public bool CarHasStarted()
+	{
+		return CarStarted;
+	}
+	public void GetCarStartReference(Cutscene pScript)
+	{
+		pScript.SetBoolReference (CarHasStarted);
+	}
+	public void CarWasSend(TurbineWindZoneMessage erge)
+	{
+		CarStarted = true;
+		Dispatcher<TurbineWindZoneMessage>.Unsubscribe (CarWasSend);
+	}
+	public void EmptyCar()
+	{
+		CarStarted = false;
+		Dispatcher<TurbineWindZoneMessage>.Subscribe (CarWasSend);
+	}
+
 	public bool HasIncreasedScore()
 	{
 		return scoreWasIncreased;
@@ -431,12 +449,14 @@ public class TutorialProgression : MonoBehaviour {
 		Dispatcher<TurbineWindZoneMessage>.Subscribe (WasWindZoned);
 	}
 
+
+
 	//Start Events
 	public void StartFire(bool high)
 	{
 		if (!high) 
 		{
-			TurbineStateManager.tutorialLowFireState.Copy (savedMill);
+			TurbineStateManager.tutorialLowFireState.Copy (savedMill, true);
 			savedMill.state.OnValueChanged += OnFireEnd;
 		}
 		else

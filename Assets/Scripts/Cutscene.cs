@@ -31,7 +31,7 @@ public class Cutscene : MonoBehaviour {
 	}
 
 	[SerializeField] actions[] Actions;
-	[SerializeField] actions OnEnd;
+	[SerializeField] UnityEvent OnEnd;
 
 	void Update ()
 	{
@@ -92,7 +92,7 @@ public class Cutscene : MonoBehaviour {
 	{
 		if (sceneRunning)
 		{
-			OnEnd.StartEvent.Invoke ();
+			OnEnd.Invoke ();
 			sceneRunning = false;
 		}
 	}

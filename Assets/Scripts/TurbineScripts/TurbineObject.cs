@@ -295,6 +295,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 
 	void ConsumeUIState ()
 	{
+		Dispatcher<TurbineClickMessage>.Dispatch(new TurbineClickMessage(this.gameObject));
 		switch (UICallbacksSystem.currentState) {
 		case UIState.Police:
 			Police ();
