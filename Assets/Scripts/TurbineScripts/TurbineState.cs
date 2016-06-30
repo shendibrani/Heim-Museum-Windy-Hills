@@ -198,13 +198,16 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 	{
 		if (!forceThrough && TutorialProgression.Instance.ProgressPause)
 		{
+			Debug.Log("no forced through, blocked by pause.");
 			return null;
 		}
 		else if (!forceThrough && pOwner.state.value != null)
 		{
+			Debug.Log("no forced through, blocked by null.");
 			return null;
 		}
 		else {
+			Debug.Log("not blocked");
 			TurbineState ts = new TurbineState();
 
 			ts.name = this.name;
