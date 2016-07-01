@@ -17,11 +17,11 @@ NavMeshAreas:
     cost: 1
   - name: FireDept
     cost: 1
-  - name: 
+  - name: PoliceDept
     cost: 1
-  - name: 
+  - name: CleanerDept
     cost: 1
-  - name: 
+  - name: RepairDept
     cost: 1
   - name: 
     cost: 1
