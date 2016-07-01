@@ -30,7 +30,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 
 	public bool isFine {
 		get {
-			return state.value == null;
+			return (state.value == null || state.value.name == TurbineStateManager.turbineCooldownState.name);
 		}
 	}
 
@@ -142,7 +142,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 
     public void IncreaseEfficiency(float i = 1f)
     {
-		if (state.value == null){
+		if (state.value == null || state.value.name == TurbineStateManager.turbineCooldownState.name){
         efficencyOvercharge += overchargeIncrease * i;
         if (efficencyOvercharge >= maxOvercharge) {
             efficencyOvercharge = maxOvercharge;
