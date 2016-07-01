@@ -188,7 +188,7 @@ GameObject:
   m_Name: Smoke_Particle_dark1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 4
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 0
 --- !u!1 &123168
@@ -373,6 +373,21 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 4
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &132794
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 495816}
+  m_Layer: 0
+  m_Name: VillainPoint1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &134196
@@ -596,6 +611,21 @@ GameObject:
   m_NavMeshLayer: 4
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &158470
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 471124}
+  m_Layer: 0
+  m_Name: VillainPoint2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &159474
 GameObject:
   m_ObjectHideFlags: 1
@@ -640,7 +670,7 @@ GameObject:
   m_Name: Smoke_Particle_white2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 4
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &163412
@@ -737,7 +767,7 @@ GameObject:
   m_Name: Smoke_Particle_white3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 4
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &169324
@@ -754,7 +784,7 @@ GameObject:
   m_Name: Smoke_Particle_dark2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 4
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 0
 --- !u!1 &169386
@@ -817,11 +847,12 @@ GameObject:
   - 114: {fileID: 11448078}
   - 114: {fileID: 11429638}
   - 208: {fileID: 20850020}
+  - 114: {fileID: 11412670}
   m_Layer: 2
   m_Name: Fossil_Fuel_Factory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 4
+  m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &174174
@@ -1050,7 +1081,7 @@ GameObject:
   m_Name: Smoke_Particle_white1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 4
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &193604
@@ -1175,7 +1206,7 @@ Transform:
   m_LocalScale: {x: 1.8821704, y: 6.388298, z: 20.65965}
   m_Children: []
   m_Father: {fileID: 490968}
-  m_RootOrder: 9
+  m_RootOrder: 11
 --- !u!4 &405198
 Transform:
   m_ObjectHideFlags: 1
@@ -1251,7 +1282,7 @@ Transform:
   m_LocalScale: {x: 0.9608077, y: 6.388298, z: 29.081778}
   m_Children: []
   m_Father: {fileID: 490968}
-  m_RootOrder: 12
+  m_RootOrder: 14
 --- !u!4 &415230
 Transform:
   m_ObjectHideFlags: 1
@@ -1442,7 +1473,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 490968}
-  m_RootOrder: 8
+  m_RootOrder: 10
 --- !u!4 &437282
 Transform:
   m_ObjectHideFlags: 1
@@ -1532,7 +1563,7 @@ Transform:
   m_LocalScale: {x: 1.8821704, y: 6.388298, z: 20.65965}
   m_Children: []
   m_Father: {fileID: 490968}
-  m_RootOrder: 10
+  m_RootOrder: 12
 --- !u!4 &445344
 Transform:
   m_ObjectHideFlags: 1
@@ -1679,7 +1710,7 @@ Transform:
   - {fileID: 455312}
   - {fileID: 438808}
   m_Father: {fileID: 490968}
-  m_RootOrder: 5
+  m_RootOrder: 7
 --- !u!4 &459758
 Transform:
   m_ObjectHideFlags: 1
@@ -1789,6 +1820,18 @@ Transform:
   - {fileID: 476814}
   m_Father: {fileID: 459758}
   m_RootOrder: 4
+--- !u!4 &471124
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 158470}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -25.6, y: -11.36, z: -54.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 490968}
+  m_RootOrder: 6
 --- !u!4 &473756
 Transform:
   m_ObjectHideFlags: 1
@@ -1825,7 +1868,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 490968}
-  m_RootOrder: 6
+  m_RootOrder: 8
 --- !u!4 &476814
 Transform:
   m_ObjectHideFlags: 1
@@ -1899,7 +1942,7 @@ Transform:
   m_LocalScale: {x: 0.96080786, y: 6.388298, z: 24.989836}
   m_Children: []
   m_Father: {fileID: 490968}
-  m_RootOrder: 11
+  m_RootOrder: 13
 --- !u!4 &490156
 Transform:
   m_ObjectHideFlags: 1
@@ -1928,6 +1971,8 @@ Transform:
   - {fileID: 401080}
   - {fileID: 494362}
   - {fileID: 481126}
+  - {fileID: 495816}
+  - {fileID: 471124}
   - {fileID: 459206}
   - {fileID: 476436}
   - {fileID: 492678}
@@ -1949,7 +1994,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 490968}
-  m_RootOrder: 7
+  m_RootOrder: 9
 --- !u!4 &494362
 Transform:
   m_ObjectHideFlags: 1
@@ -1974,6 +2019,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 460764}
   m_RootOrder: 0
+--- !u!4 &495816
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 132794}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 53, y: -12.5, z: -47.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 490968}
+  m_RootOrder: 5
 --- !u!4 &496084
 Transform:
   m_ObjectHideFlags: 1
@@ -2237,7 +2294,7 @@ Animator:
   m_GameObject: {fileID: 173756}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 281b4f45c09af5341b2067c1345566d3, type: 3}
-  m_Controller: {fileID: 9100000, guid: b2f38e81458748240afa8a115e089207, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2431,6 +2488,37 @@ MonoBehaviour:
   OnEnd:
     m_PersistentCalls:
       m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!114 &11412670
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 173756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2313d5ebc6b52b14586251dd3481e07b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  usesCollider: 0
+  range: 25
+  debug: 1
+  doesRemove: 1
+  moraleEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: StartScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
 --- !u!114 &11429638
