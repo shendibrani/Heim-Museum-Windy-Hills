@@ -21,7 +21,7 @@
 {
     "name": "High Fire",
     "timer": 10.0,
-    "_efficiencyMultiplyer": 0,
+    "_efficiencyMultiplyer": 0.0,
     "negativeEffect": true,
     "timed": false,
     "endOnTap": false,
@@ -146,7 +146,7 @@
     "negativeEffect": true,
     "timed": true,
     "endOnTap": false,
-    "endOnWind": false
+    "endOnWind": false,
     "winzoneDependent": false,
     "setsOnHighFire": false,
     "breaksTurbine": false,

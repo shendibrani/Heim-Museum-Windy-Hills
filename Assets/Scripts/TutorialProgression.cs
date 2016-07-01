@@ -520,20 +520,20 @@ public class TutorialProgression : MonoBehaviour {
     // Called by statechanges. Change Bools of cleared goals
     public void OnSaboteurEnd(TurbineState oldState, TurbineState newState)
 	{
-		saboteurWasFought = newState == null;
+		saboteurWasFought = newState.name == TurbineStateManager.turbineCooldownState.name;
 	}
 	public void OnFireEnd(TurbineState oldState, TurbineState newState)
 	{
-		fireWasFought = newState == null;
+		fireWasFought = newState.name == TurbineStateManager.turbineCooldownState.name;
 		Debug.Log (fireWasFought);
 	}
 	public void OnBrokenEnd(TurbineState oldState, TurbineState newState)
 	{
-		brokenWasFixed = newState == null;
+		brokenWasFixed = newState.name == TurbineStateManager.turbineCooldownState.name;
 	}
 	public void OnDirtEnd(TurbineState oldState, TurbineState newState)
 	{
-		dirtyWasfought = newState == null;
+		dirtyWasfought = newState.name == TurbineStateManager.turbineCooldownState.name;
 	}
 
 	public void SetMill(TurbineObject pMill)
