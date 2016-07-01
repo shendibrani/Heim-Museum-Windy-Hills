@@ -30,7 +30,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 
 	public bool isFine {
 		get {
-			return (state.value == null || state.value.name == TurbineStateManager.turbineCooldownState.name);
+			return (state.value == null);
 		}
 	}
 

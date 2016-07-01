@@ -159,15 +159,14 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 
 	public void End (bool solved)
 	{
-	
 		if (!solved && negativeEffect) {
 			Debug.Log ("[State] State " + name + " failed at " + Time.time);
 			Fail ();
 		} else {
+			Debug.Log("State Name:" + name + "isCooldown" + isCooldown);
 			Debug.Log ("[State] State " + name + " ended  with " + timer + "seconds to spare at " + Time.time);
-			//owner.state.value = null;
-			TurbineStateManager.turbineCooldownState.Copy(owner, true);
-			//owner.state.value = null;
+			if (isCooldown) owner.state.value = null;
+			else TurbineStateManager.turbineCooldownState.Copy(owner, true);
 		}
 	}
 
@@ -189,10 +188,6 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
         {
             TurbineStateManager.occupiedState.Copy(owner, true);
         }
-		if (isCooldown)
-		{
-			owner.state.value = null;
-		}
 	}
 
 	/// <summary>

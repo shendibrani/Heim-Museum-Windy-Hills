@@ -123,7 +123,7 @@ public class TurbineParticle : MonoBehaviour {
 				Dirty (true);
 			}
 		}
-		if(newState.name == TurbineStateManager.turbineCooldownState.name && oldState.name != TurbineStateManager.turbineCooldownState.name)
+		if(newState != null && newState.name == TurbineStateManager.turbineCooldownState.name && oldState.name != TurbineStateManager.turbineCooldownState.name)
 		{
 			Sparkles (true);
             if (oldState.name == TurbineStateManager.saboteurState.name)

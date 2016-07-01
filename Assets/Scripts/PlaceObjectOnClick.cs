@@ -145,7 +145,7 @@ public class PlaceObjectOnClick : MonoBehaviour, ITouchSensitive, IMouseSensitiv
 
     bool DisplayObject(float hx, float hz, Ray ray)
     {
-        if (debug) Debug.Log("Checking Temporary");
+       // if (debug) Debug.Log("Checking Temporary");
         if (!dirtyFlag && TestUICast(hx, hz))
         {
             if (debug) Debug.Log("Building points array");
