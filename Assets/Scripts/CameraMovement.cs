@@ -62,10 +62,7 @@ public class CameraMovement : MonoBehaviour {
 
 	void Update ()
 	{
-		if (tracking && _reachedGoal)
-		{
-			Track ();
-		}
+		
 
 		if (!_reachedGoal)
 		{
@@ -96,6 +93,11 @@ public class CameraMovement : MonoBehaviour {
 
 				Camera.main.transform.position = Vector3.Lerp (_origin, _target + _offset, (Mathf.Sin(Mathf.Lerp(-0.5f*Mathf.PI,0.5f*Mathf.PI,_move) ) + 1)*0.5f);
 			}
+
+		}
+		if (tracking)
+		{
+			Track ();
 		}
 	}
 
@@ -109,7 +111,7 @@ public class CameraMovement : MonoBehaviour {
 	{
 		_origin = Camera.main.transform.position;
 		_target = trackTarget.transform.position;
-		Camera.main.transform.position = Vector3.Lerp (_origin, _target + _offset,0.1f);
+		Camera.main.transform.position = Vector3.Lerp (_origin, _target + _offset,0.05f*_move);
 	}
 
 	public void StopTracking()
