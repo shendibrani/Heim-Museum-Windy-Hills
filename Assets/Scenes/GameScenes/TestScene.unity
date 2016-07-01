@@ -25443,15 +25443,15 @@ MonoBehaviour:
     usedTurbine: {fileID: 0}
     speed: 1
   fireEvent:
-    difficulty: 9
+    difficulty: 2
     name: 2
     usedTurbine: {fileID: 0}
   saboteurEvent:
-    difficulty: 9
+    difficulty: 2
     name: 3
     usedTurbine: {fileID: 0}
   flockEvent:
-    difficulty: 9
+    difficulty: 2
     name: 4
     usedTurbine: {fileID: 0}
   boatEvent:
