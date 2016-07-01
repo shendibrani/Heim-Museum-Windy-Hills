@@ -33,7 +33,7 @@ GameObject:
   m_Name: BridgeTop_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 4
   m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &150258
@@ -50,7 +50,7 @@ GameObject:
   m_Name: BridgeLow_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 4
   m_StaticEditorFlags: 4294967263
   m_IsActive: 1
 --- !u!1 &173922
@@ -68,7 +68,7 @@ GameObject:
   m_Name: BridgeTop_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 4
   m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &191934
@@ -85,7 +85,7 @@ GameObject:
   m_Name: BridgeLow_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 4
   m_StaticEditorFlags: 4294967263
   m_IsActive: 1
 --- !u!4 &412176
@@ -95,8 +95,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 150258}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.8460813, y: 0, z: 0.000049710274}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -1.83, y: 0, z: -0}
+  m_LocalScale: {x: 2.2, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 422888}
   m_RootOrder: 3
@@ -106,9 +106,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 114214}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 293.33, y: 8.76, z: 246.6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: 128.47, y: 8.76, z: 247.37}
+  m_LocalScale: {x: 1, y: 1, z: 1.3575759}
   m_Children:
   - {fileID: 473800}
   - {fileID: 459188}
@@ -123,8 +123,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 191934}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000017881393}
-  m_LocalPosition: {x: -2.8439164, y: 0, z: 0.000049591064}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.85, y: 0, z: 0}
+  m_LocalScale: {x: 1.5, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 422888}
   m_RootOrder: 1

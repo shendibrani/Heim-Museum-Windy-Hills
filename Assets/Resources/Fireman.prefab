@@ -231,7 +231,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 160112}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.13, z: -1.7}
+  m_LocalPosition: {x: 0, y: 0.07, z: -1.7}
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_Children: []
   m_Father: {fileID: 451470}
@@ -267,8 +267,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 138970}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 230.76, y: 12.16, z: 217.1}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalPosition: {x: 217.03339, y: 12.38, z: 319.7965}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 438350}
   - {fileID: 435414}
@@ -360,7 +360,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: ed85821d29fa51c4399a6bd08582cf26, type: 2}
+  - {fileID: 2100000, guid: 5773e13b2abb444489ef5841bd7a2271, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -386,7 +386,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: ed85821d29fa51c4399a6bd08582cf26, type: 2}
+  - {fileID: 2100000, guid: 5773e13b2abb444489ef5841bd7a2271, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -438,7 +438,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: ed85821d29fa51c4399a6bd08582cf26, type: 2}
+  - {fileID: 2100000, guid: 5773e13b2abb444489ef5841bd7a2271, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -464,7 +464,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: ed85821d29fa51c4399a6bd08582cf26, type: 2}
+  - {fileID: 2100000, guid: 5773e13b2abb444489ef5841bd7a2271, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -545,6 +545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf6d3c5f8aed6e6458731e3a7d100c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 0
 --- !u!195 &19541260
 NavMeshAgent:
   m_ObjectHideFlags: 1
@@ -563,7 +564,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 0.5
-  m_WalkableMask: 17
+  m_WalkableMask: 49
   m_ObstacleAvoidanceType: 4
 --- !u!198 &19843170
 ParticleSystem:
@@ -572,7 +573,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 160112}
   serializedVersion: 2
-  lengthInSec: 31.05
+  lengthInSec: 5
   startDelay:
     scalar: 0
     maxCurve:
@@ -609,7 +610,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     startLifetime:
-      scalar: 3
+      scalar: 5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -779,7 +780,7 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 0.8
+          value: 0.9
           inSlope: 0
           outSlope: 0
           tangentMode: 0
