@@ -143,7 +143,7 @@
     "name": "Turbine Cooldown",
     "timer": 5.0,
     "_efficiencyMultiplyer": 1.0,
-    "negativeEffect": true,
+    "negativeEffect": false,
     "timed": true,
     "endOnTap": false,
     "endOnWind": false,
