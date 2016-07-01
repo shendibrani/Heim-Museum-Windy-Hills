@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 [System.Serializable]
 public abstract class EventClass 
@@ -29,6 +30,9 @@ public enum EventNames
 [System.Serializable]
 public class BoatEvent : EventClass {
 
+	public List<Transform> StartPositions;
+	Transform StartNode;
+
     public EventNames Name
     {
         get
@@ -43,8 +47,11 @@ public class BoatEvent : EventClass {
     
     public override void EventStart() {
 
-        Vector3 SpawnPos = new Vector3(414, 8, 136);
-        GameObject instance = (GameObject)GameObject.Instantiate(Resources.Load("Boat"), SpawnPos, Quaternion.identity);
+		StartPositions.Add(GameObject.Find("StartPos1").transform);
+		StartPositions.Add(GameObject.Find("StartPos2").transform);
+		StartNode = StartPositions[UnityEngine.Random.Range(0, StartPositions.Count)];
+
+		GameObject instance = (GameObject)GameObject.Instantiate(Resources.Load("Boat"), StartNode.position, Quaternion.identity);
     }
 
     public override void FakeEventStart() { EventStart(); }

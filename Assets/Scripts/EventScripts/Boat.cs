@@ -5,9 +5,7 @@ public class Boat : MonoBehaviour, IWindSensitive {
 
 	//[SerializeField] Transform dest;
     public List<Transform> Destinations;
-    public List<Transform> StartPositions;
     NavMeshAgent boatAgent;
-    Transform StartNode;
     Transform EndNode;
 	bool windAffected;
 	bool isBroken = false;
@@ -27,16 +25,13 @@ public class Boat : MonoBehaviour, IWindSensitive {
     void Start()
 	{
         boatAgent = GetComponent<NavMeshAgent>();
-        StartPositions.Add(GameObject.Find("StartPos1").transform);
-        StartPositions.Add(GameObject.Find("StartPos2").transform);
         Destinations.Add(GameObject.Find("Destination1").transform);
         Destinations.Add(GameObject.Find("Destination2").transform);
 
-        StartNode = StartPositions[Random.Range(0, StartPositions.Count)];
-        EndNode = Destinations[Random.Range(0, StartPositions.Count)];
+		EndNode = Destinations[Random.Range(0, Destinations.Count)];
 
-        boatAgent.Warp(StartNode.transform.position);
-        transform.position = StartNode.transform.position;
+        //boatAgent.Warp(StartNode.transform.position);
+       // transform.position = StartNode.transform.position;
         boatAgent.SetDestination(EndNode.transform.position);
     }
 
