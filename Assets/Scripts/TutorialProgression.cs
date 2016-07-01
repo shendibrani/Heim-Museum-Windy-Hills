@@ -269,6 +269,8 @@ public class TutorialProgression : MonoBehaviour {
 		if (pActive && TurbineLimitManager.Instance.availableCount != 0)
 		{
 			MillButton.GetComponent<Animator> ().SetBool ("Active", true);
+		} else {
+			MillButton.GetComponent<Animator> ().SetBool ("Active", false);
 		}
 	}
 
@@ -288,6 +290,7 @@ public class TutorialProgression : MonoBehaviour {
 	{
 		TurbineLimitManager.Instance.ChangeAvailable (1);
 		PlusMill.SetBool ("Active", true);
+		setMillButton (canStartPlacing);
 	}
 
 	//Cutscene backcall Reference sets
