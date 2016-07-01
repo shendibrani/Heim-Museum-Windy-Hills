@@ -15,7 +15,7 @@
     "endOnFiremen": true,
     "endOnRepair": false,
     "endOnCleanup": false,
-"sCooldown": false
+"isCooldown": false
 }
 #
 {
@@ -35,7 +35,7 @@
     "endOnFiremen": true,
     "endOnRepair": false,
     "endOnCleanup": false,
-"sCooldown": false
+"isCooldown": false
 }
 #
 {
@@ -55,7 +55,7 @@
     "endOnFiremen": false,
     "endOnRepair": false,
     "endOnCleanup": false,
-"sCooldown": false
+"isCooldown": false
 }
 #
 {
@@ -75,7 +75,7 @@
     "endOnFiremen": false,
     "endOnRepair": true,
     "endOnCleanup": false,
-"sCooldown": false	
+"isCooldown": false	
 }
 #
 {
@@ -95,7 +95,7 @@
     "endOnFiremen": false,
     "endOnRepair": false,
     "endOnCleanup": true,
-"sCooldown": false
+"isCooldown": false
 }
 #
 {
@@ -115,7 +115,7 @@
     "endOnFiremen": false,
     "endOnRepair": false,
     "endOnCleanup": false,
-"sCooldown": false
+"isCooldown": false
 }
 #
 {
@@ -136,7 +136,7 @@
     "endOnFiremen": false,
     "endOnRepair": false,
     "endOnCleanup": false,
-"sCooldown": false	
+"isCooldown": false	
 }
 #
 {
@@ -156,5 +156,5 @@
     "endOnFiremen": false,
     "endOnRepair": false,
     "endOnCleanup": false,
-    "sCooldown": true
+    "isCooldown": true
 }
