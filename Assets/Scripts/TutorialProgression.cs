@@ -69,8 +69,6 @@ public class TutorialProgression : MonoBehaviour {
 		}
 	}
 
-
-
 	bool messedUp = false;
 	bool hasPlacedMills = false;
 	bool isComplete = false;
@@ -98,8 +96,7 @@ public class TutorialProgression : MonoBehaviour {
 	public RectTransform TapFinger;
 	[SerializeField] GameObject birds;
 
-	[SerializeField] Image MillButtonActive;
-	[SerializeField] Image MillButtonInactive;
+	[SerializeField] GameObject MillButton;
 
 	[SerializeField] Animator[] buttons;
 
@@ -269,8 +266,10 @@ public class TutorialProgression : MonoBehaviour {
 
 	void setMillButton(bool pActive)
 	{
-		MillButtonActive.enabled = pActive;
-		MillButtonInactive.enabled = !pActive;
+		if (pActive && TurbineLimitManager.Instance.availableCount != 0)
+		{
+			MillButton.GetComponent<Animator> ().SetBool ("Active", true);
+		}
 	}
 
 	//For Regular Feedback
@@ -520,20 +519,20 @@ public class TutorialProgression : MonoBehaviour {
     // Called by statechanges. Change Bools of cleared goals
     public void OnSaboteurEnd(TurbineState oldState, TurbineState newState)
 	{
-		saboteurWasFought = newState == null;
+		saboteurWasFought = (newState == null || newState.name == TurbineStateManager.turbineCooldownState.name);
 	}
 	public void OnFireEnd(TurbineState oldState, TurbineState newState)
 	{
-		fireWasFought = newState == null;
+		fireWasFought = (newState == null || newState.name == TurbineStateManager.turbineCooldownState.name);
 		Debug.Log (fireWasFought);
 	}
 	public void OnBrokenEnd(TurbineState oldState, TurbineState newState)
 	{
-		brokenWasFixed = newState == null;
+		brokenWasFixed = (newState == null || newState.name == TurbineStateManager.turbineCooldownState.name);
 	}
 	public void OnDirtEnd(TurbineState oldState, TurbineState newState)
 	{
-		dirtyWasfought = newState == null;
+		dirtyWasfought = (newState == null || newState.name == TurbineStateManager.turbineCooldownState.name);
 	}
 
 	public void SetMill(TurbineObject pMill)
