@@ -333,10 +333,10 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 	}
 
 	public void OnStayWindzone(){
-		if (state.value != null) {
+		if (!isFine)
+		{
 			state.value.OnStayWindzone();
 		}
-
 	}
 
     public void OnExitWindzone ()
