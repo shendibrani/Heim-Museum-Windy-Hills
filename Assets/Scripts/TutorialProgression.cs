@@ -382,6 +382,19 @@ public class TutorialProgression : MonoBehaviour {
 		pScript.SetBoolReference (HasRepairClick);
 	}
 
+	public bool HasCleanClick()
+	{
+		if (UICallbacksSystem.currentState == UIState.Cleanup)
+		{
+			return true;
+		}
+		return false;
+	}
+	public void GetCleanClickReference(Cutscene pScript)
+	{
+		pScript.SetBoolReference (HasCleanClick);
+	}
+
 	public bool HasBuildClick()
 	{
 		return build1;
@@ -479,7 +492,7 @@ public class TutorialProgression : MonoBehaviour {
 
 	public void StartSaboteur()
 	{
-		TurbineStateManager.saboteurState.Copy(savedMill);
+		TurbineStateManager.saboteurState.Copy(savedMill,true);
 		savedMill.state.OnValueChanged += OnSaboteurEnd;
 	}
 

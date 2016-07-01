@@ -165,6 +165,7 @@ public class TurbineState : IMouseSensitive, ITouchSensitive, IWindSensitive
 			Fail ();
 		} else {
 			Debug.Log ("[State] State " + name + " ended  with " + timer + "seconds to spare at " + Time.time);
+			owner.state.value = null;
 			TurbineStateManager.turbineCooldownState.Copy(owner, true);
 			//owner.state.value = null;
 		}
