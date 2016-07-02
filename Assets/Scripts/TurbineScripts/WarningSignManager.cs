@@ -3,7 +3,8 @@ using System.Collections;
 
 public class WarningSignManager : MonoBehaviour {
 
-	[SerializeField] Highlightable police, firemen, repair, cleanup;
+	//[SerializeField] Highlightable police, firemen, repair, cleanup;
+	[SerializeField] Animator police, firemen, repair, cleanup;
 
 	void Start()
 	{
@@ -13,33 +14,41 @@ public class WarningSignManager : MonoBehaviour {
 	public void OnPolice()
 	{
 		Clear ();
-		police.SetHighlight(true);
+		//police.SetHighlight(true);
+		police.SetBool("Active",true);
 	}
 
 	public void OnFiremen()
 	{
 		Clear ();
-		firemen.SetHighlight(true);
+		//firemen.SetHighlight(true);
+		firemen.SetBool("Active",true);
 	}
 
 	public void OnRepair()
 	{
 		Clear ();
-		repair.SetHighlight(true);
+		//repair.SetHighlight(true);
+		repair.SetBool("Active",true);
 	}
 
 	public void OnCleanup()
 	{
 		Clear ();
-		cleanup.SetHighlight(true);
+		//cleanup.SetHighlight(true);
+		cleanup.SetBool("Active",true);
 	}
 
 	public void Clear()
 	{
-		police.SetHighlight (false);
-		firemen.SetHighlight (false);
-		repair.SetHighlight (false);
-		cleanup.SetHighlight (false);
+//		police.SetHighlight (false);
+//		firemen.SetHighlight (false);
+//		repair.SetHighlight (false);
+//		cleanup.SetHighlight (false);
+		police.SetBool("Active",false);
+		firemen.SetBool("Active",false);
+		repair.SetBool("Active",false);
+		cleanup.SetBool("Active",false);
 	}
 
 	public void OnStateChange(TurbineState oldState, TurbineState newState)
