@@ -32,7 +32,14 @@ public class StormBehavior : MonoBehaviour, IWindSensitive
 
     private void DestroyCloud()
     {
-        if (transform.position.x < -300) Destroy(gameObject);
+		if (transform.position.x < -300)
+		{
+			if (GetComponentInChildren<RecognizeTarget>() != null)
+			{
+				GetComponentInChildren<RecognizeTarget> ().transform.SetParent (null);
+			}
+			Destroy(gameObject);
+		}
     }
 
     bool EnteredWindzone = false;

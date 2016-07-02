@@ -41,6 +41,10 @@ public class Boat : MonoBehaviour, IWindSensitive {
         if (Vector3.Distance(transform.position, boatAgent.destination) < 2f)
 		{
             arrived = true;
+			if (GetComponentInChildren<RecognizeTarget>() != null)
+			{
+				GetComponentInChildren<RecognizeTarget> ().transform.SetParent (null);
+			}
             Destroy(gameObject);
         }
 
