@@ -91,7 +91,10 @@ public class Boat : MonoBehaviour, IWindSensitive {
 					if (bridge!= null) {
 						bridge.open = false;
 					}
-
+					if (GetComponentInChildren<RecognizeTarget>() != null)
+					{
+						GetComponentInChildren<RecognizeTarget> ().transform.SetParent (null);
+					}
 					Destroy (this.gameObject);
 
 				}
