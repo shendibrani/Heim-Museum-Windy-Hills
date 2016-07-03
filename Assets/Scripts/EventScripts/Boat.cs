@@ -22,6 +22,8 @@ public class Boat : MonoBehaviour, IWindSensitive {
 	[SerializeField] GameObject Sail2;
 	[SerializeField] GameObject Sail3;
 
+	[SerializeField] bool debug;
+
     void Start()
 	{
         boatAgent = GetComponent<NavMeshAgent>();
@@ -138,12 +140,13 @@ public class Boat : MonoBehaviour, IWindSensitive {
 		sailP.AddComponent<Sail> ();
 
 		RaycastHit hit;
-		if (Physics.Raycast(this.transform.position + new Vector3 (0,5,0),sailP.transform.forward,out hit))
+		if (Physics.Raycast(this.transform.position + new Vector3 (0,20,0),sailP.transform.forward,out hit))
 		{
 			if (hit.collider.gameObject.GetComponent<TurbineObject>() != null)
 			{
 				sailP.GetComponent<Sail> ().goal = hit.collider.gameObject.GetComponent<TurbineObject> ();
 			}
+			/* if (debug) */Debug.Log (hit.collider.name);
 		}
 		GetComponent<Animator> ().SetInteger ("State", 3);
 		boatAgent.Stop ();

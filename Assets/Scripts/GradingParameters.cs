@@ -29,13 +29,11 @@ public abstract class GradingParameters
 	
 public class TimedGrade : GradingParameters
 {
-	Cutscene cut;
-
 	float tOne, tTwo, tThree;
 
-	public TimedGrade(Cutscene cut, float thresholdOne,float thresholdTwo, float thresholdThree)
+	public TimedGrade(float thresholdOne,float thresholdTwo, float thresholdThree)
 	{
-		this.cut = cut;
+		//this.cut = cut;
 		tOne = thresholdOne;
 		tTwo = thresholdTwo;
 		tThree = thresholdThree;
@@ -43,44 +41,46 @@ public class TimedGrade : GradingParameters
 
 	public override bool OnePointGrade ()
 	{
-		return cut.timer < tOne;
+		return true; //TutorialProgression.Instance.timer < tOne;
 	}
 
 	public override bool TwoPointGrade ()
 	{
-		return cut.timer < tTwo;
+		return true; //Tcut.timer < tTwo;
 	}
 
 	public override bool ThreePointGrade ()
 	{
-		return cut.timer < tThree;
+		return true; //Tcut.timer < tThree;
 	}
 }
 
 public class FeedbackGrade : GradingParameters
 {
+	bool step1, step2, step3;
 
-
-	public FeedbackGrade()
+	public FeedbackGrade(bool s1, bool s2, bool s3)
 	{
-
+		step1 = s1;
+		step2 = s2;
+		step3 = s3;
 	}
 
 	public override bool OnePointGrade ()
 	{
 		//One point condition
-		return false;
+		return step1;
 	}
 
 	public override bool TwoPointGrade ()
 	{
 		//Two point condition
-		return false;
+		return step2;
 	}
 
 	public override bool ThreePointGrade ()
 	{
 		//Three point condition
-		return false;
+		return step3;
 	}
 }
