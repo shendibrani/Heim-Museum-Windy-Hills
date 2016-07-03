@@ -85,8 +85,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 195516}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 392.1916, y: 9.998169, z: 188.76825}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalPosition: {x: 262.06982, y: 9.998167, z: 283.4333}
+  m_LocalScale: {x: 1.5, y: 2, z: 1.5}
   m_Children:
   - {fileID: 473290}
   - {fileID: 459092}
@@ -191,8 +191,8 @@ NavMeshAgent:
   m_GameObject: {fileID: 195516}
   m_Enabled: 1
   m_Radius: 0.5
-  m_Speed: 100
-  m_Acceleration: 8
+  m_Speed: 1000
+  m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 1000
   m_StoppingDistance: 0
@@ -201,7 +201,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 1
   m_BaseOffset: 0.5
-  m_WalkableMask: 17
+  m_WalkableMask: 273
   m_ObstacleAvoidanceType: 4
 --- !u!198 &19855224
 ParticleSystem:
