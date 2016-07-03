@@ -47,7 +47,9 @@ public class TutorialProgression : MonoBehaviour {
 
 	bool CarStarted;
 
-
+	bool gradingStep1 = false;
+	bool gradingStep2 = false;
+	bool gradingStep3 = false;
 
 	bool enteredWindzone = false;
 
@@ -84,6 +86,9 @@ public class TutorialProgression : MonoBehaviour {
 	[SerializeField] Cutscene[] PlaceMills;
 
 	Animator popup;
+	[SerializeField] Sprite gold;
+	[SerializeField] Sprite silver;
+	[SerializeField] Sprite bronze;
 
     bool progressPause = false;
 
@@ -188,8 +193,6 @@ public class TutorialProgression : MonoBehaviour {
 
 	public void RequirePlacing(int pReq)
 	{
-		//progressPause = true;
-		//PlaceObjectOnClick.Instance.SetDirty(false);
 		requiredMills = pReq;
 		currentMills = 0;
 		hasPlacedMills = false;
@@ -274,10 +277,45 @@ public class TutorialProgression : MonoBehaviour {
 		}
 	}
 
+	public void GradingDecrease(int pStep = 0)
+	{
+		if (gradingStep3 == true)
+		{
+			gradingStep3 = false;
+		}
+		else if (gradingStep2 == true)
+		{
+			gradingStep2 = false;
+		}
+
+		Debug.Log ("1:" + gradingStep1);
+		Debug.Log ("2:" + gradingStep2);
+		Debug.Log ("3:" + gradingStep3);
+	}
+	public void ResetGrading()
+	{
+		gradingStep1 = true;
+		gradingStep2 = true;
+		gradingStep3 = true;
+	}
+
 	//For Regular Feedback
 	public void Animation()
 	{
-		//Will Contain calls to the rating probably?
+		FeedbackGrade fGrade = new FeedbackGrade (gradingStep1, gradingStep2, gradingStep3);
+		int grade = fGrade.CalculateScore ();
+		if (grade == 1)
+		{
+			popup.GetComponent<Image> ().sprite = bronze;
+		}
+		if (grade == 2)
+		{
+			popup.GetComponent<Image> ().sprite = silver;
+		}
+		if (grade == 3)
+		{
+			popup.GetComponent<Image> ().sprite = gold;
+		}
 		popup.SetBool ("play", true);
 	}
 

@@ -63,6 +63,7 @@ public class Morale : MonoBehaviour
                     morale -= 0.1f;
 					Dispatcher<MoraleChangeMessage>.Dispatch(new MoraleChangeMessage(gameObject, -0.1f));
                     //onMoraleUpdate(-0.1f);
+					TutorialProgression.Instance.GradingDecrease();
                     CheckWindmillPlacement(go);
                     if (debug) Debug.Log("Update Morale");
                 }
@@ -82,6 +83,8 @@ public class Morale : MonoBehaviour
                 morale -= 0.1f;
                 Dispatcher<MoraleChangeMessage>.Dispatch(new MoraleChangeMessage(gameObject, -0.1f));
                 //onMoraleUpdate(-1f);
+
+				TutorialProgression.Instance.GradingDecrease();
                 CheckWindmillPlacement(go);
                 if (debug) Debug.Log("Update Morale");
             }

@@ -15,6 +15,20 @@ public class FingerTapTimers : MonoBehaviour {
 	public int activationTime;
 	GameObject Aim;
 
+	bool gradingDecreased = false;
+
+	public bool GradingDecreased
+	{
+		get
+		{
+			return gradingDecreased;
+		}
+		set
+		{
+			gradingDecreased = value;
+		}
+	}
+
 	void Update ()
 	{
 		if (sceneRunning)
@@ -34,6 +48,11 @@ public class FingerTapTimers : MonoBehaviour {
 				else
 				{
 					Target (Aim);
+					if (!gradingDecreased)
+					{
+						TutorialProgression.Instance.GradingDecrease ();
+						gradingDecreased = true;
+					} 
 					subStep = 2;
 				}
 			}
