@@ -5343,6 +5343,10 @@ Prefab:
       propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 106942, guid: 8b9b46e4031e41847bfa8a37fca17b58, type: 2}
+      propertyPath: m_Name
+      value: Farm3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8b9b46e4031e41847bfa8a37fca17b58, type: 2}
   m_IsPrefabParent: 0
@@ -5465,6 +5469,10 @@ Prefab:
       propertyPath: runGoals.Array.data[3]
       value: 
       objectReference: {fileID: 1151707917}
+    - target: {fileID: 11416486, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
+      propertyPath: debug
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
   m_IsPrefabParent: 0
@@ -9790,6 +9798,10 @@ Prefab:
       propertyPath: runGoals.Array.data[0]
       value: 
       objectReference: {fileID: 2106045411}
+    - target: {fileID: 11416486, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
+      propertyPath: debug
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
   m_IsPrefabParent: 0
@@ -13395,7 +13407,27 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 11448078, guid: b786f3e1bcc83ea4abb5f97ddf0c5e77, type: 2}
+      propertyPath: debug
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11448078, guid: b786f3e1bcc83ea4abb5f97ddf0c5e77, type: 2}
+      propertyPath: doesRemove
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11448078, guid: b786f3e1bcc83ea4abb5f97ddf0c5e77, type: 2}
+      propertyPath: moraleEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2072093694}
+    - target: {fileID: 11448078, guid: b786f3e1bcc83ea4abb5f97ddf0c5e77, type: 2}
+      propertyPath: moraleEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartScene
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 11429638, guid: b786f3e1bcc83ea4abb5f97ddf0c5e77, type: 2}
+    - {fileID: 11412670, guid: b786f3e1bcc83ea4abb5f97ddf0c5e77, type: 2}
+    - {fileID: 11438082, guid: b786f3e1bcc83ea4abb5f97ddf0c5e77, type: 2}
+    - {fileID: 11401382, guid: b786f3e1bcc83ea4abb5f97ddf0c5e77, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: b786f3e1bcc83ea4abb5f97ddf0c5e77, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &601567003
@@ -14200,7 +14232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   usesCollider: 1
   range: 0
-  debug: 1
+  debug: 0
   doesRemove: 1
   moraleEvent:
     m_PersistentCalls:
@@ -18519,6 +18551,10 @@ Prefab:
       propertyPath: runGoals.Array.data[3]
       value: 
       objectReference: {fileID: 1151707917}
+    - target: {fileID: 11416486, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
+      propertyPath: debug
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
   m_IsPrefabParent: 0
@@ -25487,20 +25523,20 @@ MonoBehaviour:
   waveCooldownTime: 2
   waveDifficulty: 8
   stormEvent:
-    difficulty: 2
+    difficulty: 9
     name: 1
     usedTurbine: {fileID: 0}
     speed: 1
   fireEvent:
-    difficulty: 2
+    difficulty: 9
     name: 2
     usedTurbine: {fileID: 0}
   saboteurEvent:
-    difficulty: 2
+    difficulty: 9
     name: 3
     usedTurbine: {fileID: 0}
   flockEvent:
-    difficulty: 2
+    difficulty: 9
     name: 4
     usedTurbine: {fileID: 0}
   boatEvent:
@@ -27328,11 +27364,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   usesCollider: 1
   range: 0
-  debug: 1
-  doesRemove: 0
+  debug: 0
+  doesRemove: 1
   moraleEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2072093694}
+        m_MethodName: StartScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
 --- !u!64 &1460975725
@@ -29178,10 +29225,21 @@ MonoBehaviour:
   usesCollider: 1
   range: 0
   debug: 0
-  doesRemove: 0
+  doesRemove: 1
   moraleEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2072093694}
+        m_MethodName: StartScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
 --- !u!1 &1591967057
@@ -31272,6 +31330,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: dc659278d74309440b5b2dc4f59a236b, type: 2}
+    - target: {fileID: 100000, guid: 66320e935311705458c08fbedbef2e14, type: 3}
+      propertyPath: m_Name
+      value: Farmhouse
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: 66320e935311705458c08fbedbef2e14, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 66320e935311705458c08fbedbef2e14, type: 3}
@@ -35266,10 +35328,21 @@ MonoBehaviour:
   usesCollider: 1
   range: 0
   debug: 0
-  doesRemove: 0
+  doesRemove: 1
   moraleEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2072093694}
+        m_MethodName: StartScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
 --- !u!1 &1882190958
@@ -35482,6 +35555,10 @@ Prefab:
     - target: {fileID: 11429392, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
       propertyPath: Actions.Array.data[2].StartEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Emotion
+      objectReference: {fileID: 0}
+    - target: {fileID: 11416486, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
+      propertyPath: debug
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
@@ -38102,7 +38179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   usesCollider: 1
   range: 0
-  debug: 1
+  debug: 0
   doesRemove: 1
   moraleEvent:
     m_PersistentCalls:
@@ -38317,10 +38394,21 @@ MonoBehaviour:
   usesCollider: 1
   range: 0
   debug: 0
-  doesRemove: 0
+  doesRemove: 1
   moraleEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2072093694}
+        m_MethodName: StartScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
 --- !u!4 &2009813680 stripped
@@ -38392,11 +38480,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   usesCollider: 0
   range: 60
-  debug: 1
-  doesRemove: 0
+  debug: 0
+  doesRemove: 1
   moraleEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2072093692}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
 --- !u!1 &2012498568

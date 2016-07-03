@@ -11,6 +11,8 @@ public class RepairmanBehavior : MonoBehaviour
     NavMeshAgent agent;
     public bool busy;
 
+	[SerializeField] bool debug;
+
     void Start()
     {
         timer = new Stopwatch();
@@ -28,13 +30,13 @@ public class RepairmanBehavior : MonoBehaviour
         {
             float distanceToTurbine = Vector3.Distance(targetTurbine.transform.position, transform.position);
             float distanceToStation = Vector3.Distance(transform.position, station.transform.position);
-            UnityEngine.Debug.Log("Distance to turbine: " + distanceToTurbine);
+			if (debug)  if(debug) UnityEngine.Debug.Log("Distance to turbine: " + distanceToTurbine);
 
             if (distanceToTurbine < 8.0f && !arrived)
             {
                 timer.Start();
                 arrived = true;
-                UnityEngine.Debug.Log("Fireman moved to the turbine");
+                if(debug) UnityEngine.Debug.Log("Fireman moved to the turbine");
                 busy = true;
 				targetTurbine.state.value.OnRepair();
             }

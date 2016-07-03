@@ -8,6 +8,8 @@ public class CleanersBehavior : MonoBehaviour {
     CleanersDepartment station;
     NavMeshAgent agent;
 
+	[SerializeField] bool debug;
+
     void Start()
     {
         timer = new Stopwatch();
@@ -25,13 +27,13 @@ public class CleanersBehavior : MonoBehaviour {
         {
             float distanceToTurbine = Vector3.Distance(targetTurbine.transform.position, transform.position);
             float distanceToStation = Vector3.Distance(transform.position, station.transform.position);
-            UnityEngine.Debug.Log("Distance to turbine: " + distanceToTurbine);
+            if(debug) UnityEngine.Debug.Log("Distance to turbine: " + distanceToTurbine);
 
             if (distanceToTurbine < 8.0f && !arrived)
             {
                 timer.Start();
                 arrived = true;
-                UnityEngine.Debug.Log("Cleaner moved to the turbine");
+                if(debug) UnityEngine.Debug.Log("Cleaner moved to the turbine");
             }
 
             if (timer.Elapsed.Seconds > 0.1f)
