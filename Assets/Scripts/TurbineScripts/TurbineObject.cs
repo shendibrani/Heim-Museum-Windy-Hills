@@ -315,6 +315,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 			Cleanup ();
 			break;
 		}
+		FindObjectOfType<UICallbacksSystem>().Clear();
 		//UICallbacksSystem.currentState = UIState.None;
 	}
 
