@@ -46,7 +46,7 @@ GameObject:
   - 135: {fileID: 13591228}
   - 23: {fileID: 2366450}
   - 195: {fileID: 19540742}
-  - 114: {fileID: 11483722}
+  - 114: {fileID: 11463866}
   m_Layer: 0
   m_Name: Repairman
   m_TagString: Untagged
@@ -158,7 +158,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 179806}
   m_Mesh: {fileID: 4300000, guid: c4cddf97656b0ea45a4ed107816b6925, type: 3}
---- !u!114 &11483722
+--- !u!114 &11463866
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -166,11 +166,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 195516}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29aaa5cd56a017a48b2d0f526b9c6985, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f8d406aaf2ad5b4998b00bc0896ce0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTurbine: {fileID: 0}
-  busy: 0
+  station: {fileID: 0}
+  stopTime: 1
+  agent: {fileID: 19540742}
+  type: 3
+  debug: 0
 --- !u!135 &13591228
 SphereCollider:
   m_ObjectHideFlags: 1

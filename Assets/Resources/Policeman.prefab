@@ -59,9 +59,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 482030}
-  - 114: {fileID: 11425646}
   - 195: {fileID: 19506474}
   - 65: {fileID: 6510504}
+  - 114: {fileID: 11474112}
   m_Layer: 0
   m_Name: Policeman
   m_TagString: Untagged
@@ -198,7 +198,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2.6}
   m_Center: {x: 0, y: -0.25, z: 0}
---- !u!114 &11425646
+--- !u!114 &11474112
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -206,9 +206,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 146452}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5abb3ca439c64e140a6ab67fa96efe5e, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f8d406aaf2ad5b4998b00bc0896ce0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  station: {fileID: 0}
+  stopTime: 1
+  agent: {fileID: 19506474}
+  type: 1
+  debug: 0
 --- !u!195 &19506474
 NavMeshAgent:
   m_ObjectHideFlags: 1

@@ -45,14 +45,9 @@ public class FlockBehavior : MonoBehaviour
 			if (TurbineStateManager.dirtyState.Copy(selectedTurbine) != null)
 			{
 				Dispatcher<DirtMessage>.Dispatch(new DirtMessage(selectedTurbine.gameObject));
-
-				Vector3 SpawnPos = FindObjectOfType<CleanersDepartment>().transform.position;
-				GameObject instance = (GameObject)GameObject.Instantiate(Resources.Load("Cleanerman"), SpawnPos, Quaternion.identity);
-				instance.GetComponent<CleanersBehavior>().SetTargetTurbine(selectedTurbine);
 			}
 			effectApplied = true;
             timer.Start();
-            
         }
     }
 
@@ -62,7 +57,6 @@ public class FlockBehavior : MonoBehaviour
     {
         if (moveToWindmill && !effectApplied) { 
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(selectedTurbine.transform.position.x, selectedTurbine.transform.position.y + 30, selectedTurbine.transform.position.z), Speed);
-            
         }
 
         if (timer.IsRunning)

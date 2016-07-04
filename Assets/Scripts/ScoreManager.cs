@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using System;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -92,8 +93,9 @@ public class ScoreManager : MonoBehaviour
         //fillValue = Mathf.Lerp(fillValue, currentFill, 0.2f);
 
         timerFill.fillAmount = currentFill;
-        multiplierText.text = "x" + Mathf.Floor(currentMorale).ToString();
-    }
+		multiplierText.text = "x" + Math.Round(currentMorale, 1).ToString();
+
+	}
 
     void ResetPower()
     {
