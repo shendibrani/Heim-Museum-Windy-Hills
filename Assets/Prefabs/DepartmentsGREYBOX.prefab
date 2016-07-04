@@ -2581,6 +2581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28f92712162513f44ba7e5c01e1e87e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefab: {fileID: 195516, guid: b6c899c6b0d081942882235bf93af037, type: 2}
 --- !u!114 &11415316
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2948,6 +2949,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c68b8bfb59632f3478fb4f8780151847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefab: {fileID: 143332, guid: 40255bdef3e619840a2bce00741888ed, type: 2}
 --- !u!114 &11459822
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2970,6 +2972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d942af19982e67a49b1e73798318844e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefab: {fileID: 138970, guid: f5d89be8b0ff0a44e83b078842875b99, type: 2}
 --- !u!114 &11461074
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3155,6 +3158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c737ee3984e2d2347942eb3b7d4cbad9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefab: {fileID: 146452, guid: a3b547b3fb8d1b841a3387b104862024, type: 2}
 --- !u!114 &11473882
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4180,8 +4184,8 @@ RectTransform:
   - {fileID: 22495706}
   m_Father: {fileID: 22474196}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 135}
   m_Pivot: {x: 0.5, y: 0}
