@@ -195,7 +195,7 @@ MonoBehaviour:
   - StartEvent:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 651676839}
+        - m_Target: {fileID: 1369994524}
           m_MethodName: StartScene
           m_Mode: 2
           m_Arguments:
@@ -252,7 +252,7 @@ MonoBehaviour:
   - StartEvent:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 651676839}
+        - m_Target: {fileID: 1369994524}
           m_MethodName: EndScene
           m_Mode: 1
           m_Arguments:
@@ -299,6 +299,17 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 651676839}
+        m_MethodName: EndScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1369994524}
         m_MethodName: EndScene
         m_Mode: 1
         m_Arguments:
@@ -4529,7 +4540,7 @@ MonoBehaviour:
   - StartEvent:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 651676839}
+        - m_Target: {fileID: 1369994524}
           m_MethodName: EndScene
           m_Mode: 1
           m_Arguments:
@@ -4551,7 +4562,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 651676839}
+        - m_Target: {fileID: 1369994524}
           m_MethodName: StartScene
           m_Mode: 2
           m_Arguments:
@@ -4562,7 +4573,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 651676839}
+        - m_Target: {fileID: 1369994524}
           m_MethodName: set_GradingDecreased
           m_Mode: 6
           m_Arguments:
@@ -4597,7 +4608,7 @@ MonoBehaviour:
   - StartEvent:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 651676839}
+        - m_Target: {fileID: 1369994524}
           m_MethodName: EndScene
           m_Mode: 1
           m_Arguments:
@@ -4689,7 +4700,7 @@ MonoBehaviour:
   OnEnd:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 651676839}
+      - m_Target: {fileID: 1369994524}
         m_MethodName: EndScene
         m_Mode: 1
         m_Arguments:
@@ -7650,6 +7661,10 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!1 &366792472 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 159750, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
+  m_PrefabInternal: {fileID: 967100966}
 --- !u!1 &370808542
 GameObject:
   m_ObjectHideFlags: 0
@@ -8109,18 +8124,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 651676839}
+        - m_Target: {fileID: 1369994524}
           m_MethodName: StartScene
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgument: {fileID: 1239738086}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 651676839}
+        - m_Target: {fileID: 1369994524}
           m_MethodName: set_GradingDecreased
           m_Mode: 6
           m_Arguments:
@@ -8445,7 +8460,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 651676839}
+        - m_Target: {fileID: 1369994524}
           m_MethodName: set_GradingDecreased
           m_Mode: 6
           m_Arguments:
@@ -8606,41 +8621,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1226472935}
-        m_MethodName: StartScene
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
---- !u!1 &414218219 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 133606, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
-  m_PrefabInternal: {fileID: 967100966}
---- !u!114 &414218220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 414218219}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2313d5ebc6b52b14586251dd3481e07b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  usesCollider: 1
-  range: 0
-  debug: 0
-  doesRemove: 1
-  moraleEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2072093694}
         m_MethodName: StartScene
         m_Mode: 1
         m_Arguments:
@@ -10982,6 +10962,17 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: 79250fadaddec9740b9ec8d2d5b485f0, type: 3}
+--- !u!95 &511684542 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 9505156, guid: 9f68a27c5b1bd6642bfb1dd595fd1342,
+    type: 2}
+  m_PrefabInternal: {fileID: 967100966}
+--- !u!114 &511684543 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11494592, guid: 9f68a27c5b1bd6642bfb1dd595fd1342,
+    type: 2}
+  m_PrefabInternal: {fileID: 967100966}
+  m_Script: {fileID: 11500000, guid: 766fe293836e4924190fd8d1a3a009ea, type: 3}
 --- !u!1 &512241578
 GameObject:
   m_ObjectHideFlags: 0
@@ -17705,6 +17696,10 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: 79250fadaddec9740b9ec8d2d5b485f0, type: 3}
+--- !u!1 &885915935 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 148318, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
+  m_PrefabInternal: {fileID: 967100966}
 --- !u!1 &886033275
 GameObject:
   m_ObjectHideFlags: 0
@@ -18491,10 +18486,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 11430144, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
-      propertyPath: moraleEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 471146, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
       propertyPath: m_LocalPosition.x
       value: 328.49
@@ -18525,31 +18516,51 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 471146, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
       propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11430144, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
-      propertyPath: doesRemove
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11430144, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
-      propertyPath: moraleEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11430144, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
-      propertyPath: moraleEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
+    - target: {fileID: 11484196, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
+      propertyPath: moraleEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2072093694}
+    - target: {fileID: 11467218, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1483180176}
+    - target: {fileID: 11420840, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
+      propertyPath: moraleEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2072093694}
+    - target: {fileID: 11468212, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1483180176}
+    - target: {fileID: 11484898, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1483180176}
     - target: {fileID: 11430144, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
       propertyPath: moraleEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2072093694}
-    - target: {fileID: 11430144, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
-      propertyPath: moraleEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartScene
+    - target: {fileID: 11499854, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
+      propertyPath: moraleEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2072093694}
+    - target: {fileID: 11457552, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1483180176}
+    - target: {fileID: 22433050, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 11430144, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
-      propertyPath: moraleEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+    - target: {fileID: 22433050, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 22433050, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
@@ -21874,18 +21885,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 651676839}
+        - m_Target: {fileID: 1369994524}
           m_MethodName: StartScene
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgument: {fileID: 1495048774}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 651676839}
+        - m_Target: {fileID: 1369994524}
           m_MethodName: set_GradingDecreased
           m_Mode: 6
           m_Arguments:
@@ -21989,41 +22000,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 149901148}
-        m_MethodName: StartScene
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
---- !u!1 &1169914369 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 152770, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
-  m_PrefabInternal: {fileID: 967100966}
---- !u!114 &1169914370
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1169914369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2313d5ebc6b52b14586251dd3481e07b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  usesCollider: 1
-  range: 0
-  debug: 0
-  doesRemove: 1
-  moraleEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2072093694}
         m_MethodName: StartScene
         m_Mode: 1
         m_Arguments:
@@ -22140,6 +22116,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2140101137}
   m_RootOrder: 5
+--- !u!95 &1192104747 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 9590284, guid: 9f68a27c5b1bd6642bfb1dd595fd1342,
+    type: 2}
+  m_PrefabInternal: {fileID: 967100966}
+--- !u!114 &1192104748 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11473882, guid: 9f68a27c5b1bd6642bfb1dd595fd1342,
+    type: 2}
+  m_PrefabInternal: {fileID: 967100966}
+  m_Script: {fileID: 11500000, guid: 766fe293836e4924190fd8d1a3a009ea, type: 3}
 --- !u!1001 &1195425320
 Prefab:
   m_ObjectHideFlags: 0
@@ -22457,6 +22444,17 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300002, guid: 79250fadaddec9740b9ec8d2d5b485f0, type: 3}
+--- !u!95 &1214078553 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 9534552, guid: 9f68a27c5b1bd6642bfb1dd595fd1342,
+    type: 2}
+  m_PrefabInternal: {fileID: 967100966}
+--- !u!114 &1214078554 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11402838, guid: 9f68a27c5b1bd6642bfb1dd595fd1342,
+    type: 2}
+  m_PrefabInternal: {fileID: 967100966}
+  m_Script: {fileID: 11500000, guid: 766fe293836e4924190fd8d1a3a009ea, type: 3}
 --- !u!1 &1215046686
 GameObject:
   m_ObjectHideFlags: 0
@@ -22760,7 +22758,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 651676839}
+        - m_Target: {fileID: 1369994524}
           m_MethodName: set_GradingDecreased
           m_Mode: 6
           m_Arguments:
@@ -23098,6 +23096,10 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300002, guid: 79250fadaddec9740b9ec8d2d5b485f0, type: 3}
+--- !u!1 &1239738086 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 140836, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
+  m_PrefabInternal: {fileID: 967100966}
 --- !u!1 &1240804046
 GameObject:
   m_ObjectHideFlags: 0
@@ -24085,10 +24087,10 @@ MonoBehaviour:
   birds: {fileID: 182472, guid: 90fe45502334c7242a44d04898616686, type: 2}
   MillButton: {fileID: 1030593894}
   buttons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2088424888}
+  - {fileID: 511684542}
+  - {fileID: 1192104747}
+  - {fileID: 1214078553}
   HighFireTutorial: {fileID: 1168404134}
   SaboteurTutorial: {fileID: 1662263195}
   stormCloudTutorial: {fileID: 1806300060}
@@ -24871,7 +24873,7 @@ MonoBehaviour:
   - StartEvent:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 651676839}
+        - m_Target: {fileID: 1369994524}
           m_MethodName: EndScene
           m_Mode: 1
           m_Arguments:
@@ -24893,7 +24895,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 651676839}
+        - m_Target: {fileID: 1369994524}
           m_MethodName: StartScene
           m_Mode: 2
           m_Arguments:
@@ -24904,7 +24906,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 651676839}
+        - m_Target: {fileID: 1369994524}
           m_MethodName: set_GradingDecreased
           m_Mode: 6
           m_Arguments:
@@ -24939,7 +24941,7 @@ MonoBehaviour:
   - StartEvent:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 651676839}
+        - m_Target: {fileID: 1369994524}
           m_MethodName: EndScene
           m_Mode: 1
           m_Arguments:
@@ -25031,7 +25033,7 @@ MonoBehaviour:
   OnEnd:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 651676839}
+      - m_Target: {fileID: 1369994524}
         m_MethodName: EndScene
         m_Mode: 1
         m_Arguments:
@@ -25077,6 +25079,12 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &1369994524 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11405856, guid: adfe806611edbd149b5f747d586cb6ab,
+    type: 2}
+  m_PrefabInternal: {fileID: 1628348135}
+  m_Script: {fileID: 11500000, guid: f677ba226932f5649927e695aa51cac6, type: 3}
 --- !u!1 &1371465041
 GameObject:
   m_ObjectHideFlags: 0
@@ -25870,6 +25878,16 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: 79250fadaddec9740b9ec8d2d5b485f0, type: 3}
+--- !u!114 &1483180176 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11480612, guid: adfe806611edbd149b5f747d586cb6ab,
+    type: 2}
+  m_PrefabInternal: {fileID: 1628348135}
+  m_Script: {fileID: 11500000, guid: 4ab890611b8078c40b11c1ece01c96bd, type: 3}
+--- !u!1 &1495048774 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 146930, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
+  m_PrefabInternal: {fileID: 967100966}
 --- !u!1 &1495765202
 GameObject:
   m_ObjectHideFlags: 0
@@ -26722,18 +26740,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 651676839}
+        - m_Target: {fileID: 1369994524}
           m_MethodName: StartScene
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgument: {fileID: 885915935}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 651676839}
+        - m_Target: {fileID: 1369994524}
           m_MethodName: set_GradingDecreased
           m_Mode: 6
           m_Arguments:
@@ -27866,53 +27884,6 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300008, guid: 79250fadaddec9740b9ec8d2d5b485f0, type: 3}
---- !u!1 &1616427889 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 118914, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
-  m_PrefabInternal: {fileID: 967100966}
---- !u!114 &1616427890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1616427889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2313d5ebc6b52b14586251dd3481e07b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  usesCollider: 1
-  range: 0
-  debug: 0
-  doesRemove: 1
-  moraleEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2072093694}
-        m_MethodName: StartScene
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
---- !u!64 &1616427891
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1616427889}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300000, guid: fb041a206c6bd63459324d3dacb0267c, type: 3}
 --- !u!1 &1617013184
 GameObject:
   m_ObjectHideFlags: 0
@@ -28181,7 +28152,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22453196, guid: adfe806611edbd149b5f747d586cb6ab, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 22453196, guid: adfe806611edbd149b5f747d586cb6ab, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -28231,6 +28202,22 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1306633068}
+    - target: {fileID: 11480612, guid: adfe806611edbd149b5f747d586cb6ab, type: 2}
+      propertyPath: police
+      value: 
+      objectReference: {fileID: 2088424889}
+    - target: {fileID: 11480612, guid: adfe806611edbd149b5f747d586cb6ab, type: 2}
+      propertyPath: firemen
+      value: 
+      objectReference: {fileID: 511684543}
+    - target: {fileID: 11480612, guid: adfe806611edbd149b5f747d586cb6ab, type: 2}
+      propertyPath: repair
+      value: 
+      objectReference: {fileID: 1214078554}
+    - target: {fileID: 11480612, guid: adfe806611edbd149b5f747d586cb6ab, type: 2}
+      propertyPath: cleanup
+      value: 
+      objectReference: {fileID: 1192104748}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: adfe806611edbd149b5f747d586cb6ab, type: 2}
   m_IsPrefabParent: 0
@@ -28281,7 +28268,7 @@ Transform:
   m_LocalScale: {x: 5.14, y: 133.9, z: 488.3}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 7
 --- !u!4 &1650293887 stripped
 Transform:
   m_PrefabParentObject: {fileID: 420114, guid: c484935292a2b4b468984c23a46fedd2, type: 2}
@@ -28608,18 +28595,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 651676839}
+        - m_Target: {fileID: 1369994524}
           m_MethodName: StartScene
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgument: {fileID: 366792472}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 651676839}
+        - m_Target: {fileID: 1369994524}
           m_MethodName: set_GradingDecreased
           m_Mode: 6
           m_Arguments:
@@ -31433,7 +31420,7 @@ MonoBehaviour:
   - StartEvent:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 651676839}
+        - m_Target: {fileID: 1369994524}
           m_MethodName: EndScene
           m_Mode: 1
           m_Arguments:
@@ -31455,7 +31442,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 651676839}
+        - m_Target: {fileID: 1369994524}
           m_MethodName: StartScene
           m_Mode: 2
           m_Arguments:
@@ -31466,7 +31453,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 651676839}
+        - m_Target: {fileID: 1369994524}
           m_MethodName: set_GradingDecreased
           m_Mode: 6
           m_Arguments:
@@ -31501,7 +31488,7 @@ MonoBehaviour:
   - StartEvent:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 651676839}
+        - m_Target: {fileID: 1369994524}
           m_MethodName: EndScene
           m_Mode: 1
           m_Arguments:
@@ -31593,7 +31580,7 @@ MonoBehaviour:
   OnEnd:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 651676839}
+      - m_Target: {fileID: 1369994524}
         m_MethodName: EndScene
         m_Mode: 1
         m_Arguments:
@@ -35003,7 +34990,7 @@ MonoBehaviour:
   - StartEvent:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 651676839}
+        - m_Target: {fileID: 1369994524}
           m_MethodName: EndScene
           m_Mode: 1
           m_Arguments:
@@ -35025,7 +35012,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 651676839}
+        - m_Target: {fileID: 1369994524}
           m_MethodName: StartScene
           m_Mode: 2
           m_Arguments:
@@ -35036,7 +35023,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 651676839}
+        - m_Target: {fileID: 1369994524}
           m_MethodName: set_GradingDecreased
           m_Mode: 6
           m_Arguments:
@@ -35071,7 +35058,7 @@ MonoBehaviour:
   - StartEvent:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 651676839}
+        - m_Target: {fileID: 1369994524}
           m_MethodName: EndScene
           m_Mode: 1
           m_Arguments:
@@ -35163,7 +35150,7 @@ MonoBehaviour:
   OnEnd:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 651676839}
+      - m_Target: {fileID: 1369994524}
         m_MethodName: EndScene
         m_Mode: 1
         m_Arguments:
@@ -35607,7 +35594,7 @@ MonoBehaviour:
   - StartEvent:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 651676839}
+        - m_Target: {fileID: 1369994524}
           m_MethodName: StartScene
           m_Mode: 2
           m_Arguments:
@@ -35664,7 +35651,7 @@ MonoBehaviour:
   OnEnd:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 651676839}
+      - m_Target: {fileID: 1369994524}
         m_MethodName: EndScene
         m_Mode: 1
         m_Arguments:
@@ -36344,6 +36331,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1976112908}
   m_RootOrder: 2
+--- !u!95 &2088424888 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 9578080, guid: 9f68a27c5b1bd6642bfb1dd595fd1342,
+    type: 2}
+  m_PrefabInternal: {fileID: 967100966}
+--- !u!114 &2088424889 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11461676, guid: 9f68a27c5b1bd6642bfb1dd595fd1342,
+    type: 2}
+  m_PrefabInternal: {fileID: 967100966}
+  m_Script: {fileID: 11500000, guid: 766fe293836e4924190fd8d1a3a009ea, type: 3}
 --- !u!1 &2092537867
 GameObject:
   m_ObjectHideFlags: 0
