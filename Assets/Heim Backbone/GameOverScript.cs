@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(DBconnection),typeof(Arguments))]
 public class GameOverScript : MonoBehaviour {
     private int score;
     private DBconnection connection;
     private Arguments arguments;
-    private GameObject sceneManager;
+    //private GameObject sceneManager;
 
     void Awake() {
-        sceneManager = GameObject.Find("SceneManager");
+        //sceneManager = GameObject.Find("SceneManager")
         LoadScripts();
     }
 
@@ -20,6 +21,7 @@ public class GameOverScript : MonoBehaviour {
 
     // Update is called once per frame
     public void EndGame() {
+		score = Mathf.RoundToInt(FindObjectOfType<ScoreManager>().totalScore);
         StartCoroutine(connection.UploadScore(arguments.getUserID(), arguments.getGameID(), GetScore));
 
     }
@@ -31,8 +33,8 @@ public class GameOverScript : MonoBehaviour {
     }
 
     private void LoadScripts() {
-        connection = sceneManager.GetComponent<DBconnection>();
-        arguments = sceneManager.GetComponent<Arguments>();
+        connection = GetComponent<DBconnection>();
+        arguments = GetComponent<Arguments>();
     }
 
     private void DebugScriptResults()
