@@ -26,22 +26,14 @@ public class Agent : MonoBehaviour {
 	{
 		if (targetTurbine != null) 
 		{
+			UnityEngine.Debug.Log ("Car leaving");
 			float distanceToTurbine = Vector3.Distance (targetTurbine.transform.position, transform.position);
 			if (debug)
 				UnityEngine.Debug.Log ("Distance to turbine: " + distanceToTurbine);
 
 			if (distanceToTurbine < 8.0f) {
+
 				timer.Start ();
-				targetTurbine = null;
-				if (debug)
-					UnityEngine.Debug.Log ("Fireman moved to the turbine");
-			}
-				
-		} else {
-			if (timer.Elapsed.Seconds > stopTime) {
-				timer.Stop ();
-				timer.Reset ();
-				agent.SetDestination (station.transform.position);
 				switch (type) {
 				case UIState.Police:
 					targetTurbine.state.value.OnPolice ();
@@ -56,6 +48,19 @@ public class Agent : MonoBehaviour {
 					targetTurbine.state.value.OnRepair ();
 					break;
 				}
+
+				targetTurbine = null;
+				if (debug)
+					UnityEngine.Debug.Log ("Fireman moved to the turbine");
+			}
+				
+		} else {
+			if (timer.Elapsed.Seconds > stopTime) {
+				UnityEngine.Debug.Log ("Car returning");
+				timer.Stop ();
+				timer.Reset ();
+				agent.SetDestination (station.transform.position);
+
 			}
 		}
 	}
