@@ -1525,7 +1525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 0
-  activationTime: 2
+  activationTime: 5
 --- !u!114 &11452564
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1821,7 +1821,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 0
-  activationTime: 2
+  activationTime: 5
 --- !u!114 &11480612
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2623,9 +2623,9 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 115, y: 250}
+  m_AnchoredPosition: {x: 115, y: 182.5}
   m_SizeDelta: {x: 100, y: 135}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!224 &22448854
 RectTransform:
   m_ObjectHideFlags: 1
@@ -2745,9 +2745,9 @@ RectTransform:
   m_RootOrder: 6
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 115, y: 850}
+  m_AnchoredPosition: {x: 115, y: 782.5}
   m_SizeDelta: {x: 100, y: 135}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!224 &22468804
 RectTransform:
   m_ObjectHideFlags: 1
@@ -2883,9 +2883,9 @@ RectTransform:
   m_RootOrder: 5
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 115, y: 650}
+  m_AnchoredPosition: {x: 115, y: 582.5}
   m_SizeDelta: {x: 100, y: 135}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!224 &22498262
 RectTransform:
   m_ObjectHideFlags: 1
