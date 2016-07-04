@@ -29,6 +29,7 @@ public class GameOverScript : MonoBehaviour {
 
     // Update is called once per frame
     public void EndGame() {
+		Debug.Log("game ends");
 		score = Mathf.RoundToInt(FindObjectOfType<ScoreManager>().totalScore);
 		EndScreen();
         StartCoroutine(connection.UploadScore(arguments.getUserID(), arguments.getGameID(), GetScore));

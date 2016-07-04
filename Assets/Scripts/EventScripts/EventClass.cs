@@ -16,7 +16,8 @@ public abstract class EventClass
 
 	protected TurbineObject GetRandomTurbine()
 	{
-		return TurbineObject.all[RNG.Next(0, TurbineObject.all.Count)];
+		usedTurbine = TurbineObject.all[RNG.Next(0, TurbineObject.all.Count)];
+		return usedTurbine;
 	}
 }
 
