@@ -287,10 +287,6 @@ public class TutorialProgression : MonoBehaviour {
 		{
 			gradingStep2 = false;
 		}
-
-		Debug.Log ("1:" + gradingStep1);
-		Debug.Log ("2:" + gradingStep2);
-		Debug.Log ("3:" + gradingStep3);
 	}
 	public void ResetGrading()
 	{
