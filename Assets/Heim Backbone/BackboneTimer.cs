@@ -19,7 +19,10 @@ public class BackboneTimer : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		timerText.gameObject.SetActive(false);
+		if (timerText != null)
+		{
+			timerText.gameObject.SetActive(false);
+		}
 		SetTime(GetComponent<Arguments>().getGameTime());
 	}
 	
@@ -45,8 +48,11 @@ public class BackboneTimer : MonoBehaviour {
 
 	void shutDownTimeResponse()
 	{
-		timerText.gameObject.SetActive(true);
-		timerText.text = Mathf.CeilToInt((timer - targetTime) / 1000).ToString();	
+		if (timerText != null)
+		{
+			timerText.gameObject.SetActive(true);
+			timerText.text = Mathf.CeilToInt((timer - targetTime) / 1000).ToString();
+		}
 	}
 
 	void endGameTimeResponse()

@@ -1,11 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(DBconnection),typeof(Arguments))]
 public class GameOverScript : MonoBehaviour {
     private int score;
     private DBconnection connection;
     private Arguments arguments;
+
+	[SerializeField]
+	private GameObject defaultHUD;
+	[SerializeField]
+	private GameObject GameOverHUD;
+	[SerializeField]
+	private Text scoreText;
     //private GameObject sceneManager;
 
     void Awake() {
@@ -22,9 +30,18 @@ public class GameOverScript : MonoBehaviour {
     // Update is called once per frame
     public void EndGame() {
 		score = Mathf.RoundToInt(FindObjectOfType<ScoreManager>().totalScore);
+		EndScreen();
         StartCoroutine(connection.UploadScore(arguments.getUserID(), arguments.getGameID(), GetScore));
 
     }
+
+	public void EndScreen()
+	{
+		TutorialProgression.Instance.ProgressPause = true;
+		if (defaultHUD != null) defaultHUD.SetActive(false);
+		if (GameOverHUD != null) GameOverHUD.SetActive(true);
+		if (scoreText != null) scoreText.text = score.ToString();
+	}
 
     public int GetScore
     {
