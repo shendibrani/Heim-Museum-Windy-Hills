@@ -60,7 +60,11 @@ public class Agent : MonoBehaviour {
 				timer.Stop ();
 				timer.Reset ();
 				agent.SetDestination (station.transform.position);
-
+			} else {
+				float distanceToStation = Vector3.Distance (station.transform.position, transform.position);
+				if (distanceToStation < 8f){
+					agent.SetDestination (transform.position);
+				}
 			}
 		}
 	}

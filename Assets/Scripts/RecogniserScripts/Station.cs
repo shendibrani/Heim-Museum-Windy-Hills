@@ -26,6 +26,7 @@ public abstract class Station : MonoBehaviour
 		if (free == null) {
 			free = (GameObject.Instantiate (prefab, transform.position, Quaternion.identity) as GameObject).GetComponent<Agent> ();
 			free.station = this.gameObject;
+			instances.Add (free);
 		}
 
 		return free;
