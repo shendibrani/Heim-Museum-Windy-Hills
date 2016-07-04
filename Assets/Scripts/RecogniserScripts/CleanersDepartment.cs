@@ -1,7 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CleanersDepartment : MonoBehaviour {
+public class CleanersDepartment : Station 
+{
+	bool spawned;
 
-	//Used for finding the object
+	protected override void Start () 
+	{
+		base.Start ();
+		Dispatcher<CleanupMessage>.Subscribe(SendCleaners);
+	}
+
+	void SendCleaners(CleanupMessage rm) 
+	{
+		GetFreeAgent().Send (rm.Sender.GetComponent<TurbineObject> ());
+	}
 }

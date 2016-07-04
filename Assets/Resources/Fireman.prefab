@@ -26,8 +26,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 451470}
   - 195: {fileID: 19541260}
-  - 114: {fileID: 11498106}
   - 65: {fileID: 6570612}
+  - 114: {fileID: 11436070}
   m_Layer: 0
   m_Name: Fireman
   m_TagString: Untagged
@@ -534,7 +534,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1, z: 2.5}
   m_Center: {x: -0.1, y: 0, z: -0.2}
---- !u!114 &11498106
+--- !u!114 &11436070
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -542,9 +542,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 138970}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf6d3c5f8aed6e6458731e3a7d100c9d, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f8d406aaf2ad5b4998b00bc0896ce0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  station: {fileID: 0}
+  stopTime: 1
+  agent: {fileID: 19541260}
+  type: 2
   debug: 0
 --- !u!195 &19541260
 NavMeshAgent:
