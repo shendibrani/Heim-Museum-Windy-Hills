@@ -18525,7 +18525,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 471146, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11430144, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
       propertyPath: doesRemove
@@ -24687,7 +24687,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 780611a67e8e941a2b3aa96e5915a793, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 780611a67e8e941a2b3aa96e5915a793, type: 2}
       propertyPath: m_LocalScale.x
@@ -28181,7 +28181,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22453196, guid: adfe806611edbd149b5f747d586cb6ab, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 22453196, guid: adfe806611edbd149b5f747d586cb6ab, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -34752,7 +34752,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 463030, guid: 85e19183b9dc27e4abb888d552f5a622, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 11428334, guid: 85e19183b9dc27e4abb888d552f5a622, type: 2}
       propertyPath: moraleEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
