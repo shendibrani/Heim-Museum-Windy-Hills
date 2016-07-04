@@ -43,7 +43,7 @@ GameObject:
   - 222: {fileID: 22262998}
   - 114: {fileID: 11431610}
   m_Layer: 2
-  m_Name: Arrow2
+  m_Name: TapFingerOff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -219,7 +219,7 @@ GameObject:
   - 222: {fileID: 22222904}
   - 114: {fileID: 11452564}
   m_Layer: 2
-  m_Name: Arrow1
+  m_Name: ShadowOff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
