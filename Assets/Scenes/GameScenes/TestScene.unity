@@ -217,6 +217,17 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 651676839}
+          m_MethodName: StartScene
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1934145293}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
     IsEndedByBool: 1
@@ -254,6 +265,17 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 710596954}
           m_MethodName: StartScene
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 651676839}
+          m_MethodName: EndScene
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -560,15 +582,6 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: 79250fadaddec9740b9ec8d2d5b485f0, type: 3}
---- !u!1 &44953292 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 199250, guid: adfe806611edbd149b5f747d586cb6ab, type: 2}
-  m_PrefabInternal: {fileID: 1628348135}
---- !u!95 &44953298 stripped
-Animator:
-  m_PrefabParentObject: {fileID: 9585208, guid: adfe806611edbd149b5f747d586cb6ab,
-    type: 2}
-  m_PrefabInternal: {fileID: 1628348135}
 --- !u!1 &47847354
 GameObject:
   m_ObjectHideFlags: 0
@@ -4528,17 +4541,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
         - m_Target: {fileID: 1306633068}
-          m_MethodName: EmptyCar
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1306633068}
           m_MethodName: TargetCurrentMill
           m_Mode: 1
           m_Arguments:
@@ -8111,7 +8113,7 @@ MonoBehaviour:
           m_MethodName: StartScene
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 1612706435}
+            m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
@@ -8181,6 +8183,17 @@ MonoBehaviour:
           m_Arguments:
             m_ObjectArgument: {fileID: 694204639}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306633068}
+          m_MethodName: EmptyCar
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -18512,7 +18525,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 471146, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11430144, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
       propertyPath: doesRemove
@@ -21865,7 +21878,7 @@ MonoBehaviour:
           m_MethodName: StartScene
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 1313911520}
+            m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
@@ -21935,6 +21948,17 @@ MonoBehaviour:
           m_Arguments:
             m_ObjectArgument: {fileID: 694204639}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306633068}
+          m_MethodName: EmptyCar
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -24061,10 +24085,10 @@ MonoBehaviour:
   birds: {fileID: 182472, guid: 90fe45502334c7242a44d04898616686, type: 2}
   MillButton: {fileID: 1030593894}
   buttons:
-  - {fileID: 44953298}
-  - {fileID: 1313911526}
-  - {fileID: 1725669080}
-  - {fileID: 1612706441}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   HighFireTutorial: {fileID: 1168404134}
   SaboteurTutorial: {fileID: 1662263195}
   stormCloudTutorial: {fileID: 1806300060}
@@ -24318,15 +24342,6 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: 79250fadaddec9740b9ec8d2d5b485f0, type: 3}
---- !u!1 &1313911520 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 122522, guid: adfe806611edbd149b5f747d586cb6ab, type: 2}
-  m_PrefabInternal: {fileID: 1628348135}
---- !u!95 &1313911526 stripped
-Animator:
-  m_PrefabParentObject: {fileID: 9581344, guid: adfe806611edbd149b5f747d586cb6ab,
-    type: 2}
-  m_PrefabInternal: {fileID: 1628348135}
 --- !u!1 &1325186486
 GameObject:
   m_ObjectHideFlags: 0
@@ -24672,7 +24687,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 780611a67e8e941a2b3aa96e5915a793, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 780611a67e8e941a2b3aa96e5915a793, type: 2}
       propertyPath: m_LocalScale.x
@@ -24858,17 +24873,6 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 651676839}
           m_MethodName: EndScene
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1306633068}
-          m_MethodName: EmptyCar
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -26722,7 +26726,7 @@ MonoBehaviour:
           m_MethodName: StartScene
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 1812784414}
+            m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
@@ -26792,6 +26796,17 @@ MonoBehaviour:
           m_Arguments:
             m_ObjectArgument: {fileID: 694204639}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306633068}
+          m_MethodName: EmptyCar
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -27851,15 +27866,6 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300008, guid: 79250fadaddec9740b9ec8d2d5b485f0, type: 3}
---- !u!1 &1612706435 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 187334, guid: adfe806611edbd149b5f747d586cb6ab, type: 2}
-  m_PrefabInternal: {fileID: 1628348135}
---- !u!95 &1612706441 stripped
-Animator:
-  m_PrefabParentObject: {fileID: 9565518, guid: adfe806611edbd149b5f747d586cb6ab,
-    type: 2}
-  m_PrefabInternal: {fileID: 1628348135}
 --- !u!1 &1616427889 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 118914, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
@@ -28175,7 +28181,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22453196, guid: adfe806611edbd149b5f747d586cb6ab, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 22453196, guid: adfe806611edbd149b5f747d586cb6ab, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -28606,7 +28612,7 @@ MonoBehaviour:
           m_MethodName: StartScene
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 44953292}
+            m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
@@ -28676,6 +28682,17 @@ MonoBehaviour:
           m_Arguments:
             m_ObjectArgument: {fileID: 694204639}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306633068}
+          m_MethodName: EmptyCar
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -30897,11 +30914,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
---- !u!95 &1725669080 stripped
-Animator:
-  m_PrefabParentObject: {fileID: 9541382, guid: adfe806611edbd149b5f747d586cb6ab,
-    type: 2}
-  m_PrefabInternal: {fileID: 1628348135}
 --- !u!1 &1734572247
 GameObject:
   m_ObjectHideFlags: 0
@@ -31423,17 +31435,6 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 651676839}
           m_MethodName: EndScene
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1306633068}
-          m_MethodName: EmptyCar
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -32192,10 +32193,6 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: 79250fadaddec9740b9ec8d2d5b485f0, type: 3}
---- !u!1 &1812784414 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 184536, guid: adfe806611edbd149b5f747d586cb6ab, type: 2}
-  m_PrefabInternal: {fileID: 1628348135}
 --- !u!4 &1813709037 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400504, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
@@ -33915,6 +33912,26 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2300002, guid: 79250fadaddec9740b9ec8d2d5b485f0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 297d3bdcc668b724cba182bcc6110a8a, type: 2}
+    - target: {fileID: 2300008, guid: 79250fadaddec9740b9ec8d2d5b485f0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 297d3bdcc668b724cba182bcc6110a8a, type: 2}
+    - target: {fileID: 2300004, guid: 79250fadaddec9740b9ec8d2d5b485f0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 297d3bdcc668b724cba182bcc6110a8a, type: 2}
+    - target: {fileID: 2300000, guid: 79250fadaddec9740b9ec8d2d5b485f0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 297d3bdcc668b724cba182bcc6110a8a, type: 2}
+    - target: {fileID: 2300006, guid: 79250fadaddec9740b9ec8d2d5b485f0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 297d3bdcc668b724cba182bcc6110a8a, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 79250fadaddec9740b9ec8d2d5b485f0, type: 3}
   m_IsPrefabParent: 0
@@ -34735,7 +34752,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 463030, guid: 85e19183b9dc27e4abb888d552f5a622, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 11428334, guid: 85e19183b9dc27e4abb888d552f5a622, type: 2}
       propertyPath: moraleEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -34988,17 +35005,6 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 651676839}
           m_MethodName: EndScene
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1306633068}
-          m_MethodName: EmptyCar
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
