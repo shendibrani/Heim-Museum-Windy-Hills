@@ -6,13 +6,10 @@ public class Farmer : MonoBehaviour, ITouchSensitive,IMouseSensitive {
 
 	[SerializeField] Animator anim;
 	[SerializeField] Transform[] points;
-	/*
-	[SerializeField] Sprite Happy;
+
 	[SerializeField] Sprite Angry;
 	[SerializeField] Sprite Afraid;
-	*/
 	[SerializeField] Image emotionImage;
-	[SerializeField] Image Background;
 
 	[SerializeField] bool debug;
 
@@ -97,28 +94,21 @@ public class Farmer : MonoBehaviour, ITouchSensitive,IMouseSensitive {
 		{
 			//emotionImage.sprite = null;
 			emotionImage.color = new Color(0,0,0,0);
-			Background.enabled = false;
 			anim.SetInteger ("FarmerState", 0);
 		}
 		else if (pEmo == 3)
 		{
-			Background.enabled = true;
 			//emotionImage.sprite = Happy;
-			emotionImage.color = Color.green;
 			anim.SetInteger ("FarmerState", 0);
 		}
 		else if (pEmo == 2)
 		{
-			Background.enabled = true;
-			//emotionImage.sprite = Angry;
-			emotionImage.color = Color.red;
+			emotionImage.sprite = Angry;
 			anim.SetInteger ("FarmerState", 2);
 		}
 		else if (pEmo == 1)
 		{
-			Background.enabled = true;
-			//emotionImage.sprite = Afraid;
-			emotionImage.color = Color.blue;
+			emotionImage.sprite = Afraid;
 			anim.SetInteger ("FarmerState", 1);
 		}
 	}
