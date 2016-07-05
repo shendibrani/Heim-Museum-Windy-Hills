@@ -1693,7 +1693,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   Angry: {fileID: 21300000, guid: 1fcae81913bf74545895da70940a2a29, type: 3}
-  Afraid: {fileID: 0}
+  Afraid: {fileID: 21300000, guid: d5f3b674dcf76ba4693377e703120272, type: 3}
   emotionImage: {fileID: 11406684}
   debug: 0
   touch: {fileID: 11479008}

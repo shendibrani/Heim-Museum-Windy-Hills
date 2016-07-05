@@ -10,13 +10,10 @@ public class Cow : MonoBehaviour , ITouchSensitive,IMouseSensitive {
 	[SerializeField] float normalSpeed = 0.04f;
 	[SerializeField] float runSpeed = 0.1f;
 
-	/*
-	[SerializeField] Sprite Happy;
 	[SerializeField] Sprite Angry;
 	[SerializeField] Sprite Afraid;
-	*/
+ 
 	[SerializeField] Image emotionImage;
-	[SerializeField] Image Background;
 	[SerializeField] Cutscene touch;
 
 
@@ -115,27 +112,19 @@ public class Cow : MonoBehaviour , ITouchSensitive,IMouseSensitive {
 	{
 		if (pEmo == 0)
 		{
-			//emotionImage.sprite = null;
-			emotionImage.color = new Color(0,0,0,0);
-			Background.enabled = false;
+			emotionImage.sprite = null;
 		}
 		else if (pEmo == 3)
 		{
-			Background.enabled = true;
 			//emotionImage.sprite = Happy;
-			emotionImage.color = Color.green;
 		}
 		else if (pEmo == 2)
 		{
-			Background.enabled = true;
-			//emotionImage.sprite = Angry;
-			emotionImage.color = Color.red;
+			emotionImage.sprite = Angry;
 		}
 		else if (pEmo == 1)
 		{
-			Background.enabled = true;
-			//emotionImage.sprite = Afraid;
-			emotionImage.color = Color.blue;
+			emotionImage.sprite = Afraid;
 		}
 	}
 		
