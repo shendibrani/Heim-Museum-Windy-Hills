@@ -1,7 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PoliceDepartment : MonoBehaviour {
+public class PoliceDepartment : Station 
+{
+	bool spawned;
 
-	//used for finding the objects
+	protected override void Start () 
+	{
+		base.Start ();
+		Dispatcher<PoliceMessage>.Subscribe(SendPolicemen);
+	}
+
+	void SendPolicemen(PoliceMessage rm) 
+	{
+		GetFreeAgent().Send (rm.Sender.GetComponent<TurbineObject> ());
+	}
 }

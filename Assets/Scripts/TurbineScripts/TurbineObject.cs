@@ -8,6 +8,8 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
     //Wind Direction in Vector
     public static Monitored<Vector3> windVelocity = new Monitored<Vector3>(new Vector3(0, 0, 1));
 
+	public bool calledHelp { get { return GetComponent<WarningSignManager> ().calledHelp; } }
+
 	static List<TurbineObject> _all;
 
 	public static List<TurbineObject> all {
@@ -313,6 +315,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 			Cleanup ();
 			break;
 		}
+		FindObjectOfType<UICallbacksSystem>().Clear();
 		//UICallbacksSystem.currentState = UIState.None;
 	}
 
@@ -355,7 +358,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 
 	public void Police()
 	{
-		if (!isFine && (state.value.name == TurbineStateManager.occupiedState.name || state.value.name == TurbineStateManager.saboteurState.name) ) {
+		if (!isFine && !calledHelp && (state.value.name == TurbineStateManager.occupiedState.name || state.value.name == TurbineStateManager.saboteurState.name) ) {
 			Dispatcher<PoliceMessage>.Dispatch(new PoliceMessage(gameObject));
 			//state.value.OnPolice ();
 		}
@@ -363,7 +366,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 
 	public void Firemen()
 	{
-		if (!isFine && (state.value.name == TurbineStateManager.lowFireState.name || state.value.name == TurbineStateManager.highFireState.name) ){
+		if (!isFine && !calledHelp && (state.value.name == TurbineStateManager.lowFireState.name || state.value.name == TurbineStateManager.highFireState.name) ){
 			Dispatcher<FiremenMessage>.Dispatch(new FiremenMessage(gameObject));
 			//state.value.OnFiremen ();
 		}
@@ -371,7 +374,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 
 	public void Repair()
 	{
-		if (!isFine && state.value.name == TurbineStateManager.brokenState.name) {
+		if (!isFine && !calledHelp && state.value.name == TurbineStateManager.brokenState.name) {
 			Dispatcher<RepairMessage>.Dispatch(new RepairMessage(gameObject));
 			//state.value.OnRepair ();
 
@@ -380,7 +383,7 @@ public class TurbineObject : MonoBehaviour, IMouseSensitive, ITouchSensitive, IW
 
 	public void Cleanup()
 	{
-		if (!isFine && state.value.name == TurbineStateManager.dirtyState.name) {
+		if (!isFine && !calledHelp && state.value.name == TurbineStateManager.dirtyState.name) {
 			Dispatcher<CleanupMessage>.Dispatch(new CleanupMessage(gameObject));
 			//state.value.OnCleanup ();
 		}

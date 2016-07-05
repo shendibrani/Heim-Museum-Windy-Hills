@@ -6,10 +6,11 @@ public class WarningSignManager : MonoBehaviour {
 	//[SerializeField] Highlightable police, firemen, repair, cleanup;
 	[SerializeField] Animator police, firemen, repair, cleanup,help;
 
-	bool calledHelp = false;
+	public bool calledHelp { get; private set; }
 
 	void Start()
 	{
+		calledHelp = false;
 		GetComponent<TurbineObject> ().state.OnValueChanged += OnStateChange;
 	}
 
@@ -94,11 +95,11 @@ public class WarningSignManager : MonoBehaviour {
 //		firemen.SetHighlight (false);
 //		repair.SetHighlight (false);
 //		cleanup.SetHighlight (false);
-		police.SetBool("Active",false);
-		firemen.SetBool("Active",false);
-		repair.SetBool("Active",false);
-		cleanup.SetBool("Active",false);
-		help.SetBool ("Active", false);
+		police.SetBool 	("Active",false);
+		firemen.SetBool ("Active",false);
+		repair.SetBool 	("Active",false);
+		cleanup.SetBool ("Active",false);
+		help.SetBool 	("Active", false);
 	}
 
 	public void OnStateChange(TurbineState oldState, TurbineState newState)

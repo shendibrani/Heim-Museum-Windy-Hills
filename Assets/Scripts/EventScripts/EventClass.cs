@@ -16,9 +16,8 @@ public abstract class EventClass
 
 	protected TurbineObject GetRandomTurbine()
 	{
-        usedTurbine = TurbineObject.all[RNG.Next(0, TurbineObject.all.Count)];
-
-        return usedTurbine;
+		usedTurbine = TurbineObject.all[RNG.Next(0, TurbineObject.all.Count)];
+		return usedTurbine;
 	}
 }
 
@@ -28,8 +27,8 @@ public enum EventNames
 }
 
 [System.Serializable]
-public class BoatEvent : EventClass {
-
+public class BoatEvent : EventClass 
+{
 	public List<Transform> StartPositions;
 	Transform StartNode;
 
@@ -41,12 +40,13 @@ public class BoatEvent : EventClass {
         }
     }
 
-    public BoatEvent() {
+    public BoatEvent() 
+	{
         name = EventNames.Boat;
     }
     
-    public override void EventStart() {
-
+    public override void EventStart() 
+	{
 		StartPositions.Add(GameObject.Find("StartPos1").transform);
 		StartPositions.Add(GameObject.Find("StartPos2").transform);
 		StartNode = StartPositions[UnityEngine.Random.Range(0, StartPositions.Count)];
@@ -56,7 +56,6 @@ public class BoatEvent : EventClass {
 
     public override void FakeEventStart() { EventStart(); }
     public override void EventEnd() {}
-
 }
 
 [System.Serializable]
@@ -95,7 +94,6 @@ public class FireEvent : EventClass
         {
             return name;
         }
-
     }
 
     public FireEvent(){
@@ -104,18 +102,11 @@ public class FireEvent : EventClass
 
     public override void EventStart ()
 	{
-        TurbineObject turbine = GetRandomTurbine();
-        TurbineStateManager.lowFireState.Copy(turbine);
-        Vector3 SpawnPos = Transform.FindObjectOfType<FireDepartment>().transform.position;
-        GameObject instance = (GameObject)GameObject.Instantiate(Resources.Load("Fireman"), SpawnPos, Quaternion.identity);
-        instance.GetComponent<FiremenBehavior>().SetTargetTurbine(turbine);
-    }
+		TurbineStateManager.lowFireState.Copy(GetRandomTurbine());
+   	}
 
-    public override void FakeEventStart()
-    {
-        EventStart();
-    }
-    public override void EventEnd (){}
+    public override void FakeEventStart() { EventStart(); }
+    public override void EventEnd () {}
 }
 
 [System.Serializable]
@@ -137,13 +128,11 @@ public class SaboteurEvent : EventClass
 
     public override void EventStart ()
 	{
-        TurbineObject turbine = GetRandomTurbine();
-        Vector3 SpawnPos = Transform.FindObjectOfType<PoliceDepartment>().transform.position;
-        GameObject instance = (GameObject)GameObject.Instantiate(Resources.Load("Policeman"), SpawnPos, Quaternion.identity);
-        instance.GetComponent<PolicemenBehavior>().SetTargetTurbine(turbine);
+		TurbineStateManager.saboteurState.Copy (GetRandomTurbine());
     }
 
-    public override void FakeEventStart() {
+    public override void FakeEventStart() 
+	{
         EventStart();
     }
     public override void EventEnd ()
@@ -172,8 +161,5 @@ public class FlockEvent : EventClass
         GameObject instance = (GameObject)GameObject.Instantiate(Resources.Load("PigeonEventMovement"), stormSpawnPos, Quaternion.identity);
     }
     public override void FakeEventStart() { EventStart(); }
-    public override void EventEnd ()
-	{
-
-    }
+    public override void EventEnd () {}
 }
