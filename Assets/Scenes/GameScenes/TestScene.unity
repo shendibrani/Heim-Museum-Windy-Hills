@@ -36369,6 +36369,10 @@ Prefab:
       propertyPath: m_AnchoredPosition.y
       value: 5.5
       objectReference: {fileID: 0}
+    - target: {fileID: 11438214, guid: adfe806611edbd149b5f747d586cb6ab, type: 2}
+      propertyPath: CityAnimator
+      value: 
+      objectReference: {fileID: 2010180233}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: adfe806611edbd149b5f747d586cb6ab, type: 2}
   m_IsPrefabParent: 0

@@ -53,6 +53,7 @@ public class ScoreManager : MonoBehaviour
     Image timerFill;
 
 	[SerializeField] Animator LevelUp;
+	[SerializeField] Animator CityAnimator;
 
     [SerializeField]
     bool debug;
@@ -113,6 +114,7 @@ public class ScoreManager : MonoBehaviour
         if (currentPower >= targetPower)
         {
             targetPower += 1f;
+			CityAnimator.SetInteger ("cityLevelUp", CityAnimator.GetInteger ("cityLevelUp") +1);
 			Dispatcher<MoraleChangeMessage>.Dispatch (new MoraleChangeMessage (gameObject, 0.1f));
 			ProcessScoreChangeQueue ();
             ScoreTargetIncrease.Invoke();

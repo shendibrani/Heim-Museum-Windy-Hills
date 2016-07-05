@@ -1060,6 +1060,7 @@ MonoBehaviour:
   multiplierText: {fileID: 11400770}
   timerFill: {fileID: 11419770}
   LevelUp: {fileID: 9515238}
+  CityAnimator: {fileID: 0}
   debug: 0
 --- !u!114 &11438862
 MonoBehaviour:
