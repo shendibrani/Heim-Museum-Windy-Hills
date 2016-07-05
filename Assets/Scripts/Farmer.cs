@@ -100,16 +100,19 @@ public class Farmer : MonoBehaviour, ITouchSensitive,IMouseSensitive {
 		{
 			//emotionImage.sprite = Happy;
 			anim.SetInteger ("FarmerState", 0);
+			emotionImage.color = new Color(1,1,1,1);
 		}
 		else if (pEmo == 2)
 		{
 			emotionImage.sprite = Angry;
 			anim.SetInteger ("FarmerState", 2);
+			emotionImage.color = new Color(1,1,1,1);
 		}
 		else if (pEmo == 1)
 		{
 			emotionImage.sprite = Afraid;
 			anim.SetInteger ("FarmerState", 1);
+			emotionImage.color = new Color(1,1,1,1);
 		}
 	}
 
