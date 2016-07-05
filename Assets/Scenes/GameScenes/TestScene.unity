@@ -36334,6 +36334,29 @@ Prefab:
       propertyPath: cleanup
       value: 
       objectReference: {fileID: 1192104748}
+    - target: {fileID: 11400770, guid: adfe806611edbd149b5f747d586cb6ab, type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: a23ec92a7814e004cb791af40a902803,
+        type: 3}
+    - target: {fileID: 11468454, guid: adfe806611edbd149b5f747d586cb6ab, type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: a23ec92a7814e004cb791af40a902803,
+        type: 3}
+    - target: {fileID: 11477122, guid: adfe806611edbd149b5f747d586cb6ab, type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: a23ec92a7814e004cb791af40a902803,
+        type: 3}
+    - target: {fileID: 22447326, guid: adfe806611edbd149b5f747d586cb6ab, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 22498262, guid: adfe806611edbd149b5f747d586cb6ab, type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 5.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: adfe806611edbd149b5f747d586cb6ab, type: 2}
   m_IsPrefabParent: 0
