@@ -17539,7 +17539,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &681017795
 Transform:
   m_ObjectHideFlags: 0
@@ -35433,50 +35433,6 @@ Prefab:
       propertyPath: moraleEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2072093694}
-    - target: {fileID: 22408276, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 9.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 22408276, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 22408276, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -2.63
-      objectReference: {fileID: 0}
-    - target: {fileID: 22472800, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -0.82
-      objectReference: {fileID: 0}
-    - target: {fileID: 22472800, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 6.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 22472800, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: -1.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 22474196, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 14.63
-      objectReference: {fileID: 0}
-    - target: {fileID: 22474196, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0.22
-      objectReference: {fileID: 0}
-    - target: {fileID: 22469654, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0.025
-      objectReference: {fileID: 0}
-    - target: {fileID: 22469654, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.117
-      objectReference: {fileID: 0}
-    - target: {fileID: 22469654, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.965
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9f68a27c5b1bd6642bfb1dd595fd1342, type: 2}
   m_IsPrefabParent: 0
@@ -35705,28 +35661,6 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 1306633069}
           m_MethodName: StopTracking
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1306102295}
-          m_MethodName: StartScene
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 22153753}
-          m_MethodName: StartScene
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -41876,28 +41810,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 984431403}
-          m_MethodName: StartScene
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 22153753}
-          m_MethodName: StartScene
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
         - m_Target: {fileID: 1934145294}
           m_MethodName: ResetCloud
           m_Mode: 1
@@ -41991,7 +41903,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1306633068}
-        m_MethodName: ReleaseBoat
+        m_MethodName: ReleaseCloud
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
