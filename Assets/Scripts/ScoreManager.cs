@@ -88,12 +88,14 @@ public class ScoreManager : MonoBehaviour
 
     void UIUpdate()
     {
-        float currentFill = 1 - (targetPower - currentPower);
+		float currentFill = currentPower/10;
+		currentFill = Mathf.Clamp (currentFill, 0, 1);
+//        float currentFill = 1 - (targetPower - currentPower);
         if (debug) Debug.Log("Current Power: " + currentPower + " Target Power: " + targetPower + " Current Fill:" + currentFill + " Morale: " + currentMorale);
         //fillValue = Mathf.Lerp(fillValue, currentFill, 0.2f);
 
         timerFill.fillAmount = currentFill;
-		multiplierText.text = "x" + Math.Round(currentMorale, 1).ToString();
+		multiplierText.text = "x " + Math.Round(currentMorale, 1).ToString();
 
 	}
 

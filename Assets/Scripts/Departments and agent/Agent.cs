@@ -31,22 +31,24 @@ public class Agent : MonoBehaviour {
 			if (debug)
 				UnityEngine.Debug.Log ("Distance to turbine: " + distanceToTurbine);
 
-			if (distanceToTurbine < 8.0f) {
+			if (distanceToTurbine < 8.0f || targetTurbine.state.value == null) {
 
 				timer.Start ();
-				switch (type) {
-				case UIState.Police:
-					targetTurbine.state.value.OnPolice ();
-					break;
-				case UIState.Firemen:
-					targetTurbine.state.value.OnFiremen ();
-					break;
-				case UIState.Cleanup:
-					targetTurbine.state.value.OnCleanup ();
-					break;
-				case UIState.Repair:
-					targetTurbine.state.value.OnRepair ();
-					break;
+				if (targetTurbine.state.value != null) {
+					switch (type) {
+					case UIState.Police:
+						targetTurbine.state.value.OnPolice ();
+						break;
+					case UIState.Firemen:
+						targetTurbine.state.value.OnFiremen ();
+						break;
+					case UIState.Cleanup:
+						targetTurbine.state.value.OnCleanup ();
+						break;
+					case UIState.Repair:
+						targetTurbine.state.value.OnRepair ();
+						break;
+					}
 				}
 
 				targetTurbine = null;
