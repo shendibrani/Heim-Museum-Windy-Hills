@@ -7,16 +7,13 @@ public class Cow : MonoBehaviour , ITouchSensitive,IMouseSensitive {
 	[SerializeField] Animator anim;
 	[SerializeField] Transform[] goals;
 	[SerializeField] Transform[] runGoals;
-	[SerializeField] float normalSpeed = 0.04f;
-	[SerializeField] float runSpeed = 0.1f;
+	[SerializeField] float normalSpeed = 2f;
+	[SerializeField] float runSpeed = 10f;
 
-	/*
-	[SerializeField] Sprite Happy;
 	[SerializeField] Sprite Angry;
 	[SerializeField] Sprite Afraid;
-	*/
+ 
 	[SerializeField] Image emotionImage;
-	[SerializeField] Image Background;
 	[SerializeField] Cutscene touch;
 
 
@@ -27,6 +24,7 @@ public class Cow : MonoBehaviour , ITouchSensitive,IMouseSensitive {
 
 	void Start ()
 	{
+		
 		agent = GetComponent<NavMeshAgent> ();
 		Emotion (0);
 	}
@@ -39,6 +37,7 @@ public class Cow : MonoBehaviour , ITouchSensitive,IMouseSensitive {
 		if (distance < 1)
 		{
 			reachedGoal = true;
+			agent.speed = 0;
 			agent.Stop ();
 			run = false;
 		}
@@ -108,34 +107,31 @@ public class Cow : MonoBehaviour , ITouchSensitive,IMouseSensitive {
 		run = false;
 		reachedGoal = false;
 		agent.speed = normalSpeed;
+		agent.speed = 0;
 		agent.Stop ();
+
 	}
 
 	public void Emotion(int pEmo)
 	{
 		if (pEmo == 0)
 		{
-			//emotionImage.sprite = null;
-			emotionImage.color = new Color(0,0,0,0);
-			Background.enabled = false;
+			emotionImage.sprite = null;
+			emotionImage.color = new Color (1, 1, 1, 0);
 		}
 		else if (pEmo == 3)
 		{
-			Background.enabled = true;
 			//emotionImage.sprite = Happy;
-			emotionImage.color = Color.green;
 		}
 		else if (pEmo == 2)
 		{
-			Background.enabled = true;
-			//emotionImage.sprite = Angry;
-			emotionImage.color = Color.red;
+			emotionImage.sprite = Angry;
+			emotionImage.color = new Color (1, 1, 1, 1);
 		}
 		else if (pEmo == 1)
 		{
-			Background.enabled = true;
-			//emotionImage.sprite = Afraid;
-			emotionImage.color = Color.blue;
+			emotionImage.sprite = Afraid;
+			emotionImage.color = new Color (1, 1, 1, 1);
 		}
 	}
 		
