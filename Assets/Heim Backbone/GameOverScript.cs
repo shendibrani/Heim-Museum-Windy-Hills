@@ -15,23 +15,47 @@ public class GameOverScript : MonoBehaviour {
 	[SerializeField]
 	private Text scoreText;
     //private GameObject sceneManager;
+	private float timer;
+	private float targetTime;
+	private bool isTimeOut;
+
 
     void Awake() {
         //sceneManager = GameObject.Find("SceneManager")
-        LoadScripts();
+
     }
 
     // Use this for initialization
     void Start() {
         DebugScriptResults();
-
+		isTimeOut = false;
+		SetTime(30f);
     }
 
-    // Update is called once per frame
+	void Update(){
+		Debug.Log (isTimeOut);
+		timer += Time.deltaTime;
+		Debug.Log (targetTime - timer);
+		if  (timer > targetTime && !isTimeOut)
+		{
+			EndGame();
+			isTimeOut = true;
+		}
+	}
+		
+
+
+	public void SetTime(float pTime)
+	{
+		targetTime = (pTime * 1000);
+		timer = 0;
+	}
+
+
     public void EndGame() {
 		Debug.Log("game ends");
 		score = Mathf.RoundToInt(FindObjectOfType<ScoreManager>().totalScore);
-		EndScreen();
+		//EndScreen();
         StartCoroutine(connection.UploadScore(arguments.getUserID(), arguments.getGameID(), GetScore));
 
     }
