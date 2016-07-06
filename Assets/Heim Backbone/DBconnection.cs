@@ -15,6 +15,7 @@ public class DBconnection : MonoBehaviour {
 	}
 
 	public IEnumerator UploadScore(int userID, int gameID, int score) {
+		Debug.Log ("Co-routineStart");
 		string full_url = connectionURL + scoreURL + "userID=" + userID + "&gameID=" + gameID + "&score=" + score;
 		WWW post = new WWW(full_url);
 		yield return post;

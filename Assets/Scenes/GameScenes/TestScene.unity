@@ -31844,7 +31844,7 @@ Transform:
   - {fileID: 343285537}
   - {fileID: 1806300059}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!114 &1306633068
 MonoBehaviour:
   m_ObjectHideFlags: 0

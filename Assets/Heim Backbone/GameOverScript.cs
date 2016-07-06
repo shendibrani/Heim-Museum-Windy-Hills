@@ -27,19 +27,21 @@ public class GameOverScript : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
+		connection = GetComponent<DBconnection> ();
+		arguments = GetComponent<Arguments> ();
+		Debug.Log ("start");
         DebugScriptResults();
 		isTimeOut = false;
-		SetTime(30f);
+		SetTime(172f);
     }
 
 	void Update(){
-		Debug.Log (isTimeOut);
 		timer += Time.deltaTime;
-		Debug.Log (targetTime - timer);
 		if  (timer > targetTime && !isTimeOut)
 		{
-			EndGame();
 			isTimeOut = true;
+			EndGame();
+
 		}
 	}
 		
@@ -47,15 +49,13 @@ public class GameOverScript : MonoBehaviour {
 
 	public void SetTime(float pTime)
 	{
-		targetTime = (pTime * 1000);
+		targetTime = (pTime);
 		timer = 0;
 	}
 
 
     public void EndGame() {
-		Debug.Log("game ends");
 		score = Mathf.RoundToInt(FindObjectOfType<ScoreManager>().totalScore);
-		//EndScreen();
         StartCoroutine(connection.UploadScore(arguments.getUserID(), arguments.getGameID(), GetScore));
 
     }
